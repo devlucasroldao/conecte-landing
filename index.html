@@ -1,11 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de uso</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conexão [Nome da Sua Empresa] - Internet Fibra de Verdade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1558494949-ef0d38d3f9e8') center/cover no-repeat; }
+  </style>
 </head>
-<body>
-    
+<body class="bg-gray-50 font-sans">
+
+  <!-- Hero -->
+  <section class="hero-bg text-white py-24">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Internet <span class="text-yellow-400">Rápida</span> e <span class="text-yellow-400">Estável</span><br>
+        na sua região
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+        Fibra óptica com até <strong>1 Giga</strong> de velocidade. Suporte local e sem burocracia.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#planos" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xl px-10 py-4 rounded-xl transition">
+          Ver Planos e Preços
+        </a>
+        <a href="https://wa.me/555199999999" target="_blank" class="border-2 border-white hover:bg-white hover:text-black font-bold text-xl px-10 py-4 rounded-xl transition flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+        </a>
+      </div>
+
+      <div class="mt-12 flex justify-center gap-8 text-sm">
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Instalação Rápida</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Suporte 24h</div>
+        <div class="flex items-center gap-2"><i class="fas fa-check text-green-400"></i> Sem fidelidade</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planos -->
+  <section id="planos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Escolha seu Plano</h2>
+      <p class="text-center text-gray-600 mb-12">Preços com fidelidade ou sem fidelidade. Você decide.</p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Plano 1 -->
+        <div class="border rounded-2xl p-8 hover:border-blue-500 transition">
+          <h3 class="text-2xl font-bold">300 Mega</h3>
+          <p class="text-5xl font-bold mt-4">R$ 89,90</p>
+          <p class="text-gray-500">por mês</p>
+          <ul class="mt-8 space-y-4">
+            <li><i class="fas fa-check text-green-500"></i> Upload 150 Mega</li>
+            <li><i class="fas fa-check text-green-500"></i> Wi-Fi 6 incluso</li>
+            <li><i class="fas fa-check text-green-500"></i> App de gestão</li>
+          </ul>
+          <button onclick="window.location.href='https://wa.me/555199999999?text=Quero o plano 300 Mega'" 
+                  class="w-full mt-10 bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700">
+            Assinar Agora
+          </button>
+        </div>
+
+        <!-- Plano 2 (Mais Popular) -->
+        <div class="border-2 border-yellow-400 rounded-3xl p-8 relative -mt-4 bg-white shadow-xl">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black font-bold px-6 py-1 rounded-full text-sm">
+            MAIS VENDIDO
+          </div>
+          <h3 class="text-3xl font-bold">500 Mega</h3>
+          <p class="text-5xl font-bold mt-4">R$ 119,90</p>
+          <p class="text-gray-500">por mês</p>
+          <ul class="mt-8 space-y-4">
+            <li><i class="fas fa-check text-green-500"></i> Upload 250 Mega</li>
+            <li><i class="fas fa-check text-green-500"></i> Wi-Fi 6 + Mesh</li>
+            <li><i class="fas fa-check text-green-500"></i> Suporte prioritário</li>
+            <li><i class="fas fa-check text-green-500"></i> 2 TVs + 1 celular</li>
+          </ul>
+          <button onclick="window.location.href='https://wa.me/555199999999?text=Quero o plano 500 Mega'" 
+                  class="w-full mt-10 bg-yellow-400 text-black py-4 rounded-xl font-bold hover:bg-yellow-500 text-lg">
+            Quero este plano!
+          </button>
+        </div>
+
+        <!-- Plano 3 -->
+        <div class="border rounded-2xl p-8 hover:border-blue-500 transition">
+          <h3 class="text-2xl font-bold">1 Giga</h3>
+          <p class="text-5xl font-bold mt-4">R$ 169,90</p>
+          <p class="text-gray-500">por mês</p>
+          <ul class="mt-8 space-y-4">
+            <li><i class="fas fa-check text-green-500"></i> Upload 500 Mega</li>
+            <li><i class="fas fa-check text-green-500"></i> Router Wi-Fi 6E</li>
+            <li><i class="fas fa-check text-green-500"></i> IP Fixo (opcional)</li>
+            <li><i class="fas fa-check text-green-500"></i> Suporte dedicado</li>
+          </ul>
+          <button onclick="window.location.href='https://wa.me/555199999999?text=Quero o plano 1 Giga'" 
+                  class="w-full mt-10 bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700">
+            Assinar Agora
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cobertura -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6">Já atendemos sua região?</h2>
+      <p class="text-xl mb-8">Digite seu bairro ou cidade abaixo:</p>
+      
+      <div class="max-w-md mx-auto">
+        <input type="text" id="bairro" placeholder="Ex: Centro, Passo D'Areia, São Leopoldo..." 
+               class="w-full px-6 py-4 rounded-2xl text-black text-lg">
+        <button onclick="verificarCobertura()" 
+                class="mt-4 w-full bg-green-500 hover:bg-green-600 py-4 rounded-2xl font-bold text-xl">
+          Verificar Cobertura
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <i class="fas fa-bolt text-5xl text-yellow-500 mb-4"></i>
+        <h4 class="font-bold text-xl">Velocidade Real</h4>
+        <p class="text-gray-600 mt-2">O que contratou é o que recebe</p>
+      </div>
+      <div class="text-center">
+        <i class="fas fa-headset text-5xl text-blue-500 mb-4"></i>
+        <h4 class="font-bold text-xl">Suporte Local</h4>
+        <p class="text-gray-600 mt-2">Técnicos da sua cidade</p>
+      </div>
+      <div class="text-center">
+        <i class="fas fa-shield-alt text-5xl text-green-500 mb-4"></i>
+        <h4 class="font-bold text-xl">Segurança</h4>
+        <p class="text-gray-600 mt-2">Proteção contra ataques</p>
+      </div>
+      <div class="text-center">
+        <i class="fas fa-clock text-5xl text-purple-500 mb-4"></i>
+        <h4 class="font-bold text-xl">Instalação Rápida</h4>
+        <p class="text-gray-600 mt-2">Em até 48 horas</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-2xl font-bold mb-2">[Nome da Sua Empresa]</p>
+      <p>Provedor de Internet Fibra Óptica • Rio Grande do Sul</p>
+      <p class="mt-6">© 2026 - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    function verificarCobertura() {
+      const bairro = document.getElementById('bairro').value;
+      if (bairro.trim() !== "") {
+        alert(`✅ Ótima notícia! Atendemos ${bairro}.\n\nVamos te passar os planos disponíveis no WhatsApp.`);
+        window.open('https://wa.me/555199999999?text=Quero saber mais sobre a cobertura no ' + encodeURIComponent(bairro), '_blank');
+      } else {
+        alert("Por favor, digite seu bairro ou cidade.");
+      }
+    }
+  </script>
 </body>
 </html>
