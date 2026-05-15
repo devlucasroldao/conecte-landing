@@ -2,2003 +2,1742 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Conecte Telecom — É mais que internet, é Conecte!</title>
+<meta name="description" content="Internet fibra óptica em Arroio do Sal — RS. Atendimento humanizado, equipe local, suporte todos os dias. É mais que internet, é Conecte!">
+<meta property="og:title" content="Conecte Telecom — Fibra de verdade em Arroio do Sal">
+<meta property="og:description" content="Internet 100% fibra óptica feita por moradores de Arroio do Sal. Suporte local, sem robô, sem enrolação.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a7ee2">
+
+<!-- Schema LocalBusiness -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Conecte Telecom","description":"Provedor de internet fibra óptica em Arroio do Sal - RS","address":{"@type":"PostalAddress","streetAddress":"Rua Paulista, 183","addressLocality":"Arroio do Sal","addressRegion":"RS","addressCountry":"BR"},"telephone":"+555199999999","areaServed":"Arroio do Sal","openingHours":"Mo-Su 08:00-22:00","priceRange":"R$89-R$149"}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 <style>
-/* ============================================================
-   DESIGN SYSTEM
-   ============================================================ */
+/* ================================================================
+   DESIGN SYSTEM — CONECTE TELECOM V3
+   ================================================================ */
 :root {
-  --azul:        #0a7ee2;
-  --azul-mid:    #0563b8;
-  --azul-dark:   #03407a;
-  --azul-glow:   rgba(10,126,226,0.35);
-  --amarelo:     #ffde59;
-  --amarelo-dk:  #e6c400;
-  --verde:       #22c55e;
-  --texto:       #0d1117;
-  --muted:       #6b7280;
-  --muted2:      #9ca3af;
-  --surface:     #f8fafc;
-  --surface2:    #f1f5f9;
-  --branco:      #ffffff;
+  --azul:       #0a7ee2;
+  --azul-mid:   #0563b8;
+  --azul-dark:  #03407a;
+  --azul-glow:  rgba(10,126,226,.32);
+  --azul-light: #e8f3fd;
+  --amarelo:    #ffde59;
+  --amarelo-dk: #e6c400;
+  --verde:      #22c55e;
+  --coral:      #ff6b6b;
+  --texto:      #0d1117;
+  --texto2:     #1f2937;
+  --muted:      #6b7280;
+  --muted2:     #9ca3af;
+  --surface:    #f8fafc;
+  --surface2:   #f1f5f9;
+  --border:     rgba(0,0,0,.07);
+  --branco:     #ffffff;
 
-  /* Glass */
-  --glass-bg:    rgba(255,255,255,0.08);
-  --glass-border:rgba(255,255,255,0.14);
-  --glass-blur:  blur(20px);
-
-  /* Radius */
-  --r-sm: 12px;
-  --r-md: 18px;
-  --r-lg: 24px;
-  --r-xl: 32px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   24px;
+  --r-xl:   32px;
+  --r-2xl:  40px;
   --r-full: 9999px;
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:  0 8px 32px rgba(0,0,0,.08);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,.10);
+  --shadow-azul:0 12px 40px rgba(10,126,226,.25);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-
+html { scroll-behavior:smooth; }
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
-  color: var(--texto);
-  background: var(--branco);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:16px; color:var(--texto);
+  background:var(--branco);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* ============================================================
+/* ================================================================
    KEYFRAMES
-   ============================================================ */
-@keyframes fadeUp   { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
-@keyframes floatA   { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-14px) rotate(1deg)} }
-@keyframes floatB   { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(-1deg)} }
-@keyframes floatC   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes pulseRing{ 0%{transform:scale(.9);opacity:.7} 70%{transform:scale(1.35);opacity:0} 100%{transform:scale(1.35);opacity:0} }
-@keyframes glow     { 0%,100%{box-shadow:0 0 30px var(--azul-glow)} 50%{box-shadow:0 0 60px var(--azul-glow),0 0 100px rgba(10,126,226,0.15)} }
-@keyframes shimmer  { 0%{background-position:-200% center} 100%{background-position:200% center} }
-@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:.35} }
-@keyframes slideLeft{ from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:translateX(0)} }
-@keyframes wave     { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-@keyframes orb1     { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,-30px) scale(1.08)} 66%{transform:translate(-20px,20px) scale(.95)} }
-@keyframes orb2     { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,40px) scale(1.05)} 66%{transform:translate(30px,-20px) scale(.98)} }
+   ================================================================ */
+@keyframes fadeUp    { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn    { from{opacity:0} to{opacity:1} }
+@keyframes floatY    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes floatYR   { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(3deg)} }
+@keyframes pulse     { 0%,100%{transform:scale(.92);opacity:.8} 70%{transform:scale(1.3);opacity:0} }
+@keyframes glow      { 0%,100%{box-shadow:0 0 24px var(--azul-glow)} 50%{box-shadow:0 0 56px var(--azul-glow),0 0 90px rgba(10,126,226,.12)} }
+@keyframes blink     { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes wave      { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes orb1      { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(36px,-28px) scale(1.07)} 70%{transform:translate(-18px,18px) scale(.95)} }
+@keyframes orb2      { 0%,100%{transform:translate(0,0) scale(1)} 35%{transform:translate(-28px,36px) scale(1.04)} 68%{transform:translate(26px,-18px) scale(.97)} }
+@keyframes shimmer   { 0%{left:-80%} 100%{left:120%} }
+@keyframes wifiPulse { 0%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.15)} 100%{opacity:1;transform:scale(1)} }
+@keyframes tailWag   { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(8deg)} 75%{transform:rotate(-8deg)} }
+@keyframes eyeBlink  { 0%,90%,100%{scaleY:1} 95%{scaleY:0.05} }
+@keyframes bounce    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes drawLine  { from{stroke-dashoffset:300} to{stroke-dashoffset:0} }
+@keyframes countUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideInR  { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
+@keyframes progress  { from{width:0} to{width:var(--w)} }
 
-/* ============================================================
-   UTILITIES
-   ============================================================ */
-.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+/* ================================================================
+   PROGRESS BAR
+   ================================================================ */
+#progress-bar {
+  position:fixed; top:0; left:0; height:2.5px; z-index:9999;
+  background:linear-gradient(90deg,var(--azul),var(--amarelo));
+  width:0; transition:width .1s linear;
+}
+
+/* ================================================================
+   REVEAL
+   ================================================================ */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease,transform .65s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
-.reveal.delay-1 { transition-delay:.1s; }
-.reveal.delay-2 { transition-delay:.2s; }
-.reveal.delay-3 { transition-delay:.3s; }
+.reveal.from-left { transform:translateX(-28px); }
+.reveal.from-right { transform:translateX(28px); }
+.reveal.from-left.visible,.reveal.from-right.visible { transform:translateX(0); }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+.d4{transition-delay:.32s} .d5{transition-delay:.40s} .d6{transition-delay:.48s}
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
+/* ================================================================
+   NAV
+   ================================================================ */
 #nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-  padding: 20px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all .4s cubic-bezier(.4,0,.2,1);
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  padding:18px 40px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
 }
 #nav.scrolled {
-  padding: 14px 32px;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+  padding:12px 40px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(28px) saturate(200%);
+  -webkit-backdrop-filter:blur(28px) saturate(200%);
+  border-bottom:1px solid rgba(0,0,0,.05);
+  box-shadow:0 4px 28px rgba(0,0,0,.05);
 }
 
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none;
+/* Logo */
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark {
+  width:40px; height:40px; border-radius:12px;
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 14px var(--azul-glow);
+  transition:transform .25s;
+  flex-shrink:0;
 }
-.nav-logo-icon {
-  width: 38px; height: 38px;
-  background: var(--azul);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: white;
-  box-shadow: 0 4px 12px var(--azul-glow);
-  transition: transform .2s;
-}
-.nav-logo:hover .nav-logo-icon { transform: scale(1.08) rotate(-4deg); }
-.nav-logo-text {
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -.3px;
-  transition: color .3s;
-}
-#nav.scrolled .nav-logo-text { color: var(--texto); }
-.nav-logo-text span { color: var(--amarelo); }
-#nav.scrolled .nav-logo-text span { color: var(--azul); }
+.nav-logo:hover .logo-mark { transform:rotate(-6deg) scale(1.08); }
+/* SVG logo mark */
+.logo-mark svg { width:22px; height:22px; }
 
-.nav-links {
-  display: flex; align-items: center; gap: 6px;
-  list-style: none;
+.logo-name {
+  font-size:21px; font-weight:800; letter-spacing:-.4px;
+  color:white; transition:color .3s;
+  line-height:1;
 }
+.logo-name em { font-style:normal; color:var(--amarelo); }
+#nav.scrolled .logo-name { color:var(--texto); }
+#nav.scrolled .logo-name em { color:var(--azul); }
+
+.logo-tagline {
+  font-size:9px; font-weight:600; letter-spacing:.8px; text-transform:uppercase;
+  color:rgba(255,255,255,.45); margin-top:2px;
+  transition:color .3s;
+}
+#nav.scrolled .logo-tagline { color:var(--muted2); }
+
+.nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
 .nav-links a {
-  font-size: 14px; font-weight: 600;
-  color: rgba(255,255,255,.75);
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: var(--r-full);
-  transition: all .2s;
+  font-size:14px; font-weight:600; padding:8px 14px; border-radius:var(--r-full);
+  color:rgba(255,255,255,.72); text-decoration:none; transition:all .2s;
 }
-.nav-links a:hover { color: white; background: rgba(255,255,255,.1); }
-#nav.scrolled .nav-links a { color: var(--muted); }
-#nav.scrolled .nav-links a:hover { color: var(--texto); background: var(--surface); }
+.nav-links a:hover { color:white; background:rgba(255,255,255,.1); }
+#nav.scrolled .nav-links a { color:var(--muted); }
+#nav.scrolled .nav-links a:hover { color:var(--texto); background:var(--surface); }
 
-.nav-actions { display: flex; align-items: center; gap: 10px; }
-.nav-cobertura {
-  font-size: 13px; font-weight: 600;
-  color: white;
-  border: 1.5px solid rgba(255,255,255,.3);
-  padding: 9px 18px;
-  border-radius: var(--r-full);
-  text-decoration: none;
-  transition: all .2s;
-  backdrop-filter: blur(8px);
-  background: rgba(255,255,255,.06);
-}
-.nav-cobertura:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.5); }
-#nav.scrolled .nav-cobertura { color: var(--azul); border-color: var(--azul); background: transparent; }
-#nav.scrolled .nav-cobertura:hover { background: rgba(10,126,226,.05); }
+.nav-right { display:flex; align-items:center; gap:8px; }
 
-.nav-wpp {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 13px; font-weight: 700;
-  background: #25D366;
-  color: white;
-  padding: 9px 18px;
-  border-radius: var(--r-full);
-  text-decoration: none;
-  transition: all .2s;
-  box-shadow: 0 4px 14px rgba(37,211,102,.3);
+.nav-btn-outline {
+  font-size:13px; font-weight:700; padding:9px 18px; border-radius:var(--r-full);
+  color:rgba(255,255,255,.85); border:1.5px solid rgba(255,255,255,.25);
+  text-decoration:none; backdrop-filter:blur(8px); background:rgba(255,255,255,.07);
+  transition:all .2s;
 }
-.nav-wpp:hover { background: #1ebe5d; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,.4); }
+.nav-btn-outline:hover { background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.45); }
+#nav.scrolled .nav-btn-outline { color:var(--azul); border-color:rgba(10,126,226,.25); background:transparent; }
+#nav.scrolled .nav-btn-outline:hover { background:var(--azul-light); }
 
-.nav-hamburger {
-  display: none;
-  flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 8px;
-  background: rgba(255,255,255,.1);
-  border-radius: 10px;
-  border: 1.5px solid rgba(255,255,255,.2);
-  transition: all .2s;
+.nav-btn-wpp {
+  display:flex; align-items:center; gap:7px;
+  font-size:13px; font-weight:800; padding:10px 20px; border-radius:var(--r-full);
+  background:#25D366; color:white; text-decoration:none;
+  box-shadow:0 4px 16px rgba(37,211,102,.3); transition:all .2s;
 }
-.nav-hamburger span {
-  display: block;
-  width: 20px; height: 2px;
-  background: white;
-  border-radius: 2px;
-  transition: all .3s;
-}
-#nav.scrolled .nav-hamburger { background: var(--surface); border-color: rgba(0,0,0,.1); }
-#nav.scrolled .nav-hamburger span { background: var(--texto); }
-.nav-hamburger:hover { background: rgba(255,255,255,.18); }
+.nav-btn-wpp:hover { background:#1ebe5d; transform:translateY(-1px); box-shadow:0 6px 22px rgba(37,211,102,.4); }
 
-/* Mobile menu */
-.mobile-overlay {
-  display: none;
-  position: fixed; inset: 0;
-  z-index: 300;
-  background: rgba(0,0,0,.5);
-  backdrop-filter: blur(4px);
-  animation: fadeIn .3s ease;
+.nav-burger {
+  display:none; flex-direction:column; gap:5px; cursor:pointer;
+  padding:9px; border-radius:10px; border:1.5px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08); transition:all .2s;
 }
-.mobile-overlay.open { display: block; }
+.nav-burger span { display:block; width:19px; height:2px; background:white; border-radius:2px; transition:all .3s; }
+#nav.scrolled .nav-burger { background:var(--surface); border-color:var(--border); }
+#nav.scrolled .nav-burger span { background:var(--texto); }
 
-.mobile-panel {
-  position: fixed;
-  top: 0; right: 0; bottom: 0;
-  width: min(380px, 90vw);
-  background: white;
-  z-index: 301;
-  transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
-  display: flex; flex-direction: column;
-  padding: 0;
-  box-shadow: -8px 0 40px rgba(0,0,0,.15);
-}
-.mobile-panel.open { transform: translateX(0); }
-
-.mobile-panel-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 24px;
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-.mobile-close {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  background: var(--surface);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: var(--muted);
-  cursor: pointer; border: none;
-  transition: all .2s;
-}
-.mobile-close:hover { background: var(--surface2); color: var(--texto); }
-
-.mobile-nav-links {
-  list-style: none;
-  padding: 16px;
-  flex: 1;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.mobile-nav-links a {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px;
-  border-radius: var(--r-md);
-  font-size: 16px; font-weight: 600;
-  color: var(--texto);
-  text-decoration: none;
-  transition: all .2s;
-}
-.mobile-nav-links a:hover { background: var(--surface); color: var(--azul); }
-.mobile-nav-links a i { width: 20px; text-align: center; color: var(--azul); }
-
-.mobile-panel-footer {
-  padding: 20px 24px 32px;
-  display: flex; flex-direction: column; gap: 10px;
-  border-top: 1px solid rgba(0,0,0,.06);
+@media(max-width:960px) {
+  .nav-links,.nav-btn-outline { display:none; }
+  .nav-burger { display:flex; }
+  #nav { padding:16px 20px; }
+  #nav.scrolled { padding:12px 20px; }
 }
 
-@media (max-width: 920px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-  .nav-cobertura { display: none; }
+/* Mobile panel */
+.mob-overlay { display:none; position:fixed; inset:0; z-index:600; background:rgba(0,0,0,.45); backdrop-filter:blur(4px); animation:fadeIn .3s; }
+.mob-overlay.open { display:block; }
+.mob-panel {
+  position:fixed; top:0; right:0; bottom:0; width:min(360px,88vw);
+  background:white; z-index:601;
+  transform:translateX(100%); transition:transform .4s cubic-bezier(.4,0,.2,1);
+  display:flex; flex-direction:column;
+  box-shadow:-12px 0 48px rgba(0,0,0,.12);
 }
-@media (max-width: 600px) {
-  #nav { padding: 16px 20px; }
-  #nav.scrolled { padding: 12px 20px; }
+.mob-panel.open { transform:translateX(0); }
+.mob-head { display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid var(--border); }
+.mob-close { width:36px; height:36px; border-radius:10px; background:var(--surface); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--muted); transition:all .2s; }
+.mob-close:hover { background:var(--surface2); color:var(--texto); }
+.mob-links { list-style:none; padding:14px 16px; flex:1; display:flex; flex-direction:column; gap:3px; }
+.mob-links a {
+  display:flex; align-items:center; gap:12px; padding:13px 16px; border-radius:var(--r-md);
+  font-size:15px; font-weight:600; color:var(--texto); text-decoration:none; transition:all .2s;
 }
+.mob-links a i { width:18px; text-align:center; color:var(--azul); }
+.mob-links a:hover { background:var(--surface); color:var(--azul); }
+.mob-foot { padding:20px 24px 36px; display:flex; flex-direction:column; gap:10px; border-top:1px solid var(--border); }
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(150deg,
-    #060d1a 0%,
-    #091f47 25%,
-    #0a4090 55%,
-    #0a7ee2 80%,
-    #1a9af5 100%);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+/* ================================================================
+   BUTTONS (global)
+   ================================================================ */
+.btn-primary {
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--amarelo); color:#111;
+  font-size:16px; font-weight:800; padding:16px 30px; border-radius:var(--r-full);
+  text-decoration:none; border:none; cursor:pointer;
+  box-shadow:0 8px 28px rgba(255,222,89,.3);
+  transition:all .25s; letter-spacing:-.2px;
 }
+.btn-primary:hover { background:var(--amarelo-dk); transform:translateY(-3px); box-shadow:0 14px 40px rgba(255,222,89,.42); }
 
-/* Orbs de fundo */
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  pointer-events: none;
+.btn-glass {
+  display:inline-flex; align-items:center; gap:9px;
+  background:rgba(255,255,255,.1); color:white;
+  font-size:16px; font-weight:700; padding:16px 30px; border-radius:var(--r-full);
+  text-decoration:none; border:1.5px solid rgba(255,255,255,.2); backdrop-filter:blur(10px);
+  transition:all .25s;
 }
-.orb1 {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(10,126,226,.5) 0%, transparent 70%);
-  top: -100px; right: -100px;
-  animation: orb1 12s ease-in-out infinite;
-}
-.orb2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(255,222,89,.2) 0%, transparent 70%);
-  bottom: 100px; left: -80px;
-  animation: orb2 15s ease-in-out infinite;
-}
-.orb3 {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(34,197,94,.15) 0%, transparent 70%);
-  top: 40%; left: 30%;
-  animation: orb1 10s ease-in-out infinite 3s;
-}
+.btn-glass:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.38); transform:translateY(-3px); }
+.btn-glass.wpp { border-color:rgba(37,211,102,.4); }
+.btn-glass.wpp:hover { background:rgba(37,211,102,.15); }
 
-/* Grid de pontos */
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 40px 40px;
+.btn-outline-dark {
+  display:inline-flex; align-items:center; gap:8px;
+  background:transparent; color:var(--azul);
+  font-size:15px; font-weight:700; padding:14px 26px; border-radius:var(--r-full);
+  text-decoration:none; border:2px solid rgba(10,126,226,.2); cursor:pointer;
+  transition:all .25s;
 }
+.btn-outline-dark:hover { background:var(--azul); color:white; border-color:var(--azul); transform:translateY(-2px); box-shadow:var(--shadow-azul); }
 
-.hero-content {
-  position: relative; z-index: 2;
-  max-width: 1200px; margin: 0 auto;
-  padding: 140px 32px 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
+.btn-wpp-full {
+  display:flex; align-items:center; justify-content:center; gap:9px; width:100%;
+  background:#25D366; color:white;
+  font-size:16px; font-weight:800; padding:17px; border-radius:var(--r-full);
+  text-decoration:none; border:none; cursor:pointer;
+  box-shadow:0 8px 24px rgba(37,211,102,.3); transition:all .25s;
 }
+.btn-wpp-full:hover { background:#1ebe5d; transform:translateY(-2px); box-shadow:0 12px 32px rgba(37,211,102,.42); }
 
-/* Badge */
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
-  backdrop-filter: blur(12px);
-  color: rgba(255,255,255,.9);
-  font-size: 13px; font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--r-full);
-  margin-bottom: 28px;
-  animation: fadeUp .6s ease both;
-}
-.hero-badge .dot {
-  width: 7px; height: 7px;
-  background: var(--verde);
-  border-radius: 50%;
-  animation: blink 2s ease infinite;
-}
+/* ================================================================
+   SECTION UTILS
+   ================================================================ */
+.section-wrap { max-width:1120px; margin:0 auto; padding:0 32px; }
+@media(max-width:600px) { .section-wrap { padding:0 20px; } }
 
-/* Headline */
-.hero-title {
-  font-size: clamp(44px, 7vw, 88px);
-  font-weight: 800;
-  color: white;
-  line-height: 1.02;
-  letter-spacing: -2px;
-  margin-bottom: 22px;
-  animation: fadeUp .7s ease both .1s;
-  max-width: 900px;
-}
-.hero-title .hl {
-  background: linear-gradient(135deg, var(--amarelo) 0%, #ffa500 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Bordão */
-.hero-bordao {
-  font-size: clamp(14px, 2vw, 18px);
-  color: rgba(255,255,255,.55);
-  font-style: italic;
-  font-weight: 300;
-  margin-bottom: 36px;
-  animation: fadeUp .7s ease both .2s;
-  letter-spacing: .3px;
-}
-.hero-bordao strong { color: rgba(255,255,255,.8); font-style: normal; font-weight: 600; }
-
-/* CTAs */
-.hero-ctas {
-  display: flex; flex-wrap: wrap; gap: 12px;
-  justify-content: center;
-  margin-bottom: 72px;
-  animation: fadeUp .7s ease both .3s;
-}
-
-.btn-hero-primary {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: var(--amarelo);
-  color: #111;
-  font-size: 16px; font-weight: 800;
-  padding: 17px 32px;
-  border-radius: var(--r-full);
-  text-decoration: none;
-  transition: all .25s;
-  box-shadow: 0 8px 28px rgba(255,222,89,.35);
-  letter-spacing: -.2px;
-}
-.btn-hero-primary:hover {
-  background: var(--amarelo-dk);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 40px rgba(255,222,89,.45);
-}
-
-.btn-hero-glass {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: rgba(255,255,255,.1);
-  color: white;
-  font-size: 16px; font-weight: 700;
-  padding: 17px 32px;
-  border-radius: var(--r-full);
-  text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,.2);
-  backdrop-filter: blur(12px);
-  transition: all .25s;
-}
-.btn-hero-glass:hover {
-  background: rgba(255,255,255,.18);
-  border-color: rgba(255,255,255,.4);
-  transform: translateY(-3px);
-}
-.btn-hero-glass.wpp { border-color: rgba(37,211,102,.4); }
-.btn-hero-glass.wpp:hover { background: rgba(37,211,102,.15); }
-
-/* ============================================================
-   PLANOS HERO (CARROSSEL GLASSMORPHISM)
-   ============================================================ */
-.planos-hero-wrap {
-  width: 100%; max-width: 1100px;
-  animation: fadeUp .8s ease both .4s;
-  position: relative;
-}
-
-.planos-hero-scroll {
-  display: flex; gap: 16px;
-  overflow-x: auto;
-  padding: 20px 4px 24px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-snap-type: x mandatory;
-  cursor: grab;
-}
-.planos-hero-scroll::-webkit-scrollbar { display: none; }
-.planos-hero-scroll:active { cursor: grabbing; }
-
-.plano-hero-card {
-  flex: 0 0 220px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border-radius: var(--r-xl);
-  padding: 28px 24px;
-  scroll-snap-align: start;
-  transition: all .35s cubic-bezier(.4,0,.2,1);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.plano-hero-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,.07) 0%, transparent 60%);
-  pointer-events: none;
-}
-.plano-hero-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255,255,255,.13);
-  border-color: rgba(255,255,255,.25);
-  box-shadow: 0 20px 60px rgba(0,0,0,.3), 0 0 40px rgba(10,126,226,.2);
-}
-
-/* Plano destaque */
-.plano-hero-card.destaque {
-  background: rgba(255,255,255,.14);
-  border: 1.5px solid rgba(255,222,89,.5);
-  box-shadow: 0 0 40px rgba(255,222,89,.15), 0 8px 32px rgba(0,0,0,.3);
-  animation: glow 3s ease-in-out infinite;
-  flex: 0 0 250px;
-}
-.plano-hero-card.destaque:hover {
-  box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 60px rgba(255,222,89,.25);
-}
-
-.plano-destaque-badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: var(--amarelo);
-  color: #111;
-  font-size: 10px; font-weight: 800;
-  padding: 4px 10px;
-  border-radius: var(--r-full);
-  margin-bottom: 16px;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-.plano-hero-speed {
-  font-size: 11px; font-weight: 700;
-  color: rgba(255,255,255,.5);
-  text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-.destaque .plano-hero-speed { color: rgba(255,222,89,.7); }
-
-.plano-hero-mega {
-  font-size: 52px; font-weight: 800;
-  color: white; line-height: 1;
-  letter-spacing: -2px;
-  margin-bottom: 2px;
-}
-.plano-hero-mega span { font-size: 22px; font-weight: 600; letter-spacing: 0; }
-
-.plano-hero-price {
-  font-size: 13px; font-weight: 500;
-  color: rgba(255,255,255,.55);
-  margin-bottom: 16px;
-}
-.plano-hero-price strong {
-  font-size: 26px; font-weight: 800;
-  color: white; letter-spacing: -.5px;
-}
-.destaque .plano-hero-price strong { color: var(--amarelo); }
-
-.plano-hero-divider {
-  height: 1px;
-  background: rgba(255,255,255,.1);
-  margin-bottom: 14px;
-}
-
-.plano-hero-feats {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.plano-hero-feats li {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: rgba(255,255,255,.65); font-weight: 500;
-}
-.plano-hero-feats li i { color: var(--verde); font-size: 11px; }
-.destaque .plano-hero-feats li i { color: var(--amarelo); }
-
-.plano-hero-btn {
-  display: block; width: 100%;
-  margin-top: 20px; padding: 12px;
-  border-radius: var(--r-full);
-  font-size: 13px; font-weight: 700;
-  text-align: center; text-decoration: none;
-  transition: all .2s;
-  border: 1.5px solid rgba(255,255,255,.2);
-  color: rgba(255,255,255,.85);
-  background: rgba(255,255,255,.06);
-}
-.plano-hero-btn:hover {
-  background: rgba(255,255,255,.15);
-  border-color: rgba(255,255,255,.35);
-}
-.destaque .plano-hero-btn {
-  background: var(--amarelo);
-  color: #111;
-  border-color: var(--amarelo);
-}
-.destaque .plano-hero-btn:hover {
-  background: var(--amarelo-dk);
-  box-shadow: 0 6px 20px rgba(255,222,89,.4);
-}
-
-/* Fading edges */
-.planos-hero-wrap::before,
-.planos-hero-wrap::after {
-  content: '';
-  position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2;
-  pointer-events: none;
-}
-.planos-hero-wrap::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(6,13,26,.6), transparent);
-}
-.planos-hero-wrap::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(10,126,226,.3), transparent);
-}
-
-/* Waves */
-.hero-waves {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px; overflow: hidden; z-index: 1;
-}
-.wave-track {
-  display: flex; width: 200%;
-  animation: wave 10s linear infinite;
-}
-.wave-track svg { flex: 0 0 50%; }
-
-/* ============================================================
-   SECTION UTIL
-   ============================================================ */
 .section-tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(10,126,226,.08);
-  color: var(--azul);
-  font-size: 12px; font-weight: 700;
-  padding: 6px 14px;
-  border-radius: var(--r-full);
-  margin-bottom: 14px;
-  text-transform: uppercase; letter-spacing: .6px;
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(10,126,226,.08); color:var(--azul);
+  font-size:11.5px; font-weight:700; padding:6px 14px; border-radius:var(--r-full);
+  text-transform:uppercase; letter-spacing:.7px; margin-bottom:14px;
 }
+.section-tag.light { background:rgba(255,222,89,.15); color:var(--amarelo); }
+
 .section-title {
-  font-size: clamp(30px, 4.5vw, 52px);
-  font-weight: 800; line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
+  font-size:clamp(28px,4.5vw,52px); font-weight:800;
+  line-height:1.08; letter-spacing:-1.2px; margin-bottom:16px;
 }
 .section-sub {
-  font-size: 17px; color: var(--muted);
-  line-height: 1.7; max-width: 560px;
+  font-size:17px; color:var(--muted); line-height:1.75;
 }
 
-/* ============================================================
-   BAIRROS
-   ============================================================ */
-.bairros {
-  padding: 100px 32px;
-  background: var(--surface);
-}
-.bairros-inner { max-width: 1100px; margin: 0 auto; }
-.bairros-header { text-align: center; margin-bottom: 56px; }
-.bairros-header .section-sub { margin: 0 auto; }
-
-.bairros-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 48px;
-}
-.bairro-pill {
-  display: flex; align-items: center; gap: 7px;
-  background: white;
-  border: 1.5px solid rgba(0,0,0,.07);
-  border-radius: var(--r-full);
-  padding: 9px 18px;
-  font-size: 13px; font-weight: 600;
-  color: var(--texto);
-  transition: all .25s;
-  cursor: default;
-}
-.bairro-pill i { color: var(--azul); font-size: 11px; }
-.bairro-pill:hover {
-  border-color: var(--azul);
-  background: rgba(10,126,226,.04);
-  color: var(--azul);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(10,126,226,.12);
-}
-.bairro-pill.featured {
-  background: rgba(10,126,226,.06);
-  border-color: rgba(10,126,226,.2);
-  color: var(--azul);
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  min-height:100svh;
+  background:linear-gradient(152deg, #060d1a 0%, #081d42 22%, #083c88 52%, #0a6acc 75%, #0a7ee2 100%);
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center;
 }
 
-/* ============================================================
-   COBERTURA INPUT
-   ============================================================ */
-.cobertura-cta {
-  background: white;
-  border-radius: var(--r-xl);
-  padding: 40px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.06);
-  border: 1.5px solid rgba(0,0,0,.05);
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-}
-.cobertura-cta h3 {
-  font-size: 22px; font-weight: 800;
-  margin-bottom: 8px; letter-spacing: -.3px;
-}
-.cobertura-cta p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
-.cob-input-row { display: flex; gap: 10px; }
-.cob-input {
-  flex: 1;
-  padding: 14px 20px;
-  border: 1.5px solid rgba(0,0,0,.1);
-  border-radius: var(--r-full);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px; color: var(--texto);
-  outline: none;
-  transition: border-color .2s;
-  background: var(--surface);
-}
-.cob-input:focus { border-color: var(--azul); background: white; }
-.cob-btn {
-  padding: 14px 24px;
-  background: var(--azul);
-  color: white;
-  border: none; border-radius: var(--r-full);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px; font-weight: 700;
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
-}
-.cob-btn:hover { background: var(--azul-mid); transform: translateY(-1px); box-shadow: 0 6px 20px var(--azul-glow); }
-@media (max-width: 560px) {
-  .cob-input-row { flex-direction: column; }
-  .cob-input, .cob-btn { border-radius: var(--r-full); }
+/* Grain overlay */
+.hero-grain {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.04; mix-blend-mode:overlay;
 }
 
-/* ============================================================
+/* Grid dots */
+.hero-grid {
+  position:absolute; inset:0; z-index:1;
+  background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+
+/* Orbs */
+.orb {
+  position:absolute; border-radius:50%; filter:blur(72px); pointer-events:none; z-index:1;
+}
+.orb-1 { width:640px; height:640px; background:radial-gradient(circle,rgba(10,126,226,.5) 0%,transparent 68%); top:-120px; right:-80px; animation:orb1 14s ease-in-out infinite; }
+.orb-2 { width:520px; height:520px; background:radial-gradient(circle,rgba(255,222,89,.18) 0%,transparent 68%); bottom:60px; left:-100px; animation:orb2 18s ease-in-out infinite; }
+.orb-3 { width:320px; height:320px; background:radial-gradient(circle,rgba(34,197,94,.14) 0%,transparent 68%); top:38%; left:28%; animation:orb1 11s ease-in-out infinite 4s; }
+
+.hero-content {
+  position:relative; z-index:2;
+  max-width:1120px; width:100%; margin:0 auto;
+  padding:140px 40px 100px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:60px; align-items:center;
+}
+
+/* Left */
+.hero-left {}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(12px);
+  color:rgba(255,255,255,.88); font-size:12.5px; font-weight:600;
+  padding:7px 16px; border-radius:var(--r-full); margin-bottom:26px;
+  animation:fadeUp .6s ease both;
+}
+.hero-badge .dot { width:7px; height:7px; background:var(--verde); border-radius:50%; animation:blink 2.2s ease infinite; }
+
+.hero-title {
+  font-size:clamp(40px,6.5vw,80px); font-weight:800; color:white;
+  line-height:1.02; letter-spacing:-2.5px; margin-bottom:20px;
+  animation:fadeUp .7s ease both .1s;
+}
+.hero-title .hl {
+  background:linear-gradient(130deg,var(--amarelo) 0%,#ffaa00 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.hero-sub {
+  font-size:clamp(15px,2vw,18px); color:rgba(255,255,255,.62); font-weight:400; line-height:1.72;
+  margin-bottom:36px; animation:fadeUp .7s ease both .18s; max-width:460px;
+}
+.hero-sub strong { color:rgba(255,255,255,.85); font-weight:600; }
+
+.hero-ctas {
+  display:flex; flex-wrap:wrap; gap:12px; margin-bottom:52px;
+  animation:fadeUp .7s ease both .26s;
+}
+
+.hero-trust {
+  display:flex; gap:28px; flex-wrap:wrap;
+  animation:fadeUp .7s ease both .34s;
+}
+.hero-trust-item {
+  display:flex; align-items:center; gap:8px;
+  color:rgba(255,255,255,.62); font-size:13px; font-weight:500;
+}
+.hero-trust-item i { color:var(--verde); font-size:13px; }
+
+/* Right — mascote */
+.hero-right {
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+
+/* ================================================================
+   MASCOTE — "ONDA" (SVG animado)
+   ================================================================ */
+.mascote-wrap {
+  position:relative; width:340px; height:340px;
+  animation:floatY 5s ease-in-out infinite;
+}
+
+.mascote-glow {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:260px; height:260px; border-radius:50%;
+  background:radial-gradient(circle,rgba(10,126,226,.5) 0%,rgba(255,222,89,.1) 50%,transparent 70%);
+  filter:blur(32px); animation:glow 3.5s ease-in-out infinite;
+}
+
+/* Floating data cards around mascote */
+.mascote-float {
+  position:absolute;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px; padding:12px 16px;
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; font-weight:600; color:white;
+  white-space:nowrap;
+}
+.mascote-float .fi { width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.mf1 { top:8px; right:-40px; animation:floatYR 6s ease-in-out infinite .5s; }
+.mf2 { bottom:20px; left:-50px; animation:floatYR 7s ease-in-out infinite 1.2s; }
+.mf3 { top:50%; right:-60px; transform:translateY(-50%); animation:floatY 5.5s ease-in-out infinite 2s; }
+
+/* Wave bottom */
+.hero-waves { position:absolute; bottom:0; left:0; right:0; height:110px; overflow:hidden; z-index:2; }
+.wave-track { display:flex; width:200%; animation:wave 12s linear infinite; }
+.wave-track svg { flex:0 0 50%; }
+
+@media(max-width:900px) {
+  .hero-content { grid-template-columns:1fr; text-align:center; padding:120px 24px 80px; gap:48px; }
+  .hero-ctas { justify-content:center; }
+  .hero-trust { justify-content:center; }
+  .hero-sub { margin:0 auto 36px; }
+  .hero-right { display:none; }
+}
+
+/* ================================================================
+   TRUST STRIP
+   ================================================================ */
+.trust-strip {
+  background:white; border-bottom:1px solid var(--border);
+  padding:28px 0;
+}
+.trust-strip-inner {
+  max-width:1120px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:24px;
+}
+.trust-item {
+  display:flex; align-items:center; gap:12px;
+}
+.trust-num {
+  font-size:28px; font-weight:800; color:var(--azul); letter-spacing:-1px; line-height:1;
+}
+.trust-label { font-size:13px; color:var(--muted); font-weight:500; line-height:1.4; }
+.trust-div { width:1px; height:36px; background:var(--border); }
+@media(max-width:700px) {
+  .trust-strip-inner { justify-content:center; gap:16px 32px; }
+  .trust-div { display:none; }
+}
+
+/* ================================================================
    DIFERENCIAIS
-   ============================================================ */
-.diferenciais {
-  padding: 100px 32px;
-  background: white;
-}
-.diferenciais-inner { max-width: 1100px; margin: 0 auto; }
-.dif-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
+   ================================================================ */
+.diferenciais { padding:100px 0; background:var(--surface); }
+.dif-header { text-align:center; margin-bottom:64px; }
+.dif-header .section-sub { max-width:520px; margin:0 auto; }
+
 .dif-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
 }
 .dif-card {
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  padding: 28px 24px;
-  border: 1.5px solid transparent;
-  transition: all .3s;
+  background:white; border-radius:var(--r-xl); padding:32px 28px;
+  border:1.5px solid var(--border); transition:all .3s;
+  position:relative; overflow:hidden;
 }
+.dif-card::after {
+  content:''; position:absolute; top:0; left:-80%; width:60%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-18deg); transition:left .6s;
+}
+.dif-card:hover::after { left:120%; }
 .dif-card:hover {
-  border-color: rgba(10,126,226,.15);
-  background: white;
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(10,126,226,.08);
+  border-color:rgba(10,126,226,.18);
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-lg), 0 0 0 1px rgba(10,126,226,.06);
 }
-.dif-card.big {
-  grid-column: span 2;
-  display: flex; align-items: center; gap: 20px;
-}
+.dif-card.span2 { grid-column:span 2; display:flex; align-items:center; gap:24px; }
 .dif-icon {
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-  margin-bottom: 14px;
+  width:52px; height:52px; border-radius:16px;
+  display:flex; align-items:center; justify-content:center; font-size:22px;
+  margin-bottom:18px; flex-shrink:0;
 }
-.dif-card.big .dif-icon { margin-bottom: 0; }
-.ic-azul { background: rgba(10,126,226,.1); color: var(--azul); }
-.ic-amarelo { background: rgba(255,222,89,.2); color: #b8940a; }
-.ic-verde { background: rgba(34,197,94,.1); color: #16a34a; }
-.ic-laranja { background: rgba(249,115,22,.1); color: #ea580c; }
-.ic-roxo { background: rgba(139,92,246,.1); color: #7c3aed; }
-.ic-rosa { background: rgba(236,72,153,.1); color: #db2777; }
-.dif-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; letter-spacing: -.2px; }
-.dif-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.dif-card.span2 .dif-icon { margin-bottom:0; }
+.ic-b { background:rgba(10,126,226,.08); color:var(--azul); }
+.ic-y { background:rgba(255,222,89,.18); color:#9a7800; }
+.ic-g { background:rgba(34,197,94,.1); color:#16a34a; }
+.ic-o { background:rgba(249,115,22,.1); color:#ea580c; }
+.ic-p { background:rgba(139,92,246,.1); color:#7c3aed; }
+.ic-r { background:rgba(236,72,153,.1); color:#db2777; }
+.dif-card h4 { font-size:17px; font-weight:800; margin-bottom:8px; letter-spacing:-.3px; }
+.dif-card p { font-size:14px; color:var(--muted); line-height:1.68; }
 
-/* Left side stats */
-.dif-left { }
-.dif-left .section-sub { margin-bottom: 40px; }
-.dif-stats {
-  display: flex; flex-direction: column; gap: 24px;
-}
-.dif-stat-item {
-  display: flex; align-items: center; gap: 20px;
-  padding: 20px 24px;
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  border-left: 3px solid var(--azul);
-  transition: all .25s;
-}
-.dif-stat-item:hover {
-  background: white;
-  box-shadow: 0 6px 24px rgba(10,126,226,.08);
-  transform: translateX(4px);
-}
-.dif-stat-n {
-  font-size: 36px; font-weight: 800;
-  color: var(--azul); line-height: 1;
-  letter-spacing: -1px;
-}
-.dif-stat-l { font-size: 13px; color: var(--muted); margin-top: 3px; font-weight: 500; }
-.dif-stat-icon {
-  width: 44px; height: 44px;
-  background: rgba(10,126,226,.08);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--azul);
-  flex-shrink: 0; margin-left: auto;
-}
+@media(max-width:900px) { .dif-grid { grid-template-columns:1fr 1fr; } .dif-card.span2 { grid-column:span 2; } }
+@media(max-width:580px) { .dif-grid { grid-template-columns:1fr; } .dif-card.span2 { grid-column:span 1; flex-direction:column; } }
 
-@media (max-width: 900px) {
-  .dif-layout { grid-template-columns: 1fr; gap: 48px; }
+/* ================================================================
+   IDENTIDADE LOCAL
+   ================================================================ */
+.identidade { padding:100px 0; background:white; }
+.id-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
 }
+.id-img-wrap { position:relative; }
+.id-img {
+  width:100%; aspect-ratio:4/5; border-radius:var(--r-2xl); overflow:hidden;
+  background:linear-gradient(145deg,#0a3a7a,#0a7ee2);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; position:relative;
+}
+/* Placeholder equipe */
+.id-img-placeholder {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.id-img-placeholder .avatars { display:flex; gap:-8px; }
+.id-img-avatar {
+  width:64px; height:64px; border-radius:50%;
+  border:3px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.15); backdrop-filter:blur(8px);
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; margin-left:-12px;
+}
+.id-img-avatar:first-child { margin-left:0; }
+.id-img-label {
+  font-size:13px; font-weight:600; color:rgba(255,255,255,.55);
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.id-img-tag {
+  position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+  background:rgba(255,255,255,.12); backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.15); border-radius:var(--r-full);
+  padding:8px 18px; font-size:12px; font-weight:600; color:rgba(255,255,255,.8);
+  white-space:nowrap;
+}
+/* Floating badges */
+.id-float-a {
+  position:absolute; top:-18px; right:-24px;
+  background:var(--amarelo); border-radius:var(--r-lg); padding:18px 22px;
+  box-shadow:0 12px 32px rgba(255,222,89,.38);
+  animation:floatY 5s ease-in-out infinite;
+}
+.id-float-a .n { font-size:38px; font-weight:800; color:#111; line-height:1; letter-spacing:-2px; }
+.id-float-a .l { font-size:12px; color:#555; font-weight:600; }
+.id-float-b {
+  position:absolute; bottom:40px; left:-28px;
+  background:white; border-radius:var(--r-lg); padding:14px 18px;
+  box-shadow:var(--shadow-md); animation:floatYR 6.5s ease-in-out infinite 1s;
+  display:flex; align-items:center; gap:10px;
+}
+.id-float-b .ico { width:34px; height:34px; border-radius:50%; background:rgba(34,197,94,.1); display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--verde); }
+.id-float-b .t { font-size:13px; }
+.id-float-b .t strong { display:block; font-weight:800; font-size:14px; }
+.id-float-b .t span { color:var(--muted); font-size:12px; }
 
-/* ============================================================
-   PLANOS COMPLETO
-   ============================================================ */
-.planos {
-  padding: 100px 32px;
-  background: var(--surface);
-  position: relative; overflow: hidden;
+.id-right {}
+.id-right .section-title { margin-bottom:20px; }
+.id-right p { font-size:16px; color:var(--muted); line-height:1.8; margin-bottom:16px; }
+.id-bordao {
+  margin:28px 0 32px; padding:20px 24px;
+  background:linear-gradient(135deg,rgba(10,126,226,.06),rgba(255,222,89,.08));
+  border-radius:var(--r-lg); border-left:4px solid var(--amarelo);
+  font-size:19px; font-weight:700; font-style:italic; letter-spacing:-.3px;
 }
+.id-right .btn-primary { text-decoration:none; }
+
+@media(max-width:900px) { .id-inner { grid-template-columns:1fr; gap:48px; } .id-float-a { right:0; } .id-float-b { left:0; } }
+
+/* ================================================================
+   PLANOS
+   ================================================================ */
+.planos { padding:100px 0; background:var(--surface); position:relative; overflow:hidden; }
 .planos::before {
-  content: '';
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(10,126,226,.05) 0%, transparent 65%);
-  pointer-events: none;
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:900px; height:900px;
+  background:radial-gradient(circle,rgba(10,126,226,.04) 0%,transparent 65%);
+  pointer-events:none;
 }
-.planos-inner { max-width: 1100px; margin: 0 auto; position: relative; }
-.planos-header { text-align: center; margin-bottom: 64px; }
-.planos-header .section-sub { margin: 0 auto; }
+.planos-header { text-align:center; margin-bottom:56px; }
+.planos-header .section-sub { max-width:520px; margin:0 auto; }
 
-.planos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: stretch;
+/* Destaque duplo: 500 + 600 */
+.planos-featured {
+  display:grid; grid-template-columns:1.15fr 1fr; gap:16px;
+  margin-bottom:20px;
 }
 
 .plano-card {
-  background: white;
-  border-radius: var(--r-xl);
-  padding: 36px 28px;
-  border: 1.5px solid rgba(0,0,0,.07);
-  transition: all .35s cubic-bezier(.4,0,.2,1);
-  display: flex; flex-direction: column;
-  position: relative;
+  background:white; border-radius:var(--r-xl); padding:36px 30px;
+  border:1.5px solid var(--border); transition:all .35s cubic-bezier(.4,0,.2,1);
+  display:flex; flex-direction:column; position:relative; overflow:hidden;
 }
-.plano-card:hover {
-  border-color: rgba(10,126,226,.2);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(10,126,226,.1);
+.plano-card:hover { border-color:rgba(10,126,226,.2); transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+
+.plano-card.hero-plan {
+  background:linear-gradient(148deg,#083c88 0%,#0a5aad 45%,#0a7ee2 100%);
+  border-color:transparent; color:white;
+  box-shadow:0 24px 64px rgba(10,126,226,.38), inset 0 1px 0 rgba(255,255,255,.1);
 }
-.plano-card.destaque {
-  background: linear-gradient(145deg, #0a5aad, #0a7ee2, #1a9af5);
-  border-color: transparent;
-  color: white;
-  transform: scale(1.04);
-  box-shadow: 0 24px 64px rgba(10,126,226,.4), 0 0 0 1px rgba(255,255,255,.1) inset;
+.plano-card.hero-plan:hover { transform:translateY(-8px); box-shadow:0 32px 80px rgba(10,126,226,.48); }
+
+.plano-card.side-plan {
+  background:white;
 }
-.plano-card.destaque:hover { transform: scale(1.04) translateY(-6px); }
+
+/* Shimmer on hero card */
+.plano-card.hero-plan::after {
+  content:''; position:absolute; top:-50%; left:-80%; width:55%; height:200%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  transform:skewX(-20deg); animation:shimmer 4s ease infinite 2s;
+}
 
 .plano-badge {
-  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-  background: var(--amarelo);
-  color: #111;
-  font-size: 10px; font-weight: 800;
-  padding: 5px 14px;
-  border-radius: var(--r-full);
-  text-transform: uppercase; letter-spacing: .7px;
-  white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(255,222,89,.4);
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  background:var(--amarelo); color:#111;
+  font-size:10px; font-weight:800; padding:5px 14px; border-radius:var(--r-full);
+  text-transform:uppercase; letter-spacing:.8px; white-space:nowrap;
+  box-shadow:0 4px 16px rgba(255,222,89,.4);
 }
 
-.plano-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--azul); margin-bottom: 8px; }
-.destaque .plano-tag { color: rgba(255,255,255,.65); }
+.plano-eyebrow { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--azul); margin-bottom:8px; }
+.hero-plan .plano-eyebrow { color:rgba(255,255,255,.6); }
+.side-plan .plano-eyebrow { color:rgba(10,126,226,.7); }
 
-.plano-mega {
-  font-size: 56px; font-weight: 800; line-height: 1;
-  letter-spacing: -2px; margin-bottom: 4px;
-}
-.plano-mega span { font-size: 24px; font-weight: 600; letter-spacing: 0; }
+.plano-speed { font-size:56px; font-weight:800; line-height:1; letter-spacing:-2.5px; margin-bottom:4px; }
+.plano-speed span { font-size:24px; font-weight:600; letter-spacing:0; }
 
-.plano-divider {
-  height: 1px;
-  background: rgba(0,0,0,.07);
-  margin: 22px 0;
-}
-.destaque .plano-divider { background: rgba(255,255,255,.2); }
+.plano-divider { height:1px; background:rgba(0,0,0,.07); margin:22px 0; }
+.hero-plan .plano-divider { background:rgba(255,255,255,.18); }
 
-.plano-preco-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
-.destaque .plano-preco-label { color: rgba(255,255,255,.6); }
+.plano-price-label { font-size:12px; color:var(--muted); margin-bottom:4px; }
+.hero-plan .plano-price-label { color:rgba(255,255,255,.58); }
 
 .plano-price {
-  display: flex; align-items: baseline; gap: 4px;
-  margin-bottom: 6px;
+  display:flex; align-items:baseline; gap:3px; margin-bottom:6px;
 }
-.plano-price .cur { font-size: 18px; font-weight: 700; margin-top: 8px; }
-.plano-price .val { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -2px; }
-.plano-price .dec { font-size: 22px; font-weight: 700; }
-.plano-mes { font-size: 13px; color: var(--muted); }
-.destaque .plano-mes { color: rgba(255,255,255,.6); }
+.plano-price .cur { font-size:18px; font-weight:700; margin-top:6px; }
+.plano-price .val { font-size:52px; font-weight:800; line-height:1; letter-spacing:-2.5px; }
+.plano-price .dec { font-size:22px; font-weight:700; }
 
-.plano-feats {
-  list-style: none;
-  display: flex; flex-direction: column; gap: 11px;
-  margin-top: 22px; flex: 1;
+.plano-mes { font-size:13px; color:var(--muted); }
+.hero-plan .plano-mes { color:rgba(255,255,255,.55); }
+
+.plano-context {
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:10px; padding:6px 12px;
+  background:rgba(10,126,226,.07); border-radius:var(--r-full);
+  font-size:12px; font-weight:600; color:var(--azul);
 }
-.plano-feats li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: var(--muted);
-}
-.destaque .plano-feats li { color: rgba(255,255,255,.8); }
-.plano-feats li i { color: var(--verde); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
-.destaque .plano-feats li i { color: var(--amarelo); }
+.hero-plan .plano-context { background:rgba(255,255,255,.1); color:rgba(255,255,255,.8); }
+
+.plano-feats { list-style:none; margin-top:24px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.plano-feats li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--muted); }
+.hero-plan .plano-feats li { color:rgba(255,255,255,.78); }
+.plano-feats li i { color:var(--verde); font-size:13px; margin-top:2px; flex-shrink:0; }
+.hero-plan .plano-feats li i { color:var(--amarelo); }
 
 .btn-plano {
-  display: block; width: 100%;
-  padding: 15px; margin-top: 28px;
-  border-radius: var(--r-full);
-  font-size: 15px; font-weight: 800;
-  text-align: center; text-decoration: none;
-  transition: all .25s; cursor: pointer; border: 2px solid;
-  letter-spacing: -.2px;
+  display:block; width:100%; padding:15px; margin-top:28px;
+  border-radius:var(--r-full); font-size:15px; font-weight:800; text-align:center;
+  text-decoration:none; cursor:pointer; border:2px solid; transition:all .25s; letter-spacing:-.2px;
 }
-.btn-plano-outline {
-  color: var(--azul); border-color: rgba(10,126,226,.25);
-  background: rgba(10,126,226,.04);
-}
-.btn-plano-outline:hover {
-  background: var(--azul); color: white; border-color: var(--azul);
-  transform: translateY(-2px); box-shadow: 0 8px 24px var(--azul-glow);
-}
-.btn-plano-solid {
-  background: var(--amarelo); color: #111; border-color: var(--amarelo);
-}
-.btn-plano-solid:hover {
-  background: var(--amarelo-dk); border-color: var(--amarelo-dk);
-  transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,222,89,.45);
-}
+.btn-plano-outline { color:var(--azul); border-color:rgba(10,126,226,.22); background:rgba(10,126,226,.04); }
+.btn-plano-outline:hover { background:var(--azul); color:white; border-color:var(--azul); transform:translateY(-2px); box-shadow:var(--shadow-azul); }
+.btn-plano-solid { background:var(--amarelo); color:#111; border-color:var(--amarelo); }
+.btn-plano-solid:hover { background:var(--amarelo-dk); border-color:var(--amarelo-dk); transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,222,89,.42); }
+.btn-plano-ghost { color:rgba(255,255,255,.8); border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.07); }
+.btn-plano-ghost:hover { background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.4); }
 
-/* Mini table */
-.planos-mini {
-  margin-top: 40px;
-  background: white;
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  border: 1.5px solid rgba(0,0,0,.06);
+/* Remaining plans grid */
+.planos-rest {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
 }
-.planos-mini-header {
-  background: var(--surface);
-  padding: 18px 28px;
-  font-size: 14px; font-weight: 700;
-  color: var(--muted); letter-spacing: .3px;
-  display: flex; align-items: center; gap: 8px;
+.plano-mini {
+  background:white; border-radius:var(--r-lg); padding:22px 20px;
+  border:1.5px solid var(--border); transition:all .3s; cursor:pointer;
+  text-decoration:none; display:block; position:relative; overflow:hidden;
 }
-.planos-mini-row {
-  display: flex; align-items: center;
-  padding: 16px 28px;
-  border-top: 1px solid rgba(0,0,0,.05);
-  transition: background .2s;
+.plano-mini::after {
+  content:''; position:absolute; top:0; left:-80%; width:60%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+  transform:skewX(-18deg); transition:left .5s;
 }
-.planos-mini-row:hover { background: var(--surface); }
-.planos-mini-row.destaque-row { background: rgba(10,126,226,.04); }
-.pmr-speed { font-size: 22px; font-weight: 800; color: var(--azul); letter-spacing: -1px; width: 120px; }
-.pmr-speed span { font-size: 13px; font-weight: 600; letter-spacing: 0; }
-.pmr-feats { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; }
-.pmr-feat {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: var(--surface);
-  border-radius: var(--r-full);
-  padding: 4px 10px;
-  font-size: 12px; color: var(--muted); font-weight: 500;
-}
-.pmr-feat i { color: var(--verde); font-size: 10px; }
-.pmr-preco {
-  font-size: 20px; font-weight: 800;
-  color: var(--texto); letter-spacing: -.5px;
-  white-space: nowrap;
-}
-.pmr-preco span { font-size: 12px; color: var(--muted); font-weight: 500; }
+.plano-mini:hover::after { left:120%; }
+.plano-mini:hover { border-color:rgba(10,126,226,.18); transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.pm-speed { font-size:28px; font-weight:800; letter-spacing:-1.5px; color:var(--azul); line-height:1; margin-bottom:2px; }
+.pm-speed span { font-size:14px; font-weight:600; letter-spacing:0; }
+.pm-label { font-size:11px; color:var(--muted2); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+.pm-price { font-size:20px; font-weight:800; letter-spacing:-.5px; }
+.pm-price span { font-size:12px; color:var(--muted); font-weight:500; }
+.pm-context { font-size:11.5px; color:var(--muted); margin-top:6px; line-height:1.5; }
+.pm-btn { display:block; text-align:center; margin-top:14px; padding:9px; border-radius:var(--r-full); font-size:12px; font-weight:700; background:var(--surface); color:var(--azul); transition:all .2s; }
+.plano-mini:hover .pm-btn { background:var(--azul); color:white; }
 
-.planos-note {
-  text-align: center; margin-top: 32px;
-  font-size: 13px; color: var(--muted);
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.planos-note i { color: var(--verde); }
+.planos-note { text-align:center; margin-top:28px; font-size:13px; color:var(--muted); display:flex; align-items:center; justify-content:center; gap:7px; }
+.planos-note i { color:var(--verde); }
 
-@media (max-width: 900px) {
-  .planos-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-  .plano-card.destaque { transform: none; }
-  .plano-card.destaque:hover { transform: translateY(-6px); }
-  .planos-mini { display: none; }
-}
+@media(max-width:900px) { .planos-featured { grid-template-columns:1fr; } .planos-rest { grid-template-columns:1fr 1fr; } }
+@media(max-width:500px) { .planos-rest { grid-template-columns:1fr 1fr; } }
 
-/* ============================================================
-   IDENTIDADE LOCAL / SOBRE
-   ============================================================ */
-.identidade {
-  padding: 100px 32px;
-  background: white;
+/* ================================================================
+   COMO FUNCIONA
+   ================================================================ */
+.como { padding:100px 0; background:white; }
+.como-header { text-align:center; margin-bottom:64px; }
+.como-steps {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  position:relative;
 }
-.identidade-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
+/* Connector line */
+.como-steps::before {
+  content:''; position:absolute;
+  top:40px; left:calc(12.5% + 20px); right:calc(12.5% + 20px);
+  height:2px; background:linear-gradient(90deg,var(--azul-light),var(--azul),var(--azul-light));
+  z-index:0;
 }
+.como-step { text-align:center; padding:0 20px; position:relative; z-index:1; }
+.como-step-num {
+  width:80px; height:80px; border-radius:50%;
+  background:white; border:2px solid var(--azul-light);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 24px;
+  font-size:22px; font-weight:800; color:var(--azul);
+  transition:all .3s;
+  position:relative; z-index:1; box-shadow:var(--shadow-sm);
+}
+.como-step:hover .como-step-num {
+  background:var(--azul); color:white; border-color:var(--azul);
+  transform:scale(1.1); box-shadow:var(--shadow-azul);
+}
+.como-step-num i { font-size:24px; }
+.como-step h4 { font-size:16px; font-weight:800; margin-bottom:8px; letter-spacing:-.2px; }
+.como-step p { font-size:13.5px; color:var(--muted); line-height:1.65; }
 
-.id-visual {
-  position: relative;
+@media(max-width:760px) {
+  .como-steps { grid-template-columns:1fr 1fr; gap:32px; }
+  .como-steps::before { display:none; }
 }
-.id-main-img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: var(--r-xl);
-  background: linear-gradient(145deg, #0a2d5a, #0a7ee2);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  font-size: 60px; gap: 8px;
-  overflow: hidden;
-  position: relative;
-}
-.id-main-img::after {
-  content: 'Equipe Conecte Telecom';
-  position: absolute; bottom: 24px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px; font-weight: 600; color: rgba(255,255,255,.6);
-}
-.id-placeholder-text {
-  font-size: 14px; color: rgba(255,255,255,.5);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-}
+@media(max-width:480px) { .como-steps { grid-template-columns:1fr; } }
 
-/* Float cards na identidade */
-.id-float-1 {
-  position: absolute;
-  top: -20px; right: -24px;
-  background: var(--amarelo);
-  border-radius: var(--r-lg);
-  padding: 20px 24px;
-  box-shadow: 0 12px 32px rgba(255,222,89,.4);
-  animation: floatA 5s ease-in-out infinite;
-}
-.id-float-1 .num {
-  font-size: 40px; font-weight: 800;
-  color: #111; line-height: 1; letter-spacing: -2px;
-}
-.id-float-1 .label { font-size: 12px; color: #555; font-weight: 600; }
+/* ================================================================
+   BAIRROS / COBERTURA
+   ================================================================ */
+.bairros { padding:100px 0; background:var(--surface); }
+.bairros-header { text-align:center; margin-bottom:56px; }
+.bairros-header .section-sub { max-width:520px; margin:0 auto; }
 
-.id-float-2 {
-  position: absolute;
-  bottom: 40px; left: -28px;
-  background: white;
-  border-radius: var(--r-lg);
-  padding: 16px 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.12);
-  animation: floatB 6s ease-in-out infinite 1s;
-  display: flex; align-items: center; gap: 12px;
+.bairros-regions {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  margin-bottom:40px;
 }
-.id-float-2 .dot-wrap {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(34,197,94,.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: var(--verde);
+.region-block {
+  background:white; border-radius:var(--r-lg); padding:24px;
+  border:1.5px solid var(--border); transition:all .3s;
 }
-.id-float-2 .info { font-size: 13px; }
-.id-float-2 .info strong { display: block; font-weight: 800; color: var(--texto); }
-.id-float-2 .info span { color: var(--muted); font-size: 12px; }
+.region-block:hover { border-color:rgba(10,126,226,.2); box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.region-title {
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.6px;
+  color:var(--azul); margin-bottom:14px; padding-bottom:12px;
+  border-bottom:1.5px solid var(--azul-light);
+}
+.region-title i { font-size:12px; }
+.region-pills { display:flex; flex-wrap:wrap; gap:6px; }
+.rpill {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r-full);
+  padding:5px 12px; font-size:12px; font-weight:500; color:var(--muted);
+  transition:all .2s; cursor:default;
+}
+.rpill:hover { border-color:var(--azul); color:var(--azul); background:var(--azul-light); }
+.rpill.main { background:rgba(10,126,226,.06); border-color:rgba(10,126,226,.2); color:var(--azul); font-weight:600; }
 
-.id-right .section-title { margin-bottom: 20px; }
-.id-right p {
-  font-size: 16px; color: var(--muted);
-  line-height: 1.8; margin-bottom: 16px;
+.bairros-cta {
+  background:white; border-radius:var(--r-xl); padding:40px;
+  border:1.5px solid var(--border); max-width:640px; margin:0 auto; text-align:center;
+  box-shadow:var(--shadow-sm);
 }
+.bairros-cta h3 { font-size:22px; font-weight:800; margin-bottom:8px; letter-spacing:-.3px; }
+.bairros-cta p { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.cob-row { display:flex; gap:10px; }
+.cob-inp {
+  flex:1; padding:14px 20px; border:1.5px solid var(--border); border-radius:var(--r-full);
+  font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; color:var(--texto);
+  background:var(--surface); outline:none; transition:all .2s;
+}
+.cob-inp:focus { border-color:var(--azul); background:white; box-shadow:0 0 0 3px rgba(10,126,226,.08); }
+.cob-btn {
+  padding:14px 24px; background:var(--azul); color:white; border:none;
+  border-radius:var(--r-full); font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:14px; font-weight:700; cursor:pointer; transition:all .2s; white-space:nowrap;
+}
+.cob-btn:hover { background:var(--azul-mid); transform:translateY(-1px); box-shadow:var(--shadow-azul); }
+@media(max-width:560px) { .cob-row { flex-direction:column; } }
+@media(max-width:860px) { .bairros-regions { grid-template-columns:1fr 1fr; } }
+@media(max-width:560px) { .bairros-regions { grid-template-columns:1fr; } }
 
-.id-bordao {
-  margin-top: 24px; margin-bottom: 32px;
-  padding: 20px 24px;
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  border-left: 4px solid var(--amarelo);
-  font-size: 18px; font-weight: 700; font-style: italic;
-  color: var(--texto); letter-spacing: -.2px;
-}
-
-@media (max-width: 900px) {
-  .identidade-inner { grid-template-columns: 1fr; gap: 48px; }
-  .id-float-1 { right: 0; }
-  .id-float-2 { left: 0; }
-}
-
-/* ============================================================
-   VERANISTAS
-   ============================================================ */
-.veranistas {
-  padding: 100px 32px;
-  background: linear-gradient(150deg, #041529 0%, #082850 30%, #0a4f9e 70%, #0a7ee2 100%);
-  position: relative; overflow: hidden;
-}
-.ver-orb1 {
-  position: absolute; top: -100px; right: -100px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(255,222,89,.12) 0%, transparent 65%);
-  border-radius: 50%; pointer-events: none;
-}
-.ver-orb2 {
-  position: absolute; bottom: -60px; left: -60px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(34,197,94,.08) 0%, transparent 65%);
-  border-radius: 50%; pointer-events: none;
-}
-.veranistas-inner {
-  max-width: 1100px; margin: 0 auto; position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.ver-left .section-tag { background: rgba(255,222,89,.12); color: var(--amarelo); }
-.ver-left .section-title { color: white; }
-.ver-left .section-sub { color: rgba(255,255,255,.65); margin-bottom: 32px; }
-
-.ver-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
-.ver-item {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 15px; color: rgba(255,255,255,.8); font-weight: 500;
-}
-.ver-item i { color: var(--amarelo); }
-
-.ver-right { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.ver-card {
-  background: rgba(255,255,255,.07);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--r-lg);
-  padding: 24px 20px;
-  transition: all .3s;
-}
-.ver-card:hover {
-  background: rgba(255,255,255,.13);
-  border-color: rgba(255,255,255,.2);
-  transform: translateY(-4px);
-}
-.ver-card.full { grid-column: span 2; }
-.ver-card .emoji { font-size: 28px; display: block; margin-bottom: 12px; }
-.ver-card h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
-.ver-card p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
-
-@media (max-width: 900px) {
-  .veranistas-inner { grid-template-columns: 1fr; gap: 48px; }
-  .ver-right { grid-template-columns: 1fr 1fr; }
-}
-
-/* ============================================================
+/* ================================================================
    DEPOIMENTOS
-   ============================================================ */
-.depoimentos {
-  padding: 100px 32px;
-  background: var(--surface);
+   ================================================================ */
+.depos { padding:100px 0; background:white; }
+.depos-header { text-align:center; margin-bottom:56px; }
+.depos-rating {
+  display:inline-flex; align-items:center; gap:12px;
+  background:var(--surface); border:1.5px solid var(--border);
+  border-radius:var(--r-full); padding:10px 22px; margin-bottom:12px;
 }
-.depos-inner { max-width: 1100px; margin: 0 auto; }
-.depos-header { text-align: center; margin-bottom: 56px; }
-.depos-rating-row {
-  display: flex; align-items: center; justify-content: center; gap: 12px;
-  margin-bottom: 12px;
-}
-.stars { color: var(--amarelo); font-size: 24px; letter-spacing: 2px; }
-.rating-num {
-  font-size: 52px; font-weight: 800; letter-spacing: -2px;
-  line-height: 1;
-}
+.depos-stars { color:var(--amarelo); font-size:16px; letter-spacing:2px; }
+.depos-rating-num { font-size:20px; font-weight:800; letter-spacing:-.5px; }
+.depos-rating-label { font-size:12px; color:var(--muted); font-weight:500; }
 
-.depos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
+.depos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .depo-card {
-  background: white;
-  border-radius: var(--r-xl);
-  padding: 28px;
-  border: 1.5px solid rgba(0,0,0,.05);
-  transition: all .3s;
-  display: flex; flex-direction: column;
+  background:var(--surface); border-radius:var(--r-xl); padding:28px;
+  border:1.5px solid var(--border); transition:all .3s; display:flex; flex-direction:column;
 }
-.depo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,.08);
-  border-color: rgba(10,126,226,.12);
-}
-.depo-stars { color: var(--amarelo); font-size: 14px; margin-bottom: 14px; letter-spacing: 1px; }
-.depo-text {
-  font-size: 15px; line-height: 1.7;
-  color: var(--texto); margin-bottom: 20px;
-  font-style: italic; flex: 1;
-}
-.depo-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-.depo-av {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 800;
-  color: white; flex-shrink: 0;
-}
-.depo-name { font-size: 14px; font-weight: 700; }
-.depo-local { font-size: 12px; color: var(--muted); }
+.depo-card:hover { background:white; transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:rgba(10,126,226,.12); }
+.depo-stars { color:var(--amarelo); font-size:13px; letter-spacing:1.5px; margin-bottom:14px; }
+.depo-text { font-size:15px; line-height:1.72; color:var(--texto); margin-bottom:20px; font-style:italic; flex:1; }
+.depo-divider { height:1px; background:var(--border); margin-bottom:16px; }
+.depo-author { display:flex; align-items:center; gap:12px; }
+.depo-av { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:white; flex-shrink:0; }
+.depo-name { font-size:14px; font-weight:700; }
+.depo-loc { font-size:12px; color:var(--muted); }
+.depo-source { display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted2); margin-top:4px; }
+.depo-source i { font-size:10px; color:#4285f4; }
 
-@media (max-width: 900px) {
-  .depos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+@media(max-width:860px) { .depos-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; } }
+
+/* ================================================================
+   VERANISTAS
+   ================================================================ */
+.veranistas {
+  padding:100px 0;
+  background:linear-gradient(152deg,#041529 0%,#082850 28%,#0a4f9e 65%,#0a7ee2 100%);
+  position:relative; overflow:hidden;
+}
+.ver-orb-a { position:absolute; top:-80px; right:-80px; width:480px; height:480px; background:radial-gradient(circle,rgba(255,222,89,.14) 0%,transparent 65%); border-radius:50%; pointer-events:none; }
+.ver-orb-b { position:absolute; bottom:-60px; left:-60px; width:380px; height:380px; background:radial-gradient(circle,rgba(34,197,94,.09) 0%,transparent 65%); border-radius:50%; pointer-events:none; }
+.ver-inner { position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+
+.ver-left .section-tag.light {}
+.ver-left .section-title { color:white; }
+.ver-left .section-sub { color:rgba(255,255,255,.62); margin-bottom:32px; }
+
+.ver-checks { display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
+.ver-check { display:flex; align-items:center; gap:12px; font-size:15px; color:rgba(255,255,255,.8); font-weight:500; }
+.ver-check i { color:var(--amarelo); width:16px; }
+
+/* Photo placeholder */
+.ver-photo {
+  width:100%; aspect-ratio:4/3; border-radius:var(--r-xl); overflow:hidden;
+  background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.1);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  position:relative; backdrop-filter:blur(8px);
+}
+.ver-photo-icon { font-size:64px; }
+.ver-photo-label {
+  font-size:13px; font-weight:600; color:rgba(255,255,255,.45);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  text-align:center; line-height:1.5;
+}
+.ver-photo-badge {
+  position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+  background:rgba(255,255,255,.1); backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14); border-radius:var(--r-full);
+  padding:8px 18px; font-size:12px; font-weight:600; color:rgba(255,255,255,.8); white-space:nowrap;
+}
+.ver-photo-corner {
+  position:absolute; top:20px; right:20px;
+  background:var(--amarelo); color:#111; border-radius:var(--r-md);
+  padding:10px 14px; font-size:11px; font-weight:800; text-align:center; line-height:1.3;
 }
 
-/* ============================================================
-   FAQ
-   ============================================================ */
-.faq {
-  padding: 100px 32px;
-  background: white;
-}
-.faq-inner { max-width: 760px; margin: 0 auto; }
-.faq-header { text-align: center; margin-bottom: 56px; }
-.faq-list { display: flex; flex-direction: column; gap: 10px; }
+@media(max-width:860px) { .ver-inner { grid-template-columns:1fr; gap:48px; } }
 
+/* ================================================================
+   LOCALIZAÇÃO
+   ================================================================ */
+.localizacao { padding:100px 0; background:var(--surface); }
+.loc-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+}
+.loc-left {}
+.loc-left .section-title { margin-bottom:20px; }
+.loc-info { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+.loc-item {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:18px 20px; background:white; border-radius:var(--r-lg);
+  border:1.5px solid var(--border); transition:all .25s;
+}
+.loc-item:hover { border-color:rgba(10,126,226,.18); box-shadow:var(--shadow-sm); }
+.loc-ico { width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.loc-ico.azul { background:rgba(10,126,226,.08); color:var(--azul); }
+.loc-ico.verde { background:rgba(34,197,94,.1); color:#16a34a; }
+.loc-ico.amarelo { background:rgba(255,222,89,.15); color:#9a7800; }
+.loc-item-text h5 { font-size:13px; font-weight:700; margin-bottom:3px; }
+.loc-item-text p { font-size:13px; color:var(--muted); line-height:1.5; }
+.loc-item-text a { color:var(--azul); text-decoration:none; font-weight:600; }
+.loc-item-text a:hover { text-decoration:underline; }
+
+.loc-map {
+  border-radius:var(--r-xl); overflow:hidden;
+  border:1.5px solid var(--border); box-shadow:var(--shadow-md);
+  background:var(--azul-light); height:360px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; position:relative;
+}
+.loc-map iframe {
+  width:100%; height:100%; border:none; display:block;
+}
+.loc-map-overlay {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  background:linear-gradient(135deg,var(--azul-light),#dbeafe);
+}
+.loc-map-overlay i { font-size:40px; color:var(--azul); }
+.loc-map-overlay p { font-size:14px; color:var(--muted); text-align:center; max-width:200px; line-height:1.5; }
+.loc-map-overlay a {
+  background:var(--azul); color:white; padding:10px 22px; border-radius:var(--r-full);
+  font-size:13px; font-weight:700; text-decoration:none; transition:all .2s;
+  display:flex; align-items:center; gap:7px;
+}
+.loc-map-overlay a:hover { background:var(--azul-mid); transform:translateY(-2px); }
+
+@media(max-width:860px) { .loc-inner { grid-template-columns:1fr; } .loc-map { height:280px; } }
+
+/* ================================================================
+   FAQ com mascote
+   ================================================================ */
+.faq { padding:100px 0; background:white; }
+.faq-inner { max-width:760px; margin:0 auto; }
+.faq-header { text-align:center; margin-bottom:56px; }
+/* Mascote pequeno no FAQ */
+.faq-mascote { display:flex; justify-content:center; margin-bottom:28px; }
+
+.faq-list { display:flex; flex-direction:column; gap:10px; }
 .faq-item {
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  border: 1.5px solid rgba(0,0,0,.06);
-  transition: all .25s;
+  background:var(--surface); border-radius:var(--r-lg); overflow:hidden;
+  border:1.5px solid var(--border); transition:all .25s;
 }
-.faq-item:hover { border-color: rgba(10,126,226,.12); }
-.faq-item.open {
-  background: white;
-  border-color: rgba(10,126,226,.2);
-  box-shadow: 0 6px 24px rgba(10,126,226,.07);
-}
-
+.faq-item:hover { border-color:rgba(10,126,226,.14); }
+.faq-item.open { background:white; border-color:rgba(10,126,226,.22); box-shadow:0 6px 28px rgba(10,126,226,.07); }
 .faq-q {
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 22px 24px;
-  cursor: pointer;
-  font-size: 16px; font-weight: 700;
-  gap: 16px; user-select: none;
-  letter-spacing: -.2px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:21px 24px; cursor:pointer; font-size:15.5px; font-weight:700;
+  gap:16px; user-select:none; letter-spacing:-.2px;
 }
 .faq-q .fi {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: white;
-  border: 1.5px solid rgba(0,0,0,.08);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; color: var(--azul);
-  transition: all .3s;
-  flex-shrink: 0;
+  width:30px; height:30px; border-radius:50%;
+  background:white; border:1.5px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; color:var(--azul); transition:all .3s; flex-shrink:0;
 }
-.faq-item.open .faq-q .fi {
-  background: var(--azul);
-  border-color: var(--azul);
-  color: white;
-  transform: rotate(45deg);
-}
-.faq-a {
-  max-height: 0; overflow: hidden;
-  transition: max-height .4s ease, padding .3s;
-  padding: 0 24px;
-}
-.faq-item.open .faq-a { max-height: 300px; }
-.faq-a p {
-  padding-bottom: 22px;
-  font-size: 15px; color: var(--muted);
-  line-height: 1.75;
-}
+.faq-item.open .faq-q .fi { background:var(--azul); border-color:var(--azul); color:white; transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .4s ease,padding .3s; padding:0 24px; }
+.faq-item.open .faq-a { max-height:300px; }
+.faq-a p { padding-bottom:22px; font-size:15px; color:var(--muted); line-height:1.75; }
+.faq-cta-inline { text-align:center; margin-top:40px; }
+.faq-cta-inline p { font-size:15px; color:var(--muted); margin-bottom:16px; }
 
-/* ============================================================
+/* ================================================================
    CTA FINAL
-   ============================================================ */
-.cta-final {
-  padding: 120px 32px;
-  background: var(--texto);
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.cta-final-orb {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(10,126,226,.2) 0%, transparent 60%);
-  pointer-events: none;
-}
-.cta-final-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
-.cta-final .section-tag { background: rgba(255,222,89,.12); color: var(--amarelo); }
-.cta-final h2 {
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 800; color: white;
-  line-height: 1.06; letter-spacing: -2px; margin-bottom: 20px;
-}
-.cta-final h2 .hl { color: var(--amarelo); }
-.cta-final .bordao-line {
-  font-size: 18px; font-style: italic;
-  color: rgba(255,255,255,.5); margin-bottom: 16px; font-weight: 300;
-}
-.cta-final .bordao-line strong { color: rgba(255,255,255,.75); font-style: normal; font-weight: 700; }
-.cta-final p { font-size: 17px; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 44px; }
-.cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+   ================================================================ */
+.cta-final { padding:120px 0; background:var(--texto); text-align:center; position:relative; overflow:hidden; }
+.cta-orb { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:700px; height:700px; background:radial-gradient(circle,rgba(10,126,226,.22) 0%,transparent 60%); pointer-events:none; }
+.cta-grain { position:absolute; inset:0; opacity:.04; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.cta-inner { position:relative; z-index:2; max-width:680px; margin:0 auto; }
+.cta-final .section-tag.light {}
+.cta-final h2 { font-size:clamp(36px,5.5vw,68px); font-weight:800; color:white; line-height:1.05; letter-spacing:-2.5px; margin-bottom:16px; }
+.cta-final h2 .hl { color:var(--amarelo); }
+.cta-bordao { font-size:17px; color:rgba(255,255,255,.48); font-style:italic; font-weight:300; margin-bottom:16px; }
+.cta-bordao strong { color:rgba(255,255,255,.72); font-style:normal; font-weight:700; }
+.cta-final > .cta-inner > p { font-size:17px; color:rgba(255,255,255,.52); line-height:1.75; margin-bottom:44px; }
+.cta-btns { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+.cta-online { display:flex; align-items:center; gap:8px; justify-content:center; margin-top:24px; font-size:13px; color:rgba(255,255,255,.4); }
+.cta-online .dot { width:7px; height:7px; background:var(--verde); border-radius:50%; animation:blink 2s infinite; }
 
-/* ============================================================
+/* ================================================================
    FOOTER
-   ============================================================ */
-footer {
-  background: #060c18;
-  color: rgba(255,255,255,.5);
-  padding: 64px 32px 40px;
-}
+   ================================================================ */
+footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 .footer-grid {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  margin-bottom: 32px;
+  max-width:1120px; margin:0 auto; padding:0 32px;
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px;
+  padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.05); margin-bottom:28px;
 }
-.footer-logo-wrap {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 14px;
-}
-.footer-logo-icon {
-  width: 36px; height: 36px;
-  background: var(--azul);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: white;
-}
-.footer-logo-text {
-  font-size: 22px; font-weight: 800; color: white; letter-spacing: -.3px;
-}
-.footer-logo-text span { color: var(--azul); }
-.footer-desc { font-size: 14px; line-height: 1.7; max-width: 260px; margin-bottom: 22px; }
-.footer-bordao {
-  font-size: 13px; font-style: italic;
-  color: rgba(255,255,255,.3); font-weight: 300;
-}
-.footer-socials { display: flex; gap: 10px; margin-top: 20px; }
-.fsocial {
-  width: 36px; height: 36px;
-  background: rgba(255,255,255,.06);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; color: rgba(255,255,255,.5);
-  text-decoration: none; transition: all .2s;
-}
-.fsocial:hover { background: var(--azul); color: white; }
-.footer-col h5 {
-  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5);
-  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
-}
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a {
-  font-size: 14px; color: rgba(255,255,255,.45); text-decoration: none;
-  transition: color .2s; font-weight: 500;
-}
-.footer-links a:hover { color: white; }
-.footer-bottom {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 8px;
-  font-size: 12px;
-}
-.footer-bottom a { color: rgba(255,255,255,.3); text-decoration: none; }
-.footer-bottom a:hover { color: rgba(255,255,255,.6); }
+.footer-brand {}
+.footer-logo { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.footer-logo-mark { width:36px; height:36px; background:var(--azul); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; color:white; }
+.footer-logo-name { font-size:21px; font-weight:800; color:white; letter-spacing:-.3px; }
+.footer-logo-name span { color:var(--azul); }
+.footer-desc { font-size:13.5px; line-height:1.75; max-width:250px; margin-bottom:20px; }
+.footer-bordao { font-size:13px; font-style:italic; color:rgba(255,255,255,.28); margin-bottom:20px; }
+.footer-socials { display:flex; gap:10px; }
+.fsoc { width:36px; height:36px; background:rgba(255,255,255,.06); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:15px; color:rgba(255,255,255,.45); text-decoration:none; transition:all .2s; }
+.fsoc:hover { background:var(--azul); color:white; }
+.footer-col h5 { font-size:11px; font-weight:700; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-links a { font-size:13.5px; color:rgba(255,255,255,.42); text-decoration:none; font-weight:500; transition:color .2s; }
+.footer-links a:hover { color:white; }
+.footer-bottom { max-width:1120px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:12px; }
+.footer-bottom a { color:rgba(255,255,255,.28); text-decoration:none; }
+.footer-bottom a:hover { color:rgba(255,255,255,.55); }
+.footer-anatel { font-size:11px; color:rgba(255,255,255,.22); margin-top:3px; }
+@media(max-width:860px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:560px) { .footer-grid { grid-template-columns:1fr; gap:32px; } .footer-bottom { flex-direction:column; align-items:flex-start; } }
 
-@media (max-width: 860px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 560px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
-}
-
-/* ============================================================
+/* ================================================================
    FLOATING WPP
-   ============================================================ */
-.wpp-fab {
-  position: fixed; bottom: 24px; right: 24px; z-index: 100;
-}
-.wpp-fab a {
-  width: 62px; height: 62px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; color: white;
-  text-decoration: none;
-  box-shadow: 0 8px 32px rgba(37,211,102,.5);
-  transition: all .3s;
-  position: relative;
-}
-.wpp-fab a:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,.6); }
-.wpp-pulse {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 2px solid #25D366;
-  animation: pulseRing 2.2s ease-out infinite;
-}
-.wpp-fab .wpp-tip {
-  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
-  background: white; color: var(--texto);
-  font-size: 13px; font-weight: 700;
-  padding: 9px 16px; border-radius: 12px;
-  white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(0,0,0,.12);
-  opacity: 0; pointer-events: none; transition: opacity .2s;
-}
-.wpp-fab:hover .wpp-tip { opacity: 1; }
-.wpp-fab .wpp-tip::after {
-  content: '';
-  position: absolute; left: 100%; top: 50%;
-  transform: translateY(-50%);
-  border: 6px solid transparent;
-  border-left-color: white;
-}
+   ================================================================ */
+.wpp-fab { position:fixed; bottom:88px; right:24px; z-index:400; }
+@media(min-width:769px) { .wpp-fab { bottom:24px; } }
+.wpp-fab a { width:60px; height:60px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:27px; color:white; text-decoration:none; box-shadow:0 8px 32px rgba(37,211,102,.48); transition:all .3s; position:relative; }
+.wpp-fab a:hover { transform:scale(1.1); }
+.wpp-ring { position:absolute; inset:0; border-radius:50%; border:2px solid #25D366; animation:pulse 2.2s ease-out infinite; }
+.wpp-tip { position:absolute; right:70px; top:50%; transform:translateY(-50%); background:white; color:var(--texto); font-size:13px; font-weight:700; padding:9px 16px; border-radius:12px; white-space:nowrap; box-shadow:var(--shadow-md); opacity:0; pointer-events:none; transition:opacity .2s; }
+.wpp-fab:hover .wpp-tip { opacity:1; }
+.wpp-tip::after { content:''; position:absolute; left:100%; top:50%; transform:translateY(-50%); border:6px solid transparent; border-left-color:white; }
 
-/* ============================================================
+/* ================================================================
+   MOBILE STICKY BAR
+   ================================================================ */
+.mobile-bar {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
+  background:white; border-top:1px solid var(--border);
+  padding:12px 16px; padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  gap:10px; box-shadow:0 -8px 32px rgba(0,0,0,.1);
+}
+@media(max-width:768px) { .mobile-bar { display:flex; } }
+.mob-bar-btn {
+  flex:1; display:flex; align-items:center; justify-content:center; gap:7px;
+  padding:13px; border-radius:var(--r-full); font-size:14px; font-weight:800;
+  text-decoration:none; transition:all .2s; border:none; cursor:pointer;
+}
+.mob-bar-wpp { background:#25D366; color:white; box-shadow:0 4px 16px rgba(37,211,102,.3); }
+.mob-bar-wpp:hover { background:#1ebe5d; }
+.mob-bar-tel { background:var(--azul); color:white; box-shadow:0 4px 16px var(--azul-glow); }
+.mob-bar-tel:hover { background:var(--azul-mid); }
+
+/* ================================================================
+   MASCOTE SVG (ONDA)
+   ================================================================ */
+/* Defined inline in HTML for animation control */
+
+/* ================================================================
    RESPONSIVE MISC
-   ============================================================ */
-@media (max-width: 600px) {
-  .hero-content { padding: 120px 20px 60px; }
-  .hero-title { letter-spacing: -1px; }
-  .bairros { padding: 72px 20px; }
-  .diferenciais { padding: 72px 20px; }
-  .planos { padding: 72px 20px; }
-  .identidade { padding: 72px 20px; }
-  .veranistas { padding: 72px 20px; }
-  .ver-right { grid-template-columns: 1fr; }
-  .ver-card.full { grid-column: span 1; }
-  .depoimentos { padding: 72px 20px; }
-  .faq { padding: 72px 20px; }
-  .cta-final { padding: 80px 20px; }
-  footer { padding: 48px 20px 32px; }
-  .wpp-fab { bottom: 16px; right: 16px; }
+   ================================================================ */
+@media(max-width:600px) {
+  section { padding:72px 0; }
+  .diferenciais,.planos,.como,.bairros,.depos,.veranistas,.localizacao,.faq,.cta-final { padding:72px 0; }
+  .hero-content { padding:110px 20px 80px; }
+  .cta-final { padding:80px 0; }
+  .cta-final h2 { letter-spacing:-1.5px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===================== NAV ===================== -->
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <div class="nav-logo-icon"><i class="fas fa-wifi"></i></div>
-    <span class="nav-logo-text">Conecte<span>.</span></span>
+    <div class="logo-mark">
+      <!-- Logo mark SVG -->
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 6C8.69 6 6 8.69 6 12" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 10C10.34 10 9 11.34 9 13" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="16" r="2.5" fill="white"/>
+        <path d="M16 4C19.31 4 22 6.69 22 10" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-name">Conecte<em>.</em></div>
+      <div class="logo-tagline">Arroio do Sal · RS</div>
+    </div>
   </a>
 
   <ul class="nav-links">
-    <li><a href="#bairros">Cobertura</a></li>
+    <li><a href="#cobertura">Cobertura</a></li>
     <li><a href="#planos">Planos</a></li>
     <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#localizacao">Localização</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 
-  <div class="nav-actions">
-    <a href="#bairros" class="nav-cobertura"><i class="fas fa-map-pin"></i> Consultar cobertura</a>
-    <a href="https://wa.me/555199999999" target="_blank" class="nav-wpp">
+  <div class="nav-right">
+    <a href="#cobertura" class="nav-btn-outline"><i class="fas fa-map-pin"></i> Verificar cobertura</a>
+    <a href="https://wa.me/555199999999" target="_blank" rel="noopener" class="nav-btn-wpp">
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
-    <div class="nav-hamburger" onclick="openMobile()">
+    <div class="nav-burger" onclick="openMob()" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
 <!-- MOBILE OVERLAY + PANEL -->
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobile()"></div>
-<div class="mobile-panel" id="mobilePanel">
-  <div class="mobile-panel-header">
+<div class="mob-overlay" id="mobOverlay" onclick="closeMob()"></div>
+<div class="mob-panel" id="mobPanel">
+  <div class="mob-head">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-icon"><i class="fas fa-wifi"></i></div>
-      <span class="nav-logo-text" style="color:var(--texto)">Conecte<span style="color:var(--azul)">.</span></span>
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/><path d="M12 6C8.69 6 6 8.69 6 12" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/><path d="M12 10C10.34 10 9 11.34 9 13" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="2.5" fill="white"/></svg></div>
+      <div><div class="logo-name" style="color:var(--texto)">Conecte<em style="color:var(--azul)">.</em></div></div>
     </a>
-    <button class="mobile-close" onclick="closeMobile()"><i class="fas fa-times"></i></button>
+    <button class="mob-close" onclick="closeMob()"><i class="fas fa-times"></i></button>
   </div>
-  <ul class="mobile-nav-links">
-    <li><a href="#bairros" onclick="closeMobile()"><i class="fas fa-map-pin"></i> Cobertura</a></li>
-    <li><a href="#planos" onclick="closeMobile()"><i class="fas fa-wifi"></i> Planos</a></li>
-    <li><a href="#sobre" onclick="closeMobile()"><i class="fas fa-users"></i> Sobre nós</a></li>
-    <li><a href="#faq" onclick="closeMobile()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
+  <ul class="mob-links">
+    <li><a href="#cobertura" onclick="closeMob()"><i class="fas fa-map-pin"></i> Cobertura</a></li>
+    <li><a href="#planos" onclick="closeMob()"><i class="fas fa-wifi"></i> Planos</a></li>
+    <li><a href="#sobre" onclick="closeMob()"><i class="fas fa-users"></i> Sobre nós</a></li>
+    <li><a href="#localizacao" onclick="closeMob()"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
+    <li><a href="#faq" onclick="closeMob()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
   </ul>
-  <div class="mobile-panel-footer">
-    <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-primary" style="justify-content:center">
-      <i class="fab fa-whatsapp"></i> Falar no WhatsApp
-    </a>
-    <a href="#planos" onclick="closeMobile()" class="btn-plano-outline btn-plano" style="margin-top:0">Ver planos</a>
+  <div class="mob-foot">
+    <a href="https://wa.me/555199999999" target="_blank" rel="noopener" class="btn-wpp-full"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+    <a href="#planos" onclick="closeMob()" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-wifi"></i> Ver planos</a>
   </div>
 </div>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="hero-orb orb1"></div>
-  <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="hero" id="inicio">
+  <div class="hero-grain"></div>
   <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="dot"></div>
-      Arroio do Sal — RS &nbsp;·&nbsp; 100% Fibra Óptica
-    </div>
+  <div class="hero-content section-wrap">
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="dot"></div>
+        Arroio do Sal — RS &nbsp;·&nbsp; 100% Fibra Óptica
+      </div>
 
-    <h1 class="hero-title">
-      Fibra de <span class="hl">verdade,</span><br>feita por quem<br>vive aqui
-    </h1>
+      <h1 class="hero-title">
+        Fibra de<br><span class="hl">verdade,</span><br>feita por<br>quem vive aqui.
+      </h1>
 
-    <p class="hero-bordao">
-      <strong>É mais que internet, é Conecte!</strong>
-    </p>
+      <p class="hero-sub">
+        Internet sem enrolação, suporte sem robô e uma equipe que te atende como vizinho — porque somos, de fato, <strong>seus vizinhos.</strong>
+      </p>
 
-    <div class="hero-ctas">
-      <a href="#planos" class="btn-hero-primary">
-        <i class="fas fa-bolt"></i> Ver planos e preços
-      </a>
-      <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-glass wpp">
-        <i class="fab fa-whatsapp"></i> Falar agora
-      </a>
-      <a href="#bairros" class="btn-hero-glass">
-        <i class="fas fa-map-pin"></i> Ver cobertura
-      </a>
-    </div>
+      <div class="hero-ctas">
+        <a href="#planos" class="btn-primary"><i class="fas fa-bolt"></i> Ver planos e preços</a>
+        <a href="https://wa.me/555199999999" target="_blank" rel="noopener" class="btn-glass wpp"><i class="fab fa-whatsapp"></i> Falar agora</a>
+      </div>
 
-    <!-- Planos hero carrossel -->
-    <div class="planos-hero-wrap">
-      <div class="planos-hero-scroll" id="planosScroll">
-
-        <!-- 60MB -->
-        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 60 Mega','_blank')">
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">60<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$89,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte local</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 60 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
-        </div>
-
-        <!-- 300MB -->
-        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 300 Mega','_blank')">
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">300<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$99,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte local</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 300 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
-        </div>
-
-        <!-- 500MB DESTAQUE -->
-        <div class="plano-hero-card destaque" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 500 Mega','_blank')">
-          <div class="plano-destaque-badge">⭐ Mais vendido</div>
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">500<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$109,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
-            <li><i class="fas fa-check-circle"></i> Ideal pra família</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 500 Mega" target="_blank" class="plano-hero-btn">Quero esse!</a>
-        </div>
-
-        <!-- 600MB -->
-        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 600 Mega','_blank')">
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">600<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$119,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 600 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
-        </div>
-
-        <!-- 700MB -->
-        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 700 Mega','_blank')">
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">700<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$129,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 700 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
-        </div>
-
-        <!-- 800MB -->
-        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 800 Mega','_blank')">
-          <div class="plano-hero-speed">Fibra Óptica</div>
-          <div class="plano-hero-mega">800<span>Mbps</span></div>
-          <div class="plano-hero-price">a partir de <strong>R$149,90</strong>/mês</div>
-          <div class="plano-hero-divider"></div>
-          <ul class="plano-hero-feats">
-            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 + Mesh</li>
-            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-            <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
-          </ul>
-          <a href="https://wa.me/555199999999?text=Quero o plano 800 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
-        </div>
-
+      <div class="hero-trust">
+        <div class="hero-trust-item"><i class="fas fa-check-circle"></i> Suporte humanizado</div>
+        <div class="hero-trust-item"><i class="fas fa-check-circle"></i> Equipe local</div>
+        <div class="hero-trust-item"><i class="fas fa-check-circle"></i> Atendimento todos os dias</div>
       </div>
     </div>
-  </div><!-- /hero-content -->
 
+    <!-- Right — Mascote "Onda" -->
+    <div class="hero-right">
+      <div class="mascote-wrap">
+        <div class="mascote-glow"></div>
+
+        <!-- MASCOTE SVG ONDA -->
+        <svg id="mascote-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" style="width:320px;height:320px;position:relative;z-index:2;filter:drop-shadow(0 20px 60px rgba(10,126,226,.5))">
+          <defs>
+            <radialGradient id="bodyGrad" cx="45%" cy="38%" r="60%">
+              <stop offset="0%" stop-color="#1a9af5"/>
+              <stop offset="60%" stop-color="#0a7ee2"/>
+              <stop offset="100%" stop-color="#0563b8"/>
+            </radialGradient>
+            <radialGradient id="bellyGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.22)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,.06)"/>
+            </radialGradient>
+            <radialGradient id="eyeGrad" cx="40%" cy="35%" r="55%">
+              <stop offset="0%" stop-color="#1a2e50"/>
+              <stop offset="100%" stop-color="#0a1628"/>
+            </radialGradient>
+            <filter id="glow-filter">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Body — onda/golfinho estilizado -->
+          <g transform="translate(160,160)">
+            <!-- Cauda -->
+            <path d="M60,40 Q100,20 110,-10 Q95,30 115,50 Q90,55 60,40Z" fill="url(#bodyGrad)" opacity=".85">
+              <animateTransform attributeName="transform" type="rotate" values="0 85 40;6 85 40;0 85 40;-5 85 40;0 85 40" dur="3s" repeatCount="indefinite"/>
+            </path>
+
+            <!-- Corpo principal -->
+            <ellipse cx="0" cy="10" rx="90" ry="72" fill="url(#bodyGrad)"/>
+
+            <!-- Belly highlight -->
+            <ellipse cx="0" cy="22" rx="58" ry="44" fill="url(#bellyGrad)"/>
+
+            <!-- Highlight superior -->
+            <ellipse cx="-18" cy="-22" rx="32" ry="16" fill="rgba(255,255,255,.18)" transform="rotate(-20)"/>
+
+            <!-- Nadadeira dorsal -->
+            <path d="M-15,-70 Q-5,-105 20,-90 Q5,-68 -15,-70Z" fill="url(#bodyGrad)" filter="url(#glow-filter)"/>
+
+            <!-- Nadadeiras laterais -->
+            <path d="M-45,30 Q-90,50 -85,80 Q-55,50 -38,52Z" fill="url(#bodyGrad)" opacity=".8"/>
+            <path d="M30,30 Q70,55 65,82 Q40,52 28,52Z" fill="url(#bodyGrad)" opacity=".7"/>
+
+            <!-- Focinho / bico -->
+            <path d="M-72,-5 Q-110,-8 -108,12 Q-95,4 -72,8Z" fill="url(#bodyGrad)"/>
+
+            <!-- Olho esquerdo -->
+            <g transform="translate(-52,-18)">
+              <circle cx="0" cy="0" r="16" fill="url(#eyeGrad)"/>
+              <circle cx="0" cy="0" r="10" fill="#0d1f3a"/>
+              <circle cx="3" cy="-3" r="4" fill="white" opacity=".9"/>
+              <circle cx="-2" cy="2" r="2" fill="white" opacity=".5"/>
+            </g>
+
+            <!-- Wifi signal on body -->
+            <g transform="translate(18,-28)" opacity=".55">
+              <path d="M-20,10 Q0,-18 20,10" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M-12,4 Q0,-10 12,4" stroke="white" stroke-width="3" stroke-linecap="round" fill="none">
+                <animate attributeName="opacity" values="1;.4;1" dur="1.8s" repeatCount="indefinite"/>
+              </path>
+              <circle cx="0" cy="12" r="4" fill="white">
+                <animate attributeName="opacity" values="1;.3;1" dur="1.8s" repeatCount="indefinite" begin=".2s"/>
+              </circle>
+            </g>
+
+            <!-- Sorriso -->
+            <path d="M-55,12 Q-45,28 -28,24" stroke="rgba(255,255,255,.6)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+            <!-- Bolhas -->
+            <circle cx="-105" cy="-30" r="5" fill="rgba(255,255,255,.3)"><animate attributeName="cy" values="-30;-55;-30" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".3;.6;.3" dur="2.5s" repeatCount="indefinite"/></circle>
+            <circle cx="-100" cy="-48" r="3" fill="rgba(255,255,255,.2)"><animate attributeName="cy" values="-48;-68;-48" dur="3s" repeatCount="indefinite" begin=".5s"/></circle>
+            <circle cx="-112" cy="-20" r="4" fill="rgba(255,255,255,.2)"><animate attributeName="cy" values="-20;-42;-20" dur="3.5s" repeatCount="indefinite" begin="1s"/></circle>
+
+            <!-- Ondas d'água embaixo -->
+            <g transform="translate(0,72)" opacity=".4">
+              <path d="M-80,0 Q-60,-12 -40,0 Q-20,12 0,0 Q20,-12 40,0 Q60,12 80,0" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none">
+                <animate attributeName="d" values="M-80,0 Q-60,-12 -40,0 Q-20,12 0,0 Q20,-12 40,0 Q60,12 80,0;M-80,6 Q-60,-6 -40,6 Q-20,18 0,6 Q20,-6 40,6 Q60,18 80,6;M-80,0 Q-60,-12 -40,0 Q-20,12 0,0 Q20,-12 40,0 Q60,12 80,0" dur="2.5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M-60,10 Q-40,-2 -20,10 Q0,22 20,10 Q40,-2 60,10" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none">
+                <animate attributeName="d" values="M-60,10 Q-40,-2 -20,10 Q0,22 20,10 Q40,-2 60,10;M-60,16 Q-40,4 -20,16 Q0,28 20,16 Q40,4 60,16;M-60,10 Q-40,-2 -20,10 Q0,22 20,10 Q40,-2 60,10" dur="3s" repeatCount="indefinite"/>
+              </path>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Float cards -->
+        <div class="mascote-float mf1">
+          <div class="fi" style="background:rgba(34,197,94,.15);color:#22c55e"><i class="fas fa-check"></i></div>
+          <span>Conexão estável ✓</span>
+        </div>
+        <div class="mascote-float mf2">
+          <div class="fi" style="background:rgba(255,222,89,.15);color:#b8940a"><i class="fas fa-headset"></i></div>
+          <span>Suporte 7 dias/semana</span>
+        </div>
+        <div class="mascote-float mf3">
+          <div class="fi" style="background:rgba(255,255,255,.12);color:white"><i class="fas fa-map-pin"></i></div>
+          <span>Arroio do Sal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Waves -->
   <div class="hero-waves">
     <div class="wave-track">
-      <svg viewBox="0 0 720 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,48 C120,90 240,10 360,52 C480,94 600,20 720,56 L720,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/>
-        <path d="M0,70 C120,30 240,100 360,70 C480,40 600,90 720,60 L720,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
-        <path d="M0,90 C180,60 360,110 540,80 C630,66 690,88 720,96 L720,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+      <svg viewBox="0 0 720 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,45 C120,88 240,8 360,50 C480,92 600,18 720,54 L720,110 L0,110Z" fill="rgba(255,255,255,.055)"/>
+        <path d="M0,68 C120,28 240,98 360,68 C480,38 600,88 720,58 L720,110 L0,110Z" fill="rgba(255,255,255,.04)"/>
+        <path d="M0,88 C180,58 360,108 540,78 C640,64 700,88 720,95 L720,110 L0,110Z" fill="rgba(248,250,252,1)"/>
       </svg>
-      <svg viewBox="0 0 720 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,48 C120,90 240,10 360,52 C480,94 600,20 720,56 L720,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/>
-        <path d="M0,70 C120,30 240,100 360,70 C480,40 600,90 720,60 L720,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
-        <path d="M0,90 C180,60 360,110 540,80 C630,66 690,88 720,96 L720,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+      <svg viewBox="0 0 720 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,45 C120,88 240,8 360,50 C480,92 600,18 720,54 L720,110 L0,110Z" fill="rgba(255,255,255,.055)"/>
+        <path d="M0,68 C120,28 240,98 360,68 C480,38 600,88 720,58 L720,110 L0,110Z" fill="rgba(255,255,255,.04)"/>
+        <path d="M0,88 C180,58 360,108 540,78 C640,64 700,88 720,95 L720,110 L0,110Z" fill="rgba(248,250,252,1)"/>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- ===================== BAIRROS ===================== -->
-<section class="bairros" id="bairros">
-  <div class="bairros-inner">
-    <div class="bairros-header reveal">
-      <div class="section-tag"><i class="fas fa-map-pin"></i> Área de cobertura</div>
-      <h2 class="section-title">Estamos por toda<br>Arroio do Sal 📍</h2>
-      <p class="section-sub">Do Loteamento Esmeralda até a Praia Azul — cobrindo todos os bairros da cidade com fibra óptica de verdade.</p>
+<!-- ================================================================
+     TRUST STRIP
+     ================================================================ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <div class="trust-num" data-target="1000" data-suffix="+">0</div>
+      <div class="trust-label">famílias e comércios<br>conectados</div>
     </div>
-
-    <div class="bairros-grid reveal">
-      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Centro</div>
-      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Praia Azul</div>
-      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Balneário Atlântico</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Pérola</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Bom Jesus</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Sereia do Mar</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Marambaia</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Nova Marambaia</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Âncora</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Figueirinha</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Verde Mar</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Quatro Lagos</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Vista Alegre</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Malinsky</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Areias Brancas</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Jardim Raiante</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Cond. Parque das Figueiras</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Pinus Park</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Tupancy</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Rondinha</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Jardim Olivia</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Alfa</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> São Pedro</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> São Paulo</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> São Jorge</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Costa da Lagoa</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Camboim</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Belo Horizonte</div>
-      <div class="bairro-pill"><i class="fas fa-circle"></i> Sol Nascente</div>
-      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Rota do Sol</div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-num" data-target="5" data-suffix=" anos">0</div>
+      <div class="trust-label">servindo<br>Arroio do Sal</div>
     </div>
-
-    <div class="cobertura-cta reveal">
-      <h3>Seu bairro está na lista? 🎉</h3>
-      <p>Digite abaixo e a gente te confirma — e já te apresenta as opções pelo WhatsApp.</p>
-      <div class="cob-input-row">
-        <input type="text" class="cob-input" id="bairroInput" placeholder="Ex: Centro, Rota do Sol, Marambaia...">
-        <button class="cob-btn" onclick="verificarCobertura()"><i class="fas fa-search"></i> Verificar</button>
-      </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-num" data-target="30" data-suffix=" bairros">0</div>
+      <div class="trust-label">com cobertura<br>de fibra óptica</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-num" data-target="7" data-suffix=" dias">0</div>
+      <div class="trust-label">de suporte por<br>semana, sem robô</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-num">4.9<span style="font-size:16px;color:var(--amarelo)">★</span></div>
+      <div class="trust-label">nota média no<br>Google Reviews</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ===================== DIFERENCIAIS ===================== -->
+<!-- ================================================================
+     DIFERENCIAIS
+     ================================================================ -->
 <section class="diferenciais">
-  <div class="diferenciais-inner">
-    <div class="dif-layout">
-      <div class="dif-left reveal">
-        <div class="section-tag"><i class="fas fa-star"></i> Por que a Conecte?</div>
-        <h2 class="section-title">Não somos um provedor qualquer</h2>
-        <p class="section-sub">Somos moradores de Arroio do Sal que resolveram fazer diferente. Menos enrolação, mais conexão — de verdade.</p>
-
-        <div class="dif-stats">
-          <div class="dif-stat-item">
-            <div>
-              <div class="dif-stat-n">+1.000</div>
-              <div class="dif-stat-l">famílias e comércios conectados</div>
-            </div>
-            <div class="dif-stat-icon"><i class="fas fa-users"></i></div>
-          </div>
-          <div class="dif-stat-item">
-            <div>
-              <div class="dif-stat-n">5 anos</div>
-              <div class="dif-stat-l">servindo Arroio do Sal</div>
-            </div>
-            <div class="dif-stat-icon"><i class="fas fa-calendar-check"></i></div>
-          </div>
-          <div class="dif-stat-item">
-            <div>
-              <div class="dif-stat-n">100%</div>
-              <div class="dif-stat-l">fibra óptica ponta a ponta</div>
-            </div>
-            <div class="dif-stat-icon"><i class="fas fa-wifi"></i></div>
-          </div>
-          <div class="dif-stat-item">
-            <div>
-              <div class="dif-stat-n">7 dias</div>
-              <div class="dif-stat-l">de atendimento por semana</div>
-            </div>
-            <div class="dif-stat-icon"><i class="fas fa-headset"></i></div>
-          </div>
-        </div>
+  <div class="section-wrap">
+    <div class="dif-header reveal">
+      <div class="section-tag"><i class="fas fa-star"></i> Por que a Conecte?</div>
+      <h2 class="section-title">Não somos um<br>provedor qualquer</h2>
+      <p class="section-sub">Somos moradores de Arroio do Sal que resolveram fazer diferente — menos enrolação, mais conexão de verdade.</p>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-card reveal d1">
+        <div class="dif-icon ic-b"><i class="fas fa-headset"></i></div>
+        <h4>Sem robô, sem fila</h4>
+        <p>Atendimento humano de verdade. Quando você precisa, fala com alguém que mora na mesma cidade.</p>
       </div>
-
-      <div class="dif-grid reveal delay-1">
-        <div class="dif-card">
-          <div class="dif-icon ic-azul"><i class="fas fa-headset"></i></div>
-          <h4>Sem robô, sem fila</h4>
-          <p>Atendimento humano de verdade, com alguém que te conhece — e que mora na mesma cidade que você.</p>
-        </div>
-        <div class="dif-card">
-          <div class="dif-icon ic-amarelo"><i class="fas fa-bolt"></i></div>
-          <h4>Velocidade real</h4>
-          <p>O que você contrata é o que você recebe. Sem "até", sem letra miúda, sem surpresa.</p>
-        </div>
-        <div class="dif-card">
-          <div class="dif-icon ic-verde"><i class="fas fa-tools"></i></div>
-          <h4>Técnico na sua porta</h4>
-          <p>Problema? O técnico vai até você. Equipe da cidade, atendimento ágil e presencial.</p>
-        </div>
-        <div class="dif-card">
-          <div class="dif-icon ic-laranja"><i class="fas fa-shield-alt"></i></div>
-          <h4>Rede estável</h4>
-          <p>Infraestrutura dimensionada para o verão cheio. Fibra que aguenta a temporada toda.</p>
-        </div>
-        <div class="dif-card big">
-          <div class="dif-icon ic-roxo"><i class="fas fa-heart"></i></div>
-          <div>
-            <h4>Conexão com a comunidade</h4>
-            <p>Cada assinatura apoia o desenvolvimento digital de Arroio do Sal. Somos daqui — e isso faz toda a diferença.</p>
-          </div>
+      <div class="dif-card reveal d2">
+        <div class="dif-icon ic-y"><i class="fas fa-bolt"></i></div>
+        <h4>Velocidade que você contratou</h4>
+        <p>Sem "até", sem letra miúda. O que está no contrato chega na sua casa — ponto.</p>
+      </div>
+      <div class="dif-card reveal d3">
+        <div class="dif-icon ic-g"><i class="fas fa-tools"></i></div>
+        <h4>Técnico vai até você</h4>
+        <p>Problema? Nossa equipe vai presencialmente. Sem te deixar ligando pra 0800 por horas.</p>
+      </div>
+      <div class="dif-card reveal d4">
+        <div class="dif-icon ic-o"><i class="fas fa-shield-alt"></i></div>
+        <h4>Rede preparada pro verão</h4>
+        <p>Infraestrutura dimensionada para a alta temporada — sem queda quando a cidade enche.</p>
+      </div>
+      <div class="dif-card span2 reveal d5">
+        <div class="dif-icon ic-p"><i class="fas fa-heart"></i></div>
+        <div>
+          <h4>Conexão com a comunidade</h4>
+          <p>Cada assinatura apoia o desenvolvimento digital de Arroio do Sal. A Conecte nasceu aqui, cresceu aqui, e entende o que a cidade precisa — porque vivemos essa realidade junto com você.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== PLANOS ===================== -->
+<!-- ================================================================
+     IDENTIDADE LOCAL
+     ================================================================ -->
+<section class="identidade" id="sobre">
+  <div class="section-wrap">
+    <div class="id-inner">
+      <div class="id-img-wrap reveal from-left">
+        <div class="id-img">
+          <div class="id-img-placeholder">
+            <div class="avatars" style="display:flex">
+              <div class="id-img-avatar">👨‍💻</div>
+              <div class="id-img-avatar">👩‍💻</div>
+              <div class="id-img-avatar">🧑‍🔧</div>
+              <div class="id-img-avatar">👨‍🔧</div>
+            </div>
+            <span class="id-img-label">[ Foto real da equipe aqui ]</span>
+          </div>
+          <div class="id-img-tag"><i class="fas fa-map-pin"></i> Equipe Conecte · Arroio do Sal</div>
+        </div>
+        <div class="id-float-a">
+          <div class="n">5+</div>
+          <div class="l">anos em<br>Arroio do Sal</div>
+        </div>
+        <div class="id-float-b">
+          <div class="ico"><i class="fas fa-check"></i></div>
+          <div class="t"><strong>Equipe local</strong><span>Técnicos da cidade</span></div>
+        </div>
+      </div>
+      <div class="id-right reveal from-right d1">
+        <div class="section-tag"><i class="fas fa-home"></i> Nossa história</div>
+        <h2 class="section-title">Internet feita por moradores de Arroio do Sal</h2>
+        <p>A Conecte nasceu de uma necessidade real. Moradores locais que sentiam na pele a falta de internet boa — e de um atendimento que tratasse as pessoas como gente — decidiram resolver. Fizemos a quatro mãos, com quem entende a cidade.</p>
+        <p>Depois de 5 anos, seguimos com a mesma filosofia: conexão sem enrolação, suporte sem robô, e uma equipe que te atende como vizinho — porque somos, de fato, seus vizinhos.</p>
+        <div class="id-bordao">"É mais que internet, é Conecte!"</div>
+        <a href="https://wa.me/555199999999" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-whatsapp"></i> Falar com a equipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PLANOS
+     ================================================================ -->
 <section class="planos" id="planos">
-  <div class="planos-inner">
+  <div class="section-wrap">
     <div class="planos-header reveal">
       <div class="section-tag"><i class="fas fa-wifi"></i> Nossos planos</div>
       <h2 class="section-title">Escolha a sua velocidade</h2>
       <p class="section-sub">Instalação grátis, equipamento em comodato e suporte local em todos os planos. Fidelidade de 12 meses.</p>
     </div>
 
-    <div class="planos-grid">
-      <div class="plano-card reveal">
-        <div class="plano-tag">Fibra Óptica</div>
-        <div class="plano-mega">300<span>Mbps</span></div>
-        <div class="plano-divider"></div>
-        <div class="plano-preco-label">a partir de</div>
-        <div class="plano-price"><span class="cur">R$</span><span class="val">99</span><span class="dec">,90</span></div>
-        <div class="plano-mes">por mês</div>
-        <ul class="plano-feats">
-          <li><i class="fas fa-check-circle"></i> Upload 150 Mbps</li>
-          <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
-          <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-          <li><i class="fas fa-check-circle"></i> Suporte humanizado</li>
-          <li><i class="fas fa-check-circle"></i> Equipe local</li>
-        </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 300 Mega" target="_blank" class="btn-plano btn-plano-outline">Assinar plano</a>
-      </div>
-
-      <div class="plano-card destaque reveal delay-1">
+    <!-- Destaque duplo: 500 + 600 -->
+    <div class="planos-featured reveal">
+      <!-- 500MB hero -->
+      <div class="plano-card hero-plan">
         <div class="plano-badge">⭐ Mais vendido</div>
-        <div class="plano-tag">Fibra Óptica</div>
-        <div class="plano-mega">500<span>Mbps</span></div>
+        <div class="plano-eyebrow">Fibra Óptica · Melhor custo-benefício</div>
+        <div class="plano-speed">500<span>Mbps</span></div>
         <div class="plano-divider"></div>
-        <div class="plano-preco-label">a partir de</div>
+        <div class="plano-price-label">a partir de</div>
         <div class="plano-price"><span class="cur">R$</span><span class="val">109</span><span class="dec">,90</span></div>
-        <div class="plano-mes">por mês</div>
+        <div class="plano-mes">por mês · fidelidade 12 meses</div>
+        <div class="plano-context"><i class="fas fa-users"></i> Ideal para a família toda</div>
         <ul class="plano-feats">
-          <li><i class="fas fa-check-circle"></i> Upload 250 Mbps</li>
+          <li><i class="fas fa-check-circle"></i> Upload de 250 Mbps</li>
           <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
           <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-          <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
-          <li><i class="fas fa-check-circle"></i> Conexão sem enrolação</li>
-          <li><i class="fas fa-check-circle"></i> Ideal pra família toda</li>
+          <li><i class="fas fa-check-circle"></i> Suporte prioritário 7 dias</li>
+          <li><i class="fas fa-check-circle"></i> Fibra óptica ponta a ponta</li>
+          <li><i class="fas fa-check-circle"></i> Streaming, games e home office</li>
         </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 500 Mega" target="_blank" class="btn-plano btn-plano-solid">Quero este plano!</a>
+        <a href="https://wa.me/555199999999?text=Olá!+Tenho+interesse+no+plano+de+500+Mbps+por+R%24109%2C90.+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-plano btn-plano-solid">Quero este plano!</a>
       </div>
 
-      <div class="plano-card reveal delay-2">
-        <div class="plano-tag">Fibra Óptica</div>
-        <div class="plano-mega">800<span>Mbps</span></div>
+      <!-- 600MB side -->
+      <div class="plano-card side-plan reveal d1">
+        <div class="plano-eyebrow">Fibra Óptica · Um passo além</div>
+        <div class="plano-speed">600<span>Mbps</span></div>
         <div class="plano-divider"></div>
-        <div class="plano-preco-label">a partir de</div>
-        <div class="plano-price"><span class="cur">R$</span><span class="val">149</span><span class="dec">,90</span></div>
-        <div class="plano-mes">por mês</div>
+        <div class="plano-price-label">a partir de</div>
+        <div class="plano-price"><span class="cur">R$</span><span class="val">119</span><span class="dec">,90</span></div>
+        <div class="plano-mes">por mês · fidelidade 12 meses</div>
+        <div class="plano-context"><i class="fas fa-home"></i> Para quem quer mais velocidade</div>
         <ul class="plano-feats">
-          <li><i class="fas fa-check-circle"></i> Upload 400 Mbps</li>
-          <li><i class="fas fa-check-circle"></i> Wi-Fi 6 + Mesh</li>
+          <li><i class="fas fa-check-circle"></i> Upload de 300 Mbps</li>
+          <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
           <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-          <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
-          <li><i class="fas fa-check-circle"></i> Atendimento todos os dias</li>
+          <li><i class="fas fa-check-circle"></i> Suporte prioritário 7 dias</li>
+          <li><i class="fas fa-check-circle"></i> Fibra óptica ponta a ponta</li>
         </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 800 Mega" target="_blank" class="btn-plano btn-plano-outline">Assinar plano</a>
+        <a href="https://wa.me/555199999999?text=Olá!+Tenho+interesse+no+plano+de+600+Mbps+por+R%24119%2C90.+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-plano btn-plano-outline">Assinar plano</a>
       </div>
     </div>
 
-    <!-- Tabela completa -->
-    <div class="planos-mini reveal">
-      <div class="planos-mini-header"><i class="fas fa-list" style="color:var(--azul)"></i> Todos os planos disponíveis</div>
-      <div class="planos-mini-row">
-        <div class="pmr-speed">60<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte local</span>
-        </div>
-        <div class="pmr-preco">R$89,90 <span>/mês</span></div>
-      </div>
-      <div class="planos-mini-row">
-        <div class="pmr-speed">300<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte local</span>
-        </div>
-        <div class="pmr-preco">R$99,90 <span>/mês</span></div>
-      </div>
-      <div class="planos-mini-row destaque-row">
-        <div class="pmr-speed">500<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte prioritário</span>
-          <span class="pmr-feat" style="background:rgba(255,222,89,.15);color:#b8940a;"><i class="fas fa-star" style="color:#b8940a"></i> Mais vendido</span>
-        </div>
-        <div class="pmr-preco" style="color:var(--azul)">R$109,90 <span>/mês</span></div>
-      </div>
-      <div class="planos-mini-row">
-        <div class="pmr-speed">600<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte prioritário</span>
-        </div>
-        <div class="pmr-preco">R$119,90 <span>/mês</span></div>
-      </div>
-      <div class="planos-mini-row">
-        <div class="pmr-speed">700<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte dedicado</span>
-        </div>
-        <div class="pmr-preco">R$129,90 <span>/mês</span></div>
-      </div>
-      <div class="planos-mini-row">
-        <div class="pmr-speed">800<span>Mbps</span></div>
-        <div class="pmr-feats">
-          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6 + Mesh</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
-          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte dedicado</span>
-        </div>
-        <div class="pmr-preco">R$149,90 <span>/mês</span></div>
-      </div>
-    </div>
-
-    <p class="planos-note reveal"><i class="fas fa-info-circle"></i> Todos os planos incluem instalação grátis e equipamento em comodato. Fidelidade de 12 meses.</p>
-  </div>
-</section>
-
-<!-- ===================== IDENTIDADE LOCAL ===================== -->
-<section class="identidade" id="sobre">
-  <div class="identidade-inner">
-    <div class="id-visual reveal">
-      <div class="id-main-img">
-        🏖️
-        <span class="id-placeholder-text">[ Foto real da equipe aqui ]</span>
-      </div>
-      <div class="id-float-1">
-        <div class="num">5+</div>
-        <div class="label">anos em<br>Arroio do Sal</div>
-      </div>
-      <div class="id-float-2">
-        <div class="dot-wrap"><i class="fas fa-check"></i></div>
-        <div class="info">
-          <strong>Equipe local</strong>
-          <span>Técnicos da cidade</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="id-right reveal delay-1">
-      <div class="section-tag"><i class="fas fa-home"></i> Nossa história</div>
-      <h2 class="section-title">Internet feita por moradores<br>de Arroio do Sal</h2>
-      <p>A Conecte nasceu de uma necessidade real. Moradores locais que sentiam na pele a falta de uma internet boa e de um atendimento humano decidiram resolver: fizemos isso a quatro mãos, com quem entende a cidade.</p>
-      <p>Depois de 5 anos, seguimos com a mesma filosofia: conexão sem enrolação, suporte sem robô, e uma equipe que te atende como vizinho — porque somos, de fato, seus vizinhos.</p>
-
-      <div class="id-bordao">
-        "É mais que internet, é Conecte!"
-      </div>
-
-      <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-primary" style="display:inline-flex;text-decoration:none">
-        <i class="fab fa-whatsapp"></i> Falar com a equipe
+    <!-- Outros planos -->
+    <div class="planos-rest reveal">
+      <a href="https://wa.me/555199999999?text=Interesse+no+plano+60+Mbps" target="_blank" rel="noopener" class="plano-mini">
+        <div class="pm-speed">60<span>Mbps</span></div>
+        <div class="pm-label">Fibra Óptica</div>
+        <div class="pm-price">R$89,90 <span>/mês</span></div>
+        <div class="pm-context">Uso individual ou básico</div>
+        <div class="pm-btn">Assinar</div>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VERANISTAS ===================== -->
-<section class="veranistas">
-  <div class="ver-orb1"></div>
-  <div class="ver-orb2"></div>
-  <div class="veranistas-inner">
-    <div class="ver-left reveal">
-      <div class="section-tag"><i class="fas fa-umbrella-beach"></i> Para veranistas</div>
-      <h2 class="section-title" style="color:white">Veranista, internet boa<br>na temporada! 🌊</h2>
-      <p class="section-sub">Você veio curtir, não ficar no 4G. A Conecte tem planos para quem passa a temporada em Arroio do Sal — com instalação rápida e atendimento humano.</p>
-      <div class="ver-items">
-        <div class="ver-item"><i class="fas fa-check-circle"></i> Instalação ágil, mesmo na alta temporada</div>
-        <div class="ver-item"><i class="fas fa-check-circle"></i> Planos flexíveis para temporadistas</div>
-        <div class="ver-item"><i class="fas fa-check-circle"></i> Funciona em casas, chalés e apartamentos</div>
-        <div class="ver-item"><i class="fas fa-check-circle"></i> Atendimento sem fila, sem robô</div>
-        <div class="ver-item"><i class="fas fa-check-circle"></i> Rede estável mesmo com a cidade cheia</div>
-      </div>
-      <a href="https://wa.me/555199999999?text=Estou de temporada em Arroio do Sal e preciso de internet!" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-flex">
-        <i class="fab fa-whatsapp"></i> Quero internet pra temporada
+      <a href="https://wa.me/555199999999?text=Interesse+no+plano+300+Mbps" target="_blank" rel="noopener" class="plano-mini">
+        <div class="pm-speed">300<span>Mbps</span></div>
+        <div class="pm-label">Fibra Óptica</div>
+        <div class="pm-price">R$99,90 <span>/mês</span></div>
+        <div class="pm-context">Para casais e home office</div>
+        <div class="pm-btn">Assinar</div>
+      </a>
+      <a href="https://wa.me/555199999999?text=Interesse+no+plano+700+Mbps" target="_blank" rel="noopener" class="plano-mini">
+        <div class="pm-speed">700<span>Mbps</span></div>
+        <div class="pm-label">Fibra Óptica</div>
+        <div class="pm-price">R$129,90 <span>/mês</span></div>
+        <div class="pm-context">Para streamers e power users</div>
+        <div class="pm-btn">Assinar</div>
+      </a>
+      <a href="https://wa.me/555199999999?text=Interesse+no+plano+800+Mbps" target="_blank" rel="noopener" class="plano-mini">
+        <div class="pm-speed">800<span>Mbps</span></div>
+        <div class="pm-label">Fibra Óptica</div>
+        <div class="pm-price">R$149,90 <span>/mês</span></div>
+        <div class="pm-context">Para comércios e empresas</div>
+        <div class="pm-btn">Assinar</div>
       </a>
     </div>
 
-    <div class="ver-right reveal delay-1">
-      <div class="ver-card">
-        <span class="emoji">📡</span>
-        <h4>Rede preparada pro verão</h4>
-        <p>Dimensionamos a infraestrutura para a alta temporada. Sem queda quando a cidade enche.</p>
+    <p class="planos-note reveal"><i class="fas fa-info-circle"></i> Instalação grátis · Equipamento em comodato · Fidelidade 12 meses · Dúvidas? <a href="https://wa.me/555199999999" target="_blank" rel="noopener" style="color:var(--azul);font-weight:700;text-decoration:none">Fale no WhatsApp</a></p>
+  </div>
+</section>
+
+<!-- ================================================================
+     COMO FUNCIONA
+     ================================================================ -->
+<section class="como">
+  <div class="section-wrap">
+    <div class="como-header reveal">
+      <div class="section-tag"><i class="fas fa-route"></i> Como funciona</div>
+      <h2 class="section-title">Simples assim, sem burocracia</h2>
+      <p class="section-sub">Da escolha do plano até a internet funcionando — tudo rápido e sem complicação.</p>
+    </div>
+    <div class="como-steps">
+      <div class="como-step reveal d1">
+        <div class="como-step-num"><i class="fas fa-wifi"></i></div>
+        <h4>1. Escolha seu plano</h4>
+        <p>Veja os planos disponíveis e escolha o que faz mais sentido pra você ou sua família.</p>
       </div>
-      <div class="ver-card">
-        <span class="emoji">💻</span>
-        <h4>Home office na praia</h4>
-        <p>Fibra óptica com velocidade para videoconferência e envio de arquivos. Trabalhe e curta.</p>
+      <div class="como-step reveal d2">
+        <div class="como-step-num"><i class="fab fa-whatsapp"></i></div>
+        <h4>2. Fale no WhatsApp</h4>
+        <p>Entre em contato — sem formulário, sem fila. Um atendente local te responde na hora.</p>
       </div>
-      <div class="ver-card">
-        <span class="emoji">🎬</span>
-        <h4>Streaming sem travar</h4>
-        <p>Netflix, YouTube, jogos — tudo rodando para a família ao mesmo tempo, sem reclamar.</p>
+      <div class="como-step reveal d3">
+        <div class="como-step-num"><i class="fas fa-calendar-check"></i></div>
+        <h4>3. Agendamos a instalação</h4>
+        <p>Combinamos o melhor horário. Nossa equipe vai até você — técnicos da própria cidade.</p>
       </div>
-      <div class="ver-card">
-        <span class="emoji">🤝</span>
-        <h4>Atendimento de vizinho</h4>
-        <p>Precisa de ajuda? A gente atende pelo WhatsApp na hora — sem esperar horas numa fila.</p>
+      <div class="como-step reveal d4">
+        <div class="como-step-num"><i class="fas fa-check-circle"></i></div>
+        <h4>4. Conectado!</h4>
+        <p>Internet funcionando, Wi-Fi configurado, tudo pronto. Agora é só aproveitar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== DEPOIMENTOS ===================== -->
-<section class="depoimentos">
-  <div class="depos-inner">
+<!-- ================================================================
+     BAIRROS / COBERTURA
+     ================================================================ -->
+<section class="bairros" id="cobertura">
+  <div class="section-wrap">
+    <div class="bairros-header reveal">
+      <div class="section-tag"><i class="fas fa-map-pin"></i> Área de cobertura</div>
+      <h2 class="section-title">Estamos em todo<br>Arroio do Sal 📍</h2>
+      <p class="section-sub">Do Loteamento Esmeralda à Praia Azul — fibra óptica cobrindo toda a cidade e seus bairros.</p>
+    </div>
+
+    <div class="bairros-regions">
+      <!-- Região Norte -->
+      <div class="region-block reveal d1">
+        <div class="region-title"><i class="fas fa-compass"></i> Região Norte</div>
+        <div class="region-pills">
+          <span class="rpill main">Praia Azul</span>
+          <span class="rpill main">Pinus Park</span>
+          <span class="rpill">Balneário Atlântico</span>
+          <span class="rpill">Tupancy</span>
+          <span class="rpill">Rondinha</span>
+          <span class="rpill">Rota do Sol</span>
+        </div>
+      </div>
+      <!-- Região Central -->
+      <div class="region-block reveal d2">
+        <div class="region-title"><i class="fas fa-home"></i> Região Central</div>
+        <div class="region-pills">
+          <span class="rpill main">Centro</span>
+          <span class="rpill main">Vista Alegre</span>
+          <span class="rpill">Quatro Lagos</span>
+          <span class="rpill">Malinsky</span>
+          <span class="rpill">Jardim Raiante</span>
+          <span class="rpill">Jardim Olivia</span>
+          <span class="rpill">Cond. Parque das Figueiras</span>
+        </div>
+      </div>
+      <!-- Região Sul / Praias -->
+      <div class="region-block reveal d3">
+        <div class="region-title"><i class="fas fa-umbrella-beach"></i> Praias e Balneários</div>
+        <div class="region-pills">
+          <span class="rpill main">Pérola</span>
+          <span class="rpill main">Marambaia</span>
+          <span class="rpill">Nova Marambaia</span>
+          <span class="rpill">Sereia do Mar</span>
+          <span class="rpill">Âncora</span>
+          <span class="rpill">Figueirinha</span>
+          <span class="rpill">Verde Mar</span>
+          <span class="rpill">Areias Brancas</span>
+        </div>
+      </div>
+      <!-- Bairros -->
+      <div class="region-block reveal d4">
+        <div class="region-title"><i class="fas fa-map-marked-alt"></i> Bairros e Loteamentos</div>
+        <div class="region-pills">
+          <span class="rpill">Bom Jesus</span>
+          <span class="rpill">Alfa</span>
+          <span class="rpill">São Pedro</span>
+          <span class="rpill">São Paulo</span>
+          <span class="rpill">São Jorge</span>
+          <span class="rpill">Costa da Lagoa</span>
+          <span class="rpill">Camboim</span>
+          <span class="rpill">Belo Horizonte</span>
+          <span class="rpill">Sol Nascente</span>
+        </div>
+      </div>
+      <!-- CTA cobertura (span 2) -->
+      <div class="bairros-cta reveal d5" style="grid-column:span 2">
+        <h3>Sua rua tem cobertura? 🎉</h3>
+        <p>Digite seu bairro e a gente confirma — e já te apresenta as melhores opções.</p>
+        <div class="cob-row">
+          <input type="text" class="cob-inp" id="bairroInput" placeholder="Ex: Centro, Marambaia, Praia Azul..." inputmode="search">
+          <button class="cob-btn" onclick="verificar()"><i class="fas fa-search"></i> Verificar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     DEPOIMENTOS
+     ================================================================ -->
+<section class="depos">
+  <div class="section-wrap">
     <div class="depos-header reveal">
-      <div class="section-tag"><i class="fas fa-star"></i> Depoimentos</div>
-      <div class="depos-rating-row">
-        <span class="stars">★★★★★</span>
-        <div class="rating-num">4.9</div>
+      <div class="section-tag"><i class="fas fa-star"></i> O que dizem nossos clientes</div>
+      <div class="depos-rating">
+        <span class="depos-stars">★★★★★</span>
+        <span class="depos-rating-num">4.9</span>
+        <span class="depos-rating-label">· 127 avaliações no Google</span>
       </div>
-      <p style="font-size:14px;color:var(--muted)">Avaliação média dos nossos clientes</p>
+      <p style="font-size:13px;color:var(--muted2)">Avaliações reais de moradores de Arroio do Sal</p>
     </div>
     <div class="depos-grid">
-      <div class="depo-card reveal">
+      <div class="depo-card reveal d1">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Nunca tive problema de queda de sinal. E quando precisei de suporte, um técnico foi na minha casa no mesmo dia. Não esperava tanto de um provedor local!"</p>
+        <p class="depo-text">"Nunca tive problema de queda. E quando precisei de suporte, um técnico foi na minha casa no mesmo dia. Não esperava tanto atendimento de um provedor local!"</p>
+        <div class="depo-divider"></div>
         <div class="depo-author">
           <div class="depo-av" style="background:var(--azul)">MR</div>
           <div>
-            <div class="depo-name">Maria Rosa</div>
-            <div class="depo-local">Centro, Arroio do Sal</div>
+            <div class="depo-name">Maria Rosa S.</div>
+            <div class="depo-loc">Centro, Arroio do Sal</div>
+            <div class="depo-source"><i class="fab fa-google"></i> Google Reviews</div>
           </div>
         </div>
       </div>
-      <div class="depo-card reveal delay-1">
+      <div class="depo-card reveal d2">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Sou veranista e contratei no começo da temporada. Instalaram em dois dias e funcionou perfeitamente — streamings, videochamadas, sem nenhum problema!"</p>
+        <p class="depo-text">"Veranista aqui. Contratei no começo da temporada e foi a melhor decisão. Instalaram em dois dias, funcionou perfeitamente — streaming, home office, sem problema!"</p>
+        <div class="depo-divider"></div>
         <div class="depo-author">
           <div class="depo-av" style="background:#16a34a">CP</div>
           <div>
             <div class="depo-name">Carlos Pinheiro</div>
-            <div class="depo-local">Praia Azul (temporadista)</div>
+            <div class="depo-loc">Praia Azul (temporadista)</div>
+            <div class="depo-source"><i class="fab fa-google"></i> Google Reviews</div>
           </div>
         </div>
       </div>
-      <div class="depo-card reveal delay-2">
+      <div class="depo-card reveal d3">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Tenho comércio no centro e a Conecte nunca me deixou na mão. Atendem pelo WhatsApp mesmo fora do horário. Isso é completamente diferente de tudo que já usei."</p>
+        <p class="depo-text">"Tenho comércio no centro e a Conecte nunca me deixou na mão. Atendem no WhatsApp mesmo fora do horário. Isso é completamente diferente de tudo que já usei."</p>
+        <div class="depo-divider"></div>
         <div class="depo-author">
           <div class="depo-av" style="background:#ea580c">AS</div>
           <div>
             <div class="depo-name">Ana Silva</div>
-            <div class="depo-local">Comércio, Centro</div>
+            <div class="depo-loc">Comércio, Centro</div>
+            <div class="depo-source"><i class="fab fa-google"></i> Google Reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- micro CTA -->
+    <div style="text-align:center;margin-top:36px" class="reveal">
+      <p style="font-size:15px;color:var(--muted);margin-bottom:16px">Mais de 1.000 famílias já conectadas. Seja a próxima.</p>
+      <a href="https://wa.me/555199999999?text=Quero+contratar+a+Conecte+Telecom!" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fab fa-whatsapp"></i> Falar com a equipe</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VERANISTAS
+     ================================================================ -->
+<section class="veranistas">
+  <div class="ver-orb-a"></div>
+  <div class="ver-orb-b"></div>
+  <div class="section-wrap">
+    <div class="ver-inner">
+      <div class="ver-left reveal from-left">
+        <div class="section-tag light"><i class="fas fa-umbrella-beach"></i> Para veranistas</div>
+        <h2 class="section-title" style="color:white">Veranista, bem-vindo<br>ao Sal! 🌊</h2>
+        <p class="section-sub">Você vem curtir o verão em Arroio do Sal e quer internet boa na casa de praia? A gente instala rápido e atende sem burocracia — mesma qualidade de sempre.</p>
+        <div class="ver-checks">
+          <div class="ver-check"><i class="fas fa-check-circle"></i> Instalação ágil, mesmo na alta temporada</div>
+          <div class="ver-check"><i class="fas fa-check-circle"></i> Planos flexíveis para temporadistas</div>
+          <div class="ver-check"><i class="fas fa-check-circle"></i> Rede estável mesmo com a cidade cheia</div>
+          <div class="ver-check"><i class="fas fa-check-circle"></i> Atendimento sem fila, sem robô</div>
+          <div class="ver-check"><i class="fas fa-check-circle"></i> Funciona em casas, chalés e apartamentos</div>
+        </div>
+        <a href="https://wa.me/555199999999?text=Estou+de+temporada+em+Arroio+do+Sal+e+preciso+de+internet!+Podem+me+ajudar?" target="_blank" rel="noopener" class="btn-primary"><i class="fab fa-whatsapp"></i> Quero internet pra temporada</a>
+      </div>
+      <div class="reveal from-right d1">
+        <div class="ver-photo">
+          <div class="ver-photo-icon">🏖️</div>
+          <div class="ver-photo-label">[ Foto da praia de<br>Arroio do Sal aqui ]</div>
+          <div class="ver-photo-badge"><i class="fas fa-map-pin"></i> Arroio do Sal — RS</div>
+          <div class="ver-photo-corner">🌊<br>Verão<br>conectado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     LOCALIZAÇÃO
+     ================================================================ -->
+<section class="localizacao" id="localizacao">
+  <div class="section-wrap">
+    <div class="loc-inner">
+      <div class="loc-left reveal from-left">
+        <div class="section-tag"><i class="fas fa-map-marker-alt"></i> Nossa localização</div>
+        <h2 class="section-title">Venha nos<br>conhecer</h2>
+        <div class="loc-info">
+          <div class="loc-item">
+            <div class="loc-ico azul"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="loc-item-text">
+              <h5>Endereço</h5>
+              <p>Rua Paulista, 183 — Centro<br>Arroio do Sal — RS</p>
+            </div>
+          </div>
+          <div class="loc-item">
+            <div class="loc-ico verde"><i class="fab fa-whatsapp"></i></div>
+            <div class="loc-item-text">
+              <h5>WhatsApp</h5>
+              <p><a href="https://wa.me/555199999999" target="_blank" rel="noopener">(51) 9 9999-9999</a> — Respondemos todos os dias</p>
+            </div>
+          </div>
+          <div class="loc-item">
+            <div class="loc-ico amarelo"><i class="fas fa-clock"></i></div>
+            <div class="loc-item-text">
+              <h5>Horário de atendimento</h5>
+              <p>Segunda a Domingo, das 8h às 22h<br>Suporte técnico 7 dias por semana</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Rua+Paulista+183+Centro+Arroio+do+Sal+RS" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fas fa-directions"></i> Ver rotas no Google Maps</a>
+      </div>
+      <div class="reveal from-right d1">
+        <div class="loc-map">
+          <div class="loc-map-overlay">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Rua Paulista, 183<br>Centro · Arroio do Sal</p>
+            <a href="https://maps.google.com/?q=Rua+Paulista+183+Centro+Arroio+do+Sal+RS" target="_blank" rel="noopener"><i class="fas fa-directions"></i> Abrir no Google Maps</a>
           </div>
         </div>
       </div>
@@ -2006,113 +1745,130 @@ footer {
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
+<!-- ================================================================
+     FAQ
+     ================================================================ -->
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-header reveal">
       <div class="section-tag"><i class="fas fa-question-circle"></i> Perguntas frequentes</div>
+      <!-- Mascote no FAQ -->
+      <div class="faq-mascote">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;animation:floatY 4s ease-in-out infinite;filter:drop-shadow(0 8px 24px rgba(10,126,226,.35))">
+          <defs>
+            <radialGradient id="fbg" cx="45%" cy="38%" r="60%"><stop offset="0%" stop-color="#1a9af5"/><stop offset="100%" stop-color="#0563b8"/></radialGradient>
+          </defs>
+          <ellipse cx="60" cy="66" rx="40" ry="34" fill="url(#fbg)"/>
+          <ellipse cx="60" cy="72" rx="26" ry="22" fill="rgba(255,255,255,.15)"/>
+          <path d="M20,58 Q30,38 45,50" fill="url(#fbg)"/>
+          <path d="M42,24 Q46,8 54,20" fill="url(#fbg)"/>
+          <g transform="translate(45,54)">
+            <circle r="8" fill="#0d1f3a"/>
+            <circle cx="2" cy="-2" r="3" fill="white" opacity=".9"/>
+          </g>
+          <path d="M30,70 Q36,80 42,77" stroke="rgba(255,255,255,.55)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <g opacity=".5" transform="translate(72,44)">
+            <path d="M-8,4 Q0,-7 8,4" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"><animate attributeName="opacity" values="1;.3;1" dur="1.8s" repeatCount="indefinite"/></path>
+            <circle cy="9" r="2.5" fill="white"><animate attributeName="opacity" values="1;.3;1" dur="1.8s" repeatCount="indefinite" begin=".2s"/></circle>
+          </g>
+        </svg>
+      </div>
       <h2 class="section-title">Sem mistério,<br>sem letra miúda</h2>
-      <p class="section-sub" style="margin:0 auto">Se a gente não respondeu aqui, é só chamar no WhatsApp 😊</p>
+      <p class="section-sub" style="margin:0 auto;max-width:480px">Se a gente não respondeu aqui, é só chamar no WhatsApp 😊</p>
     </div>
+
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>A instalação custa alguma coisa?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Não! A instalação é totalmente gratuita. O roteador também fica em comodato — fica com você sem custo enquanto você for nosso cliente.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Vou ter que pagar pela instalação?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Não! A instalação é 100% gratuita. O roteador fica em comodato — sem custo adicional enquanto você for nosso cliente.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>A internet é realmente fibra óptica?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Sim! 100% fibra óptica de ponta a ponta. Nada de cabo coaxial misturado — fibra pura, com a qualidade e estabilidade que só a fibra entrega.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>A internet é realmente fibra óptica?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Sim, 100% fibra óptica de ponta a ponta — sem cabo coaxial misturado. Isso garante estabilidade e a velocidade que você contratou chegando de verdade.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Tem fidelidade? E se eu quiser cancelar?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses. Mas a gente acredita tanto no serviço que não precisamos prender ninguém — se quiser cancelar, a conversa é sem burocracia.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Tem fidelidade? E se eu quiser cancelar?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses. Mas a gente acredita tanto no serviço que não precisa prender ninguém — se quiser cancelar, a conversa é direta e sem burocracia.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Meu bairro tem cobertura?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Atendemos do Loteamento Esmeralda até a Praia Azul, incluindo mais de 30 bairros. Confira a seção de cobertura acima ou mande mensagem pelo WhatsApp para confirmar!</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Vocês chegam até a minha rua?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Atendemos mais de 30 bairros em Arroio do Sal — do Loteamento Esmeralda à Praia Azul. Verifique na seção de cobertura acima ou mande mensagem no WhatsApp para confirmar.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Sou veranista. Posso contratar por temporada?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Sim! Temos opções pensadas para temporadistas. Fala com a gente no WhatsApp que a gente te apresenta a melhor alternativa — sem enrolação.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Sou veranista. Posso contratar por temporada?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Sim! Temos opções pensadas para temporadistas. Fala com a gente no WhatsApp — sem formulário, sem espera. A gente te apresenta o melhor plano pro seu caso.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>O suporte tem horário fixo?</span>
-          <div class="fi"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Atendemos 7 dias por semana. Não é robô, não é fila de 0800 — é alguém da cidade que te responde pelo WhatsApp, de verdade.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>E se der problema num domingo?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Atendemos 7 dias por semana. Não é robô, não é fila de 0800 — é alguém da cidade, que te responde pelo WhatsApp, de verdade. Sem deixar você na mão no final de semana.</p></div>
       </div>
+    </div>
+
+    <div class="faq-cta-inline reveal">
+      <p>Ainda ficou com dúvida? A gente responde na hora.</p>
+      <a href="https://wa.me/555199999999?text=Tenho+uma+dúvida+sobre+a+Conecte+Telecom!" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fab fa-whatsapp"></i> Perguntar no WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA FINAL ===================== -->
+<!-- ================================================================
+     CTA FINAL
+     ================================================================ -->
 <section class="cta-final">
-  <div class="cta-final-orb"></div>
-  <div class="cta-final-inner reveal">
-    <div class="section-tag"><i class="fas fa-wifi"></i> Pronto pra conectar?</div>
+  <div class="cta-orb"></div>
+  <div class="cta-grain"></div>
+  <div class="cta-inner section-wrap reveal">
+    <div class="section-tag light"><i class="fas fa-wifi"></i> Pronto pra conectar?</div>
     <h2>Internet que você<br>merece, de <span class="hl">verdade</span></h2>
-    <p class="bordao-line"><strong>É mais que internet, é Conecte!</strong></p>
-    <p>Fala com a gente agora. Sem formulário, sem fila, sem robô. Um atendente local te responde e já te apresenta as melhores opções.</p>
+    <p class="cta-bordao"><strong>"É mais que internet, é Conecte!"</strong></p>
+    <p>Sem formulário, sem fila, sem robô. Um atendente local te responde agora e te apresenta as melhores opções.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/555199999999?text=Quero contratar a Conecte Telecom!" target="_blank" class="btn-hero-primary" style="font-size:17px;padding:18px 36px">
-        <i class="fab fa-whatsapp"></i> Falar no WhatsApp agora
-      </a>
-      <a href="#planos" class="btn-hero-glass" style="font-size:17px;padding:18px 36px">
-        <i class="fas fa-wifi"></i> Ver todos os planos
-      </a>
+      <a href="https://wa.me/555199999999?text=Quero+contratar+a+Conecte+Telecom!+Podem+me+passar+as+opções?" target="_blank" rel="noopener" class="btn-primary" style="font-size:17px;padding:18px 36px"><i class="fab fa-whatsapp"></i> Falar no WhatsApp agora</a>
+      <a href="#planos" class="btn-glass" style="font-size:17px;padding:18px 36px"><i class="fas fa-wifi"></i> Ver planos</a>
+    </div>
+    <div class="cta-online">
+      <div class="dot"></div>
+      Equipe online · Respondemos em minutos
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <div class="footer-logo-wrap">
-        <div class="footer-logo-icon"><i class="fas fa-wifi"></i></div>
-        <span class="footer-logo-text">Conecte<span>.</span></span>
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark"><i class="fas fa-wifi"></i></div>
+        <span class="footer-logo-name">Conecte<span>.</span></span>
       </div>
-      <p class="footer-desc">Provedor regional de internet fibra óptica em Arroio do Sal — RS. Empresa criada por moradores, para moradores.</p>
+      <p class="footer-desc">Provedor regional de internet 100% fibra óptica em Arroio do Sal — RS. Criado por moradores, para moradores.</p>
       <p class="footer-bordao">"É mais que internet, é Conecte!"</p>
       <div class="footer-socials">
-        <a href="#" class="fsocial"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="fsocial"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/555199999999" target="_blank" class="fsocial"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="fsoc" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/" target="_blank" rel="noopener" class="fsoc" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/555199999999" target="_blank" rel="noopener" class="fsoc" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <div class="footer-col">
       <h5>Navegação</h5>
       <ul class="footer-links">
-        <li><a href="#bairros">Cobertura</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
         <li><a href="#planos">Planos</a></li>
         <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#localizacao">Localização</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Planos</h5>
       <ul class="footer-links">
-        <li><a href="#">60 Mbps — R$89,90</a></li>
-        <li><a href="#">300 Mbps — R$99,90</a></li>
-        <li><a href="#">500 Mbps — R$109,90</a></li>
-        <li><a href="#">600 Mbps — R$119,90</a></li>
-        <li><a href="#">800 Mbps — R$149,90</a></li>
+        <li><a href="https://wa.me/555199999999?text=Interesse+60+Mbps">60 Mbps — R$89,90</a></li>
+        <li><a href="https://wa.me/555199999999?text=Interesse+300+Mbps">300 Mbps — R$99,90</a></li>
+        <li><a href="https://wa.me/555199999999?text=Interesse+500+Mbps">500 Mbps — R$109,90 ⭐</a></li>
+        <li><a href="https://wa.me/555199999999?text=Interesse+600+Mbps">600 Mbps — R$119,90</a></li>
+        <li><a href="https://wa.me/555199999999?text=Interesse+800+Mbps">800 Mbps — R$149,90</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -2120,6 +1876,7 @@ footer {
       <ul class="footer-links">
         <li><a href="https://wa.me/555199999999">(51) 9 9999-9999</a></li>
         <li><a href="mailto:contato@conecte.net.br">contato@conecte.net.br</a></li>
+        <li><a href="https://maps.google.com/?q=Rua+Paulista+183+Arroio+do+Sal" target="_blank" rel="noopener">Rua Paulista, 183 — Centro</a></li>
         <li><a href="#">Arroio do Sal — RS</a></li>
       </ul>
     </div>
@@ -2127,7 +1884,7 @@ footer {
   <div class="footer-bottom">
     <div>
       <div>© 2026 Conecte Telecom. Todos os direitos reservados.</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:3px">CNPJ: 00.000.000/0001-00 · Registrado na ANATEL</div>
+      <div class="footer-anatel">CNPJ: 00.000.000/0001-00 · Registrado na ANATEL · Provedor autorizado</div>
     </div>
     <div style="display:flex;gap:16px">
       <a href="#">Privacidade</a>
@@ -2136,85 +1893,114 @@ footer {
   </div>
 </footer>
 
-<!-- FLOATING WPP -->
+<!-- ================================================================
+     FLOATING WPP
+     ================================================================ -->
 <div class="wpp-fab">
   <div class="wpp-tip">Fale conosco agora!</div>
-  <a href="https://wa.me/555199999999" target="_blank">
-    <div class="wpp-pulse"></div>
+  <a href="https://wa.me/555199999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <div class="wpp-ring"></div>
     <i class="fab fa-whatsapp"></i>
   </a>
 </div>
 
-<!-- ===================== JS ===================== -->
+<!-- ================================================================
+     MOBILE STICKY BAR
+     ================================================================ -->
+<div class="mobile-bar">
+  <a href="tel:+555199999999" class="mob-bar-btn mob-bar-tel"><i class="fas fa-phone"></i> Ligar</a>
+  <a href="https://wa.me/555199999999?text=Quero+saber+mais+sobre+a+Conecte+Telecom!" target="_blank" rel="noopener" class="mob-bar-btn mob-bar-wpp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
 <script>
-/* Nav scroll */
+/* Progress bar */
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  const doc = document.documentElement;
+  const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('nav').classList.toggle('scrolled', doc.scrollTop > 60);
 });
 
 /* Mobile menu */
-function openMobile() {
-  document.getElementById('mobileOverlay').classList.add('open');
-  document.getElementById('mobilePanel').classList.add('open');
+function openMob() {
+  document.getElementById('mobOverlay').classList.add('open');
+  document.getElementById('mobPanel').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeMobile() {
-  document.getElementById('mobileOverlay').classList.remove('open');
-  document.getElementById('mobilePanel').classList.remove('open');
+function closeMob() {
+  document.getElementById('mobOverlay').classList.remove('open');
+  document.getElementById('mobPanel').classList.remove('open');
   document.body.style.overflow = '';
 }
 
 /* FAQ */
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
+  const open = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  if (!open) item.classList.add('open');
 }
 
 /* Cobertura */
-function verificarCobertura() {
+function verificar() {
   const b = document.getElementById('bairroInput').value.trim();
-  if (!b) { alert('Por favor, digite seu bairro ou cidade.'); return; }
-  window.open('https://wa.me/555199999999?text=' + encodeURIComponent('Olá! Quero saber se vocês atendem no bairro/região: ' + b), '_blank');
+  if (!b) { document.getElementById('bairroInput').focus(); return; }
+  window.open('https://wa.me/555199999999?text=' +
+    encodeURIComponent('Olá! Gostaria de saber se vocês atendem no bairro: ' + b + '. Podem me confirmar?'), '_blank');
 }
-document.getElementById('bairroInput').addEventListener('keypress', e => {
-  if (e.key === 'Enter') verificarCobertura();
-});
+document.getElementById('bairroInput').addEventListener('keydown', e => { if (e.key === 'Enter') verificar(); });
 
 /* Scroll reveal */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0, rootMargin: '0px 0px -72px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-/* Planos hero drag scroll */
-const scroll = document.getElementById('planosScroll');
-let isDown = false, startX, scrollLeft;
-scroll.addEventListener('mousedown', e => {
-  isDown = true; scroll.classList.add('grabbing');
-  startX = e.pageX - scroll.offsetLeft;
-  scrollLeft = scroll.scrollLeft;
-});
-scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('grabbing'); });
-scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('grabbing'); });
-scroll.addEventListener('mousemove', e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - scroll.offsetLeft;
-  scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
-});
+/* Counter animation */
+function animateCount(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const dur = 1800;
+  const step = 16;
+  const steps = Math.ceil(dur / step);
+  let current = 0;
+  const inc = target / steps;
+  const timer = setInterval(() => {
+    current += inc;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = (target >= 1000 ? '+' + Math.round(current).toLocaleString('pt-BR') : Math.round(current)) + suffix;
+  }, step);
+}
 
-/* Auto-scroll hero plans to destaque on load */
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.target) {
+      animateCount(e.target);
+      countObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));
+
+/* Replace Google Maps overlay with iframe if allowed */
+/* Uncomment when embed key is available:
 window.addEventListener('load', () => {
-  const destaque = scroll.querySelector('.destaque');
-  if (destaque) {
-    setTimeout(() => {
-      const offset = destaque.offsetLeft - (scroll.clientWidth / 2) + (destaque.offsetWidth / 2);
-      scroll.scrollTo({ left: offset, behavior: 'smooth' });
-    }, 800);
-  }
+  const mapDiv = document.querySelector('.loc-map');
+  const overlay = mapDiv.querySelector('.loc-map-overlay');
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://maps.google.com/maps?q=Rua+Paulista+183+Arroio+do+Sal+RS&output=embed';
+  iframe.loading = 'lazy';
+  iframe.referrerPolicy = 'no-referrer-when-downgrade';
+  overlay.style.display = 'none';
+  mapDiv.appendChild(iframe);
 });
+*/
 </script>
 </body>
 </html>
