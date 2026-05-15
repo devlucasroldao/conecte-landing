@@ -3,1679 +3,1999 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conecte Telecom — Fibra de Verdade em Arroio do Sal</title>
+<title>Conecte Telecom — É mais que internet, é Conecte!</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
-  :root {
-    --azul: #0a7ee2;
-    --azul-dark: #0563b8;
-    --azul-light: #e8f4fd;
-    --amarelo: #ffde59;
-    --amarelo-dark: #e6c700;
-    --areia: #fef9ef;
-    --areia2: #f5efe0;
-    --texto: #111827;
-    --muted: #6b7280;
-    --branco: #ffffff;
-    --radius: 20px;
-    --radius-sm: 12px;
-  }
+/* ============================================================
+   DESIGN SYSTEM
+   ============================================================ */
+:root {
+  --azul:        #0a7ee2;
+  --azul-mid:    #0563b8;
+  --azul-dark:   #03407a;
+  --azul-glow:   rgba(10,126,226,0.35);
+  --amarelo:     #ffde59;
+  --amarelo-dk:  #e6c400;
+  --verde:       #22c55e;
+  --texto:       #0d1117;
+  --muted:       #6b7280;
+  --muted2:      #9ca3af;
+  --surface:     #f8fafc;
+  --surface2:    #f1f5f9;
+  --branco:      #ffffff;
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Glass */
+  --glass-bg:    rgba(255,255,255,0.08);
+  --glass-border:rgba(255,255,255,0.14);
+  --glass-blur:  blur(20px);
 
-  html { scroll-behavior: smooth; }
+  /* Radius */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-full: 9999px;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    color: var(--texto);
-    background: var(--branco);
-    overflow-x: hidden;
-  }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
 
-  h1, h2, h3, h4, .display {
-    font-family: 'Syne', sans-serif;
-  }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  color: var(--texto);
+  background: var(--branco);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ========= ANIMATIONS ========= */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(32px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  @keyframes pulse-ring {
-    0% { transform: scale(0.9); opacity: 0.7; }
-    70% { transform: scale(1.3); opacity: 0; }
-    100% { transform: scale(1.3); opacity: 0; }
-  }
-  @keyframes wave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-24px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+@keyframes floatA   { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-14px) rotate(1deg)} }
+@keyframes floatB   { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(-1deg)} }
+@keyframes floatC   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes pulseRing{ 0%{transform:scale(.9);opacity:.7} 70%{transform:scale(1.35);opacity:0} 100%{transform:scale(1.35);opacity:0} }
+@keyframes glow     { 0%,100%{box-shadow:0 0 30px var(--azul-glow)} 50%{box-shadow:0 0 60px var(--azul-glow),0 0 100px rgba(10,126,226,0.15)} }
+@keyframes shimmer  { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:.35} }
+@keyframes slideLeft{ from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:translateX(0)} }
+@keyframes wave     { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes orb1     { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,-30px) scale(1.08)} 66%{transform:translate(-20px,20px) scale(.95)} }
+@keyframes orb2     { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,40px) scale(1.05)} 66%{transform:translate(30px,-20px) scale(.98)} }
 
-  .animate-fadeup { animation: fadeUp 0.7s ease both; }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-5 { animation-delay: 0.5s; }
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal.delay-1 { transition-delay:.1s; }
+.reveal.delay-2 { transition-delay:.2s; }
+.reveal.delay-3 { transition-delay:.3s; }
 
-  /* ========= NAV ========= */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(10,126,226,0.08);
-    transition: all 0.3s ease;
-  }
-  nav.scrolled {
-    padding: 12px 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--texto);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-logo span { color: var(--azul); }
-  .nav-logo .dot {
-    width: 8px; height: 8px;
-    background: var(--amarelo);
-    border-radius: 50%;
-    animation: blink 2s ease infinite;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--azul); }
-  .nav-cta {
-    background: var(--azul);
-    color: white !important;
-    padding: 10px 20px;
-    border-radius: 100px;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    transition: all 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--azul-dark) !important; transform: translateY(-1px); }
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all .4s cubic-bezier(.4,0,.2,1);
+}
+#nav.scrolled {
+  padding: 14px 32px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+}
 
-  /* Mobile nav */
-  .nav-mobile-btn {
-    display: none;
-    background: none;
-    border: 1.5px solid rgba(0,0,0,0.15);
-    border-radius: 8px;
-    padding: 8px 10px;
-    cursor: pointer;
-    font-size: 18px;
-    color: var(--texto);
-  }
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: white;
-    z-index: 200;
-    padding: 24px;
-    flex-direction: column;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-  }
-  .mobile-menu-close {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--texto);
-    padding: 8px;
-  }
-  .mobile-menu-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1;
-  }
-  .mobile-menu-links a {
-    display: block;
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--texto);
-    text-decoration: none;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    transition: color 0.2s;
-  }
-  .mobile-menu-links a:hover { color: var(--azul); }
-  .mobile-menu-bottom {
-    padding-bottom: 16px;
-  }
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 38px; height: 38px;
+  background: var(--azul);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: white;
+  box-shadow: 0 4px 12px var(--azul-glow);
+  transition: transform .2s;
+}
+.nav-logo:hover .nav-logo-icon { transform: scale(1.08) rotate(-4deg); }
+.nav-logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -.3px;
+  transition: color .3s;
+}
+#nav.scrolled .nav-logo-text { color: var(--texto); }
+.nav-logo-text span { color: var(--amarelo); }
+#nav.scrolled .nav-logo-text span { color: var(--azul); }
 
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-mobile-btn { display: block; }
-  }
+.nav-links {
+  display: flex; align-items: center; gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  transition: all .2s;
+}
+.nav-links a:hover { color: white; background: rgba(255,255,255,.1); }
+#nav.scrolled .nav-links a { color: var(--muted); }
+#nav.scrolled .nav-links a:hover { color: var(--texto); background: var(--surface); }
 
-  /* ========= HERO ========= */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, #0a1628 0%, #0a2d5a 40%, #0a5aad 75%, #1a7dd8 100%);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 80px;
-  }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-cobertura {
+  font-size: 13px; font-weight: 600;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,.3);
+  padding: 9px 18px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  transition: all .2s;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,.06);
+}
+.nav-cobertura:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.5); }
+#nav.scrolled .nav-cobertura { color: var(--azul); border-color: var(--azul); background: transparent; }
+#nav.scrolled .nav-cobertura:hover { background: rgba(10,126,226,.05); }
 
-  /* Ondas decorativas */
-  .hero-waves {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 180px;
-    overflow: hidden;
-  }
-  .wave-svg {
-    width: 200%;
-    height: 100%;
-    animation: wave 8s linear infinite;
-  }
-  .wave-svg-2 {
-    position: absolute;
-    bottom: 0;
-    width: 200%;
-    height: 100%;
-    animation: wave 12s linear infinite reverse;
-    opacity: 0.5;
-  }
+.nav-wpp {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 700;
+  background: #25D366;
+  color: white;
+  padding: 9px 18px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  transition: all .2s;
+  box-shadow: 0 4px 14px rgba(37,211,102,.3);
+}
+.nav-wpp:hover { background: #1ebe5d; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,.4); }
 
-  /* Efeito de estrelas/pontos */
-  .hero-dots {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image:
-      radial-gradient(circle, rgba(255,222,89,0.15) 1px, transparent 1px),
-      radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 60px 60px, 30px 30px;
-    background-position: 0 0, 15px 15px;
-  }
+.nav-hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 8px;
+  background: rgba(255,255,255,.1);
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,.2);
+  transition: all .2s;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px; height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all .3s;
+}
+#nav.scrolled .nav-hamburger { background: var(--surface); border-color: rgba(0,0,0,.1); }
+#nav.scrolled .nav-hamburger span { background: var(--texto); }
+.nav-hamburger:hover { background: rgba(255,255,255,.18); }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 24px 140px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 60px;
-  }
+/* Mobile menu */
+.mobile-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 300;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(4px);
+  animation: fadeIn .3s ease;
+}
+.mobile-overlay.open { display: block; }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,222,89,0.15);
-    border: 1px solid rgba(255,222,89,0.3);
-    color: var(--amarelo);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-  }
-  .hero-badge i { font-size: 12px; }
+.mobile-panel {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(380px, 90vw);
+  background: white;
+  z-index: 301;
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+  padding: 0;
+  box-shadow: -8px 0 40px rgba(0,0,0,.15);
+}
+.mobile-panel.open { transform: translateX(0); }
 
-  .hero-title {
-    font-size: clamp(42px, 6vw, 72px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.05;
-    margin-bottom: 20px;
-  }
-  .hero-title .highlight {
-    color: var(--amarelo);
-    position: relative;
-    display: inline-block;
-  }
-  .hero-subtitle {
-    font-size: 18px;
-    color: rgba(255,255,255,0.72);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-  .hero-ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 48px;
-  }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--amarelo);
-    color: #111827;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 16px 28px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-primary:hover {
-    background: var(--amarelo-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255,222,89,0.35);
-  }
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 16px 28px;
-    border-radius: 100px;
-    text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    transition: all 0.2s;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
-  }
-  .btn-secondary:hover {
-    background: rgba(255,255,255,0.18);
-    border-color: rgba(255,255,255,0.4);
-    transform: translateY(-2px);
-  }
-  .btn-wpp {
-    background: #25D366;
-    color: white;
-    border-color: #25D366;
-  }
-  .btn-wpp:hover {
-    background: #1ebe5d;
-    border-color: #1ebe5d;
-    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
-  }
+.mobile-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.mobile-close {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--muted);
+  cursor: pointer; border: none;
+  transition: all .2s;
+}
+.mobile-close:hover { background: var(--surface2); color: var(--texto); }
 
-  .hero-stats {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .hero-stat {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.7);
-    font-size: 14px;
-  }
-  .hero-stat i { color: #4ade80; font-size: 14px; }
+.mobile-nav-links {
+  list-style: none;
+  padding: 16px;
+  flex: 1;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mobile-nav-links a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  font-size: 16px; font-weight: 600;
+  color: var(--texto);
+  text-decoration: none;
+  transition: all .2s;
+}
+.mobile-nav-links a:hover { background: var(--surface); color: var(--azul); }
+.mobile-nav-links a i { width: 20px; text-align: center; color: var(--azul); }
 
-  /* Hero visual */
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .speed-card {
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 28px;
-    padding: 32px;
-    text-align: center;
-    width: 280px;
-    animation: float 4s ease-in-out infinite;
-  }
-  .speed-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 80px;
-    font-weight: 800;
-    color: white;
-    line-height: 1;
-  }
-  .speed-unit {
-    font-size: 22px;
-    color: var(--amarelo);
-    font-weight: 600;
-    font-family: 'Syne', sans-serif;
-  }
-  .speed-label {
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    margin-top: 8px;
-  }
-  .speed-bar-wrap {
-    margin-top: 20px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 100px;
-    height: 6px;
-    overflow: hidden;
-  }
-  .speed-bar {
-    height: 100%;
-    width: 85%;
-    background: linear-gradient(90deg, var(--azul), var(--amarelo));
-    border-radius: 100px;
-    animation: grow 2.5s ease both;
-  }
-  @keyframes grow {
-    from { width: 0%; }
-    to { width: 85%; }
-  }
+.mobile-panel-footer {
+  padding: 20px 24px 32px;
+  display: flex; flex-direction: column; gap: 10px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
 
-  /* Mini cards flutuantes */
-  .mini-card {
-    position: absolute;
-    background: rgba(255,255,255,0.95);
-    border-radius: 16px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--texto);
-    white-space: nowrap;
-  }
-  .mini-card .icon {
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-  }
-  .mc-1 { top: -10px; right: -40px; animation: float 5s ease-in-out infinite 1s; }
-  .mc-2 { bottom: 30px; left: -50px; animation: float 6s ease-in-out infinite 0.5s; }
+@media (max-width: 920px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cobertura { display: none; }
+}
+@media (max-width: 600px) {
+  #nav { padding: 16px 20px; }
+  #nav.scrolled { padding: 12px 20px; }
+}
 
-  @media (max-width: 900px) {
-    .hero-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 40px;
-    }
-    .hero-ctas { justify-content: center; }
-    .hero-stats { justify-content: center; }
-    .hero-visual { display: none; }
-  }
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(150deg,
+    #060d1a 0%,
+    #091f47 25%,
+    #0a4090 55%,
+    #0a7ee2 80%,
+    #1a9af5 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-  /* ========= SEÇÃO COBERTURA ========= */
-  .cobertura {
-    background: var(--areia);
-    padding: 80px 24px;
-  }
-  .cobertura-inner {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .section-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(10,126,226,0.1);
-    color: var(--azul);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .section-title {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .section-sub {
-    font-size: 17px;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
+/* Orbs de fundo */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+}
+.orb1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(10,126,226,.5) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation: orb1 12s ease-in-out infinite;
+}
+.orb2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,222,89,.2) 0%, transparent 70%);
+  bottom: 100px; left: -80px;
+  animation: orb2 15s ease-in-out infinite;
+}
+.orb3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(34,197,94,.15) 0%, transparent 70%);
+  top: 40%; left: 30%;
+  animation: orb1 10s ease-in-out infinite 3s;
+}
 
-  .cobertura-input-wrap {
-    display: flex;
-    gap: 12px;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-  .cobertura-input {
-    flex: 1;
-    padding: 16px 20px;
-    border: 1.5px solid rgba(0,0,0,0.12);
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: var(--texto);
-    background: white;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .cobertura-input:focus { border-color: var(--azul); }
-  .cobertura-input::placeholder { color: #aaa; }
-  .btn-check {
-    background: var(--azul);
-    color: white;
-    border: none;
-    border-radius: 100px;
-    padding: 16px 28px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .btn-check:hover {
-    background: var(--azul-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(10,126,226,0.3);
-  }
+/* Grid de pontos */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
 
-  .cobertura-bairros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 24px;
-  }
-  .bairro-tag {
-    background: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 13px;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .bairro-tag:hover {
-    border-color: var(--azul);
-    color: var(--azul);
-    background: var(--azul-light);
-  }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 140px 32px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
 
-  @media (max-width: 600px) {
-    .cobertura-input-wrap { flex-direction: column; border-radius: 20px; }
-    .cobertura-input, .btn-check { border-radius: 100px; }
-  }
+/* Badge */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(12px);
+  color: rgba(255,255,255,.9);
+  font-size: 13px; font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  margin-bottom: 28px;
+  animation: fadeUp .6s ease both;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px;
+  background: var(--verde);
+  border-radius: 50%;
+  animation: blink 2s ease infinite;
+}
 
-  /* ========= DIFERENCIAIS ========= */
-  .diferenciais {
-    padding: 100px 24px;
-    background: white;
-  }
-  .diferenciais-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .diferenciais-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: end;
-    margin-bottom: 64px;
-  }
-  .diferenciais-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .dif-card {
-    background: var(--areia);
-    border-radius: 24px;
-    padding: 32px 28px;
-    transition: all 0.3s;
-    cursor: default;
-    border: 1.5px solid transparent;
-  }
-  .dif-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--azul);
-    background: white;
-    box-shadow: 0 16px 48px rgba(10,126,226,0.1);
-  }
-  .dif-icon {
-    width: 52px; height: 52px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  .dif-icon.azul { background: rgba(10,126,226,0.1); color: var(--azul); }
-  .dif-icon.amarelo { background: rgba(255,222,89,0.2); color: #c49a00; }
-  .dif-icon.verde { background: rgba(74,222,128,0.15); color: #16a34a; }
-  .dif-icon.laranja { background: rgba(249,115,22,0.1); color: #ea580c; }
-  .dif-icon.roxo { background: rgba(139,92,246,0.1); color: #7c3aed; }
-  .dif-icon.rosa { background: rgba(236,72,153,0.1); color: #db2777; }
-  .dif-card h4 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .dif-card p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .dif-card .number {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--azul);
-    margin-bottom: 4px;
-  }
+/* Headline */
+.hero-title {
+  font-size: clamp(44px, 7vw, 88px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+  animation: fadeUp .7s ease both .1s;
+  max-width: 900px;
+}
+.hero-title .hl {
+  background: linear-gradient(135deg, var(--amarelo) 0%, #ffa500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-  @media (max-width: 900px) {
-    .diferenciais-header { grid-template-columns: 1fr; gap: 24px; }
-    .diferenciais-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 600px) {
-    .diferenciais-grid { grid-template-columns: 1fr; }
-  }
+/* Bordão */
+.hero-bordao {
+  font-size: clamp(14px, 2vw, 18px);
+  color: rgba(255,255,255,.55);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 36px;
+  animation: fadeUp .7s ease both .2s;
+  letter-spacing: .3px;
+}
+.hero-bordao strong { color: rgba(255,255,255,.8); font-style: normal; font-weight: 600; }
 
-  /* ========= PLANOS ========= */
-  .planos {
-    padding: 100px 24px;
-    background: var(--areia);
-  }
-  .planos-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .planos-header { text-align: center; margin-bottom: 56px; }
+/* CTAs */
+.hero-ctas {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: center;
+  margin-bottom: 72px;
+  animation: fadeUp .7s ease both .3s;
+}
 
-  .planos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    align-items: stretch;
-  }
+.btn-hero-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--amarelo);
+  color: #111;
+  font-size: 16px; font-weight: 800;
+  padding: 17px 32px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  transition: all .25s;
+  box-shadow: 0 8px 28px rgba(255,222,89,.35);
+  letter-spacing: -.2px;
+}
+.btn-hero-primary:hover {
+  background: var(--amarelo-dk);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(255,222,89,.45);
+}
 
-  .plano-card {
-    background: white;
-    border-radius: 28px;
-    padding: 36px 28px;
-    border: 1.5px solid rgba(0,0,0,0.07);
-    transition: all 0.3s;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  .plano-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    border-color: rgba(10,126,226,0.2);
-  }
-  .plano-card.destaque {
-    background: var(--azul);
-    border-color: var(--azul);
-    color: white;
-    transform: scale(1.04);
-    box-shadow: 0 24px 64px rgba(10,126,226,0.35);
-  }
-  .plano-card.destaque:hover {
-    transform: scale(1.04) translateY(-4px);
-  }
-  .plano-badge {
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--amarelo);
-    color: #111;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 16px;
-    border-radius: 100px;
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .plano-speed {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--azul);
-    margin-bottom: 8px;
-  }
-  .plano-card.destaque .plano-speed { color: rgba(255,255,255,0.7); }
-  .plano-mega {
-    font-family: 'Syne', sans-serif;
-    font-size: 52px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .plano-mega span { font-size: 24px; font-weight: 600; }
-  .plano-divider {
-    height: 1px;
-    background: rgba(0,0,0,0.07);
-    margin: 24px 0;
-  }
-  .plano-card.destaque .plano-divider { background: rgba(255,255,255,0.2); }
-  .plano-preco-label {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 4px;
-  }
-  .plano-card.destaque .plano-preco-label { color: rgba(255,255,255,0.65); }
-  .plano-preco {
-    font-family: 'Syne', sans-serif;
-    font-size: 44px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .plano-preco .cifrao { font-size: 22px; vertical-align: top; margin-top: 8px; display: inline-block; }
-  .plano-preco .centavos { font-size: 22px; }
-  .plano-mes { font-size: 14px; color: var(--muted); }
-  .plano-card.destaque .plano-mes { color: rgba(255,255,255,0.65); }
-  .plano-features {
-    list-style: none;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-  }
-  .plano-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .plano-card.destaque .plano-features li { color: rgba(255,255,255,0.8); }
-  .plano-features li i {
-    color: #22c55e;
-    font-size: 14px;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-  .plano-card.destaque .plano-features li i { color: var(--amarelo); }
-  .btn-assinar {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    margin-top: 28px;
-    border-radius: 100px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 2px solid;
-  }
-  .btn-assinar-outline {
-    background: transparent;
-    color: var(--azul);
-    border-color: var(--azul);
-  }
-  .btn-assinar-outline:hover {
-    background: var(--azul);
-    color: white;
-    transform: translateY(-2px);
-  }
-  .btn-assinar-filled {
-    background: var(--amarelo);
-    color: #111;
-    border-color: var(--amarelo);
-  }
-  .btn-assinar-filled:hover {
-    background: var(--amarelo-dark);
-    border-color: var(--amarelo-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255,222,89,0.4);
-  }
+.btn-hero-glass {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(255,255,255,.1);
+  color: white;
+  font-size: 16px; font-weight: 700;
+  padding: 17px 32px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(12px);
+  transition: all .25s;
+}
+.btn-hero-glass:hover {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.4);
+  transform: translateY(-3px);
+}
+.btn-hero-glass.wpp { border-color: rgba(37,211,102,.4); }
+.btn-hero-glass.wpp:hover { background: rgba(37,211,102,.15); }
 
-  .planos-note {
-    text-align: center;
-    margin-top: 32px;
-    color: var(--muted);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .planos-note i { color: #22c55e; }
+/* ============================================================
+   PLANOS HERO (CARROSSEL GLASSMORPHISM)
+   ============================================================ */
+.planos-hero-wrap {
+  width: 100%; max-width: 1100px;
+  animation: fadeUp .8s ease both .4s;
+  position: relative;
+}
 
-  @media (max-width: 900px) {
-    .planos-grid {
-      grid-template-columns: 1fr;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .plano-card.destaque { transform: none; }
-    .plano-card.destaque:hover { transform: translateY(-4px); }
-  }
+.planos-hero-scroll {
+  display: flex; gap: 16px;
+  overflow-x: auto;
+  padding: 20px 4px 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+.planos-hero-scroll::-webkit-scrollbar { display: none; }
+.planos-hero-scroll:active { cursor: grabbing; }
 
-  /* ========= VERANISTAS ========= */
-  .veranistas {
-    padding: 100px 24px;
-    background: linear-gradient(135deg, #0a2d5a 0%, #0a5aad 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .veranistas::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    background: rgba(255,222,89,0.08);
-    border-radius: 50%;
-  }
-  .veranistas::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -40px;
-    width: 400px; height: 400px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 50%;
-  }
-  .veranistas-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .veranistas-left .section-tag { background: rgba(255,222,89,0.15); color: var(--amarelo); }
-  .veranistas-left .section-title { color: white; }
-  .veranistas-left .section-sub { color: rgba(255,255,255,0.7); }
-  .veranista-items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .veranista-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-  }
-  .veranista-item i {
-    font-size: 18px;
-    color: var(--amarelo);
-    margin-top: 2px;
-  }
+.plano-hero-card {
+  flex: 0 0 220px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: var(--r-xl);
+  padding: 28px 24px;
+  scroll-snap-align: start;
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.plano-hero-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.plano-hero-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255,255,255,.13);
+  border-color: rgba(255,255,255,.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3), 0 0 40px rgba(10,126,226,.2);
+}
 
-  .veranistas-right {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .veranista-card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 24px;
-    transition: all 0.3s;
-  }
-  .veranista-card:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.2);
-  }
-  .veranista-card h4 {
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 6px;
-  }
-  .veranista-card p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.5;
-  }
-  .veranista-card .emoji { font-size: 28px; margin-bottom: 12px; display: block; }
+/* Plano destaque */
+.plano-hero-card.destaque {
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,222,89,.5);
+  box-shadow: 0 0 40px rgba(255,222,89,.15), 0 8px 32px rgba(0,0,0,.3);
+  animation: glow 3s ease-in-out infinite;
+  flex: 0 0 250px;
+}
+.plano-hero-card.destaque:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 60px rgba(255,222,89,.25);
+}
 
-  @media (max-width: 900px) {
-    .veranistas-inner { grid-template-columns: 1fr; gap: 48px; }
-  }
+.plano-destaque-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--amarelo);
+  color: #111;
+  font-size: 10px; font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  margin-bottom: 16px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
 
-  /* ========= PROVA SOCIAL ========= */
-  .prova {
-    padding: 100px 24px;
-    background: white;
-  }
-  .prova-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .prova-header { text-align: center; margin-bottom: 56px; }
-  .prova-stars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 16px;
-  }
-  .star { color: var(--amarelo); font-size: 22px; }
-  .prova-rating {
-    font-family: 'Syne', sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--texto);
-    margin-bottom: 4px;
-  }
-  .prova-count { font-size: 14px; color: var(--muted); }
+.plano-hero-speed {
+  font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,.5);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.destaque .plano-hero-speed { color: rgba(255,222,89,.7); }
 
-  .depos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .depo-card {
-    background: var(--areia);
-    border-radius: 20px;
-    padding: 28px;
-    transition: all 0.3s;
-  }
-  .depo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-    background: white;
-    border: 1.5px solid rgba(10,126,226,0.1);
-  }
-  .depo-stars { color: var(--amarelo); font-size: 14px; margin-bottom: 14px; }
-  .depo-text {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--texto);
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-  .depo-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .depo-avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    color: white;
-    flex-shrink: 0;
-  }
-  .depo-name { font-weight: 600; font-size: 14px; }
-  .depo-local { font-size: 12px; color: var(--muted); }
+.plano-hero-mega {
+  font-size: 52px; font-weight: 800;
+  color: white; line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 2px;
+}
+.plano-hero-mega span { font-size: 22px; font-weight: 600; letter-spacing: 0; }
 
-  @media (max-width: 900px) {
-    .depos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-  }
+.plano-hero-price {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 16px;
+}
+.plano-hero-price strong {
+  font-size: 26px; font-weight: 800;
+  color: white; letter-spacing: -.5px;
+}
+.destaque .plano-hero-price strong { color: var(--amarelo); }
 
-  /* ========= FAQ ========= */
-  .faq {
-    padding: 100px 24px;
-    background: var(--areia);
-  }
-  .faq-inner {
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  .faq-header { text-align: center; margin-bottom: 56px; }
-  .faq-list { display: flex; flex-direction: column; gap: 12px; }
-  .faq-item {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1.5px solid rgba(0,0,0,0.07);
-    transition: border-color 0.2s;
-  }
-  .faq-item.open { border-color: var(--azul); }
-  .faq-q {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 24px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    gap: 16px;
-  }
-  .faq-q .icon {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--areia);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    color: var(--azul);
-    transition: all 0.3s;
-    flex-shrink: 0;
-  }
-  .faq-item.open .faq-q .icon {
-    background: var(--azul);
-    color: white;
-    transform: rotate(45deg);
-  }
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
-    padding: 0 24px;
-  }
-  .faq-a p {
-    padding-bottom: 22px;
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-  .faq-item.open .faq-a { max-height: 300px; }
+.plano-hero-divider {
+  height: 1px;
+  background: rgba(255,255,255,.1);
+  margin-bottom: 14px;
+}
 
-  /* ========= CTA FINAL ========= */
-  .cta-final {
-    padding: 120px 24px;
-    background: var(--texto);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .cta-final::before {
-    content: '';
-    position: absolute;
-    top: -100px; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(10,126,226,0.25) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .cta-final-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .cta-final .section-tag { background: rgba(255,222,89,0.15); color: var(--amarelo); }
-  .cta-final h2 {
-    font-size: clamp(36px, 5vw, 60px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .cta-final p {
-    font-size: 18px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-  .cta-btns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    justify-content: center;
-  }
+.plano-hero-feats {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.plano-hero-feats li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: rgba(255,255,255,.65); font-weight: 500;
+}
+.plano-hero-feats li i { color: var(--verde); font-size: 11px; }
+.destaque .plano-hero-feats li i { color: var(--amarelo); }
 
-  /* ========= FOOTER ========= */
-  footer {
-    background: #0a0f1a;
-    color: rgba(255,255,255,0.6);
-    padding: 60px 24px 40px;
-  }
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 60px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 32px;
-  }
-  .footer-logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 12px;
-  }
-  .footer-logo span { color: var(--azul); }
-  .footer-desc { font-size: 14px; line-height: 1.7; max-width: 280px; }
-  .footer-socials {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-  }
-  .footer-social {
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.07);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .footer-social:hover { background: var(--azul); color: white; }
-  .footer-col h5 {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-links a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: white; }
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
-  .footer-anatel {
-    font-size: 11px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 4px;
-  }
+.plano-hero-btn {
+  display: block; width: 100%;
+  margin-top: 20px; padding: 12px;
+  border-radius: var(--r-full);
+  font-size: 13px; font-weight: 700;
+  text-align: center; text-decoration: none;
+  transition: all .2s;
+  border: 1.5px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.85);
+  background: rgba(255,255,255,.06);
+}
+.plano-hero-btn:hover {
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.35);
+}
+.destaque .plano-hero-btn {
+  background: var(--amarelo);
+  color: #111;
+  border-color: var(--amarelo);
+}
+.destaque .plano-hero-btn:hover {
+  background: var(--amarelo-dk);
+  box-shadow: 0 6px 20px rgba(255,222,89,.4);
+}
 
-  @media (max-width: 768px) {
-    .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
-  }
+/* Fading edges */
+.planos-hero-wrap::before,
+.planos-hero-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2;
+  pointer-events: none;
+}
+.planos-hero-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(6,13,26,.6), transparent);
+}
+.planos-hero-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(10,126,226,.3), transparent);
+}
 
-  /* ========= FLOATING WPP ========= */
-  .wpp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 50;
-  }
-  .wpp-btn {
-    width: 60px; height: 60px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 8px 32px rgba(37,211,102,0.45);
-    transition: all 0.3s;
-    position: relative;
-  }
-  .wpp-btn:hover { transform: scale(1.1); }
-  .wpp-pulse {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 2px solid #25D366;
-    animation: pulse-ring 2s ease-out infinite;
-  }
-  .wpp-tooltip {
-    position: absolute;
-    right: 72px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    color: var(--texto);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 12px;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .wpp-float:hover .wpp-tooltip { opacity: 1; }
-  .wpp-tooltip::after {
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-left-color: white;
-  }
+/* Waves */
+.hero-waves {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px; overflow: hidden; z-index: 1;
+}
+.wave-track {
+  display: flex; width: 200%;
+  animation: wave 10s linear infinite;
+}
+.wave-track svg { flex: 0 0 50%; }
 
-  /* ========= SOBRE ========= */
-  .sobre {
-    padding: 100px 24px;
-    background: white;
-  }
-  .sobre-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .sobre-img-wrap {
-    position: relative;
-  }
-  .sobre-img-main {
-    width: 100%;
-    border-radius: 28px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--azul-light), #dbeafe);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-  }
-  .sobre-img-badge {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    background: var(--amarelo);
-    border-radius: 20px;
-    padding: 20px 24px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-  }
-  .sobre-img-badge .num {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: #111;
-    line-height: 1;
-  }
-  .sobre-img-badge .label {
-    font-size: 13px;
-    color: #555;
-    font-weight: 500;
-  }
-  .sobre-right .section-title { margin-bottom: 20px; }
-  .sobre-right p {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 16px;
-  }
-  .sobre-nums {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .sobre-num {
-    padding: 20px;
-    background: var(--areia);
-    border-radius: 16px;
-  }
-  .sobre-num .n {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--azul);
-  }
-  .sobre-num .l { font-size: 13px; color: var(--muted); margin-top: 2px; }
+/* ============================================================
+   SECTION UTIL
+   ============================================================ */
+.section-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(10,126,226,.08);
+  color: var(--azul);
+  font-size: 12px; font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  margin-bottom: 14px;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.section-title {
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px; color: var(--muted);
+  line-height: 1.7; max-width: 560px;
+}
 
-  @media (max-width: 900px) {
-    .sobre-inner { grid-template-columns: 1fr; gap: 48px; }
-    .sobre-img-badge { right: 16px; }
-  }
+/* ============================================================
+   BAIRROS
+   ============================================================ */
+.bairros {
+  padding: 100px 32px;
+  background: var(--surface);
+}
+.bairros-inner { max-width: 1100px; margin: 0 auto; }
+.bairros-header { text-align: center; margin-bottom: 56px; }
+.bairros-header .section-sub { margin: 0 auto; }
 
-  /* ========= SCROLL REVEAL ========= */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+.bairros-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.bairro-pill {
+  display: flex; align-items: center; gap: 7px;
+  background: white;
+  border: 1.5px solid rgba(0,0,0,.07);
+  border-radius: var(--r-full);
+  padding: 9px 18px;
+  font-size: 13px; font-weight: 600;
+  color: var(--texto);
+  transition: all .25s;
+  cursor: default;
+}
+.bairro-pill i { color: var(--azul); font-size: 11px; }
+.bairro-pill:hover {
+  border-color: var(--azul);
+  background: rgba(10,126,226,.04);
+  color: var(--azul);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(10,126,226,.12);
+}
+.bairro-pill.featured {
+  background: rgba(10,126,226,.06);
+  border-color: rgba(10,126,226,.2);
+  color: var(--azul);
+}
+
+/* ============================================================
+   COBERTURA INPUT
+   ============================================================ */
+.cobertura-cta {
+  background: white;
+  border-radius: var(--r-xl);
+  padding: 40px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.06);
+  border: 1.5px solid rgba(0,0,0,.05);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cobertura-cta h3 {
+  font-size: 22px; font-weight: 800;
+  margin-bottom: 8px; letter-spacing: -.3px;
+}
+.cobertura-cta p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+.cob-input-row { display: flex; gap: 10px; }
+.cob-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1.5px solid rgba(0,0,0,.1);
+  border-radius: var(--r-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; color: var(--texto);
+  outline: none;
+  transition: border-color .2s;
+  background: var(--surface);
+}
+.cob-input:focus { border-color: var(--azul); background: white; }
+.cob-btn {
+  padding: 14px 24px;
+  background: var(--azul);
+  color: white;
+  border: none; border-radius: var(--r-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.cob-btn:hover { background: var(--azul-mid); transform: translateY(-1px); box-shadow: 0 6px 20px var(--azul-glow); }
+@media (max-width: 560px) {
+  .cob-input-row { flex-direction: column; }
+  .cob-input, .cob-btn { border-radius: var(--r-full); }
+}
+
+/* ============================================================
+   DIFERENCIAIS
+   ============================================================ */
+.diferenciais {
+  padding: 100px 32px;
+  background: white;
+}
+.diferenciais-inner { max-width: 1100px; margin: 0 auto; }
+.dif-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.dif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.dif-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  border: 1.5px solid transparent;
+  transition: all .3s;
+}
+.dif-card:hover {
+  border-color: rgba(10,126,226,.15);
+  background: white;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(10,126,226,.08);
+}
+.dif-card.big {
+  grid-column: span 2;
+  display: flex; align-items: center; gap: 20px;
+}
+.dif-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  margin-bottom: 14px;
+}
+.dif-card.big .dif-icon { margin-bottom: 0; }
+.ic-azul { background: rgba(10,126,226,.1); color: var(--azul); }
+.ic-amarelo { background: rgba(255,222,89,.2); color: #b8940a; }
+.ic-verde { background: rgba(34,197,94,.1); color: #16a34a; }
+.ic-laranja { background: rgba(249,115,22,.1); color: #ea580c; }
+.ic-roxo { background: rgba(139,92,246,.1); color: #7c3aed; }
+.ic-rosa { background: rgba(236,72,153,.1); color: #db2777; }
+.dif-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; letter-spacing: -.2px; }
+.dif-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* Left side stats */
+.dif-left { }
+.dif-left .section-sub { margin-bottom: 40px; }
+.dif-stats {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.dif-stat-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border-left: 3px solid var(--azul);
+  transition: all .25s;
+}
+.dif-stat-item:hover {
+  background: white;
+  box-shadow: 0 6px 24px rgba(10,126,226,.08);
+  transform: translateX(4px);
+}
+.dif-stat-n {
+  font-size: 36px; font-weight: 800;
+  color: var(--azul); line-height: 1;
+  letter-spacing: -1px;
+}
+.dif-stat-l { font-size: 13px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+.dif-stat-icon {
+  width: 44px; height: 44px;
+  background: rgba(10,126,226,.08);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--azul);
+  flex-shrink: 0; margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .dif-layout { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ============================================================
+   PLANOS COMPLETO
+   ============================================================ */
+.planos {
+  padding: 100px 32px;
+  background: var(--surface);
+  position: relative; overflow: hidden;
+}
+.planos::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(10,126,226,.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+.planos-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+.planos-header { text-align: center; margin-bottom: 64px; }
+.planos-header .section-sub { margin: 0 auto; }
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.plano-card {
+  background: white;
+  border-radius: var(--r-xl);
+  padding: 36px 28px;
+  border: 1.5px solid rgba(0,0,0,.07);
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.plano-card:hover {
+  border-color: rgba(10,126,226,.2);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(10,126,226,.1);
+}
+.plano-card.destaque {
+  background: linear-gradient(145deg, #0a5aad, #0a7ee2, #1a9af5);
+  border-color: transparent;
+  color: white;
+  transform: scale(1.04);
+  box-shadow: 0 24px 64px rgba(10,126,226,.4), 0 0 0 1px rgba(255,255,255,.1) inset;
+}
+.plano-card.destaque:hover { transform: scale(1.04) translateY(-6px); }
+
+.plano-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--amarelo);
+  color: #111;
+  font-size: 10px; font-weight: 800;
+  padding: 5px 14px;
+  border-radius: var(--r-full);
+  text-transform: uppercase; letter-spacing: .7px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(255,222,89,.4);
+}
+
+.plano-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--azul); margin-bottom: 8px; }
+.destaque .plano-tag { color: rgba(255,255,255,.65); }
+
+.plano-mega {
+  font-size: 56px; font-weight: 800; line-height: 1;
+  letter-spacing: -2px; margin-bottom: 4px;
+}
+.plano-mega span { font-size: 24px; font-weight: 600; letter-spacing: 0; }
+
+.plano-divider {
+  height: 1px;
+  background: rgba(0,0,0,.07);
+  margin: 22px 0;
+}
+.destaque .plano-divider { background: rgba(255,255,255,.2); }
+
+.plano-preco-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.destaque .plano-preco-label { color: rgba(255,255,255,.6); }
+
+.plano-price {
+  display: flex; align-items: baseline; gap: 4px;
+  margin-bottom: 6px;
+}
+.plano-price .cur { font-size: 18px; font-weight: 700; margin-top: 8px; }
+.plano-price .val { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -2px; }
+.plano-price .dec { font-size: 22px; font-weight: 700; }
+.plano-mes { font-size: 13px; color: var(--muted); }
+.destaque .plano-mes { color: rgba(255,255,255,.6); }
+
+.plano-feats {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 11px;
+  margin-top: 22px; flex: 1;
+}
+.plano-feats li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--muted);
+}
+.destaque .plano-feats li { color: rgba(255,255,255,.8); }
+.plano-feats li i { color: var(--verde); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.destaque .plano-feats li i { color: var(--amarelo); }
+
+.btn-plano {
+  display: block; width: 100%;
+  padding: 15px; margin-top: 28px;
+  border-radius: var(--r-full);
+  font-size: 15px; font-weight: 800;
+  text-align: center; text-decoration: none;
+  transition: all .25s; cursor: pointer; border: 2px solid;
+  letter-spacing: -.2px;
+}
+.btn-plano-outline {
+  color: var(--azul); border-color: rgba(10,126,226,.25);
+  background: rgba(10,126,226,.04);
+}
+.btn-plano-outline:hover {
+  background: var(--azul); color: white; border-color: var(--azul);
+  transform: translateY(-2px); box-shadow: 0 8px 24px var(--azul-glow);
+}
+.btn-plano-solid {
+  background: var(--amarelo); color: #111; border-color: var(--amarelo);
+}
+.btn-plano-solid:hover {
+  background: var(--amarelo-dk); border-color: var(--amarelo-dk);
+  transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,222,89,.45);
+}
+
+/* Mini table */
+.planos-mini {
+  margin-top: 40px;
+  background: white;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1.5px solid rgba(0,0,0,.06);
+}
+.planos-mini-header {
+  background: var(--surface);
+  padding: 18px 28px;
+  font-size: 14px; font-weight: 700;
+  color: var(--muted); letter-spacing: .3px;
+  display: flex; align-items: center; gap: 8px;
+}
+.planos-mini-row {
+  display: flex; align-items: center;
+  padding: 16px 28px;
+  border-top: 1px solid rgba(0,0,0,.05);
+  transition: background .2s;
+}
+.planos-mini-row:hover { background: var(--surface); }
+.planos-mini-row.destaque-row { background: rgba(10,126,226,.04); }
+.pmr-speed { font-size: 22px; font-weight: 800; color: var(--azul); letter-spacing: -1px; width: 120px; }
+.pmr-speed span { font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.pmr-feats { flex: 1; display: flex; flex-wrap: wrap; gap: 6px; }
+.pmr-feat {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--surface);
+  border-radius: var(--r-full);
+  padding: 4px 10px;
+  font-size: 12px; color: var(--muted); font-weight: 500;
+}
+.pmr-feat i { color: var(--verde); font-size: 10px; }
+.pmr-preco {
+  font-size: 20px; font-weight: 800;
+  color: var(--texto); letter-spacing: -.5px;
+  white-space: nowrap;
+}
+.pmr-preco span { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+.planos-note {
+  text-align: center; margin-top: 32px;
+  font-size: 13px; color: var(--muted);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.planos-note i { color: var(--verde); }
+
+@media (max-width: 900px) {
+  .planos-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .plano-card.destaque { transform: none; }
+  .plano-card.destaque:hover { transform: translateY(-6px); }
+  .planos-mini { display: none; }
+}
+
+/* ============================================================
+   IDENTIDADE LOCAL / SOBRE
+   ============================================================ */
+.identidade {
+  padding: 100px 32px;
+  background: white;
+}
+.identidade-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.id-visual {
+  position: relative;
+}
+.id-main-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: var(--r-xl);
+  background: linear-gradient(145deg, #0a2d5a, #0a7ee2);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 60px; gap: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.id-main-img::after {
+  content: 'Equipe Conecte Telecom';
+  position: absolute; bottom: 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,.6);
+}
+.id-placeholder-text {
+  font-size: 14px; color: rgba(255,255,255,.5);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+}
+
+/* Float cards na identidade */
+.id-float-1 {
+  position: absolute;
+  top: -20px; right: -24px;
+  background: var(--amarelo);
+  border-radius: var(--r-lg);
+  padding: 20px 24px;
+  box-shadow: 0 12px 32px rgba(255,222,89,.4);
+  animation: floatA 5s ease-in-out infinite;
+}
+.id-float-1 .num {
+  font-size: 40px; font-weight: 800;
+  color: #111; line-height: 1; letter-spacing: -2px;
+}
+.id-float-1 .label { font-size: 12px; color: #555; font-weight: 600; }
+
+.id-float-2 {
+  position: absolute;
+  bottom: 40px; left: -28px;
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  animation: floatB 6s ease-in-out infinite 1s;
+  display: flex; align-items: center; gap: 12px;
+}
+.id-float-2 .dot-wrap {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(34,197,94,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--verde);
+}
+.id-float-2 .info { font-size: 13px; }
+.id-float-2 .info strong { display: block; font-weight: 800; color: var(--texto); }
+.id-float-2 .info span { color: var(--muted); font-size: 12px; }
+
+.id-right .section-title { margin-bottom: 20px; }
+.id-right p {
+  font-size: 16px; color: var(--muted);
+  line-height: 1.8; margin-bottom: 16px;
+}
+
+.id-bordao {
+  margin-top: 24px; margin-bottom: 32px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border-left: 4px solid var(--amarelo);
+  font-size: 18px; font-weight: 700; font-style: italic;
+  color: var(--texto); letter-spacing: -.2px;
+}
+
+@media (max-width: 900px) {
+  .identidade-inner { grid-template-columns: 1fr; gap: 48px; }
+  .id-float-1 { right: 0; }
+  .id-float-2 { left: 0; }
+}
+
+/* ============================================================
+   VERANISTAS
+   ============================================================ */
+.veranistas {
+  padding: 100px 32px;
+  background: linear-gradient(150deg, #041529 0%, #082850 30%, #0a4f9e 70%, #0a7ee2 100%);
+  position: relative; overflow: hidden;
+}
+.ver-orb1 {
+  position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,222,89,.12) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.ver-orb2 {
+  position: absolute; bottom: -60px; left: -60px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(34,197,94,.08) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.veranistas-inner {
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.ver-left .section-tag { background: rgba(255,222,89,.12); color: var(--amarelo); }
+.ver-left .section-title { color: white; }
+.ver-left .section-sub { color: rgba(255,255,255,.65); margin-bottom: 32px; }
+
+.ver-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+.ver-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; color: rgba(255,255,255,.8); font-weight: 500;
+}
+.ver-item i { color: var(--amarelo); }
+
+.ver-right { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ver-card {
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-lg);
+  padding: 24px 20px;
+  transition: all .3s;
+}
+.ver-card:hover {
+  background: rgba(255,255,255,.13);
+  border-color: rgba(255,255,255,.2);
+  transform: translateY(-4px);
+}
+.ver-card.full { grid-column: span 2; }
+.ver-card .emoji { font-size: 28px; display: block; margin-bottom: 12px; }
+.ver-card h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+.ver-card p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .veranistas-inner { grid-template-columns: 1fr; gap: 48px; }
+  .ver-right { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   DEPOIMENTOS
+   ============================================================ */
+.depoimentos {
+  padding: 100px 32px;
+  background: var(--surface);
+}
+.depos-inner { max-width: 1100px; margin: 0 auto; }
+.depos-header { text-align: center; margin-bottom: 56px; }
+.depos-rating-row {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.stars { color: var(--amarelo); font-size: 24px; letter-spacing: 2px; }
+.rating-num {
+  font-size: 52px; font-weight: 800; letter-spacing: -2px;
+  line-height: 1;
+}
+
+.depos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.depo-card {
+  background: white;
+  border-radius: var(--r-xl);
+  padding: 28px;
+  border: 1.5px solid rgba(0,0,0,.05);
+  transition: all .3s;
+  display: flex; flex-direction: column;
+}
+.depo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.08);
+  border-color: rgba(10,126,226,.12);
+}
+.depo-stars { color: var(--amarelo); font-size: 14px; margin-bottom: 14px; letter-spacing: 1px; }
+.depo-text {
+  font-size: 15px; line-height: 1.7;
+  color: var(--texto); margin-bottom: 20px;
+  font-style: italic; flex: 1;
+}
+.depo-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.depo-av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800;
+  color: white; flex-shrink: 0;
+}
+.depo-name { font-size: 14px; font-weight: 700; }
+.depo-local { font-size: 12px; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .depos-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq {
+  padding: 100px 32px;
+  background: white;
+}
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-header { text-align: center; margin-bottom: 56px; }
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+.faq-item {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1.5px solid rgba(0,0,0,.06);
+  transition: all .25s;
+}
+.faq-item:hover { border-color: rgba(10,126,226,.12); }
+.faq-item.open {
+  background: white;
+  border-color: rgba(10,126,226,.2);
+  box-shadow: 0 6px 24px rgba(10,126,226,.07);
+}
+
+.faq-q {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px;
+  cursor: pointer;
+  font-size: 16px; font-weight: 700;
+  gap: 16px; user-select: none;
+  letter-spacing: -.2px;
+}
+.faq-q .fi {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid rgba(0,0,0,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--azul);
+  transition: all .3s;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-q .fi {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: white;
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+  padding: 0 24px;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a p {
+  padding-bottom: 22px;
+  font-size: 15px; color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta-final {
+  padding: 120px 32px;
+  background: var(--texto);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-final-orb {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(10,126,226,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-final-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta-final .section-tag { background: rgba(255,222,89,.12); color: var(--amarelo); }
+.cta-final h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800; color: white;
+  line-height: 1.06; letter-spacing: -2px; margin-bottom: 20px;
+}
+.cta-final h2 .hl { color: var(--amarelo); }
+.cta-final .bordao-line {
+  font-size: 18px; font-style: italic;
+  color: rgba(255,255,255,.5); margin-bottom: 16px; font-weight: 300;
+}
+.cta-final .bordao-line strong { color: rgba(255,255,255,.75); font-style: normal; font-weight: 700; }
+.cta-final p { font-size: 17px; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 44px; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: #060c18;
+  color: rgba(255,255,255,.5);
+  padding: 64px 32px 40px;
+}
+.footer-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  margin-bottom: 32px;
+}
+.footer-logo-wrap {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.footer-logo-icon {
+  width: 36px; height: 36px;
+  background: var(--azul);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: white;
+}
+.footer-logo-text {
+  font-size: 22px; font-weight: 800; color: white; letter-spacing: -.3px;
+}
+.footer-logo-text span { color: var(--azul); }
+.footer-desc { font-size: 14px; line-height: 1.7; max-width: 260px; margin-bottom: 22px; }
+.footer-bordao {
+  font-size: 13px; font-style: italic;
+  color: rgba(255,255,255,.3); font-weight: 300;
+}
+.footer-socials { display: flex; gap: 10px; margin-top: 20px; }
+.fsocial {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,.06);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: rgba(255,255,255,.5);
+  text-decoration: none; transition: all .2s;
+}
+.fsocial:hover { background: var(--azul); color: white; }
+.footer-col h5 {
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 14px; color: rgba(255,255,255,.45); text-decoration: none;
+  transition: color .2s; font-weight: 500;
+}
+.footer-links a:hover { color: white; }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+  font-size: 12px;
+}
+.footer-bottom a { color: rgba(255,255,255,.3); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,.6); }
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   FLOATING WPP
+   ============================================================ */
+.wpp-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 100;
+}
+.wpp-fab a {
+  width: 62px; height: 62px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(37,211,102,.5);
+  transition: all .3s;
+  position: relative;
+}
+.wpp-fab a:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,.6); }
+.wpp-pulse {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: pulseRing 2.2s ease-out infinite;
+}
+.wpp-fab .wpp-tip {
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+  background: white; color: var(--texto);
+  font-size: 13px; font-weight: 700;
+  padding: 9px 16px; border-radius: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.wpp-fab:hover .wpp-tip { opacity: 1; }
+.wpp-fab .wpp-tip::after {
+  content: '';
+  position: absolute; left: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: white;
+}
+
+/* ============================================================
+   RESPONSIVE MISC
+   ============================================================ */
+@media (max-width: 600px) {
+  .hero-content { padding: 120px 20px 60px; }
+  .hero-title { letter-spacing: -1px; }
+  .bairros { padding: 72px 20px; }
+  .diferenciais { padding: 72px 20px; }
+  .planos { padding: 72px 20px; }
+  .identidade { padding: 72px 20px; }
+  .veranistas { padding: 72px 20px; }
+  .ver-right { grid-template-columns: 1fr; }
+  .ver-card.full { grid-column: span 1; }
+  .depoimentos { padding: 72px 20px; }
+  .faq { padding: 72px 20px; }
+  .cta-final { padding: 80px 20px; }
+  footer { padding: 48px 20px 32px; }
+  .wpp-fab { bottom: 16px; right: 16px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ===================== NAV ===================== -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <div class="dot"></div>
-    Conecte<span>.</span>
+    <div class="nav-logo-icon"><i class="fas fa-wifi"></i></div>
+    <span class="nav-logo-text">Conecte<span>.</span></span>
   </a>
+
   <ul class="nav-links">
-    <li><a href="#cobertura">Cobertura</a></li>
+    <li><a href="#bairros">Cobertura</a></li>
     <li><a href="#planos">Planos</a></li>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#faq">Dúvidas</a></li>
-    <li><a href="https://wa.me/555199999999" target="_blank" class="nav-cta"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
-  <button class="nav-mobile-btn" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+
+  <div class="nav-actions">
+    <a href="#bairros" class="nav-cobertura"><i class="fas fa-map-pin"></i> Consultar cobertura</a>
+    <a href="https://wa.me/555199999999" target="_blank" class="nav-wpp">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <div class="nav-hamburger" onclick="openMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <a href="#" class="nav-logo">Conecte<span>.</span></a>
-    <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+<!-- MOBILE OVERLAY + PANEL -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobile()"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-header">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-wifi"></i></div>
+      <span class="nav-logo-text" style="color:var(--texto)">Conecte<span style="color:var(--azul)">.</span></span>
+    </a>
+    <button class="mobile-close" onclick="closeMobile()"><i class="fas fa-times"></i></button>
   </div>
-  <ul class="mobile-menu-links">
-    <li><a href="#cobertura" onclick="closeMenu()">Cobertura</a></li>
-    <li><a href="#planos" onclick="closeMenu()">Planos</a></li>
-    <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
-    <li><a href="#faq" onclick="closeMenu()">Dúvidas</a></li>
+  <ul class="mobile-nav-links">
+    <li><a href="#bairros" onclick="closeMobile()"><i class="fas fa-map-pin"></i> Cobertura</a></li>
+    <li><a href="#planos" onclick="closeMobile()"><i class="fas fa-wifi"></i> Planos</a></li>
+    <li><a href="#sobre" onclick="closeMobile()"><i class="fas fa-users"></i> Sobre nós</a></li>
+    <li><a href="#faq" onclick="closeMobile()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
   </ul>
-  <div class="mobile-menu-bottom">
-    <a href="https://wa.me/555199999999" target="_blank" class="btn-primary" style="justify-content:center;width:100%;">
+  <div class="mobile-panel-footer">
+    <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-primary" style="justify-content:center">
       <i class="fab fa-whatsapp"></i> Falar no WhatsApp
     </a>
+    <a href="#planos" onclick="closeMobile()" class="btn-plano-outline btn-plano" style="margin-top:0">Ver planos</a>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="hero-dots"></div>
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+  <div class="hero-grid"></div>
+
   <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-badge animate-fadeup"><i class="fas fa-map-marker-alt"></i> Arroio do Sal — RS</div>
-      <h1 class="hero-title animate-fadeup delay-1">
-        Fibra de <span class="highlight">verdade</span><br>feita por<br>quem vive aqui
-      </h1>
-      <p class="hero-subtitle animate-fadeup delay-2">
-        Internet 100% fibra óptica com suporte local, sem robôs e sem enrolação.<br>
-        Sua conexão, nossa prioridade.
-      </p>
-      <div class="hero-ctas animate-fadeup delay-3">
-        <a href="#planos" class="btn-primary">Ver planos <i class="fas fa-arrow-down"></i></a>
-        <a href="https://wa.me/555199999999" target="_blank" class="btn-secondary btn-wpp">
-          <i class="fab fa-whatsapp"></i> Falar agora
-        </a>
-      </div>
-      <div class="hero-stats animate-fadeup delay-4">
-        <div class="hero-stat"><i class="fas fa-check-circle"></i> Instalação em 48h</div>
-        <div class="hero-stat"><i class="fas fa-check-circle"></i> Suporte todos os dias</div>
-        <div class="hero-stat"><i class="fas fa-check-circle"></i> Equipe local</div>
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Arroio do Sal — RS &nbsp;·&nbsp; 100% Fibra Óptica
+    </div>
+
+    <h1 class="hero-title">
+      Fibra de <span class="hl">verdade,</span><br>feita por quem<br>vive aqui
+    </h1>
+
+    <p class="hero-bordao">
+      <strong>É mais que internet, é Conecte!</strong>
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#planos" class="btn-hero-primary">
+        <i class="fas fa-bolt"></i> Ver planos e preços
+      </a>
+      <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-glass wpp">
+        <i class="fab fa-whatsapp"></i> Falar agora
+      </a>
+      <a href="#bairros" class="btn-hero-glass">
+        <i class="fas fa-map-pin"></i> Ver cobertura
+      </a>
+    </div>
+
+    <!-- Planos hero carrossel -->
+    <div class="planos-hero-wrap">
+      <div class="planos-hero-scroll" id="planosScroll">
+
+        <!-- 60MB -->
+        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 60 Mega','_blank')">
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">60<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$89,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte local</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 60 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
+        </div>
+
+        <!-- 300MB -->
+        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 300 Mega','_blank')">
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">300<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$99,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte local</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 300 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
+        </div>
+
+        <!-- 500MB DESTAQUE -->
+        <div class="plano-hero-card destaque" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 500 Mega','_blank')">
+          <div class="plano-destaque-badge">⭐ Mais vendido</div>
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">500<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$109,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
+            <li><i class="fas fa-check-circle"></i> Ideal pra família</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 500 Mega" target="_blank" class="plano-hero-btn">Quero esse!</a>
+        </div>
+
+        <!-- 600MB -->
+        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 600 Mega','_blank')">
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">600<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$119,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 600 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
+        </div>
+
+        <!-- 700MB -->
+        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 700 Mega','_blank')">
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">700<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$129,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 700 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
+        </div>
+
+        <!-- 800MB -->
+        <div class="plano-hero-card" onclick="window.open('https://wa.me/555199999999?text=Quero o plano 800 Mega','_blank')">
+          <div class="plano-hero-speed">Fibra Óptica</div>
+          <div class="plano-hero-mega">800<span>Mbps</span></div>
+          <div class="plano-hero-price">a partir de <strong>R$149,90</strong>/mês</div>
+          <div class="plano-hero-divider"></div>
+          <ul class="plano-hero-feats">
+            <li><i class="fas fa-check-circle"></i> Wi-Fi 6 + Mesh</li>
+            <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
+            <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
+          </ul>
+          <a href="https://wa.me/555199999999?text=Quero o plano 800 Mega" target="_blank" class="plano-hero-btn">Assinar</a>
+        </div>
+
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="speed-card">
-        <div class="speed-number">800</div>
-        <div class="speed-unit">Mbps</div>
-        <div class="speed-label">velocidade de download</div>
-        <div class="speed-bar-wrap"><div class="speed-bar"></div></div>
-      </div>
-      <div class="mini-card mc-1">
-        <div class="icon" style="background:#f0fdf4;color:#16a34a;"><i class="fas fa-check"></i></div>
-        <span>Conexão estável ✓</span>
-      </div>
-      <div class="mini-card mc-2">
-        <div class="icon" style="background:#fff7ed;color:#ea580c;"><i class="fas fa-headset"></i></div>
-        <span>Suporte 7 dias/semana</span>
-      </div>
-    </div>
-  </div>
+  </div><!-- /hero-content -->
+
   <div class="hero-waves">
-    <svg class="wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C240,90 480,10 720,50 C960,90 1200,20 1440,60 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/>
-      <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/>
-    </svg>
-  </div>
-</section>
-
-<!-- COBERTURA -->
-<section class="cobertura" id="cobertura">
-  <div class="cobertura-inner reveal">
-    <div class="section-tag"><i class="fas fa-map-pin"></i> Área de Cobertura</div>
-    <h2 class="section-title">Tem sinal aqui? Tem sim! 📍</h2>
-    <p class="section-sub">Do Loteamento Esmeralda até a Praia Azul, a Conecte cobre todos os bairros entre essas regiões. Confira abaixo ou busque o seu:</p>
-    <div class="cobertura-input-wrap">
-      <input type="text" class="cobertura-input" id="bairroInput" placeholder="Ex: Centro, Arroio do Sal, Praia Azul...">
-      <button class="btn-check" onclick="verificarCobertura()"><i class="fas fa-search"></i> Verificar</button>
-    </div>
-    <div class="cobertura-bairros">
-      <span class="bairro-tag" onclick="setBairro('Centro')">Centro</span>
-      <span class="bairro-tag" onclick="setBairro('Praia Azul')">Praia Azul</span>
-      <span class="bairro-tag" onclick="setBairro('Loteamento Esmeralda')">Lot. Esmeralda</span>
-      <span class="bairro-tag" onclick="setBairro('Magistério')">Magistério</span>
-      <span class="bairro-tag" onclick="setBairro('Primavera')">Primavera</span>
-      <span class="bairro-tag" onclick="setBairro('Graxaim')">Graxaim</span>
+    <div class="wave-track">
+      <svg viewBox="0 0 720 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,48 C120,90 240,10 360,52 C480,94 600,20 720,56 L720,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/>
+        <path d="M0,70 C120,30 240,100 360,70 C480,40 600,90 720,60 L720,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
+        <path d="M0,90 C180,60 360,110 540,80 C630,66 690,88 720,96 L720,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+      </svg>
+      <svg viewBox="0 0 720 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,48 C120,90 240,10 360,52 C480,94 600,20 720,56 L720,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/>
+        <path d="M0,70 C120,30 240,100 360,70 C480,40 600,90 720,60 L720,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/>
+        <path d="M0,90 C180,60 360,110 540,80 C630,66 690,88 720,96 L720,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- DIFERENCIAIS -->
+<!-- ===================== BAIRROS ===================== -->
+<section class="bairros" id="bairros">
+  <div class="bairros-inner">
+    <div class="bairros-header reveal">
+      <div class="section-tag"><i class="fas fa-map-pin"></i> Área de cobertura</div>
+      <h2 class="section-title">Estamos por toda<br>Arroio do Sal 📍</h2>
+      <p class="section-sub">Do Loteamento Esmeralda até a Praia Azul — cobrindo todos os bairros da cidade com fibra óptica de verdade.</p>
+    </div>
+
+    <div class="bairros-grid reveal">
+      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Centro</div>
+      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Praia Azul</div>
+      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Balneário Atlântico</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Pérola</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Bom Jesus</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Sereia do Mar</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Marambaia</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Nova Marambaia</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Âncora</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Figueirinha</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Verde Mar</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Quatro Lagos</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Vista Alegre</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Malinsky</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Areias Brancas</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Jardim Raiante</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Cond. Parque das Figueiras</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Pinus Park</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Tupancy</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Rondinha</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Jardim Olivia</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Alfa</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> São Pedro</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> São Paulo</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> São Jorge</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Costa da Lagoa</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Camboim</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Belo Horizonte</div>
+      <div class="bairro-pill"><i class="fas fa-circle"></i> Sol Nascente</div>
+      <div class="bairro-pill featured"><i class="fas fa-circle"></i> Rota do Sol</div>
+    </div>
+
+    <div class="cobertura-cta reveal">
+      <h3>Seu bairro está na lista? 🎉</h3>
+      <p>Digite abaixo e a gente te confirma — e já te apresenta as opções pelo WhatsApp.</p>
+      <div class="cob-input-row">
+        <input type="text" class="cob-input" id="bairroInput" placeholder="Ex: Centro, Rota do Sol, Marambaia...">
+        <button class="cob-btn" onclick="verificarCobertura()"><i class="fas fa-search"></i> Verificar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIAIS ===================== -->
 <section class="diferenciais">
   <div class="diferenciais-inner">
-    <div class="diferenciais-header reveal">
-      <div>
+    <div class="dif-layout">
+      <div class="dif-left reveal">
         <div class="section-tag"><i class="fas fa-star"></i> Por que a Conecte?</div>
-        <h2 class="section-title">Internet feita por<br>moradores de Arroio do Sal</h2>
+        <h2 class="section-title">Não somos um provedor qualquer</h2>
+        <p class="section-sub">Somos moradores de Arroio do Sal que resolveram fazer diferente. Menos enrolação, mais conexão — de verdade.</p>
+
+        <div class="dif-stats">
+          <div class="dif-stat-item">
+            <div>
+              <div class="dif-stat-n">+1.000</div>
+              <div class="dif-stat-l">famílias e comércios conectados</div>
+            </div>
+            <div class="dif-stat-icon"><i class="fas fa-users"></i></div>
+          </div>
+          <div class="dif-stat-item">
+            <div>
+              <div class="dif-stat-n">5 anos</div>
+              <div class="dif-stat-l">servindo Arroio do Sal</div>
+            </div>
+            <div class="dif-stat-icon"><i class="fas fa-calendar-check"></i></div>
+          </div>
+          <div class="dif-stat-item">
+            <div>
+              <div class="dif-stat-n">100%</div>
+              <div class="dif-stat-l">fibra óptica ponta a ponta</div>
+            </div>
+            <div class="dif-stat-icon"><i class="fas fa-wifi"></i></div>
+          </div>
+          <div class="dif-stat-item">
+            <div>
+              <div class="dif-stat-n">7 dias</div>
+              <div class="dif-stat-l">de atendimento por semana</div>
+            </div>
+            <div class="dif-stat-icon"><i class="fas fa-headset"></i></div>
+          </div>
+        </div>
       </div>
-      <div>
-        <p style="font-size:17px;color:var(--muted);line-height:1.7;">A gente não veio de fora. A Conecte nasceu aqui, cresceu aqui, e entende o que você precisa — porque a gente vive a mesma realidade que você.</p>
-      </div>
-    </div>
-    <div class="diferenciais-grid">
-      <div class="dif-card reveal">
-        <div class="dif-icon azul"><i class="fas fa-headset"></i></div>
-        <h4>Sem robô, sem fila</h4>
-        <p>Atendimento humano de verdade. Quando você liga, fala com alguém da cidade — que conhece você pelo nome.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon amarelo"><i class="fas fa-bolt"></i></div>
-        <h4>Velocidade real</h4>
-        <p>O que você contratou é o que você recebe. Sem meia-verdade, sem letra miúda de "até".</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon verde"><i class="fas fa-tools"></i></div>
-        <h4>Técnico presencial</h4>
-        <p>Deu problema? O técnico vai até você. Nada de reiniciar o roteador sozinho por horas.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon laranja"><i class="fas fa-calendar-check"></i></div>
-        <div class="number">5</div>
-        <h4>Anos em Arroio do Sal</h4>
-        <p>Uma empresa que conhece a cidade, os verões, os invernos — e as necessidades de quem fica o ano inteiro.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon roxo"><i class="fas fa-shield-alt"></i></div>
-        <h4>Rede estável</h4>
-        <p>Fibra óptica de ponta a ponta. Sem queda na chuva, sem instabilidade na alta temporada.</p>
-      </div>
-      <div class="dif-card reveal">
-        <div class="dif-icon rosa"><i class="fas fa-heart"></i></div>
-        <h4>Amor pela cidade</h4>
-        <p>Cada contrato assinado é um investimento na infraestrutura digital de Arroio do Sal. Somos daqui.</p>
+
+      <div class="dif-grid reveal delay-1">
+        <div class="dif-card">
+          <div class="dif-icon ic-azul"><i class="fas fa-headset"></i></div>
+          <h4>Sem robô, sem fila</h4>
+          <p>Atendimento humano de verdade, com alguém que te conhece — e que mora na mesma cidade que você.</p>
+        </div>
+        <div class="dif-card">
+          <div class="dif-icon ic-amarelo"><i class="fas fa-bolt"></i></div>
+          <h4>Velocidade real</h4>
+          <p>O que você contrata é o que você recebe. Sem "até", sem letra miúda, sem surpresa.</p>
+        </div>
+        <div class="dif-card">
+          <div class="dif-icon ic-verde"><i class="fas fa-tools"></i></div>
+          <h4>Técnico na sua porta</h4>
+          <p>Problema? O técnico vai até você. Equipe da cidade, atendimento ágil e presencial.</p>
+        </div>
+        <div class="dif-card">
+          <div class="dif-icon ic-laranja"><i class="fas fa-shield-alt"></i></div>
+          <h4>Rede estável</h4>
+          <p>Infraestrutura dimensionada para o verão cheio. Fibra que aguenta a temporada toda.</p>
+        </div>
+        <div class="dif-card big">
+          <div class="dif-icon ic-roxo"><i class="fas fa-heart"></i></div>
+          <div>
+            <h4>Conexão com a comunidade</h4>
+            <p>Cada assinatura apoia o desenvolvimento digital de Arroio do Sal. Somos daqui — e isso faz toda a diferença.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PLANOS -->
+<!-- ===================== PLANOS ===================== -->
 <section class="planos" id="planos">
   <div class="planos-inner">
     <div class="planos-header reveal">
-      <div class="section-tag"><i class="fas fa-wifi"></i> Nossos Planos</div>
-      <h2 class="section-title">Escolha o seu plano</h2>
-      <p class="section-sub" style="max-width:500px;margin:0 auto;">Fibra 100% óptica, instalação grátis e equipamento em comodato. Você escolhe a velocidade, a gente cuida do resto.</p>
+      <div class="section-tag"><i class="fas fa-wifi"></i> Nossos planos</div>
+      <h2 class="section-title">Escolha a sua velocidade</h2>
+      <p class="section-sub">Instalação grátis, equipamento em comodato e suporte local em todos os planos. Fidelidade de 12 meses.</p>
     </div>
-    <div class="planos-grid">
 
-      <!-- 300MB -->
+    <div class="planos-grid">
       <div class="plano-card reveal">
-        <div class="plano-speed">Fibra Óptica</div>
+        <div class="plano-tag">Fibra Óptica</div>
         <div class="plano-mega">300<span>Mbps</span></div>
         <div class="plano-divider"></div>
         <div class="plano-preco-label">a partir de</div>
-        <div class="plano-preco"><span class="cifrao">R$</span>99<span class="centavos">,90</span></div>
+        <div class="plano-price"><span class="cur">R$</span><span class="val">99</span><span class="dec">,90</span></div>
         <div class="plano-mes">por mês</div>
-        <ul class="plano-features">
+        <ul class="plano-feats">
           <li><i class="fas fa-check-circle"></i> Upload 150 Mbps</li>
           <li><i class="fas fa-check-circle"></i> Wi-Fi incluso</li>
           <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
-          <li><i class="fas fa-check-circle"></i> Suporte local</li>
+          <li><i class="fas fa-check-circle"></i> Suporte humanizado</li>
+          <li><i class="fas fa-check-circle"></i> Equipe local</li>
         </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 300 Mega" target="_blank" class="btn-assinar btn-assinar-outline">Assinar plano</a>
+        <a href="https://wa.me/555199999999?text=Quero o plano 300 Mega" target="_blank" class="btn-plano btn-plano-outline">Assinar plano</a>
       </div>
 
-      <!-- 600MB DESTAQUE -->
-      <div class="plano-card destaque reveal">
+      <div class="plano-card destaque reveal delay-1">
         <div class="plano-badge">⭐ Mais vendido</div>
-        <div class="plano-speed">Fibra Óptica</div>
-        <div class="plano-mega">600<span>Mbps</span></div>
+        <div class="plano-tag">Fibra Óptica</div>
+        <div class="plano-mega">500<span>Mbps</span></div>
         <div class="plano-divider"></div>
         <div class="plano-preco-label">a partir de</div>
-        <div class="plano-preco"><span class="cifrao">R$</span>119<span class="centavos">,90</span></div>
+        <div class="plano-price"><span class="cur">R$</span><span class="val">109</span><span class="dec">,90</span></div>
         <div class="plano-mes">por mês</div>
-        <ul class="plano-features">
-          <li><i class="fas fa-check-circle"></i> Upload 300 Mbps</li>
+        <ul class="plano-feats">
+          <li><i class="fas fa-check-circle"></i> Upload 250 Mbps</li>
           <li><i class="fas fa-check-circle"></i> Wi-Fi 6 incluso</li>
           <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
           <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
+          <li><i class="fas fa-check-circle"></i> Conexão sem enrolação</li>
           <li><i class="fas fa-check-circle"></i> Ideal pra família toda</li>
         </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 600 Mega" target="_blank" class="btn-assinar btn-assinar-filled">Quero esse plano!</a>
+        <a href="https://wa.me/555199999999?text=Quero o plano 500 Mega" target="_blank" class="btn-plano btn-plano-solid">Quero este plano!</a>
       </div>
 
-      <!-- 800MB -->
-      <div class="plano-card reveal">
-        <div class="plano-speed">Fibra Óptica</div>
+      <div class="plano-card reveal delay-2">
+        <div class="plano-tag">Fibra Óptica</div>
         <div class="plano-mega">800<span>Mbps</span></div>
         <div class="plano-divider"></div>
         <div class="plano-preco-label">a partir de</div>
-        <div class="plano-preco"><span class="cifrao">R$</span>149<span class="centavos">,90</span></div>
+        <div class="plano-price"><span class="cur">R$</span><span class="val">149</span><span class="dec">,90</span></div>
         <div class="plano-mes">por mês</div>
-        <ul class="plano-features">
+        <ul class="plano-feats">
           <li><i class="fas fa-check-circle"></i> Upload 400 Mbps</li>
           <li><i class="fas fa-check-circle"></i> Wi-Fi 6 + Mesh</li>
           <li><i class="fas fa-check-circle"></i> Instalação grátis</li>
           <li><i class="fas fa-check-circle"></i> Suporte dedicado</li>
+          <li><i class="fas fa-check-circle"></i> Atendimento todos os dias</li>
         </ul>
-        <a href="https://wa.me/555199999999?text=Quero o plano 800 Mega" target="_blank" class="btn-assinar btn-assinar-outline">Assinar plano</a>
+        <a href="https://wa.me/555199999999?text=Quero o plano 800 Mega" target="_blank" class="btn-plano btn-plano-outline">Assinar plano</a>
       </div>
     </div>
 
-    <p class="planos-note reveal">
-      <i class="fas fa-info-circle"></i>
-      Também temos planos de 60, 500 e 700 Mbps. Fale pelo WhatsApp e te apresentamos a opção ideal.
-    </p>
-
-    <!-- Linha de todos os planos -->
-    <div style="margin-top:40px; background:white; border-radius:24px; padding:32px; display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background-color:rgba(0,0,0,0.07); overflow:hidden;" class="reveal">
-      <div style="background:white;padding:20px;text-align:center;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">60</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$89,90</div>
+    <!-- Tabela completa -->
+    <div class="planos-mini reveal">
+      <div class="planos-mini-header"><i class="fas fa-list" style="color:var(--azul)"></i> Todos os planos disponíveis</div>
+      <div class="planos-mini-row">
+        <div class="pmr-speed">60<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte local</span>
+        </div>
+        <div class="pmr-preco">R$89,90 <span>/mês</span></div>
       </div>
-      <div style="background:white;padding:20px;text-align:center;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">300</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$99,90</div>
+      <div class="planos-mini-row">
+        <div class="pmr-speed">300<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte local</span>
+        </div>
+        <div class="pmr-preco">R$99,90 <span>/mês</span></div>
       </div>
-      <div style="background:white;padding:20px;text-align:center;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">500</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$109,90</div>
+      <div class="planos-mini-row destaque-row">
+        <div class="pmr-speed">500<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte prioritário</span>
+          <span class="pmr-feat" style="background:rgba(255,222,89,.15);color:#b8940a;"><i class="fas fa-star" style="color:#b8940a"></i> Mais vendido</span>
+        </div>
+        <div class="pmr-preco" style="color:var(--azul)">R$109,90 <span>/mês</span></div>
       </div>
-      <div style="background:rgba(10,126,226,0.04);padding:20px;text-align:center;border-top:3px solid var(--azul);">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">600</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$119,90</div>
+      <div class="planos-mini-row">
+        <div class="pmr-speed">600<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte prioritário</span>
+        </div>
+        <div class="pmr-preco">R$119,90 <span>/mês</span></div>
       </div>
-      <div style="background:white;padding:20px;text-align:center;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">700</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$129,90</div>
+      <div class="planos-mini-row">
+        <div class="pmr-speed">700<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte dedicado</span>
+        </div>
+        <div class="pmr-preco">R$129,90 <span>/mês</span></div>
       </div>
-      <div style="background:white;padding:20px;text-align:center;">
-        <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);">800</div>
-        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Mbps</div>
-        <div style="font-weight:700;font-size:15px;margin-top:8px;">R$149,90</div>
+      <div class="planos-mini-row">
+        <div class="pmr-speed">800<span>Mbps</span></div>
+        <div class="pmr-feats">
+          <span class="pmr-feat"><i class="fas fa-check"></i> Wi-Fi 6 + Mesh</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Fibra</span>
+          <span class="pmr-feat"><i class="fas fa-check"></i> Suporte dedicado</span>
+        </div>
+        <div class="pmr-preco">R$149,90 <span>/mês</span></div>
       </div>
     </div>
+
+    <p class="planos-note reveal"><i class="fas fa-info-circle"></i> Todos os planos incluem instalação grátis e equipamento em comodato. Fidelidade de 12 meses.</p>
   </div>
 </section>
 
-<!-- VERANISTAS -->
-<section class="veranistas" id="veranistas">
-  <div class="veranistas-inner">
-    <div class="veranistas-left reveal">
-      <div class="section-tag"><i class="fas fa-umbrella-beach"></i> Para quem vem curtir</div>
-      <h2 class="section-title" style="color:white;">Veranista, bem-vindo ao Sal! 🏖️</h2>
-      <p class="section-sub">Você vem curtir o verão em Arroio do Sal e quer internet boa na casa de praia? A Conecte tem planos ideais para a temporada — com instalação rápida e atendimento sem burocracia.</p>
-      <div class="veranista-items">
-        <div class="veranista-item"><i class="fas fa-check-circle"></i><span>Instalação em até 48 horas — mesmo na alta temporada</span></div>
-        <div class="veranista-item"><i class="fas fa-check-circle"></i><span>Sem fidelidade longa — planos flexíveis para temporada</span></div>
-        <div class="veranista-item"><i class="fas fa-check-circle"></i><span>Suporte local — sem ficar na fila de 0800</span></div>
-        <div class="veranista-item"><i class="fas fa-check-circle"></i><span>Funciona em casa de veraneio, chalé ou apartamento</span></div>
+<!-- ===================== IDENTIDADE LOCAL ===================== -->
+<section class="identidade" id="sobre">
+  <div class="identidade-inner">
+    <div class="id-visual reveal">
+      <div class="id-main-img">
+        🏖️
+        <span class="id-placeholder-text">[ Foto real da equipe aqui ]</span>
       </div>
-      <div style="margin-top:36px;">
-        <a href="https://wa.me/555199999999?text=Estou de temporada em Arroio do Sal e quero internet!" target="_blank" class="btn-primary">
-          <i class="fab fa-whatsapp"></i> Quero internet pra temporada
-        </a>
-      </div>
-    </div>
-    <div class="veranistas-right reveal">
-      <div class="veranista-card">
-        <span class="emoji">🌊</span>
-        <h4>Alta temporada sem perrengue</h4>
-        <p>A rede da Conecte é dimensionada para aguentar o verão cheio — sem instabilidade quando todo mundo chega na cidade.</p>
-      </div>
-      <div class="veranista-card">
-        <span class="emoji">📱</span>
-        <h4>Trabalhe remotamente da praia</h4>
-        <p>Home office com fibra óptica? Sim! A Conecte tem velocidade suficiente pra videoconferência e envio de arquivos pesados.</p>
-      </div>
-      <div class="veranista-card">
-        <span class="emoji">🏠</span>
-        <h4>Streaming na casa inteira</h4>
-        <p>Netflix, YouTube, jogos online e mais — tudo rodando ao mesmo tempo sem travar. Férias de verdade.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section class="sobre" id="sobre">
-  <div class="sobre-inner">
-    <div class="sobre-img-wrap reveal">
-      <div class="sobre-img-main">🏖️</div>
-      <div class="sobre-img-badge">
+      <div class="id-float-1">
         <div class="num">5+</div>
-        <div class="label">anos em Arroio do Sal</div>
+        <div class="label">anos em<br>Arroio do Sal</div>
+      </div>
+      <div class="id-float-2">
+        <div class="dot-wrap"><i class="fas fa-check"></i></div>
+        <div class="info">
+          <strong>Equipe local</strong>
+          <span>Técnicos da cidade</span>
+        </div>
       </div>
     </div>
-    <div class="sobre-right reveal">
-      <div class="section-tag"><i class="fas fa-users"></i> Nossa história</div>
-      <h2 class="section-title">Nascemos aqui,<br>crescemos aqui</h2>
-      <p>A Conecte Telecom foi fundada por moradores de Arroio do Sal que sentiam na pele a falta de internet de qualidade na cidade. A resposta foi simples: a gente mesmo faz.</p>
-      <p>Hoje, somos o provedor de confiança de centenas de famílias e comércios locais — sempre com atendimento próximo, sem robô, sem fila e sem burocracia.</p>
-      <div class="sobre-nums">
-        <div class="sobre-num">
-          <div class="n">+1.000</div>
-          <div class="l">clientes ativos</div>
-        </div>
-        <div class="sobre-num">
-          <div class="n">5 anos</div>
-          <div class="l">na região</div>
-        </div>
-        <div class="sobre-num">
-          <div class="n">100%</div>
-          <div class="l">fibra óptica</div>
-        </div>
-        <div class="sobre-num">
-          <div class="n">7 dias</div>
-          <div class="l">de suporte/semana</div>
-        </div>
+
+    <div class="id-right reveal delay-1">
+      <div class="section-tag"><i class="fas fa-home"></i> Nossa história</div>
+      <h2 class="section-title">Internet feita por moradores<br>de Arroio do Sal</h2>
+      <p>A Conecte nasceu de uma necessidade real. Moradores locais que sentiam na pele a falta de uma internet boa e de um atendimento humano decidiram resolver: fizemos isso a quatro mãos, com quem entende a cidade.</p>
+      <p>Depois de 5 anos, seguimos com a mesma filosofia: conexão sem enrolação, suporte sem robô, e uma equipe que te atende como vizinho — porque somos, de fato, seus vizinhos.</p>
+
+      <div class="id-bordao">
+        "É mais que internet, é Conecte!"
+      </div>
+
+      <a href="https://wa.me/555199999999" target="_blank" class="btn-hero-primary" style="display:inline-flex;text-decoration:none">
+        <i class="fab fa-whatsapp"></i> Falar com a equipe
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VERANISTAS ===================== -->
+<section class="veranistas">
+  <div class="ver-orb1"></div>
+  <div class="ver-orb2"></div>
+  <div class="veranistas-inner">
+    <div class="ver-left reveal">
+      <div class="section-tag"><i class="fas fa-umbrella-beach"></i> Para veranistas</div>
+      <h2 class="section-title" style="color:white">Veranista, internet boa<br>na temporada! 🌊</h2>
+      <p class="section-sub">Você veio curtir, não ficar no 4G. A Conecte tem planos para quem passa a temporada em Arroio do Sal — com instalação rápida e atendimento humano.</p>
+      <div class="ver-items">
+        <div class="ver-item"><i class="fas fa-check-circle"></i> Instalação ágil, mesmo na alta temporada</div>
+        <div class="ver-item"><i class="fas fa-check-circle"></i> Planos flexíveis para temporadistas</div>
+        <div class="ver-item"><i class="fas fa-check-circle"></i> Funciona em casas, chalés e apartamentos</div>
+        <div class="ver-item"><i class="fas fa-check-circle"></i> Atendimento sem fila, sem robô</div>
+        <div class="ver-item"><i class="fas fa-check-circle"></i> Rede estável mesmo com a cidade cheia</div>
+      </div>
+      <a href="https://wa.me/555199999999?text=Estou de temporada em Arroio do Sal e preciso de internet!" target="_blank" class="btn-hero-primary" style="text-decoration:none;display:inline-flex">
+        <i class="fab fa-whatsapp"></i> Quero internet pra temporada
+      </a>
+    </div>
+
+    <div class="ver-right reveal delay-1">
+      <div class="ver-card">
+        <span class="emoji">📡</span>
+        <h4>Rede preparada pro verão</h4>
+        <p>Dimensionamos a infraestrutura para a alta temporada. Sem queda quando a cidade enche.</p>
+      </div>
+      <div class="ver-card">
+        <span class="emoji">💻</span>
+        <h4>Home office na praia</h4>
+        <p>Fibra óptica com velocidade para videoconferência e envio de arquivos. Trabalhe e curta.</p>
+      </div>
+      <div class="ver-card">
+        <span class="emoji">🎬</span>
+        <h4>Streaming sem travar</h4>
+        <p>Netflix, YouTube, jogos — tudo rodando para a família ao mesmo tempo, sem reclamar.</p>
+      </div>
+      <div class="ver-card">
+        <span class="emoji">🤝</span>
+        <h4>Atendimento de vizinho</h4>
+        <p>Precisa de ajuda? A gente atende pelo WhatsApp na hora — sem esperar horas numa fila.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROVA SOCIAL -->
-<section class="prova">
-  <div class="prova-inner">
-    <div class="prova-header reveal">
-      <div class="section-tag"><i class="fas fa-star"></i> O que dizem nossos clientes</div>
-      <div class="prova-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+<!-- ===================== DEPOIMENTOS ===================== -->
+<section class="depoimentos">
+  <div class="depos-inner">
+    <div class="depos-header reveal">
+      <div class="section-tag"><i class="fas fa-star"></i> Depoimentos</div>
+      <div class="depos-rating-row">
+        <span class="stars">★★★★★</span>
+        <div class="rating-num">4.9</div>
       </div>
-      <div class="prova-rating">4.9</div>
-      <div class="prova-count">Avaliação média dos nossos clientes</div>
+      <p style="font-size:14px;color:var(--muted)">Avaliação média dos nossos clientes</p>
     </div>
     <div class="depos-grid">
       <div class="depo-card reveal">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Jamais tive problema de queda de sinal. E quando precisei de suporte, um técnico foi na minha casa no mesmo dia. Não esperava tanto!"</p>
+        <p class="depo-text">"Nunca tive problema de queda de sinal. E quando precisei de suporte, um técnico foi na minha casa no mesmo dia. Não esperava tanto de um provedor local!"</p>
         <div class="depo-author">
-          <div class="depo-avatar" style="background:#0a7ee2;">MR</div>
+          <div class="depo-av" style="background:var(--azul)">MR</div>
           <div>
             <div class="depo-name">Maria Rosa</div>
             <div class="depo-local">Centro, Arroio do Sal</div>
           </div>
         </div>
       </div>
-      <div class="depo-card reveal">
+      <div class="depo-card reveal delay-1">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Veranista aqui. Contratei no começo da temporada e foi a melhor decisão. Instalaram em dois dias e funcionou perfeitamente até o fim das férias."</p>
+        <p class="depo-text">"Sou veranista e contratei no começo da temporada. Instalaram em dois dias e funcionou perfeitamente — streamings, videochamadas, sem nenhum problema!"</p>
         <div class="depo-author">
-          <div class="depo-avatar" style="background:#16a34a;">CP</div>
+          <div class="depo-av" style="background:#16a34a">CP</div>
           <div>
             <div class="depo-name">Carlos Pinheiro</div>
             <div class="depo-local">Praia Azul (temporadista)</div>
           </div>
         </div>
       </div>
-      <div class="depo-card reveal">
+      <div class="depo-card reveal delay-2">
         <div class="depo-stars">★★★★★</div>
-        <p class="depo-text">"Tenho comércio no centro e a Conecte nunca me deixou na mão. Atendem pelo WhatsApp mesmo fora do horário. Isso é diferente de tudo que já usei."</p>
+        <p class="depo-text">"Tenho comércio no centro e a Conecte nunca me deixou na mão. Atendem pelo WhatsApp mesmo fora do horário. Isso é completamente diferente de tudo que já usei."</p>
         <div class="depo-author">
-          <div class="depo-avatar" style="background:#ea580c;">AS</div>
+          <div class="depo-av" style="background:#ea580c">AS</div>
           <div>
             <div class="depo-name">Ana Silva</div>
             <div class="depo-local">Comércio, Centro</div>
@@ -1686,103 +2006,119 @@
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ===================== FAQ ===================== -->
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-header reveal">
-      <div class="section-tag"><i class="fas fa-question-circle"></i> Dúvidas</div>
-      <h2 class="section-title">Sem mistério, sem letra miúda</h2>
-      <p class="section-sub">Se a gente não respondeu aqui, é só chamar no WhatsApp 😊</p>
+      <div class="section-tag"><i class="fas fa-question-circle"></i> Perguntas frequentes</div>
+      <h2 class="section-title">Sem mistério,<br>sem letra miúda</h2>
+      <p class="section-sub" style="margin:0 auto">Se a gente não respondeu aqui, é só chamar no WhatsApp 😊</p>
     </div>
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           <span>A instalação custa alguma coisa?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
+          <div class="fi"><i class="fas fa-plus"></i></div>
         </div>
-        <div class="faq-a"><p>Não! A instalação é totalmente gratuita. O equipamento (roteador) também fica em comodato — ou seja, fica com você sem custo adicional enquanto você for nosso cliente.</p></div>
+        <div class="faq-a"><p>Não! A instalação é totalmente gratuita. O roteador também fica em comodato — fica com você sem custo enquanto você for nosso cliente.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>A internet é realmente fibra óptica?</span>
+          <div class="fi"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><p>Sim! 100% fibra óptica de ponta a ponta. Nada de cabo coaxial misturado — fibra pura, com a qualidade e estabilidade que só a fibra entrega.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           <span>Tem fidelidade? E se eu quiser cancelar?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
+          <div class="fi"><i class="fas fa-plus"></i></div>
         </div>
-        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses. Mas a gente acredita tanto no nosso serviço que não precisamos prender ninguém à força — se quiser cancelar, a conversa acontece sem burocracia.</p></div>
+        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses. Mas a gente acredita tanto no serviço que não precisamos prender ninguém — se quiser cancelar, a conversa é sem burocracia.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
           <span>Meu bairro tem cobertura?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
+          <div class="fi"><i class="fas fa-plus"></i></div>
         </div>
-        <div class="faq-a"><p>Atendemos do Loteamento Esmeralda até a Praia Azul — incluindo todos os bairros entre essas regiões. Use o campo de cobertura acima ou mande mensagem no WhatsApp pra confirmar!</p></div>
+        <div class="faq-a"><p>Atendemos do Loteamento Esmeralda até a Praia Azul, incluindo mais de 30 bairros. Confira a seção de cobertura acima ou mande mensagem pelo WhatsApp para confirmar!</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Em quanto tempo vem a instalação?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
+          <span>Sou veranista. Posso contratar por temporada?</span>
+          <div class="fi"><i class="fas fa-plus"></i></div>
         </div>
-        <div class="faq-a"><p>Na maioria dos casos, em até 48 horas. Na alta temporada de verão, pode demorar um pouquinho mais — mas a gente sempre avisa e prioriza quem precisa urgente.</p></div>
+        <div class="faq-a"><p>Sim! Temos opções pensadas para temporadistas. Fala com a gente no WhatsApp que a gente te apresenta a melhor alternativa — sem enrolação.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Sou veranista. Posso contratar por menos de um ano?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
+          <span>O suporte tem horário fixo?</span>
+          <div class="fi"><i class="fas fa-plus"></i></div>
         </div>
-        <div class="faq-a"><p>Sim! Temos opções para veranistas e temporadistas. Fala com a gente no WhatsApp que a gente te explica o melhor modelo pro seu caso — sem enrolação.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>E o suporte? Tem horário?</span>
-          <div class="icon"><i class="fas fa-plus"></i></div>
-        </div>
-        <div class="faq-a"><p>Suporte 7 dias por semana. Não é atendimento automático — é gente de verdade, da cidade, que entende o seu problema e resolve. Pelo WhatsApp mesmo, sem precisar ligar pra 0800.</p></div>
+        <div class="faq-a"><p>Atendemos 7 dias por semana. Não é robô, não é fila de 0800 — é alguém da cidade que te responde pelo WhatsApp, de verdade.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- ===================== CTA FINAL ===================== -->
 <section class="cta-final">
+  <div class="cta-final-orb"></div>
   <div class="cta-final-inner reveal">
     <div class="section-tag"><i class="fas fa-wifi"></i> Pronto pra conectar?</div>
-    <h2>Internet que você merece,<br>do jeito que tem que ser</h2>
-    <p>Fala com a gente agora. Sem formulário, sem espera, sem robô. Um atendente local te responde na hora.</p>
+    <h2>Internet que você<br>merece, de <span class="hl">verdade</span></h2>
+    <p class="bordao-line"><strong>É mais que internet, é Conecte!</strong></p>
+    <p>Fala com a gente agora. Sem formulário, sem fila, sem robô. Um atendente local te responde e já te apresenta as melhores opções.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/555199999999?text=Quero contratar a Conecte Telecom!" target="_blank" class="btn-primary" style="font-size:18px;padding:18px 36px;">
+      <a href="https://wa.me/555199999999?text=Quero contratar a Conecte Telecom!" target="_blank" class="btn-hero-primary" style="font-size:17px;padding:18px 36px">
         <i class="fab fa-whatsapp"></i> Falar no WhatsApp agora
       </a>
-      <a href="#planos" class="btn-secondary" style="font-size:18px;padding:18px 36px;">
-        Ver todos os planos
+      <a href="#planos" class="btn-hero-glass" style="font-size:17px;padding:18px 36px">
+        <i class="fas fa-wifi"></i> Ver todos os planos
       </a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===================== FOOTER ===================== -->
 <footer>
-  <div class="footer-inner">
+  <div class="footer-grid">
     <div>
-      <div class="footer-logo">Conecte<span>.</span></div>
+      <div class="footer-logo-wrap">
+        <div class="footer-logo-icon"><i class="fas fa-wifi"></i></div>
+        <span class="footer-logo-text">Conecte<span>.</span></span>
+      </div>
       <p class="footer-desc">Provedor regional de internet fibra óptica em Arroio do Sal — RS. Empresa criada por moradores, para moradores.</p>
+      <p class="footer-bordao">"É mais que internet, é Conecte!"</p>
       <div class="footer-socials">
-        <a href="#" class="footer-social"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://wa.me/555199999999" target="_blank" class="footer-social"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="fsocial"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="fsocial"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/555199999999" target="_blank" class="fsocial"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <div class="footer-col">
       <h5>Navegação</h5>
       <ul class="footer-links">
-        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#bairros">Cobertura</a></li>
         <li><a href="#planos">Planos</a></li>
         <li><a href="#sobre">Sobre nós</a></li>
-        <li><a href="#faq">Dúvidas frequentes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Planos</h5>
+      <ul class="footer-links">
+        <li><a href="#">60 Mbps — R$89,90</a></li>
+        <li><a href="#">300 Mbps — R$99,90</a></li>
+        <li><a href="#">500 Mbps — R$109,90</a></li>
+        <li><a href="#">600 Mbps — R$119,90</a></li>
+        <li><a href="#">800 Mbps — R$149,90</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Contato</h5>
       <ul class="footer-links">
-        <li><a href="https://wa.me/555199999999" target="_blank">(51) 9 9999-9999</a></li>
+        <li><a href="https://wa.me/555199999999">(51) 9 9999-9999</a></li>
         <li><a href="mailto:contato@conecte.net.br">contato@conecte.net.br</a></li>
         <li><a href="#">Arroio do Sal — RS</a></li>
       </ul>
@@ -1791,58 +2127,94 @@
   <div class="footer-bottom">
     <div>
       <div>© 2026 Conecte Telecom. Todos os direitos reservados.</div>
-      <div class="footer-anatel">CNPJ: 00.000.000/0001-00 · Registrado na ANATEL</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:3px">CNPJ: 00.000.000/0001-00 · Registrado na ANATEL</div>
     </div>
-    <div style="display:flex;gap:16px;">
-      <a href="#">Política de Privacidade</a>
-      <a href="#">Termos de Uso</a>
+    <div style="display:flex;gap:16px">
+      <a href="#">Privacidade</a>
+      <a href="#">Termos de uso</a>
     </div>
   </div>
 </footer>
 
 <!-- FLOATING WPP -->
-<div class="wpp-float">
-  <div class="wpp-tooltip">Fale conosco agora!</div>
-  <a href="https://wa.me/555199999999" target="_blank" class="wpp-btn">
+<div class="wpp-fab">
+  <div class="wpp-tip">Fale conosco agora!</div>
+  <a href="https://wa.me/555199999999" target="_blank">
     <div class="wpp-pulse"></div>
     <i class="fab fa-whatsapp"></i>
   </a>
 </div>
 
+<!-- ===================== JS ===================== -->
 <script>
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+/* Nav scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
 
-  // Mobile menu
-  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+/* Mobile menu */
+function openMobile() {
+  document.getElementById('mobileOverlay').classList.add('open');
+  document.getElementById('mobilePanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobile() {
+  document.getElementById('mobileOverlay').classList.remove('open');
+  document.getElementById('mobilePanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-  // FAQ toggle
-  function toggleFaq(el) {
-    const item = el.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+/* FAQ */
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* Cobertura */
+function verificarCobertura() {
+  const b = document.getElementById('bairroInput').value.trim();
+  if (!b) { alert('Por favor, digite seu bairro ou cidade.'); return; }
+  window.open('https://wa.me/555199999999?text=' + encodeURIComponent('Olá! Quero saber se vocês atendem no bairro/região: ' + b), '_blank');
+}
+document.getElementById('bairroInput').addEventListener('keypress', e => {
+  if (e.key === 'Enter') verificarCobertura();
+});
+
+/* Scroll reveal */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Planos hero drag scroll */
+const scroll = document.getElementById('planosScroll');
+let isDown = false, startX, scrollLeft;
+scroll.addEventListener('mousedown', e => {
+  isDown = true; scroll.classList.add('grabbing');
+  startX = e.pageX - scroll.offsetLeft;
+  scrollLeft = scroll.scrollLeft;
+});
+scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('grabbing'); });
+scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('grabbing'); });
+scroll.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - scroll.offsetLeft;
+  scroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+});
+
+/* Auto-scroll hero plans to destaque on load */
+window.addEventListener('load', () => {
+  const destaque = scroll.querySelector('.destaque');
+  if (destaque) {
+    setTimeout(() => {
+      const offset = destaque.offsetLeft - (scroll.clientWidth / 2) + (destaque.offsetWidth / 2);
+      scroll.scrollTo({ left: offset, behavior: 'smooth' });
+    }, 800);
   }
-
-  // Cobertura
-  function setBairro(nome) { document.getElementById('bairroInput').value = nome; }
-  function verificarCobertura() {
-    const b = document.getElementById('bairroInput').value.trim();
-    if (!b) { alert('Por favor, digite seu bairro ou cidade.'); return; }
-    const url = 'https://wa.me/555199999999?text=' + encodeURIComponent('Olá! Gostaria de saber se vocês atendem no bairro/região: ' + b);
-    window.open(url, '_blank');
-  }
-  document.getElementById('bairroInput').addEventListener('keypress', e => { if (e.key === 'Enter') verificarCobertura(); });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
 </script>
 </body>
 </html>
