@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -TotalCount 17\\)[-1] | Select-String \"rel=\" | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value)",
+      "PowerShell($line = \\(Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -TotalCount 17\\)[-1]; $line.Substring\\(0, [Math]::Min\\(120, $line.Length\\)\\))"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"
+    ]
+  }
+}
