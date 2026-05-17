@@ -1455,6 +1455,116 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 [data-theme="dark"] .plano-mini:hover .pm-btn { background:var(--azul); color:white; }
 [data-theme="dark"] .planos-note { color:rgba(255,255,255,.42); }
 
+/* ================================================================
+   DARK MODE — PLANOS GLOW FIX
+   Corrige vazamento de brilho e refina o efeito premium
+   ================================================================ */
+
+/* Animação shimmer contida para dark */
+@keyframes shimmerDark {
+  0%   { left:-70%; opacity:0; }
+  10%  { opacity:1; }
+  58%  { left:112%; opacity:1; }
+  68%  { opacity:0; }
+  100% { left:112%; opacity:0; }
+}
+
+/* --- Card Hero (plano em destaque) --- */
+[data-theme="dark"] .plano-card.hero-plan {
+  /* Contém TUDO dentro do card: shimmer, glow, ::before */
+  overflow: hidden;
+  /* Cria contexto de stacking isolado — glow não vaza */
+  isolation: isolate;
+  /* Shadow refinada e contida: sem spread excessivo */
+  box-shadow:
+    0 0 0 1px rgba(10,126,226,.22),
+    0 6px 24px rgba(10,126,226,.18),
+    0 2px 8px rgba(0,0,0,.56),
+    inset 0 1px 0 rgba(255,255,255,.1),
+    inset 0 -1px 0 rgba(0,0,0,.22);
+}
+
+/* Hover — mais pronunciado porém ainda contido */
+[data-theme="dark"] .plano-card.hero-plan:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(10,126,226,.32),
+    0 12px 38px rgba(10,126,226,.22),
+    0 4px 12px rgba(0,0,0,.62),
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 -1px 0 rgba(0,0,0,.24);
+}
+
+/* Highlight ambiente interno — topo do card, atrás do conteúdo */
+[data-theme="dark"] .plano-card.hero-plan::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 58%;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,.08) 0%,
+    transparent 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  /* z-index -1 dentro do isolation: fica acima do background, abaixo do conteúdo */
+  z-index: -1;
+}
+
+/* Shimmer dark — sweep elegante e contido dentro do card */
+[data-theme="dark"] .plano-card.hero-plan::after {
+  /* Sobrescreve dimensões que causavam vazamento */
+  top: 0;
+  left: -70%;
+  width: 55%;
+  height: 100%;
+  transform: skewX(-14deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,.03) 35%,
+    rgba(255,255,255,.07) 50%,
+    rgba(255,255,255,.03) 65%,
+    transparent 100%
+  );
+  animation: shimmerDark 6.5s ease-in-out infinite 4s;
+}
+
+/* --- Cards secundários (side-plan) --- */
+[data-theme="dark"] .plano-card.side-plan:hover {
+  box-shadow:
+    0 0 0 1px rgba(10,126,226,.2),
+    0 10px 30px rgba(0,0,0,.52),
+    0 2px 8px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  background: rgba(17,28,56,.96);
+}
+
+/* Shimmer side cards — mais sutil no dark */
+[data-theme="dark"] .plano-card:not(.hero-plan)::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.035),
+    transparent
+  );
+}
+
+/* --- Mini cards --- */
+[data-theme="dark"] .plano-mini:hover {
+  box-shadow:
+    0 0 0 1px rgba(10,126,226,.2),
+    0 6px 20px rgba(0,0,0,.42);
+}
+[data-theme="dark"] .plano-mini::after {
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,.03) 50%,
+    transparent 70%
+  );
+}
+
 /* ---- COMO FUNCIONA dark ---- */
 [data-theme="dark"] .como { background:#0c1628; }
 [data-theme="dark"] .como::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
@@ -2004,6 +2114,676 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 [data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
+
+/* ================================================================
+   MOBILE-FIRST PREMIUM — CONECTE TELECOM
+   Revisão total da experiência mobile
+   ================================================================ */
+
+/* ---- Prefers reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---- Global touch ---- */
+@media (max-width: 960px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  a, button, [onclick], label, select, input,
+  .faq-q, .rpill, .plano-mini, .mob-links a, .dif-card,
+  .depo-card, .region-block, .loc-item {
+    touch-action: manipulation;
+  }
+}
+
+/* ================================================================
+   NAVBAR MOBILE — Premium redesign
+   ================================================================ */
+@media (max-width: 960px) {
+  #nav { padding: 14px 20px; }
+  #nav.scrolled {
+    padding: 10px 20px;
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(48px) saturate(200%);
+  }
+
+  .nav-burger {
+    width: 44px; height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    align-items: center; justify-content: center;
+    gap: 5px;
+    transition: all .2s;
+  }
+  .nav-burger span {
+    transition: all .28s cubic-bezier(.4,0,.2,1);
+    transform-origin: center;
+  }
+  /* Burger → X quando menu aberto */
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .theme-toggle { width: 44px; height: 44px; }
+  .logo-mark { width: 42px; height: 42px; }
+  .logo-name { font-size: 18px; }
+  .logo-tagline { font-size: 8px; }
+}
+
+/* Mobile panel — glassmorphism premium */
+.mob-panel {
+  border-radius: 24px 0 0 24px;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
+}
+.mob-head { padding: 20px 20px 16px; }
+.mob-close { width: 40px; height: 40px; border-radius: 12px; font-size: 14px; }
+.mob-links { padding: 8px 12px; gap: 2px; }
+.mob-links a {
+  padding: 14px 16px;
+  font-size: 15.5px;
+  border-radius: 14px;
+  gap: 14px;
+  min-height: 52px;
+  letter-spacing: -.1px;
+}
+.mob-links a i { width: 20px; font-size: 15px; }
+.mob-foot {
+  padding: 16px 20px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  gap: 10px;
+}
+.mob-foot .btn-wpp-full {
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 14px;
+}
+.mob-foot .btn-outline-dark {
+  padding: 13px 24px;
+  border-radius: 14px;
+  justify-content: center;
+}
+
+/* Link stagger ao abrir painel */
+.mob-panel.open .mob-links li {
+  animation: mobLinkIn .35s cubic-bezier(.34,1.56,.64,1) both;
+}
+.mob-panel.open .mob-links li:nth-child(1) { animation-delay: .04s; }
+.mob-panel.open .mob-links li:nth-child(2) { animation-delay: .09s; }
+.mob-panel.open .mob-links li:nth-child(3) { animation-delay: .14s; }
+.mob-panel.open .mob-links li:nth-child(4) { animation-delay: .19s; }
+.mob-panel.open .mob-links li:nth-child(5) { animation-delay: .24s; }
+.mob-panel.open .mob-links li:nth-child(6) { animation-delay: .29s; }
+@keyframes mobLinkIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Dark mode panel */
+[data-theme="dark"] .mob-panel {
+  background: rgba(10,18,34,.97);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
+}
+
+/* ================================================================
+   HERO MOBILE — Experiência premium
+   ================================================================ */
+@media (max-width: 900px) {
+  .hero-content {
+    padding: 108px 24px 88px;
+    text-align: center;
+  }
+  .hero-ctas { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-sub { margin: 0 auto 32px; }
+  .hero-right { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 92px 20px 80px;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100svh;
+  }
+  .hero-badge {
+    font-size: 11.5px;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .hero-title {
+    font-size: clamp(36px, 9.5vw, 54px);
+    letter-spacing: -1.5px;
+    line-height: 1.06;
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: 15.5px;
+    line-height: 1.68;
+    margin-bottom: 26px;
+    color: rgba(255,255,255,.68);
+  }
+  .hero-ctas {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-glass {
+    width: 100%;
+    justify-content: center;
+    padding: 17px 24px;
+    font-size: 16px;
+    border-radius: 16px;
+    min-height: 56px;
+  }
+  .hero-trust {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  .hero-trust-item {
+    font-size: 13px;
+    color: rgba(255,255,255,.62);
+  }
+  .hero-waves { height: 68px; }
+  /* Orbs mais leves no mobile */
+  .orb-1 { width: 320px; height: 320px; filter: blur(12px); opacity: .65; }
+  .orb-2 { width: 260px; height: 260px; filter: blur(10px); }
+  .orb-3 { display: none; }
+  .hero-grid { opacity: .5; }
+}
+
+/* ================================================================
+   TRUST STRIP MOBILE — Horizontal scroll fluido
+   ================================================================ */
+@media (max-width: 768px) {
+  .trust-strip { padding: 18px 0; overflow: visible; }
+  .trust-strip-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 0;
+    padding: 0;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-width: 100%;
+  }
+  .trust-strip-inner::-webkit-scrollbar { display: none; }
+  .trust-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 4px 22px;
+    border-right: 1px solid var(--border);
+    gap: 10px;
+  }
+  .trust-item:last-child { border-right: none; padding-right: 20px; }
+  .trust-item:first-child { padding-left: 20px; }
+  .trust-num { font-size: 24px; }
+  .trust-label { font-size: 12px; white-space: nowrap; }
+  .trust-div { display: none; }
+}
+
+/* ================================================================
+   SEÇÕES — PADDING E TIPOGRAFIA REFINADOS
+   ================================================================ */
+@media (max-width: 768px) {
+  .diferenciais, .identidade, .como, .bairros, .depos,
+  .veranistas, .localizacao, .faq, .speedtest, .insta-feed { padding: 72px 0; }
+  .planos { padding: 72px 0; }
+  .financeiro { padding: 56px 0; }
+  .cta-final { padding: 80px 0; }
+  .section-wrap { padding: 0 20px; }
+
+  .section-title {
+    font-size: clamp(26px, 7.5vw, 40px);
+    letter-spacing: -.7px;
+    line-height: 1.1;
+  }
+  .section-sub { font-size: 15.5px; line-height: 1.72; }
+  .section-tag { font-size: 11px; padding: 5px 12px; }
+
+  .dif-header, .planos-header, .como-header,
+  .bairros-header, .depos-header, .insta-header, .faq-header { margin-bottom: 36px; }
+}
+
+/* ================================================================
+   DIFERENCIAIS MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .dif-grid { grid-template-columns: 1fr; gap: 12px; }
+  .dif-card { padding: 24px 20px; border-radius: 20px; }
+  .dif-card.span2 { grid-column: span 1; flex-direction: column; }
+  .dif-icon { width: 46px; height: 46px; border-radius: 14px; font-size: 20px; margin-bottom: 14px; }
+  .dif-card.span2 .dif-icon { margin-bottom: 14px; }
+  .dif-card h4 { font-size: 16px; }
+  .dif-card p { font-size: 14px; line-height: 1.65; }
+  /* Touch feedback */
+  .dif-card:active { transform: scale(.98); transition: transform .12s ease; }
+}
+
+/* ================================================================
+   IDENTIDADE LOCAL MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .id-inner { grid-template-columns: 1fr; gap: 36px; }
+  .id-img { aspect-ratio: 4/3; border-radius: 20px; }
+  .id-float-a { top: -10px; right: 12px; padding: 14px 16px; border-radius: 16px; }
+  .id-float-a .n { font-size: 28px; }
+  .id-float-a .l { font-size: 11px; }
+  .id-float-b { bottom: 16px; left: 8px; padding: 10px 14px; border-radius: 14px; }
+  .id-float-b .ico { width: 30px; height: 30px; font-size: 13px; }
+  .id-bordao { font-size: 16px; margin: 18px 0 22px; padding: 16px 18px; border-radius: 14px; }
+  .id-right p { font-size: 15px; line-height: 1.78; }
+}
+
+/* ================================================================
+   PLANOS MOBILE — Premium redesign
+   ================================================================ */
+@media (max-width: 768px) {
+  .planos-header { margin-bottom: 32px; }
+  .planos-featured { grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+  .plano-card { padding: 26px 20px; border-radius: 22px; }
+  .plano-card.hero-plan { padding: 30px 22px; }
+  .plano-speed { font-size: 46px; letter-spacing: -2px; }
+  .plano-price .val { font-size: 42px; }
+  .plano-price .cur { font-size: 16px; }
+  .plano-price .dec { font-size: 20px; }
+  .plano-feats { gap: 10px; margin-top: 18px; }
+  .plano-feats li { font-size: 13.5px; }
+  .btn-plano { padding: 14px; font-size: 14.5px; border-radius: 14px; margin-top: 18px; min-height: 50px; }
+  .planos-note { margin-top: 18px; font-size: 12.5px; }
+
+  /* Mini planos — horizontal scroll */
+  .planos { overflow-x: clip; }
+  .planos-rest {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -20px;
+    padding: 4px 20px 8px;
+  }
+  .planos-rest::-webkit-scrollbar { display: none; }
+  .plano-mini {
+    flex: 0 0 172px;
+    scroll-snap-align: start;
+    border-radius: 18px;
+    padding: 20px 16px;
+  }
+  .pm-speed { font-size: 24px; }
+  .pm-price { font-size: 18px; }
+  .pm-btn { font-size: 11.5px; padding: 8px; margin-top: 12px; }
+  .plano-mini:active { transform: scale(.97); transition: transform .12s ease; }
+}
+
+/* ================================================================
+   COMO FUNCIONA MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .como-header { margin-bottom: 36px; }
+  .como-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .como-steps::before { display: none; }
+  .como-step { padding: 0 8px; }
+  .como-step-num {
+    width: 64px; height: 64px;
+    font-size: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 16px rgba(10,126,226,.14);
+  }
+  .como-step h4 { font-size: 14.5px; margin-bottom: 6px; letter-spacing: -.1px; }
+  .como-step p { font-size: 13px; line-height: 1.62; }
+}
+@media (max-width: 460px) {
+  .como-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .como-step {
+    display: flex;
+    gap: 16px;
+    text-align: left;
+    padding: 0;
+    align-items: flex-start;
+  }
+  .como-step-num { flex-shrink: 0; margin-bottom: 0; width: 52px; height: 52px; font-size: 16px; }
+}
+
+/* ================================================================
+   BAIRROS MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .bairros-regions { grid-template-columns: 1fr; gap: 10px; margin-bottom: 24px; }
+  .region-block { padding: 18px; border-radius: 18px; }
+  .region-title { font-size: 12px; margin-bottom: 10px; padding-bottom: 9px; }
+  .rpill { padding: 4px 10px; font-size: 11.5px; }
+  .bairros-cta { padding: 26px 20px; border-radius: 20px; }
+  .bairros-cta h3 { font-size: 18px; margin-bottom: 6px; }
+  .bairros-cta p { font-size: 13.5px; margin-bottom: 16px; }
+  .cob-row { flex-direction: column; gap: 10px; }
+  .cob-inp { padding: 14px 18px; font-size: 15px; min-height: 52px; }
+  .cob-btn { padding: 14px 20px; font-size: 14px; min-height: 52px; width: 100%; }
+  .region-block:active { transform: scale(.98); transition: transform .12s ease; }
+}
+@media (max-width: 380px) {
+  .bairros-regions { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   DEPOIMENTOS MOBILE — Cards premium
+   ================================================================ */
+@media (max-width: 768px) {
+  .depos-header { margin-bottom: 32px; }
+  .depos { overflow-x: clip; }
+  .depos-grid {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -20px;
+    padding: 4px 20px 16px;
+  }
+  .depos-grid::-webkit-scrollbar { display: none; }
+  .depo-card {
+    flex: 0 0 min(310px, 84vw);
+    scroll-snap-align: start;
+    border-radius: 20px;
+    padding: 22px 20px;
+  }
+  .depo-text { font-size: 14.5px; line-height: 1.7; }
+  .depo-stars { font-size: 12px; margin-bottom: 10px; }
+  .depo-av { width: 40px; height: 40px; font-size: 13px; }
+  .depo-name { font-size: 13.5px; }
+  .depo-loc { font-size: 11.5px; }
+  .depos-rating { padding: 8px 18px; }
+  .depos-rating-num { font-size: 18px; }
+}
+
+/* ================================================================
+   VERANISTAS MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .ver-inner { grid-template-columns: 1fr; gap: 36px; }
+  .ver-left .section-title { font-size: clamp(26px, 7.5vw, 40px); }
+  .ver-left .section-sub { margin-bottom: 26px; }
+  .ver-checks { gap: 12px; margin-bottom: 26px; }
+  .ver-check { font-size: 14.5px; }
+  .ver-photo { aspect-ratio: 4/3; border-radius: 20px; }
+  .ver-photo-badge { font-size: 11.5px; padding: 7px 14px; }
+}
+
+/* ================================================================
+   SPEEDTEST MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .st-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .st-left .section-tag, .st-left p.st-note { justify-content: center; }
+  .st-visual { max-width: 320px; margin: 0 auto; }
+  .st-meter { width: 196px; height: 196px; }
+  .btn-speedtest {
+    width: 100%; justify-content: center;
+    padding: 16px 24px; border-radius: 16px; min-height: 54px;
+  }
+  .st-stats { max-width: 280px; gap: 12px; }
+  .st-stat { padding: 14px; border-radius: 14px; }
+  .st-stat-val { font-size: 22px; }
+}
+
+/* ================================================================
+   INSTAGRAM MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .insta-header { margin-bottom: 32px; }
+  .insta-widget-wrap { border-radius: 20px; }
+}
+
+/* ================================================================
+   LOCALIZAÇÃO MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .loc-inner { grid-template-columns: 1fr; gap: 24px; }
+  .loc-info { gap: 10px; margin-bottom: 22px; }
+  .loc-item { padding: 16px; border-radius: 16px; gap: 12px; }
+  .loc-ico { width: 38px; height: 38px; font-size: 16px; border-radius: 10px; }
+  .loc-item-text h5 { font-size: 13px; }
+  .loc-item-text p { font-size: 12.5px; }
+  .loc-map { height: 230px; border-radius: 20px; }
+  .loc-item:active { transform: translateX(2px); transition: transform .12s ease; }
+}
+
+/* ================================================================
+   FAQ MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .faq-inner { max-width: 100%; padding: 0; }
+  .faq-header { margin-bottom: 32px; }
+  .faq-list { gap: 8px; }
+  .faq-item { border-radius: 16px; }
+  .faq-q {
+    padding: 18px 20px;
+    font-size: 15px;
+    gap: 14px;
+    min-height: 58px;
+    line-height: 1.4;
+  }
+  .faq-q .fi { width: 28px; height: 28px; flex-shrink: 0; font-size: 11px; }
+  .faq-a { padding: 0 20px; }
+  .faq-a p { font-size: 14.5px; padding-bottom: 18px; line-height: 1.72; }
+  .faq-cta-inline { margin-top: 28px; }
+  .faq-cta-inline p { font-size: 14.5px; margin-bottom: 14px; }
+}
+
+/* ================================================================
+   CTA FINAL MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .cta-conecte-phrase {
+    font-size: clamp(46px, 13vw, 70px);
+    letter-spacing: -2px;
+    line-height: .96;
+  }
+  .cta-final h2 {
+    font-size: clamp(28px, 8.5vw, 46px);
+    letter-spacing: -.8px;
+    margin-bottom: 12px;
+  }
+  .cta-conecte-sub { font-size: 15px; margin-bottom: 28px; }
+  .cta-bordao { font-size: 14.5px; margin-bottom: 14px; }
+  .cta-final > .cta-inner > p { font-size: 15px; margin-bottom: 32px; line-height: 1.7; }
+  .cta-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cta-btns .btn-primary,
+  .cta-btns .btn-glass {
+    width: 100%; justify-content: center;
+    padding: 17px 24px; font-size: 16px;
+    border-radius: 16px; min-height: 56px;
+  }
+  .cta-online { font-size: 12.5px; margin-top: 20px; }
+}
+
+/* ================================================================
+   FINANCEIRO MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .fin-wrap {
+    padding: 34px 22px;
+    border-radius: 22px;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    text-align: center;
+  }
+  .fin-deco { display: flex; justify-content: center; }
+  .fin-icon-wrap { width: 74px; height: 74px; font-size: 30px; border-radius: 20px; }
+  .fin-title { font-size: clamp(22px, 6vw, 32px); }
+  .fin-sub { font-size: 15px; margin-bottom: 20px; }
+  .fin-itens { grid-template-columns: 1fr; gap: 8px; }
+  .fin-item { justify-content: flex-start; }
+  .btn-wpp-fin {
+    width: 100%; justify-content: center;
+    padding: 16px 24px; border-radius: 16px; min-height: 54px;
+  }
+}
+
+/* ================================================================
+   FOOTER MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  footer { padding: 52px 0 28px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 0 20px 36px; }
+  .footer-bottom {
+    flex-direction: column; align-items: flex-start;
+    gap: 6px; padding: 0 20px; font-size: 11.5px;
+  }
+  .footer-desc { max-width: 100%; font-size: 13px; }
+  .footer-col h5 { margin-bottom: 12px; }
+  .footer-links { gap: 10px; }
+  .footer-links a { font-size: 13.5px; }
+  .fsoc { width: 40px; height: 40px; font-size: 16px; border-radius: 12px; }
+  .footer-socials { gap: 8px; }
+}
+
+/* ================================================================
+   MOBILE STICKY BAR — Premium redesign
+   ================================================================ */
+@media (max-width: 768px) {
+  .mobile-bar {
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    gap: 10px;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    box-shadow: 0 -1px 0 rgba(0,0,0,.05), 0 -6px 28px rgba(0,0,0,.07);
+    border-top: 1px solid rgba(0,0,0,.055);
+  }
+  .mob-bar-btn {
+    padding: 13px 12px;
+    border-radius: 14px;
+    font-size: 14px;
+    gap: 8px;
+    min-height: 50px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+    transition: all .15s ease;
+  }
+  .mob-bar-wpp {
+    background: linear-gradient(135deg, #25D366 0%, #1ebe5d 100%);
+    box-shadow: 0 4px 16px rgba(37,211,102,.3);
+  }
+  .mob-bar-tel {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-mid) 100%);
+    box-shadow: 0 4px 16px rgba(10,126,226,.26);
+  }
+  .mob-bar-btn:active { transform: scale(.96); opacity: .9; }
+  [data-theme="dark"] .mobile-bar {
+    background: rgba(10,16,30,.97);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border-top-color: rgba(255,255,255,.055);
+    box-shadow: 0 -1px 0 rgba(255,255,255,.04), 0 -6px 32px rgba(0,0,0,.5);
+  }
+}
+
+/* ================================================================
+   WPP FAB MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .wpp-fab {
+    bottom: calc(74px + env(safe-area-inset-bottom) + 10px);
+    right: 16px;
+  }
+  .wpp-fab a {
+    width: 52px; height: 52px;
+    font-size: 22px;
+    box-shadow: 0 8px 24px rgba(37,211,102,.42);
+  }
+  .wpp-tip { display: none !important; }
+}
+
+/* ================================================================
+   REVEAL — Mais leve no mobile
+   ================================================================ */
+@media (max-width: 768px) {
+  .reveal {
+    transform: translateY(16px);
+    transition: opacity .48s ease, transform .48s ease;
+  }
+  .reveal.from-left { transform: translateX(-14px); }
+  .reveal.from-right { transform: translateX(14px); }
+}
+
+/* ================================================================
+   ACTIVE TOUCH FEEDBACK — Micro-interações premium
+   ================================================================ */
+@media (max-width: 768px) {
+  .btn-primary:active,
+  .btn-glass:active,
+  .btn-outline-dark:active,
+  .btn-wpp-full:active { transform: scale(.97); transition: transform .12s ease; }
+  .rpill:active { transform: scale(.93); }
+  .depo-card:active { transform: scale(.98) translateY(-1px); }
+  .plano-card:active { transform: scale(.99); transition: transform .12s ease; }
+}
+
+/* ================================================================
+   EXTRA SMALL (< 380px)
+   ================================================================ */
+@media (max-width: 380px) {
+  .hero-title { font-size: clamp(30px, 9vw, 40px); letter-spacing: -1.2px; }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-glass { font-size: 15px; padding: 15px 20px; }
+  .section-title { font-size: clamp(24px, 7.5vw, 34px); }
+  .plano-card { padding: 22px 16px; }
+  .plano-speed { font-size: 40px; }
+  .mob-bar-btn { font-size: 13px; padding: 12px 8px; }
+  .como-steps { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   SCROLL SUAVE & OVERSCROLL
+   ================================================================ */
+@media (max-width: 768px) {
+  body { overscroll-behavior-y: contain; }
+}
+
+/* ================================================================
+   HERO PADDING FIX — especificidade dupla para vencer .section-wrap
+   ================================================================ */
+@media (max-width: 768px) {
+  .hero-content.section-wrap {
+    padding-top: 92px;
+    padding-bottom: 80px;
+  }
+}
+@media (max-width: 380px) {
+  .hero-content.section-wrap {
+    padding-top: 82px;
+    padding-bottom: 72px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3022,11 +3802,13 @@ window.addEventListener('scroll', () => {
 function openMob() {
   document.getElementById('mobOverlay').classList.add('open');
   document.getElementById('mobPanel').classList.add('open');
+  document.querySelector('.nav-burger').classList.add('is-open');
   document.body.style.overflow = 'hidden';
 }
 function closeMob() {
   document.getElementById('mobOverlay').classList.remove('open');
   document.getElementById('mobPanel').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('is-open');
   document.body.style.overflow = '';
 }
 
