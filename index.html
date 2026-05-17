@@ -836,9 +836,10 @@ body {
 .rpill {
   background:var(--surface); border:1px solid var(--border); border-radius:var(--r-full);
   padding:5px 12px; font-size:12px; font-weight:500; color:var(--muted);
-  transition:all .2s; cursor:default;
+  transition:all .2s; cursor:pointer; user-select:none;
 }
 .rpill:hover { border-color:var(--azul); color:var(--azul); background:var(--azul-light); }
+.rpill:active { transform:scale(.96); }
 .rpill.main { background:var(--surface); border-color:var(--border); color:var(--muted); }
 
 .bairros-cta {
@@ -2112,6 +2113,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <span class="rpill">Belo Horizonte</span>
           <span class="rpill">Sol Nascente</span>
           <span class="rpill">Vila das Flores</span>
+          <span class="rpill">Aprel</span>
+          <span class="rpill">Estância do Meio</span>
         </div>
       </div>
       <!-- CTA cobertura (span 2) -->
@@ -2516,6 +2519,16 @@ function verificar() {
     encodeURIComponent('Olá! Gostaria de saber se vocês atendem no bairro: ' + b + '. Podem me confirmar?'), '_blank');
 }
 document.getElementById('bairroInput').addEventListener('keydown', e => { if (e.key === 'Enter') verificar(); });
+
+document.querySelectorAll('.rpill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const inp = document.getElementById('bairroInput');
+    inp.value = pill.textContent.trim();
+    inp.closest('section') ? inp.scrollIntoView({ behavior:'smooth', block:'center' }) : null;
+    document.querySelector('.bairros-cta').scrollIntoView({ behavior:'smooth', block:'center' });
+    setTimeout(verificar, 400);
+  });
+});
 
 /* Scroll reveal */
 const revObs = new IntersectionObserver(entries => {
