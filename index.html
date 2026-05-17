@@ -512,7 +512,7 @@ body {
 .ic-b { background:rgba(10,126,226,.08); color:var(--azul); }
 .ic-y { background:rgba(255,222,89,.18); color:#9a7800; }
 .ic-g { background:rgba(34,197,94,.1); color:#16a34a; }
-.ic-o { background:rgba(249,115,22,.1); color:#ea580c; }
+.ic-o { background:rgba(10,126,226,.1); color:var(--azul); }
 .ic-p { background:rgba(139,92,246,.1); color:#7c3aed; }
 .ic-r { background:rgba(236,72,153,.1); color:#db2777; }
 .dif-card h4 { font-size:17px; font-weight:800; margin-bottom:8px; letter-spacing:-.3px; }
@@ -839,7 +839,7 @@ body {
   transition:all .2s; cursor:default;
 }
 .rpill:hover { border-color:var(--azul); color:var(--azul); background:var(--azul-light); }
-.rpill.main { background:rgba(10,126,226,.06); border-color:rgba(10,126,226,.2); color:var(--azul); font-weight:600; }
+.rpill.main { background:var(--surface); border-color:var(--border); color:var(--muted); }
 
 .bairros-cta {
   background:rgba(255,255,255,.88); backdrop-filter:blur(16px);
@@ -1280,6 +1280,333 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .bairros-regions { grid-template-columns:1fr; }
   .como-steps { grid-template-columns:1fr; }
 }
+
+/* ================================================================
+   DARK MODE — PREMIUM THEME
+   ================================================================ */
+
+/* Smooth transition on theme switch */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:background-color .38s ease,border-color .38s ease,color .38s ease,box-shadow .38s ease !important;
+}
+
+/* ---- Toggle Button ---- */
+.theme-toggle {
+  width:38px; height:38px; border-radius:50%;
+  background:rgba(255,255,255,.1); border:1.5px solid rgba(255,255,255,.22);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; color:rgba(255,255,255,.85);
+  font-size:15px; transition:all .3s; flex-shrink:0;
+  backdrop-filter:blur(8px);
+}
+.theme-toggle:hover {
+  background:rgba(255,255,255,.18); transform:rotate(22deg) scale(1.1);
+  border-color:rgba(255,255,255,.4);
+}
+#nav.scrolled .theme-toggle {
+  background:var(--surface); border-color:var(--border); color:var(--muted);
+}
+#nav.scrolled .theme-toggle:hover {
+  background:var(--azul-light); color:var(--azul); border-color:rgba(10,126,226,.22);
+}
+
+/* ================================================================
+   DARK MODE VARIABLES
+   ================================================================ */
+[data-theme="dark"] {
+  --texto:      rgba(255,255,255,.92);
+  --texto2:     rgba(255,255,255,.78);
+  --muted:      rgba(255,255,255,.52);
+  --muted2:     rgba(255,255,255,.36);
+  --surface:    rgba(255,255,255,.055);
+  --surface2:   rgba(255,255,255,.09);
+  --border:     rgba(255,255,255,.09);
+  --branco:     #0b1220;
+  --bg-tinted:  #111e35;
+  --bg-mist:    #0d1a2e;
+  --section-accent: rgba(10,126,226,.14);
+  --azul-light: rgba(10,126,226,.2);
+  --shadow-sm:  0 2px 12px rgba(0,0,0,.38);
+  --shadow-md:  0 8px 40px rgba(0,0,0,.48);
+  --shadow-lg:  0 20px 70px rgba(0,0,0,.54);
+  --shadow-azul:0 12px 48px rgba(10,126,226,.4);
+}
+[data-theme="dark"] body { background:#0b1220; color:rgba(255,255,255,.92); }
+
+/* ---- NAV dark ---- */
+[data-theme="dark"] #nav.scrolled {
+  background:rgba(11,18,32,.94);
+  border-bottom-color:rgba(255,255,255,.07);
+  box-shadow:0 2px 40px rgba(0,0,0,.44);
+}
+[data-theme="dark"] #nav.scrolled .logo-name { color:rgba(255,255,255,.92); }
+[data-theme="dark"] #nav.scrolled .logo-name em { color:var(--azul); }
+[data-theme="dark"] #nav.scrolled .logo-tagline { color:rgba(255,255,255,.35); }
+[data-theme="dark"] #nav.scrolled .nav-links a { color:rgba(255,255,255,.60); }
+[data-theme="dark"] #nav.scrolled .nav-links a:hover { color:white; background:rgba(255,255,255,.08); }
+[data-theme="dark"] #nav.scrolled .nav-btn-outline { color:rgba(10,126,226,.92); border-color:rgba(10,126,226,.3); }
+[data-theme="dark"] #nav.scrolled .nav-btn-outline:hover { background:rgba(10,126,226,.12); }
+[data-theme="dark"] #nav.scrolled .nav-burger { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.1); }
+[data-theme="dark"] #nav.scrolled .nav-burger span { background:rgba(255,255,255,.85); }
+[data-theme="dark"] #nav.scrolled .theme-toggle { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.75); }
+[data-theme="dark"] #nav.scrolled .theme-toggle:hover { background:rgba(10,126,226,.15); color:var(--azul); border-color:rgba(10,126,226,.3); }
+
+/* ---- MOBILE PANEL dark ---- */
+[data-theme="dark"] .mob-panel { background:#0c1628; }
+[data-theme="dark"] .mob-head { border-bottom-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .mob-close { background:rgba(255,255,255,.07); color:rgba(255,255,255,.6); }
+[data-theme="dark"] .mob-close:hover { background:rgba(255,255,255,.12); color:white; }
+[data-theme="dark"] .mob-links a { color:rgba(255,255,255,.75); }
+[data-theme="dark"] .mob-links a:hover { background:rgba(255,255,255,.07); color:white; }
+[data-theme="dark"] .mob-foot { border-top-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .mob-overlay { background:rgba(0,0,0,.68); }
+[data-theme="dark"] .btn-outline-dark { color:rgba(10,126,226,.92); border-color:rgba(10,126,226,.3); }
+[data-theme="dark"] .btn-outline-dark:hover { background:var(--azul); color:white; }
+
+/* ---- TRUST STRIP dark ---- */
+[data-theme="dark"] .trust-strip {
+  background:linear-gradient(180deg,#0e1a30 0%,#0b1220 60%);
+  border-bottom-color:rgba(10,126,226,.14);
+}
+[data-theme="dark"] .trust-div { background:rgba(255,255,255,.08); }
+
+/* ---- DIFERENCIAIS dark ---- */
+[data-theme="dark"] .diferenciais {
+  background-color:#0c1628;
+  background-image:
+    radial-gradient(ellipse 85% 60% at 50% -5%,rgba(10,126,226,.15) 0%,transparent 65%),
+    radial-gradient(rgba(10,126,226,.065) 1px,transparent 1px);
+  background-size:auto, 38px 38px;
+}
+[data-theme="dark"] .diferenciais::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
+[data-theme="dark"] .dif-card {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 2px 24px rgba(0,0,0,.34);
+}
+[data-theme="dark"] .dif-card:hover {
+  background:rgba(255,255,255,.07); border-color:rgba(10,126,226,.28);
+  box-shadow:0 12px 44px rgba(0,0,0,.46),0 0 0 1px rgba(10,126,226,.1);
+}
+[data-theme="dark"] .dif-card::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent); }
+[data-theme="dark"] .ic-b { background:rgba(10,126,226,.15); }
+[data-theme="dark"] .ic-y { background:rgba(255,222,89,.1); color:#e6c400; }
+[data-theme="dark"] .ic-g { background:rgba(34,197,94,.1); color:#4ade80; }
+[data-theme="dark"] .ic-o { background:rgba(10,126,226,.15); color:rgba(10,126,226,.9); }
+[data-theme="dark"] .ic-p { background:rgba(139,92,246,.1); color:#a78bfa; }
+[data-theme="dark"] .ic-r { background:rgba(236,72,153,.1); color:#f472b6; }
+[data-theme="dark"] .dif-card p { color:rgba(255,255,255,.52); }
+
+/* ---- IDENTIDADE dark ---- */
+[data-theme="dark"] .identidade {
+  background:linear-gradient(165deg,#0d1728 0%,#101e34 45%,#0d1626 100%);
+}
+[data-theme="dark"] .identidade::before { background:radial-gradient(circle,rgba(10,126,226,.14) 0%,transparent 65%); }
+[data-theme="dark"] .identidade::after { background:radial-gradient(circle,rgba(10,126,226,.08) 0%,transparent 65%); }
+[data-theme="dark"] .id-right p { color:rgba(255,255,255,.58); }
+[data-theme="dark"] .id-bordao {
+  background:linear-gradient(135deg,rgba(10,126,226,.12),rgba(255,222,89,.08));
+  color:rgba(255,255,255,.9);
+}
+[data-theme="dark"] .id-float-b {
+  background:rgba(14,26,46,.97);
+  box-shadow:0 8px 36px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.07);
+  color:rgba(255,255,255,.88);
+}
+[data-theme="dark"] .id-float-b .t span { color:rgba(255,255,255,.46); }
+
+/* ---- PLANOS dark ---- */
+[data-theme="dark"] .planos {
+  background:linear-gradient(160deg,#091522 0%,#0b1b35 28%,#0a1830 55%,#0b1b35 78%,#091522 100%);
+  border-top-color:rgba(10,126,226,.24); border-bottom-color:rgba(10,126,226,.24);
+}
+[data-theme="dark"] .planos::before { background:radial-gradient(ellipse 65% 55% at 50% 18%,rgba(10,126,226,.05) 0%,transparent 65%); z-index:0; }
+[data-theme="dark"] .planos::after { background:radial-gradient(circle,rgba(5,99,184,.05) 0%,transparent 65%); z-index:0; }
+[data-theme="dark"] .planos-header { position:relative; z-index:1; }
+[data-theme="dark"] .planos-featured { position:relative; z-index:1; }
+[data-theme="dark"] .planos-rest { position:relative; z-index:1; }
+[data-theme="dark"] .planos-note { position:relative; z-index:1; }
+[data-theme="dark"] .plano-card {
+  background:rgba(13,22,44,.92); border-color:rgba(255,255,255,.09);
+  box-shadow:0 4px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06);
+  position:relative; z-index:2;
+}
+[data-theme="dark"] .plano-card:hover {
+  border-color:rgba(10,126,226,.32); background:rgba(16,27,54,.95);
+  box-shadow:0 20px 60px rgba(0,0,0,.52),0 0 0 1px rgba(10,126,226,.12);
+}
+[data-theme="dark"] .plano-card.side-plan { background:rgba(15,24,48,.92); }
+[data-theme="dark"] .plano-divider { background:rgba(255,255,255,.09); }
+[data-theme="dark"] .plano-price-label { color:rgba(255,255,255,.50); }
+[data-theme="dark"] .plano-mes { color:rgba(255,255,255,.48); }
+[data-theme="dark"] .plano-eyebrow { color:rgba(10,126,226,.92); }
+[data-theme="dark"] .side-plan .plano-eyebrow { color:rgba(10,126,226,.86); }
+[data-theme="dark"] .plano-context { background:rgba(10,126,226,.15); color:rgba(255,255,255,.78); }
+[data-theme="dark"] .plano-feats li { color:rgba(255,255,255,.65); }
+[data-theme="dark"] .btn-plano-outline { color:rgba(10,126,226,.95); border-color:rgba(10,126,226,.28); background:rgba(10,126,226,.08); }
+[data-theme="dark"] .btn-plano-outline:hover { background:var(--azul); color:white; border-color:var(--azul); }
+[data-theme="dark"] .plano-mini { background:rgba(13,22,44,.92); border-color:rgba(255,255,255,.08); position:relative; z-index:2; }
+[data-theme="dark"] .plano-mini:hover { border-color:rgba(10,126,226,.32); background:rgba(16,27,54,.95); }
+[data-theme="dark"] .plano-mini::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent); }
+[data-theme="dark"] .pm-speed { color:var(--azul); }
+[data-theme="dark"] .pm-label { color:rgba(255,255,255,.38); }
+[data-theme="dark"] .pm-price span { color:rgba(255,255,255,.45); }
+[data-theme="dark"] .pm-context { color:rgba(255,255,255,.46); }
+[data-theme="dark"] .pm-btn { background:rgba(255,255,255,.07); color:rgba(10,126,226,.92); }
+[data-theme="dark"] .plano-mini:hover .pm-btn { background:var(--azul); color:white; }
+[data-theme="dark"] .planos-note { color:rgba(255,255,255,.42); }
+
+/* ---- COMO FUNCIONA dark ---- */
+[data-theme="dark"] .como { background:#0c1628; }
+[data-theme="dark"] .como::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
+[data-theme="dark"] .como::after { background:radial-gradient(ellipse 70% 55% at 50% 85%,rgba(10,126,226,.1) 0%,transparent 65%); }
+[data-theme="dark"] .como-step h4 { color:rgba(255,255,255,.9); }
+[data-theme="dark"] .como-step p { color:rgba(255,255,255,.52); }
+[data-theme="dark"] .como-step-num {
+  background:#0c1628; border-color:rgba(10,126,226,.32);
+  box-shadow:0 4px 24px rgba(0,0,0,.38);
+}
+[data-theme="dark"] .como-step:hover .como-step-num { background:var(--azul); color:white; border-color:var(--azul); }
+[data-theme="dark"] .como-steps::before { background:linear-gradient(90deg,rgba(10,126,226,.18),rgba(10,126,226,.52),rgba(10,126,226,.18)); }
+
+/* ---- BAIRROS dark ---- */
+[data-theme="dark"] .bairros {
+  background:linear-gradient(148deg,#0a1527 0%,#0d1c36 35%,#0b1930 55%,#0d1c36 78%,#0a1527 100%);
+}
+[data-theme="dark"] .bairros::after { background:radial-gradient(circle,rgba(10,126,226,.15) 0%,transparent 65%); }
+[data-theme="dark"] .bairros::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
+[data-theme="dark"] .region-block {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 2px 24px rgba(0,0,0,.34);
+}
+[data-theme="dark"] .region-block:hover { border-color:rgba(10,126,226,.28); background:rgba(255,255,255,.07); }
+[data-theme="dark"] .region-title { border-bottom-color:rgba(10,126,226,.24); }
+[data-theme="dark"] .rpill { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.09); color:rgba(255,255,255,.56); }
+[data-theme="dark"] .rpill:hover { border-color:rgba(10,126,226,.44); color:rgba(10,126,226,.92); background:rgba(10,126,226,.1); }
+[data-theme="dark"] .rpill.main { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.09); color:rgba(255,255,255,.56); }
+[data-theme="dark"] .bairros-cta {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 8px 48px rgba(0,0,0,.46),inset 0 1px 0 rgba(255,255,255,.06);
+}
+[data-theme="dark"] .bairros-cta h3 { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .bairros-cta p { color:rgba(255,255,255,.52); }
+[data-theme="dark"] .cob-inp {
+  background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.9);
+}
+[data-theme="dark"] .cob-inp:focus { background:rgba(255,255,255,.09); border-color:rgba(10,126,226,.54); box-shadow:0 0 0 3px rgba(10,126,226,.14); }
+[data-theme="dark"] .cob-inp::placeholder { color:rgba(255,255,255,.36); }
+
+/* ---- DEPOIMENTOS dark ---- */
+[data-theme="dark"] .depos {
+  background:linear-gradient(180deg,#0b1220 0%,#0d1830 50%,#0b1220 100%);
+}
+[data-theme="dark"] .depos::before { background:radial-gradient(ellipse 78% 55% at 50% 10%,rgba(10,126,226,.1) 0%,transparent 65%); }
+[data-theme="dark"] .depos::after { background:radial-gradient(circle,rgba(10,126,226,.075) 0%,transparent 65%); }
+[data-theme="dark"] .depos-rating { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.09); }
+[data-theme="dark"] .depos-rating-num { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .depo-card {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 2px 22px rgba(0,0,0,.34);
+}
+[data-theme="dark"] .depo-card:hover {
+  background:rgba(255,255,255,.07); border-color:rgba(10,126,226,.24);
+  box-shadow:0 12px 48px rgba(0,0,0,.5);
+}
+[data-theme="dark"] .depo-text { color:rgba(255,255,255,.76); }
+[data-theme="dark"] .depo-divider { background:rgba(255,255,255,.08); }
+[data-theme="dark"] .depo-name { color:rgba(255,255,255,.88); }
+[data-theme="dark"] .depo-loc { color:rgba(255,255,255,.48); }
+[data-theme="dark"] .depo-source { color:rgba(255,255,255,.36); }
+
+/* ---- LOCALIZAÇÃO dark ---- */
+[data-theme="dark"] .localizacao {
+  background:linear-gradient(148deg,#0a1527 0%,#0d1c36 35%,#0b1830 58%,#0d1c36 80%,#0a1527 100%);
+}
+[data-theme="dark"] .localizacao::after { background:radial-gradient(circle,rgba(10,126,226,.14) 0%,transparent 65%); }
+[data-theme="dark"] .localizacao::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
+[data-theme="dark"] .loc-item {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 2px 18px rgba(0,0,0,.32);
+}
+[data-theme="dark"] .loc-item:hover { border-color:rgba(10,126,226,.28); box-shadow:0 6px 32px rgba(0,0,0,.42); }
+[data-theme="dark"] .loc-item-text h5 { color:rgba(255,255,255,.88); }
+[data-theme="dark"] .loc-item-text p { color:rgba(255,255,255,.52); }
+[data-theme="dark"] .loc-ico.azul { background:rgba(10,126,226,.15); }
+[data-theme="dark"] .loc-ico.verde { background:rgba(34,197,94,.1); color:#4ade80; }
+[data-theme="dark"] .loc-ico.amarelo { background:rgba(255,222,89,.1); color:#e6c400; }
+[data-theme="dark"] .loc-map { border-color:rgba(255,255,255,.08); background:#0a1829; }
+[data-theme="dark"] .loc-map-overlay { background:linear-gradient(135deg,#0a1829,#0c2040); }
+[data-theme="dark"] .loc-map-overlay p { color:rgba(255,255,255,.5); }
+
+/* ---- FAQ dark ---- */
+[data-theme="dark"] .faq { background:#0b1220; }
+[data-theme="dark"] .faq::before { background:radial-gradient(ellipse 68% 55% at 50% 12%,rgba(10,126,226,.1) 0%,transparent 65%); }
+[data-theme="dark"] .faq::after { background:radial-gradient(ellipse 65% 50% at 50% 85%,rgba(10,126,226,.07) 0%,transparent 65%); }
+[data-theme="dark"] .faq-item {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
+  box-shadow:0 2px 14px rgba(0,0,0,.3);
+}
+[data-theme="dark"] .faq-item:hover { border-color:rgba(10,126,226,.24); }
+[data-theme="dark"] .faq-item.open {
+  background:rgba(255,255,255,.07); border-color:rgba(10,126,226,.32);
+  box-shadow:0 8px 40px rgba(0,0,0,.42);
+}
+[data-theme="dark"] .faq-q { color:rgba(255,255,255,.9); }
+[data-theme="dark"] .faq-q .fi { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.11); }
+[data-theme="dark"] .faq-item.open .faq-q .fi { background:var(--azul); border-color:var(--azul); }
+[data-theme="dark"] .faq-a p { color:rgba(255,255,255,.58); }
+[data-theme="dark"] .faq-cta-inline p { color:rgba(255,255,255,.52); }
+
+/* ---- REDES SOCIAIS dark ---- */
+[data-theme="dark"] .section-redes {
+  background:linear-gradient(160deg,#0a1527 0%,#0c1a30 40%,#0b1929 60%,#0c1a30 80%,#0a1527 100%) !important;
+  border-top-color:rgba(10,126,226,.24) !important;
+}
+[data-theme="dark"] .social-card {
+  background:rgba(255,255,255,.04) !important;
+  border-color:rgba(255,255,255,.09) !important;
+  box-shadow:var(--shadow-sm) !important;
+}
+[data-theme="dark"] .social-card:hover { background:rgba(255,255,255,.07) !important; }
+
+/* ---- MOBILE BAR dark ---- */
+[data-theme="dark"] .mobile-bar {
+  background:rgba(11,18,32,.97); border-top-color:rgba(255,255,255,.07);
+  box-shadow:0 -8px 40px rgba(0,0,0,.5);
+}
+
+/* ---- WPP TIP dark ---- */
+[data-theme="dark"] .wpp-tip { background:#0f1a2e; color:rgba(255,255,255,.9); box-shadow:0 8px 36px rgba(0,0,0,.46); }
+[data-theme="dark"] .wpp-tip::after { border-left-color:#0f1a2e; }
+
+/* ---- MASCOTE dark enhancement ---- */
+[data-theme="dark"] .mascote-glow {
+  background:radial-gradient(circle,rgba(10,126,226,.72) 0%,rgba(255,222,89,.18) 50%,transparent 70%);
+}
+[data-theme="dark"] .mascote-float {
+  background:rgba(11,20,42,.78); border-color:rgba(255,255,255,.15);
+}
+
+/* ---- SECTION TAGS dark ---- */
+[data-theme="dark"] .section-tag {
+  background:rgba(10,126,226,.13); border:1px solid rgba(10,126,226,.24);
+}
+[data-theme="dark"] .section-tag.light {
+  background:rgba(255,222,89,.1); border:1px solid rgba(255,222,89,.22);
+  color:rgba(255,222,89,.92);
+}
+[data-theme="dark"] .diferenciais .section-tag,
+[data-theme="dark"] .bairros .section-tag,
+[data-theme="dark"] .localizacao .section-tag {
+  background:rgba(10,126,226,.13); border-color:rgba(10,126,226,.24);
+}
+[data-theme="dark"] .planos .section-tag { background:rgba(10,126,226,.17); border-color:rgba(10,126,226,.26); }
+
+/* ---- BUTTON shadow adjustments ---- */
+[data-theme="dark"] .btn-primary { box-shadow:0 8px 28px rgba(255,222,89,.2); }
+[data-theme="dark"] .btn-primary:hover { box-shadow:0 14px 40px rgba(255,222,89,.3); }
 </style>
 </head>
 <body>
@@ -1319,6 +1646,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="nav-btn-wpp">
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <i class="fas fa-moon"></i>
+    </button>
     <div class="nav-burger" onclick="openMob()" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
@@ -1847,7 +2177,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
         <p class="depo-text">"Tenho comércio no centro e a Conecte nunca me deixou na mão. Atendem no WhatsApp mesmo fora do horário. Isso é completamente diferente de tudo que já usei."</p>
         <div class="depo-divider"></div>
         <div class="depo-author">
-          <div class="depo-av" style="background:#ea580c">AS</div>
+          <div class="depo-av" style="background:var(--amarelo);color:#111">AS</div>
           <div>
             <div class="depo-name">Ana Silva</div>
             <div class="depo-loc">Comércio, Centro</div>
@@ -1862,7 +2192,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">
         <a href="https://wa.me/555197597259?text=Quero+contratar+a+Conecte+Telecom!" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fab fa-whatsapp"></i> Falar com a equipe</a>
         <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:9999px;border:2px solid rgba(234,67,53,.2);background:rgba(234,67,53,.04);color:#ea4335;font-size:15px;font-weight:700;text-decoration:none;transition:all .25s">
+           style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:9999px;border:2px solid rgba(10,126,226,.2);background:rgba(10,126,226,.04);color:var(--azul);font-size:15px;font-weight:700;text-decoration:none;transition:all .25s">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           Avaliar no Google
         </a>
@@ -1994,7 +2324,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 <!-- ================================================================
      REDES SOCIAIS
      ================================================================ -->
-<section style="padding:80px 0;background:linear-gradient(160deg,#f0f8ff 0%,#e3effd 40%,#d8eafc 60%,#e3effd 80%,#f0f8ff 100%);border-top:1.5px solid rgba(10,126,226,.16);position:relative;overflow:hidden">
+<section class="section-redes" style="padding:80px 0;background:linear-gradient(160deg,#f0f8ff 0%,#e3effd 40%,#d8eafc 60%,#e3effd 80%,#f0f8ff 100%);border-top:1.5px solid rgba(10,126,226,.16);position:relative;overflow:hidden">
   <div class="section-wrap" style="text-align:center">
     <div class="section-tag reveal" style="display:inline-flex;margin-bottom:20px"><i class="fab fa-instagram"></i> &nbsp;Siga a gente</div>
     <h2 class="section-title reveal" style="margin-bottom:12px">A gente também está <span style="color:var(--azul)">nas redes</span></h2>
@@ -2003,7 +2333,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="reveal" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:stretch">
 
       <!-- Instagram -->
-      <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener"
+      <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="social-card"
          style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
          onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(225,48,108,.18)';this.style.borderColor='rgba(225,48,108,.3)'"
          onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
@@ -2018,7 +2348,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- Facebook -->
-      <a href="https://www.facebook.com/seconecte2021/?locale=pt_BR" target="_blank" rel="noopener"
+      <a href="https://www.facebook.com/seconecte2021/?locale=pt_BR" target="_blank" rel="noopener" class="social-card"
          style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
          onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(24,119,242,.18)';this.style.borderColor='rgba(24,119,242,.3)'"
          onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
@@ -2033,7 +2363,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- WhatsApp -->
-      <a href="https://wa.me/555197597259?text=Olá+Conecte+Telecom!" target="_blank" rel="noopener"
+      <a href="https://wa.me/555197597259?text=Olá+Conecte+Telecom!" target="_blank" rel="noopener" class="social-card"
          style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
          onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(37,211,102,.18)';this.style.borderColor='rgba(37,211,102,.3)'"
          onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
@@ -2048,18 +2378,18 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- Google Maps -->
-      <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener"
+      <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener" class="social-card"
          style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
-         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(234,67,53,.18)';this.style.borderColor='rgba(234,67,53,.3)'"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(10,126,226,.18)';this.style.borderColor='rgba(10,126,226,.3)'"
          onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
-        <div style="width:64px;height:64px;border-radius:18px;background:#ea4335;display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(234,67,53,.3)">
+        <div style="width:64px;height:64px;border-radius:18px;background:var(--azul);display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(10,126,226,.3)">
           <i class="fas fa-map-marker-alt"></i>
         </div>
         <div>
           <div style="font-size:16px;font-weight:800;color:var(--texto);letter-spacing:-.2px">Google Maps</div>
           <div style="font-size:13px;color:var(--muted);margin-top:3px">Nos avalie!</div>
         </div>
-        <div style="font-size:12px;font-weight:700;color:#ea4335;background:rgba(234,67,53,.08);padding:5px 14px;border-radius:999px">★ Avaliar</div>
+        <div style="font-size:12px;font-weight:700;color:var(--azul);background:rgba(10,126,226,.08);padding:5px 14px;border-radius:999px">★ Avaliar</div>
       </a>
 
     </div>
@@ -2227,6 +2557,43 @@ const countObs = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));
 
 /* Maps iframe already embedded directly */
+
+/* ================================================================
+   THEME TOGGLE — Dark Mode Premium
+   ================================================================ */
+(function() {
+  const KEY = 'conecte-theme';
+  const root = document.documentElement;
+  const mq   = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function applyTheme(dark, animate) {
+    if (animate) {
+      document.body.classList.add('theme-transitioning');
+      setTimeout(function() { document.body.classList.remove('theme-transitioning'); }, 420);
+    }
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  /* Init on load — respect stored pref, fall back to system pref */
+  var stored = localStorage.getItem(KEY);
+  var isDark  = stored !== null ? stored === 'dark' : mq.matches;
+  applyTheme(isDark, false);
+
+  /* Global toggle called by the button */
+  window.toggleTheme = function() {
+    var nowDark = root.getAttribute('data-theme') === 'dark';
+    var next    = !nowDark;
+    localStorage.setItem(KEY, next ? 'dark' : 'light');
+    applyTheme(next, true);
+  };
+
+  /* Keep in sync with system preference changes (only if user never chose manually) */
+  mq.addEventListener('change', function(e) {
+    if (localStorage.getItem(KEY) === null) applyTheme(e.matches, true);
+  });
+})();
 </script>
 
 </body>
