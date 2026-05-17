@@ -838,8 +838,8 @@ body {
   padding:5px 12px; font-size:12px; font-weight:500; color:var(--muted);
   transition:all .2s; cursor:pointer; user-select:none;
 }
-.rpill:hover { border-color:var(--azul); color:var(--azul); background:var(--azul-light); }
-.rpill:active { transform:scale(.96); }
+.rpill:hover, .rpill.main:hover { border-color:var(--azul); color:var(--azul); background:var(--azul-light); }
+.rpill:active, .rpill.main:active { transform:scale(.96); }
 .rpill.main { background:var(--surface); border-color:var(--border); color:var(--muted); }
 
 .bairros-cta {
@@ -1481,7 +1481,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 [data-theme="dark"] .region-block:hover { border-color:rgba(10,126,226,.28); background:rgba(255,255,255,.07); }
 [data-theme="dark"] .region-title { border-bottom-color:rgba(10,126,226,.24); }
 [data-theme="dark"] .rpill { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.09); color:rgba(255,255,255,.56); }
-[data-theme="dark"] .rpill:hover { border-color:rgba(10,126,226,.44); color:rgba(10,126,226,.92); background:rgba(10,126,226,.1); }
+[data-theme="dark"] .rpill:hover, [data-theme="dark"] .rpill.main:hover { border-color:rgba(10,126,226,.44); color:rgba(10,126,226,.92); background:rgba(10,126,226,.1); }
 [data-theme="dark"] .rpill.main { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.09); color:rgba(255,255,255,.56); }
 [data-theme="dark"] .bairros-cta {
   background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
@@ -1604,6 +1604,406 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 /* ---- BUTTON shadow adjustments ---- */
 [data-theme="dark"] .btn-primary { box-shadow:0 8px 28px rgba(255,222,89,.2); }
 [data-theme="dark"] .btn-primary:hover { box-shadow:0 14px 40px rgba(255,222,89,.3); }
+
+/* ================================================================
+   SPEEDTEST — SEÇÃO TESTE DE VELOCIDADE
+   ================================================================ */
+.speedtest {
+  padding:100px 0;
+  background:var(--bg-tinted);
+  position:relative;
+  overflow:hidden;
+}
+.speedtest::before {
+  content:'';
+  position:absolute;
+  top:-30%;
+  right:-10%;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle,rgba(10,126,226,.09) 0%,transparent 65%);
+  pointer-events:none;
+}
+.speedtest::after {
+  content:'';
+  position:absolute;
+  bottom:-20%;
+  left:-8%;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,rgba(255,222,89,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.st-inner {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.st-left .section-tag { margin-bottom:16px; }
+.st-left .section-title { margin-bottom:16px; }
+.st-left .section-sub { margin-bottom:32px; }
+.st-left p.st-note {
+  font-size:13px;
+  color:var(--muted2);
+  margin-top:16px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.btn-speedtest {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--azul);
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  padding:16px 32px;
+  border-radius:var(--r-full);
+  text-decoration:none;
+  box-shadow:var(--shadow-azul);
+  transition:all .25s;
+  letter-spacing:-.2px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-speedtest:hover {
+  background:var(--azul-mid);
+  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(10,126,226,.38);
+}
+.btn-speedtest i { font-size:18px; }
+
+/* Visual lado direito */
+.st-visual {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
+}
+.st-meter {
+  position:relative;
+  width:220px;
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.st-ring {
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--branco);
+  box-shadow:var(--shadow-lg), inset 0 0 48px rgba(10,126,226,.06);
+}
+.st-ring-inner {
+  position:absolute;
+  inset:14px;
+  border-radius:50%;
+  border:1.5px dashed rgba(10,126,226,.14);
+}
+.st-pulse-ring {
+  position:absolute;
+  inset:-14px;
+  border-radius:50%;
+  border:2px solid rgba(10,126,226,.18);
+  animation:stPulseRing 2.4s ease-in-out infinite;
+}
+.st-pulse-ring-2 {
+  position:absolute;
+  inset:-28px;
+  border-radius:50%;
+  border:1.5px solid rgba(10,126,226,.08);
+  animation:stPulseRing 2.4s ease-in-out infinite .8s;
+}
+@keyframes stPulseRing {
+  0%,100%{ transform:scale(1); opacity:.7; }
+  50%{ transform:scale(1.04); opacity:.18; }
+}
+.st-center {
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+.st-center-icon {
+  font-size:40px;
+  color:var(--azul);
+  margin-bottom:8px;
+  animation:wifiPulse 2.4s ease-in-out infinite;
+}
+.st-center-label {
+  font-size:11.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  color:var(--muted);
+}
+.st-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  width:100%;
+  max-width:300px;
+}
+.st-stat {
+  background:var(--branco);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:16px 18px;
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+  transition:all .3s;
+}
+.st-stat:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.st-stat-label {
+  font-size:10.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--muted);
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+.st-stat.dl .st-stat-label { color:var(--azul); }
+.st-stat.ul .st-stat-label { color:var(--verde); }
+.st-stat-val {
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-1px;
+  color:var(--texto);
+  line-height:1;
+}
+.st-stat-unit {
+  font-size:11px;
+  color:var(--muted);
+  font-weight:600;
+}
+
+@media(max-width:900px) {
+  .st-inner { grid-template-columns:1fr; gap:48px; text-align:center; }
+  .st-left .section-tag,.st-left p.st-note { justify-content:center; }
+  .st-visual { max-width:360px; margin:0 auto; }
+}
+@media(max-width:600px) {
+  .speedtest { padding:72px 0; }
+  .st-meter { width:180px; height:180px; }
+}
+
+/* ================================================================
+   INSTAGRAM FEED — BEHOLD.SO
+   ================================================================ */
+.insta-feed {
+  padding:100px 0;
+  background:linear-gradient(160deg,#f0f8ff 0%,#e8f2fd 40%,#ddeafb 60%,#e8f2fd 80%,#f0f8ff 100%);
+  position:relative;
+  overflow:hidden;
+}
+.insta-feed::before {
+  content:'';
+  position:absolute;
+  top:-40%;
+  left:50%;
+  transform:translateX(-50%);
+  width:800px;
+  height:600px;
+  background:radial-gradient(ellipse,rgba(10,126,226,.08) 0%,transparent 65%);
+  pointer-events:none;
+}
+.insta-header {
+  text-align:center;
+  margin-bottom:52px;
+}
+.insta-header .section-tag { display:inline-flex; }
+.insta-header .section-title { margin-bottom:12px; }
+.insta-widget-wrap {
+  max-width:1000px;
+  margin:0 auto;
+  background:var(--branco);
+  border-radius:var(--r-xl);
+  border:1.5px solid rgba(10,126,226,.12);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  min-height:300px;
+}
+.insta-widget-loading {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:64px 32px;
+  color:var(--muted);
+  font-size:15px;
+  font-weight:500;
+}
+.insta-widget-loading i { font-size:36px; color:var(--azul); opacity:.4; }
+.insta-cta-wrap {
+  text-align:center;
+  margin-top:36px;
+}
+
+@media(max-width:600px) {
+  .insta-feed { padding:72px 0; }
+}
+
+/* ================================================================
+   FINANCEIRO — SEÇÃO AJUDA FINANCEIRA
+   ================================================================ */
+.financeiro {
+  padding:80px 0;
+  background:var(--branco);
+  position:relative;
+  overflow:hidden;
+}
+.fin-wrap {
+  background:linear-gradient(135deg,var(--bg-tinted) 0%,var(--bg-mist) 100%);
+  border:1.5px solid rgba(10,126,226,.14);
+  border-radius:var(--r-2xl);
+  padding:60px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:52px;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.fin-wrap::before {
+  content:'';
+  position:absolute;
+  top:-40%;
+  right:-5%;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,rgba(37,211,102,.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.fin-deco {
+  flex-shrink:0;
+}
+.fin-icon-wrap {
+  width:90px;
+  height:90px;
+  border-radius:var(--r-xl);
+  background:linear-gradient(135deg,#25D366 0%,#1ebe5d 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  color:white;
+  box-shadow:0 12px 40px rgba(37,211,102,.28);
+  animation:floatY 4s ease-in-out infinite;
+}
+.fin-content .section-tag { display:inline-flex; margin-bottom:16px; }
+.fin-title {
+  font-size:clamp(26px,3.5vw,40px);
+  font-weight:800;
+  letter-spacing:-1px;
+  line-height:1.08;
+  margin-bottom:14px;
+  color:var(--texto);
+}
+.fin-sub {
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.72;
+  margin-bottom:28px;
+  max-width:520px;
+}
+.fin-itens {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 24px;
+  margin-bottom:32px;
+}
+.fin-item {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--texto2);
+}
+.fin-item i {
+  width:16px;
+  text-align:center;
+  color:var(--verde);
+  font-size:13px;
+}
+.btn-wpp-fin {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#25D366;
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  padding:16px 32px;
+  border-radius:var(--r-full);
+  text-decoration:none;
+  box-shadow:0 8px 28px rgba(37,211,102,.32);
+  transition:all .25s;
+  letter-spacing:-.2px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-wpp-fin:hover {
+  background:#1ebe5d;
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(37,211,102,.44);
+}
+.btn-wpp-fin i { font-size:20px; }
+
+@media(max-width:900px) {
+  .fin-wrap { grid-template-columns:1fr; gap:32px; padding:48px 36px; text-align:center; }
+  .fin-deco { display:flex; justify-content:center; }
+  .fin-itens { grid-template-columns:1fr; }
+  .fin-content .section-tag,.fin-item { justify-content:center; }
+  .fin-item { justify-content:flex-start; }
+}
+@media(max-width:600px) {
+  .financeiro { padding:56px 0; }
+  .fin-wrap { padding:36px 24px; border-radius:var(--r-xl); }
+}
+
+/* ================================================================
+   DARK MODE — NOVAS SEÇÕES
+   ================================================================ */
+[data-theme="dark"] .speedtest {
+  background:#0d1b30;
+}
+[data-theme="dark"] .speedtest::before {
+  background:radial-gradient(circle,rgba(10,126,226,.14) 0%,transparent 65%);
+}
+[data-theme="dark"] .st-ring {
+  background:#0b1525;
+  border-color:rgba(255,255,255,.07);
+  box-shadow:var(--shadow-lg),inset 0 0 48px rgba(10,126,226,.1);
+}
+[data-theme="dark"] .st-stat {
+  background:rgba(255,255,255,.04);
+  border-color:rgba(255,255,255,.08);
+}
+[data-theme="dark"] .st-stat:hover { background:rgba(255,255,255,.07); }
+[data-theme="dark"] .st-stat-val { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .insta-feed {
+  background:linear-gradient(160deg,#0a1527 0%,#0c1a30 40%,#0b1929 60%,#0c1a30 80%,#0a1527 100%);
+}
+[data-theme="dark"] .insta-widget-wrap {
+  background:#0c1628;
+  border-color:rgba(10,126,226,.22);
+}
+[data-theme="dark"] .financeiro { background:#0b1220; }
+[data-theme="dark"] .fin-wrap {
+  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.02) 100%);
+  border-color:rgba(37,211,102,.18);
+  box-shadow:var(--shadow-md);
+}
+[data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
 </style>
 </head>
 <body>
@@ -1670,6 +2070,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre" onclick="closeMob()"><i class="fas fa-users"></i> Sobre nós</a></li>
     <li><a href="#localizacao" onclick="closeMob()"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
     <li><a href="#faq" onclick="closeMob()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
+    <li><a href="#financeiro" onclick="closeMob()"><i class="fas fa-hand-holding-heart"></i> Financeiro</a></li>
   </ul>
   <div class="mob-foot">
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="btn-wpp-full"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
@@ -2049,6 +2450,56 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </section>
 
 <!-- ================================================================
+     SPEEDTEST — TESTE DE VELOCIDADE
+     ================================================================ -->
+<section class="speedtest" id="speedtest">
+  <div class="section-wrap">
+    <div class="st-inner">
+
+      <!-- Esquerda: copy -->
+      <div class="st-left">
+        <div class="section-tag reveal"><i class="fas fa-tachometer-alt"></i> Teste sua internet</div>
+        <h2 class="section-title reveal d1">Veja a velocidade<br><span style="color:var(--azul)">real da sua conexão</span></h2>
+        <p class="section-sub reveal d2">Faça o teste agora e veja se está recebendo a velocidade contratada. Se tiver algo fora do esperado, é só chamar — a gente resolve na hora.</p>
+        <div class="reveal d3">
+          <a href="https://www.speedtest.net" target="_blank" rel="noopener" class="btn-speedtest">
+            <i class="fas fa-play-circle"></i> Iniciar teste de velocidade
+          </a>
+          <p class="st-note reveal d4"><i class="fas fa-info-circle"></i> Abre o Speedtest.net em nova aba — sem instalar nada.</p>
+        </div>
+      </div>
+
+      <!-- Direita: visual animado -->
+      <div class="st-visual reveal from-right d1">
+        <div class="st-meter">
+          <div class="st-ring"></div>
+          <div class="st-ring-inner"></div>
+          <div class="st-pulse-ring"></div>
+          <div class="st-pulse-ring-2"></div>
+          <div class="st-center">
+            <div class="st-center-icon"><i class="fas fa-wifi"></i></div>
+            <div class="st-center-label">pronto para testar</div>
+          </div>
+        </div>
+        <div class="st-stats">
+          <div class="st-stat dl">
+            <div class="st-stat-label"><i class="fas fa-arrow-down"></i> Download</div>
+            <div class="st-stat-val">500</div>
+            <div class="st-stat-unit">Mbps</div>
+          </div>
+          <div class="st-stat ul">
+            <div class="st-stat-label"><i class="fas fa-arrow-up"></i> Upload</div>
+            <div class="st-stat-val">500</div>
+            <div class="st-stat-unit">Mbps</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
      BAIRROS / COBERTURA
      ================================================================ -->
 <section class="bairros" id="cobertura">
@@ -2201,6 +2652,50 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </section>
 
 <!-- ================================================================
+     INSTAGRAM FEED — BEHOLD.SO
+     ================================================================ -->
+<section class="insta-feed" id="instagram">
+  <div class="section-wrap">
+
+    <div class="insta-header reveal">
+      <div class="section-tag"><i class="fab fa-instagram"></i> Instagram</div>
+      <h2 class="section-title">Nossa vibe no <span style="color:var(--azul)">Instagram</span></h2>
+      <p class="section-sub" style="max-width:480px;margin:0 auto">Bastidores, novidades e o dia a dia da equipe Conecte. Acompanha a gente!</p>
+    </div>
+
+    <!--
+      BEHOLD.SO — COMO CONFIGURAR:
+      1. Acesse https://behold.so e crie uma conta gratuita
+      2. Conecte sua conta do Instagram (@seconecte2021)
+      3. Crie um novo widget e personalize o layout
+      4. Copie o widgetId gerado e substitua 'SEU_WIDGET_ID_AQUI' abaixo
+      5. Salve e o feed aparecerá automaticamente aqui
+    -->
+    <div class="insta-widget-wrap reveal d1">
+      <div id="behold-widget">
+        <div class="insta-widget-loading">
+          <i class="fab fa-instagram"></i>
+          <span>Feed do Instagram carregando...</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.BeholdWidgetV2Init = function() {
+        Behold.createFeed({ widgetId: 'SEU_WIDGET_ID_AQUI' });
+      };
+    </script>
+    <script src="https://w.behold.so/widget.js" async defer></script>
+
+    <div class="insta-cta-wrap reveal d2">
+      <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="btn-outline-dark">
+        <i class="fab fa-instagram"></i> Seguir @seconecte2021
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
      LOCALIZAÇÃO
      ================================================================ -->
 <section class="localizacao" id="localizacao">
@@ -2291,6 +2786,38 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="faq-cta-inline reveal">
       <p>Ainda ficou com dúvida? A gente responde na hora.</p>
       <a href="https://wa.me/555197597259?text=Tenho+uma+dúvida+sobre+a+Conecte+Telecom!" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fab fa-whatsapp"></i> Perguntar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FINANCEIRO — SUPORTE FINANCEIRO
+     ================================================================ -->
+<section class="financeiro" id="financeiro">
+  <div class="section-wrap">
+    <div class="fin-wrap reveal">
+
+      <div class="fin-deco">
+        <div class="fin-icon-wrap">
+          <i class="fas fa-hand-holding-heart"></i>
+        </div>
+      </div>
+
+      <div class="fin-content">
+        <div class="section-tag"><i class="fas fa-headset"></i> Suporte financeiro</div>
+        <h2 class="fin-title">Precisa de ajuda<br>com o financeiro?</h2>
+        <p class="fin-sub">A gente facilita tudo. Segunda via, confirmação de pagamento, dúvidas sobre fatura — é só chamar que a gente resolve rápido e sem burocracia.</p>
+        <div class="fin-itens">
+          <div class="fin-item"><i class="fas fa-file-invoice"></i> Segunda via de boleto</div>
+          <div class="fin-item"><i class="fas fa-check-circle"></i> Confirmação de pagamento</div>
+          <div class="fin-item"><i class="fas fa-question-circle"></i> Dúvidas sobre fatura</div>
+          <div class="fin-item"><i class="fas fa-handshake"></i> Negociação e parcelamento</div>
+        </div>
+        <a href="https://wa.me/555199092312?text=Ol%C3%A1!+Preciso+de+ajuda+com+o+financeiro." target="_blank" rel="noopener" class="btn-wpp-fin">
+          <i class="fab fa-whatsapp"></i> Falar com o financeiro agora
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
