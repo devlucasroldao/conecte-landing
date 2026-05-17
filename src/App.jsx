@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Waves, Users, Zap, MapPin, Star } from "lucide-react";
+import { Phone, Waves, Users, Zap, MapPin, Star, ChevronDown } from "lucide-react";
+import logoConecte from "../logo-conecte.svg";
 
 export default function ConecteLanding() {
   const [bairro, setBairro] = useState("");
@@ -27,11 +28,8 @@ export default function ConecteLanding() {
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#0a7ee2] to-blue-400 rounded-2xl flex items-center justify-center text-3xl">
-              🌊
-            </div>
-            <div className="font-bold text-3xl tracking-tighter">Conecte</div>
+          <div className="flex items-center">
+            <img src={logoConecte} alt="Conecte Telecom" className="h-12 w-auto" />
           </div>
 
           <div className="hidden md:flex gap-8 text-sm font-medium">
@@ -222,6 +220,101 @@ export default function ConecteLanding() {
           Falar com a gente agora
         </button>
       </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-24 bg-zinc-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="flex flex-col items-center mb-14">
+            <img src={logoConecte} alt="Conecte Telecom" className="h-16 w-auto mb-8" />
+            <h2 className="text-4xl font-bold text-center">Perguntas Frequentes</h2>
+            <p className="text-zinc-400 mt-3 text-center">Tudo que você precisa saber antes de assinar</p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Qual é o prazo de fidelidade?",
+                a: "Não temos fidelidade! Você pode cancelar quando quiser, sem multa.",
+              },
+              {
+                q: "A instalação é realmente gratuita?",
+                a: "Sim, a instalação é 100% gratuita. O equipamento fica em comodato durante o contrato.",
+              },
+              {
+                q: "O Wi-Fi funciona para toda a casa?",
+                a: "Instalamos roteadores Wi-Fi 6 de última geração, projetados para cobrir residências com ótimo sinal em todos os cômodos.",
+              },
+              {
+                q: "Sou veranista, consigo internet só na temporada?",
+                a: "Sim! Temos planos flexíveis para veranistas. Entre em contato pelo WhatsApp e a gente resolve.",
+              },
+              {
+                q: "Como funciona o suporte técnico?",
+                a: "Nosso suporte é local e humano, disponível todos os dias. Você fala com alguém de Arroio do Sal, não com um robô.",
+              },
+            ].map((item, i) => (
+              <FaqItem key={i} question={item.q} answer={item.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-zinc-950 border-t border-white/10 py-14">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <img src={logoConecte} alt="Conecte Telecom" className="h-12 w-auto" />
+              <p className="text-zinc-400 text-sm max-w-xs text-center md:text-left">
+                Internet de fibra óptica em Arroio do Sal. Feita por quem é daqui.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-2 text-zinc-400 text-sm">
+              <span className="text-white font-semibold mb-1">Atendimento</span>
+              <button
+                onClick={() => handleWhats("Olá! Quero falar com a Conecte Telecom")}
+                className="hover:text-[#ffde59] transition"
+              >
+                WhatsApp: (51) 99695-4462
+              </button>
+              <span>Arroio do Sal — RS</span>
+            </div>
+
+            <div className="flex flex-col items-center gap-2 text-zinc-400 text-sm">
+              <span className="text-white font-semibold mb-1">Links</span>
+              <a href="#planos" className="hover:text-[#ffde59] transition">Planos</a>
+              <a href="#cobertura" className="hover:text-[#ffde59] transition">Cobertura</a>
+              <a href="#faq" className="hover:text-[#ffde59] transition">Perguntas Frequentes</a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 mt-10 pt-6 text-center text-zinc-600 text-xs">
+            © {new Date().getFullYear()} Conecte Telecom. Todos os direitos reservados.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border border-white/10 rounded-2xl overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg hover:bg-white/5 transition"
+      >
+        {question}
+        <ChevronDown
+          size={20}
+          className={`text-[#ffde59] transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="px-6 pb-5 text-zinc-400 leading-relaxed">{answer}</div>
+      )}
     </div>
   );
 }
