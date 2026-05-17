@@ -1422,12 +1422,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   background:linear-gradient(160deg,#091522 0%,#0b1b35 28%,#0a1830 55%,#0b1b35 78%,#091522 100%);
   border-top-color:rgba(10,126,226,.24); border-bottom-color:rgba(10,126,226,.24);
 }
-[data-theme="dark"] .planos::before { background:radial-gradient(ellipse 65% 55% at 50% 18%,rgba(10,126,226,.05) 0%,transparent 65%); z-index:0; }
-[data-theme="dark"] .planos::after { background:radial-gradient(circle,rgba(5,99,184,.05) 0%,transparent 65%); z-index:0; }
-[data-theme="dark"] .planos-header { position:relative; z-index:1; }
-[data-theme="dark"] .planos-featured { position:relative; z-index:1; }
-[data-theme="dark"] .planos-rest { position:relative; z-index:1; }
-[data-theme="dark"] .planos-note { position:relative; z-index:1; }
+[data-theme="dark"] .planos::before,
+[data-theme="dark"] .planos::after { background:none; }
 [data-theme="dark"] .plano-card {
   background:rgba(13,22,44,.92); border-color:rgba(255,255,255,.09);
   box-shadow:0 4px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06);
