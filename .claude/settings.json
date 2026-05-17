@@ -4,7 +4,14 @@
       "PowerShell(\\(Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -TotalCount 17\\)[-1] | Select-String \"rel=\" | Select-Object -ExpandProperty Matches | Select-Object -ExpandProperty Value)",
       "PowerShell($line = \\(Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -TotalCount 17\\)[-1]; $line.Substring\\(0, [Math]::Min\\(120, $line.Length\\)\\))",
       "Bash(find /mnt/c/Users/lucas/Documents/MeusProjetos/conecte-landing -type f | head -50)",
-      "Read(//mnt/c/Users/lucas/Documents/MeusProjetos/**)"
+      "Read(//mnt/c/Users/lucas/Documents/MeusProjetos/**)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(ConvertTo-Json)",
+      "Bash(start \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"
