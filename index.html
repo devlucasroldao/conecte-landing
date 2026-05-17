@@ -54,6 +54,10 @@
   --shadow-md:  0 8px 32px rgba(0,0,0,.08);
   --shadow-lg:  0 20px 60px rgba(0,0,0,.10);
   --shadow-azul:0 12px 40px rgba(10,126,226,.25);
+
+  --bg-tinted: #f0f7ff;
+  --bg-mist:   #eef5ff;
+  --section-accent: rgba(10,126,226,.09);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -284,6 +288,13 @@ body {
   text-transform:uppercase; letter-spacing:.7px; margin-bottom:14px;
 }
 .section-tag.light { background:rgba(255,222,89,.15); color:var(--amarelo); }
+.diferenciais .section-tag,
+.bairros .section-tag,
+.localizacao .section-tag { background:rgba(10,126,226,.13); border:1px solid rgba(10,126,226,.12); }
+.planos .section-tag { background:rgba(10,126,226,.14); border:1px solid rgba(10,126,226,.14); }
+.diferenciais .dif-card { border-color:rgba(10,126,226,.10); }
+.bairros .region-block,
+.bairros .bairros-cta { border-color:rgba(10,126,226,.10); }
 
 
 .section-title {
@@ -434,7 +445,8 @@ body {
    TRUST STRIP
    ================================================================ */
 .trust-strip {
-  background:white; border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg, #f5f9ff 0%, white 60%);
+  border-bottom:1px solid rgba(10,126,226,.07);
   padding:28px 0;
 }
 .trust-strip-inner {
@@ -458,7 +470,7 @@ body {
 /* ================================================================
    DIFERENCIAIS
    ================================================================ */
-.diferenciais { padding:100px 0; background:var(--surface); }
+.diferenciais { padding:100px 0; background:var(--bg-tinted); position:relative; }
 .dif-header { text-align:center; margin-bottom:64px; }
 .dif-header .section-sub { max-width:520px; margin:0 auto; }
 
@@ -574,11 +586,11 @@ body {
 /* ================================================================
    PLANOS
    ================================================================ */
-.planos { padding:100px 0; background:var(--surface); position:relative; overflow:hidden; }
+.planos { padding:100px 0; background:linear-gradient(180deg, var(--bg-mist) 0%, #e8f1ff 50%, var(--bg-mist) 100%); position:relative; overflow:hidden; border-top:1px solid rgba(10,126,226,.10); border-bottom:1px solid rgba(10,126,226,.10); }
 .planos::before {
   content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
   width:900px; height:900px;
-  background:radial-gradient(circle,rgba(10,126,226,.04) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(10,126,226,.08) 0%,transparent 65%);
   pointer-events:none;
 }
 .planos-header { text-align:center; margin-bottom:56px; }
@@ -749,7 +761,7 @@ body {
 /* ================================================================
    BAIRROS / COBERTURA
    ================================================================ */
-.bairros { padding:100px 0; background:var(--surface); }
+.bairros { padding:100px 0; background:var(--bg-tinted); position:relative; }
 .bairros-header { text-align:center; margin-bottom:56px; }
 .bairros-header .section-sub { max-width:520px; margin:0 auto; }
 
@@ -885,7 +897,7 @@ body {
 /* ================================================================
    LOCALIZAÇÃO
    ================================================================ */
-.localizacao { padding:100px 0; background:var(--surface); }
+.localizacao { padding:100px 0; background:var(--bg-tinted); position:relative; }
 .loc-inner {
   display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
 }
@@ -932,6 +944,15 @@ body {
 .loc-map-overlay a:hover { background:var(--azul-mid); transform:translateY(-2px); }
 
 @media(max-width:860px) { .loc-inner { grid-template-columns:1fr; } .loc-map { height:280px; } }
+
+/* ================================================================
+   PREMIUM SECTION ACCENTS
+   ================================================================ */
+.diferenciais::before, .bairros::before, .localizacao::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:1px; pointer-events:none;
+  background:linear-gradient(90deg, transparent 0%, rgba(10,126,226,.12) 50%, transparent 100%);
+}
 
 /* ================================================================
    FAQ com mascote
@@ -1871,7 +1892,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 <!-- ================================================================
      REDES SOCIAIS
      ================================================================ -->
-<section style="padding:80px 0;background:linear-gradient(135deg,#f8fafc 0%,#e8f3fd 100%);border-top:1px solid var(--border)">
+<section style="padding:80px 0;background:linear-gradient(160deg,#eef5ff 0%,#e4f0ff 60%,#eef5ff 100%);border-top:1px solid rgba(10,126,226,.10);position:relative">
   <div class="section-wrap" style="text-align:center">
     <div class="section-tag reveal" style="display:inline-flex;margin-bottom:20px"><i class="fab fa-instagram"></i> &nbsp;Siga a gente</div>
     <h2 class="section-title reveal" style="margin-bottom:12px">A gente também está <span style="color:var(--azul)">nas redes</span></h2>
