@@ -19,7 +19,9 @@
       "Bash(node -e ' *)",
       "Bash(git -C \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" add index.html)",
       "Bash(git -C \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" status)",
-      "Bash(git -C 'c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing' commit -m ' *)"
+      "Bash(git -C 'c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing' commit -m ' *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\")",
+      "Bash(Select-Object Name, PSIsContainer)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"

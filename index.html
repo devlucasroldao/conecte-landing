@@ -3435,6 +3435,154 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   }
 }
 
+/* ================================================================
+   HERO MOBILE V4 — COMPOSIÇÃO EDITORIAL PREMIUM
+   Layout 2 colunas: texto esquerda · mascote direita
+   Referências: Apple, Stripe, Linear, Raycast
+   ================================================================ */
+@media (max-width: 768px) {
+
+  /* Container principal — flex row em vez de coluna */
+  .hero-content.section-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding: 84px 0 96px 20px !important;
+    gap: 0 !important;
+    min-height: 100svh !important;
+  }
+
+  /* Coluna esquerda — texto */
+  .hero-left {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    text-align: left !important;
+    width: auto !important;
+    padding-right: 10px !important;
+  }
+
+  .hero-badge {
+    font-size: 10.5px !important;
+    padding: 5px 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(22px, 6.2vw, 28px) !important;
+    letter-spacing: -0.8px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-sub {
+    font-size: 13px !important;
+    line-height: 1.62 !important;
+    margin: 0 0 18px !important;
+    max-width: 100% !important;
+    color: rgba(255,255,255,.64) !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-glass {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 13px 14px !important;
+    font-size: 14px !important;
+    border-radius: 14px !important;
+    min-height: 48px !important;
+  }
+
+  .hero-trust {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    justify-content: flex-start !important;
+  }
+
+  .hero-trust-item {
+    font-size: 11.5px !important;
+  }
+
+  /* Coluna direita — mascote centrado verticalmente */
+  .hero-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 140px !important;
+    width: 140px !important;
+    height: auto !important;
+    min-height: unset !important;
+    align-self: stretch !important;
+    order: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  /* Mascote — dimensões para side-by-side */
+  .mascote-wrap {
+    width: 140px !important;
+    height: 220px !important;
+    animation-duration: 7s !important;
+    margin: 0 !important;
+  }
+
+  .mascote-body {
+    width: 140px !important;
+    height: 220px !important;
+  }
+
+  .mascote-img-c {
+    width: 132px !important;
+    height: 210px !important;
+    filter: drop-shadow(0 16px 40px rgba(10,126,226,.82))
+            drop-shadow(0 0 20px rgba(255,222,89,.44)) !important;
+  }
+
+  .mascote-glow {
+    width: 118px !important;
+    height: 118px !important;
+  }
+
+  .mascote-badge-label { display: none !important; }
+  .mascote-float { display: none !important; }
+}
+
+/* Telas muito pequenas — 375px e menores */
+@media (max-width: 380px) {
+  .hero-content.section-wrap {
+    padding: 76px 0 88px 16px !important;
+  }
+  .hero-title {
+    font-size: clamp(20px, 6vw, 24px) !important;
+  }
+  .hero-right {
+    flex: 0 0 112px !important;
+    width: 112px !important;
+    padding: 0 !important;
+  }
+  .mascote-wrap {
+    width: 112px !important;
+    height: 176px !important;
+  }
+  .mascote-body { width: 112px !important; height: 176px !important; }
+  .mascote-img-c { width: 104px !important; height: 166px !important; }
+  .mascote-glow { width: 94px !important; height: 94px !important; }
+}
+
 </style>
 </head>
 <body>
