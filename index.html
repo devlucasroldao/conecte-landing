@@ -3362,6 +3362,23 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ================================================================
+   DEPOIMENTOS — Carrossel premium mobile
+   ================================================================ */
+@media (max-width: 768px) {
+  /* Largura calibrada: peek = viewport - pad_esq(20) - card - gap(12) ≈ 20px
+     20px de peek = dentro do padding interno do próximo card → nenhum texto visível */
+  .depo-card {
+    flex: 0 0 calc(100vw - 52px) !important;
+    min-height: 0 !important;
+    scroll-snap-align: start !important;
+  }
+  .depos-grid {
+    gap: 12px !important;
+    scroll-padding-left: 20px;
+  }
+}
+
+/* ================================================================
    COMO FUNCIONA — Lista premium alinhada no mobile
    ================================================================ */
 @media (max-width: 460px) {
