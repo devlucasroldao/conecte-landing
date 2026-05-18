@@ -11,7 +11,15 @@
       "Bash(start \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(powershell -Command \"Get-Content -Path 'c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html' -TotalCount 4231 | Select-Object -Skip 3379 -First 80\")",
+      "Bash(powershell -Command \"Get-Content -Path 'c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html' | Select-Object -Skip 3379 -First 80 | Out-String\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const lines=fs.readFileSync\\('c:/Users/lucas/Documents/MeusProjetos/conecte-landing/index.html','utf8'\\).split\\('\\\\n'\\);console.log\\(lines.slice\\(3379,3460\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(git -C \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" add index.html)",
+      "Bash(git -C \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" status)",
+      "Bash(git -C 'c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing' commit -m ' *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"
