@@ -2254,11 +2254,14 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ================================================================
-   HERO MOBILE — Experiência premium
+   HERO MOBILE — REDESIGN PREMIUM
+   Composição editorial: título à esquerda + mascote acento direito
    ================================================================ */
+
+/* Tablet (769px – 900px): coluna única centrada */
 @media (max-width: 900px) {
   .hero-content {
-    padding: 108px 24px 88px;
+    padding: 112px 32px 96px !important;
     text-align: center;
   }
   .hero-ctas { justify-content: center; }
@@ -2267,65 +2270,139 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .hero-right { display: none; }
 }
 
+/* Mobile (≤ 768px): redesign completo */
 @media (max-width: 768px) {
   .hero-content {
-    padding: 92px 20px 80px;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 108px 20px 88px !important;
     gap: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100svh;
+    text-align: left;
+    position: relative;
+    min-height: 0 !important;
   }
+
+  .hero-left { width: 100%; }
+
+  /* Badge: alinhado à esquerda, abaixo do topo — não compete com mascote */
   .hero-badge {
-    font-size: 11.5px;
+    font-size: 11px;
     padding: 6px 14px;
     margin-bottom: 18px;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
+
+  /* Mascote: posicionado com precisão ao lado do título */
+  .hero-right {
+    display: block !important;
+    position: absolute !important;
+    right: 20px;
+    top: 154px; /* padding-top(108) + badge(~28px) + badge-mb(18px) */
+    width: 128px;
+    height: 128px;
+    overflow: visible;
+    order: 0 !important;
+    margin: 0;
+    z-index: 3;
+  }
+
+  /* Mascote — dimensões corretas, sem overflow */
+  .mascote-wrap {
+    width: 128px !important;
+    height: 128px !important;
+    animation-duration: 6s;
+  }
+
+  .mascote-body {
+    width: 128px !important;
+    height: 128px !important;
+  }
+
+  /* Drop-shadow premium: suave e elegante */
+  .mascote-img-c {
+    width: 100% !important;
+    height: 100% !important;
+    filter: drop-shadow(0 6px 18px rgba(10,126,226,.18)) drop-shadow(0 2px 8px rgba(0,0,0,.18)) !important;
+  }
+
+  /* Glow principal: discretíssimo */
+  .mascote-glow {
+    width: 60px !important;
+    height: 60px !important;
+    filter: blur(14px) !important;
+    opacity: 0.14;
+  }
+
+  /* Glow ambiente: quase imperceptível */
+  .mascote-ambient-glow {
+    opacity: 0.05 !important;
+    filter: blur(40px) !important;
+  }
+
+  /* Pills e badge decorativo: ocultar */
+  .mascote-float { display: none !important; }
+  .mascote-badge-label { display: none !important; }
+
+  /* Título: breaks preservados, padding direito para o mascote */
   .hero-title {
-    font-size: clamp(36px, 9.5vw, 54px);
-    letter-spacing: -1.5px;
-    line-height: 1.06;
-    margin-bottom: 14px;
+    font-size: clamp(32px, 8.5vw, 48px);
+    letter-spacing: -1.8px;
+    line-height: 1.07;
+    margin-bottom: 16px;
+    padding-right: 136px; /* mascote(128px) + gap(8px) */
   }
+
+  /* Subtítulo: largura total — mascote não alcança aqui */
   .hero-sub {
-    font-size: 15.5px;
-    line-height: 1.68;
-    margin-bottom: 26px;
-    color: rgba(255,255,255,.68);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 100%;
+    margin: 0 0 26px !important;
+    color: rgba(255,255,255,.66);
   }
+
+  /* CTAs: empilhados, proporções refinadas */
   .hero-ctas {
     flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: stretch;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     width: 100%;
   }
   .hero-ctas .btn-primary,
   .hero-ctas .btn-glass {
     width: 100%;
     justify-content: center;
-    padding: 17px 24px;
-    font-size: 16px;
-    border-radius: 16px;
-    min-height: 56px;
+    padding: 15px 20px;
+    font-size: 15px;
+    border-radius: 14px;
+    min-height: 50px;
   }
+
+  /* Trust: coluna alinhada à esquerda */
   .hero-trust {
     flex-direction: column;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
     gap: 8px;
-    align-items: center;
   }
   .hero-trust-item {
     font-size: 13px;
     color: rgba(255,255,255,.62);
   }
-  .hero-waves { height: 68px; }
-  /* Orbs mais leves no mobile */
+
+  .hero-waves { height: 72px; }
+
+  /* Orbs: mais leves no mobile */
   .orb-1 { width: 320px; height: 320px; filter: blur(12px); opacity: .65; }
   .orb-2 { width: 260px; height: 260px; filter: blur(10px); }
   .orb-3 { display: none; }
   .hero-grid { opacity: .5; }
 }
+
+/* Breakpoints ≤480px e ≤360px tratados no bloco V4 abaixo */
 
 /* ================================================================
    TRUST STRIP MOBILE — Horizontal scroll fluido
@@ -2833,59 +2910,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ----------------------------------------------------------------
-   3. MASCOTE — Visível e elegante no mobile (acima do texto hero)
+   3. MASCOTE MOBILE — Tratado no bloco "HERO MOBILE — REDESIGN
+      PREMIUM" acima. Nenhuma regra adicional necessária aqui.
    ---------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .hero-right {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    order: -1;
-    margin-bottom: 4px;
-    height: 160px;
-    overflow: visible;
-  }
-  .mascote-wrap {
-    width: 160px !important;
-    height: 160px !important;
-    animation-duration: 7s;
-  }
-  .mascote-float { display: none !important; }
-  .mascote-glow {
-    width: 140px !important;
-    height: 140px !important;
-  }
-}
-/* Telas muito pequenas: mascote compacto */
-@media (max-width: 480px) {
-  .hero-right {
-    height: 120px;
-    margin-bottom: 0;
-  }
-  .mascote-wrap {
-    width: 120px !important;
-    height: 120px !important;
-  }
-  .mascote-glow {
-    width: 100px !important;
-    height: 100px !important;
-  }
-}
-/* Ajuste de padding do hero para acomodar mascote acima do texto */
-@media (max-width: 900px) {
-  .hero-content {
-    padding-top: 100px;
-    padding-bottom: 88px;
-    align-items: center;
-  }
-  .hero-left { width: 100%; }
-}
-@media (max-width: 768px) {
-  .hero-content {
-    padding-top: 90px;
-    padding-bottom: 80px;
-  }
-}
 
 /* ----------------------------------------------------------------
    4. IDENTIDADE LOCAL — Foto com melhor proporção + badges limpos
@@ -3436,26 +3463,26 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ================================================================
-   HERO MOBILE V4 — COMPOSIÇÃO EDITORIAL PREMIUM
-   Layout 2 colunas: texto esquerda · mascote direita
-   Referências: Apple, Stripe, Linear, Raycast
+   HERO MOBILE — REDESIGN PREMIUM FINAL
+   Composição 2 colunas: texto (esq) · mascote acento (dir)
+   Inspiração: Apple, Stripe, Linear — mobile-first, refinado
    ================================================================ */
 @media (max-width: 768px) {
 
-  /* Container principal — flex row em vez de coluna */
+  /* Container: flex row, alinhamento ao topo */
   .hero-content.section-wrap {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     justify-content: flex-start !important;
     text-align: left !important;
-    padding: 84px 0 96px 20px !important;
+    padding: 96px 0 100px 20px !important;
     gap: 0 !important;
-    min-height: 100svh !important;
+    min-height: 0 !important;
   }
 
-  /* Coluna esquerda — texto */
+  /* Coluna esquerda — todo o conteúdo textual */
   .hero-left {
     flex: 1 1 0 !important;
     min-width: 0 !important;
@@ -3464,31 +3491,36 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     padding-right: 10px !important;
   }
 
+  /* Badge: limpo e compacto */
   .hero-badge {
     font-size: 10.5px !important;
     padding: 5px 12px !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 16px !important;
   }
 
+  /* Título: hierarquia forte, tamanho premium */
   .hero-title {
-    font-size: clamp(22px, 6.2vw, 28px) !important;
-    letter-spacing: -0.8px !important;
-    line-height: 1.1 !important;
-    margin-bottom: 12px !important;
+    font-size: clamp(28px, 8vw, 40px) !important;
+    letter-spacing: -1.6px !important;
+    line-height: 1.08 !important;
+    margin-bottom: 14px !important;
+    padding-right: 0 !important;
   }
 
+  /* Subtítulo: legível, bem espaçado */
   .hero-sub {
-    font-size: 13px !important;
-    line-height: 1.62 !important;
-    margin: 0 0 18px !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    margin: 0 0 22px !important;
     max-width: 100% !important;
-    color: rgba(255,255,255,.64) !important;
+    color: rgba(255,255,255,.65) !important;
   }
 
+  /* CTAs: empilhados, proporções refinadas */
   .hero-ctas {
     flex-direction: column !important;
-    gap: 8px !important;
-    margin-bottom: 16px !important;
+    gap: 9px !important;
+    margin-bottom: 22px !important;
     width: 100% !important;
     justify-content: flex-start !important;
     align-items: stretch !important;
@@ -3498,89 +3530,103 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .hero-ctas .btn-glass {
     width: 100% !important;
     justify-content: center !important;
-    padding: 13px 14px !important;
-    font-size: 14px !important;
+    padding: 14px 16px !important;
+    font-size: 14.5px !important;
     border-radius: 14px !important;
     min-height: 48px !important;
   }
 
+  /* Trust: coluna à esquerda */
   .hero-trust {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 4px !important;
+    gap: 6px !important;
     justify-content: flex-start !important;
   }
 
   .hero-trust-item {
-    font-size: 11.5px !important;
+    font-size: 12.5px !important;
+    color: rgba(255,255,255,.62) !important;
   }
 
-  /* Coluna direita — mascote centrado verticalmente */
+  /* Coluna direita — mascote alinhado ao título */
   .hero-right {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
-    flex: 0 0 140px !important;
-    width: 140px !important;
+    justify-content: flex-start !important;
+    flex: 0 0 128px !important;
+    width: 128px !important;
     height: auto !important;
     min-height: unset !important;
-    align-self: stretch !important;
+    align-self: flex-start !important;
     order: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
     padding: 0 !important;
+    padding-top: 46px !important; /* alinha mascote com início do título */
+    position: relative !important; /* garante flow no flex, anula position:absolute de blocos anteriores */
+    right: auto !important;
+    top: auto !important;
   }
 
-  /* Mascote — dimensões para side-by-side */
+  /* Mascote — tamanho proporcional e elegante */
   .mascote-wrap {
-    width: 140px !important;
-    height: 220px !important;
-    animation-duration: 7s !important;
+    width: 128px !important;
+    height: 180px !important;
+    animation-duration: 6s !important;
     margin: 0 !important;
   }
 
   .mascote-body {
-    width: 140px !important;
-    height: 220px !important;
+    width: 128px !important;
+    height: 180px !important;
   }
 
+  /* Drop-shadow premium: suave, sem exagero */
   .mascote-img-c {
-    width: 132px !important;
-    height: 210px !important;
-    filter: drop-shadow(0 16px 40px rgba(10,126,226,.82))
-            drop-shadow(0 0 20px rgba(255,222,89,.44)) !important;
+    width: 120px !important;
+    height: 172px !important;
+    filter: drop-shadow(0 8px 22px rgba(10,126,226,.2))
+            drop-shadow(0 2px 8px rgba(0,0,0,.14)) !important;
   }
 
+  /* Glow principal: discretíssimo */
   .mascote-glow {
-    width: 118px !important;
-    height: 118px !important;
+    width: 52px !important;
+    height: 52px !important;
+    opacity: 0.12 !important;
+    filter: blur(12px) !important;
+  }
+
+  /* Glow ambiente: quase imperceptível */
+  .mascote-ambient-glow {
+    opacity: 0.04 !important;
+    filter: blur(44px) !important;
   }
 
   .mascote-badge-label { display: none !important; }
   .mascote-float { display: none !important; }
 }
 
-/* Telas muito pequenas — 375px e menores */
-@media (max-width: 380px) {
-  .hero-content.section-wrap {
-    padding: 76px 0 88px 16px !important;
-  }
-  .hero-title {
-    font-size: clamp(20px, 6vw, 24px) !important;
-  }
-  .hero-right {
-    flex: 0 0 112px !important;
-    width: 112px !important;
-    padding: 0 !important;
-  }
-  .mascote-wrap {
-    width: 112px !important;
-    height: 176px !important;
-  }
-  .mascote-body { width: 112px !important; height: 176px !important; }
-  .mascote-img-c { width: 104px !important; height: 166px !important; }
-  .mascote-glow { width: 94px !important; height: 94px !important; }
+/* Telas pequenas (≤ 420px) */
+@media (max-width: 420px) {
+  .hero-content.section-wrap { padding: 92px 0 92px 18px !important; }
+  .hero-title { font-size: clamp(26px, 7.5vw, 34px) !important; letter-spacing: -1.4px !important; }
+  .hero-right { flex: 0 0 116px !important; width: 116px !important; padding-top: 42px !important; }
+  .mascote-wrap { width: 116px !important; height: 162px !important; }
+  .mascote-body { width: 116px !important; height: 162px !important; }
+  .mascote-img-c { width: 108px !important; height: 154px !important; }
+}
+
+/* Telas muito pequenas (≤ 375px) */
+@media (max-width: 375px) {
+  .hero-content.section-wrap { padding: 88px 0 88px 16px !important; }
+  .hero-title { font-size: clamp(24px, 7vw, 30px) !important; letter-spacing: -1.2px !important; }
+  .hero-right { flex: 0 0 104px !important; width: 104px !important; padding-top: 40px !important; }
+  .mascote-wrap { width: 104px !important; height: 146px !important; }
+  .mascote-body { width: 104px !important; height: 146px !important; }
+  .mascote-img-c { width: 96px !important; height: 138px !important; }
 }
 
 </style>
@@ -3716,7 +3762,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
         <!-- MASCOTE GASTURINHA -->
         <div class="mascote-body" style="position:relative;z-index:2;width:480px;height:480px;display:flex;align-items:center;justify-content:center;animation:floatY 5s ease-in-out infinite">
           <!-- Glow ambiente -->
-          <div style="position:absolute;inset:-10%;border-radius:50%;background:radial-gradient(circle,rgba(255,222,89,.22) 0%,rgba(10,126,226,.28) 45%,transparent 70%);filter:blur(40px);pointer-events:none"></div>
+          <div class="mascote-ambient-glow" style="position:absolute;inset:-10%;border-radius:50%;background:radial-gradient(circle,rgba(255,222,89,.22) 0%,rgba(10,126,226,.28) 45%,transparent 70%);filter:blur(40px);pointer-events:none"></div>
           <!-- Mascote -->
           <div class="mascote-img-c" style="position:relative;z-index:2;width:400px;height:400px;filter:drop-shadow(0 24px 64px rgba(10,126,226,.65)) drop-shadow(0 0 28px rgba(255,222,89,.3))">
             <img src="mascote.png" style="width:100%;height:100%;object-fit:contain" alt="Gasturinha — Mascote Conecte Telecom" loading="eager">
