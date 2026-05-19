@@ -3683,15 +3683,13 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .hero-title { font-size: 38px !important; }
 }
 
-/* ── Fix: <picture> como elemento transparente em containers de imagem ── */
-.perfil-img-inner > picture,
+/* ── Fix: <picture> como bloco posicionado em containers de imagem ── */
 .id-img > picture,
 .ver-photo > picture {
   display: block;
   position: absolute;
   inset: 0;
-}
-.loc-office-photo picture { display: block; }
+}
 
 </style>
 </head>
@@ -3931,7 +3929,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d1">
         <div class="perfil-img perfil-img--essencial">
           <div class="perfil-img-inner">
-            <picture><source srcset="essencial.webp" type="image/webp"><img src="essencial.jpg" alt="Plano Essencial" class="perfil-img-foto" loading="lazy"></picture>
+            <img src="essencial.jpg" alt="Plano Essencial" class="perfil-img-foto" loading="lazy">
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -3947,10 +3945,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           </div>
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 60 Mbps de download</div>
-          <div class="perfil-price-wrap">
-            <div class="perfil-price-val"><sup>R$</sup>89<span class="cents">,90</span></div>
-            <div class="perfil-price-period">por mês · instalação grátis</div>
-          </div>
+          
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Essencial+(60+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
           <p class="perfil-footnote">Fibra óptica 100%</p>
         </div>
@@ -3960,7 +3955,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card perfil-hero reveal d2">
         <div class="perfil-img perfil-img--familia">
           <div class="perfil-img-inner">
-            <picture><source srcset="familia.webp" type="image/webp"><img src="familia.jpg" alt="Plano Família" class="perfil-img-foto" loading="lazy"></picture>
+            <img src="familia.jpg" alt="Plano Família" class="perfil-img-foto" loading="lazy">
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -3977,10 +3972,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           </div>
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 500 Mbps de download</div>
-          <div class="perfil-price-wrap">
-            <div class="perfil-price-val"><sup>R$</sup>109<span class="cents">,90</span></div>
-            <div class="perfil-price-period">por mês · instalação grátis</div>
-          </div>
+          
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Fam%C3%ADlia+(at%C3%A9+500+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
           <p class="perfil-footnote">Fibra óptica 100%</p>
         </div>
@@ -3990,7 +3982,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d3">
         <div class="perfil-img perfil-img--avancado">
           <div class="perfil-img-inner">
-            <picture><source srcset="avancado.webp" type="image/webp"><img src="avancado.jpg" alt="Plano Avançado" class="perfil-img-foto" loading="lazy"></picture>
+            <img src="avancado.jpg" alt="Plano Avançado" class="perfil-img-foto" loading="lazy">
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -4006,10 +3998,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           </div>
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 700 Mbps de download</div>
-          <div class="perfil-price-wrap">
-            <div class="perfil-price-val"><sup>R$</sup>129<span class="cents">,90</span></div>
-            <div class="perfil-price-period">por mês · instalação grátis</div>
-          </div>
+          
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Avan%C3%A7ado+(at%C3%A9+700+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
           <p class="perfil-footnote">Fibra óptica 100%</p>
         </div>
@@ -4019,7 +4008,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d4">
         <div class="perfil-img perfil-img--empresarial">
           <div class="perfil-img-inner">
-            <picture><source srcset="empresarial.webp" type="image/webp"><img src="empresarial.jpg" alt="Plano Empresarial" class="perfil-img-foto" loading="lazy"></picture>
+            <img src="empresarial.jpg" alt="Plano Empresarial" class="perfil-img-foto" loading="lazy">
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -4035,10 +4024,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           </div>
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 800 Mbps de download</div>
-          <div class="perfil-price-wrap">
-            <div class="perfil-price-val"><sup>R$</sup>149<span class="cents">,90</span></div>
-            <div class="perfil-price-period">por mês · instalação grátis</div>
-          </div>
+          
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Gostaria+de+conversar+sobre+o+plano+Empresarial+(800+Mbps).+Podem+me+indicar+a+melhor+op%C3%A7%C3%A3o%3F" target="_blank" rel="noopener" class="btn-perfil">Falar com consultor</a>
           <p class="perfil-footnote">Fibra óptica 100%</p>
         </div>
@@ -4539,7 +4525,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
         <div class="loc-office-photo">
           <div style="position:relative;border-radius:var(--r-xl);overflow:hidden;">
-            <picture><source srcset="escritorio.webp" type="image/webp"><img src="escritorio.jpg" alt="Escritório Conecte Telecom — Arroio do Sal" class="loc-office-img" loading="lazy"></picture>
+            <img src="escritorio.jpg" alt="Escritório Conecte Telecom — Arroio do Sal" class="loc-office-img" loading="lazy">
             <div class="loc-photo-badge"><i class="fas fa-map-pin"></i> Arroio do Sal — RS</div>
           </div>
         </div>
