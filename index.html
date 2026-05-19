@@ -1189,24 +1189,27 @@ body {
 }
 .loc-schedule-card {
   display:flex; gap:14px; align-items:flex-start;
-  padding:16px 18px; background:rgba(255,255,255,.82); backdrop-filter:blur(14px);
-  border-radius:var(--r-lg); border:1.5px solid rgba(255,255,255,.75);
-  box-shadow:0 2px 14px rgba(10,126,226,.07); margin-bottom:10px;
+  padding:16px 18px;
+  background:linear-gradient(135deg, rgba(10,126,226,.08) 0%, rgba(10,126,226,.04) 100%);
+  border-radius:var(--r-lg); border:1.5px solid rgba(10,126,226,.2);
+  box-shadow:0 4px 20px rgba(10,126,226,.1); margin-bottom:10px;
   transition:all .25s;
 }
-.loc-schedule-card:hover { border-color:rgba(10,126,226,.15); box-shadow:0 6px 24px rgba(10,126,226,.1); transform:translateX(3px); }
+.loc-schedule-card:hover { border-color:rgba(10,126,226,.32); box-shadow:0 8px 28px rgba(10,126,226,.15); transform:translateX(3px); }
 .loc-schedule-card:last-child { margin-bottom:0; }
 .loc-schedule-suporte {
-  background:linear-gradient(135deg, rgba(10,126,226,.07) 0%, rgba(10,126,226,.03) 100%);
-  border-color:rgba(10,126,226,.2);
+  background:linear-gradient(135deg, rgba(10,126,226,.13) 0%, rgba(10,126,226,.07) 100%);
+  border-color:rgba(10,126,226,.3);
+  box-shadow:0 6px 24px rgba(10,126,226,.16);
 }
-.loc-schedule-suporte:hover { border-color:rgba(10,126,226,.35); box-shadow:0 8px 28px rgba(10,126,226,.15); transform:translateX(3px); }
+.loc-schedule-suporte:hover { border-color:rgba(10,126,226,.45); box-shadow:0 10px 32px rgba(10,126,226,.22); transform:translateX(3px); }
 .loc-schedule-icon {
   width:42px; height:42px; border-radius:12px; flex-shrink:0;
-  background:rgba(10,126,226,.08); color:var(--azul);
+  background:var(--azul); color:white;
   display:flex; align-items:center; justify-content:center; font-size:17px;
+  box-shadow:0 4px 14px rgba(10,126,226,.3);
 }
-.loc-icon-suporte { background:var(--azul); color:white; box-shadow:0 4px 14px rgba(10,126,226,.3); }
+.loc-icon-suporte { background:linear-gradient(135deg, var(--azul) 0%, var(--azul-dark) 100%); box-shadow:0 4px 18px rgba(10,126,226,.45); }
 .loc-schedule-body { flex:1; min-width:0; }
 .loc-schedule-name { font-size:13px; font-weight:700; margin-bottom:8px; }
 .loc-schedule-rows { display:flex; flex-direction:column; gap:4px; }
@@ -2746,7 +2749,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
    FOOTER MOBILE
    ================================================================ */
 @media (max-width: 768px) {
-  footer { padding: 52px 0 28px; }
+  footer { padding: 52px 0 calc(110px + env(safe-area-inset-bottom)); }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 0 20px 36px; }
   .footer-bottom {
     flex-direction: column; align-items: flex-start;
