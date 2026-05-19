@@ -45,7 +45,8 @@
       "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|webp|svg|ico\\)$\")",
       "Bash(dir \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" /b)",
       "Bash(findstr /i \"\\\\.jpg \\\\.jpeg \\\\.png \\\\.webp \\\\.svg \\\\.ico\")",
-      "Bash(dir /b)"
+      "Bash(dir /b)",
+      "Bash(grep -E \"\\\\.\\(webp|jpg\\)$\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"

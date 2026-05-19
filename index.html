@@ -3685,7 +3685,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
 /* ── Fix: <picture> como bloco posicionado em containers de imagem ── */
 .id-img > picture,
-.ver-photo > picture {
+.ver-photo > picture,
+.perfil-img-inner > picture {
   display: block;
   position: absolute;
   inset: 0;
@@ -4034,7 +4035,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d1">
         <div class="perfil-img perfil-img--essencial">
           <div class="perfil-img-inner">
-            <img src="essencial.jpg" alt="Plano Essencial" class="perfil-img-foto" loading="lazy">
+            <picture><source srcset="essencial.webp" type="image/webp"><img src="essencial.jpg" alt="Plano Essencial" class="perfil-img-foto" loading="lazy"></picture>
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -4060,7 +4061,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card perfil-hero reveal d2">
         <div class="perfil-img perfil-img--familia">
           <div class="perfil-img-inner">
-            <img src="familia.jpg" alt="Plano Família" class="perfil-img-foto" loading="lazy">
+            <picture><source srcset="familia.webp" type="image/webp"><img src="familia.jpg" alt="Plano Família" class="perfil-img-foto" loading="lazy"></picture>
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -4087,7 +4088,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d3">
         <div class="perfil-img perfil-img--avancado">
           <div class="perfil-img-inner">
-            <img src="avancado.jpg" alt="Plano Avançado" class="perfil-img-foto" loading="lazy">
+            <picture><source srcset="avancado.webp" type="image/webp"><img src="avancado.jpg" alt="Plano Avançado" class="perfil-img-foto" loading="lazy"></picture>
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
@@ -4113,7 +4114,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d4">
         <div class="perfil-img perfil-img--empresarial">
           <div class="perfil-img-inner">
-            <img src="empresarial.jpg" alt="Plano Empresarial" class="perfil-img-foto" loading="lazy">
+            <picture><source srcset="empresarial.webp" type="image/webp"><img src="empresarial.jpg" alt="Plano Empresarial" class="perfil-img-foto" loading="lazy"></picture>
             <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
