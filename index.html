@@ -394,6 +394,41 @@ body {
   position:relative;
 }
 
+/* Gasturinha speech bubble */
+.gasturinha-bubble {
+  position: absolute;
+  left: -185px;
+  top: 48%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.11);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 18px 18px 4px 18px;
+  padding: 12px 17px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.90);
+  white-space: nowrap;
+  z-index: 5;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.16);
+  animation: floatY 6s ease-in-out infinite 0.6s;
+  line-height: 1.5;
+  pointer-events: none;
+}
+.gasturinha-bubble strong { color: var(--amarelo); font-weight: 700; }
+/* Tail pointing right toward mascote */
+.gasturinha-bubble::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 10px solid transparent;
+  border-left: 10px solid rgba(255,255,255,0.11);
+  border-right: 0;
+}
+
 /* ================================================================
    MASCOTE — "ONDA" (SVG animado)
    ================================================================ */
@@ -3360,7 +3395,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     gap: 0 !important;
   }
 
-  /* ── Mascote: presença decorativa, mais visível ── */
+  /* ── Mascote: container opaco, imagem com transparência própria ── */
   .hero-right {
     display: block !important;
     position: absolute !important;
@@ -3370,7 +3405,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     height: 300px !important;
     z-index: 1 !important;
     pointer-events: none !important;
-    opacity: 0.22 !important;
+    opacity: 1 !important;
     filter: none !important;
   }
 
@@ -3383,18 +3418,34 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .mascote-body {
     width: 300px !important;
     height: 300px !important;
+    opacity: 0.60 !important;
   }
 
   .mascote-img-c {
     width: 260px !important;
     height: 260px !important;
-    filter: drop-shadow(0 0 40px rgba(10,126,226,.4)) !important;
+    filter: drop-shadow(0 0 28px rgba(10,126,226,.5)) !important;
   }
 
   .mascote-float        { display: none !important; }
   .mascote-glow         { display: none !important; }
   .mascote-ambient-glow { display: none !important; }
   .mascote-badge-label  { display: none !important; }
+
+  /* ── Bubble: à esquerda do mascote, no espaço vazio ── */
+  .gasturinha-bubble {
+    left: -80px !important;
+    top: auto !important;
+    bottom: 130px !important;
+    transform: none !important;
+    white-space: normal !important;
+    max-width: 126px !important;
+    font-size: 12px !important;
+    padding: 9px 13px !important;
+    border-radius: 16px 16px 4px 16px !important;
+    animation: floatY 6s ease-in-out infinite 0.6s !important;
+    pointer-events: none !important;
+  }
 
   /* ── Badge ── */
   .hero-badge {
@@ -3595,6 +3646,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
     <!-- Right — Mascote "Gasturinha" -->
     <div class="hero-right">
+      <!-- Balão de fala do Gasturinha -->
+      <div class="gasturinha-bubble">
+        Oi! Eu sou o <strong>Gasturinha</strong> 👋
+      </div>
       <div class="mascote-wrap" style="width:480px;height:480px">
         <div class="mascote-glow"></div>
 
