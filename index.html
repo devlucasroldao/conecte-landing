@@ -745,6 +745,26 @@ body {
   color:rgba(255,255,255,.72);
 }
 
+/* ---- Foto real ---- */
+.perfil-img-foto {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+}
+.perfil-img--essencial .perfil-img-foto  { object-position:center 35%; }
+.perfil-img--familia   .perfil-img-foto  { object-position:center 18%; }
+.perfil-img--avancado  .perfil-img-foto  { object-position:center 22%; }
+.perfil-img--empresarial .perfil-img-foto { object-position:center 38%; }
+
+/* ---- Overlay de cor (tom do card) ---- */
+.perfil-img-overlay {
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+}
+.perfil-img-dots { position:relative; z-index:2; }
+.perfil-img--essencial   .perfil-img-overlay { background:linear-gradient(145deg,rgba(10,90,173,.44) 0%,rgba(10,126,226,.22) 100%); }
+.perfil-img--familia     .perfil-img-overlay { background:linear-gradient(170deg,rgba(6,32,96,.58) 0%,rgba(10,74,171,.44) 55%,rgba(10,126,226,.26) 100%); }
+.perfil-img--avancado    .perfil-img-overlay { background:linear-gradient(145deg,rgba(19,7,64,.64) 0%,rgba(57,18,160,.48) 48%,rgba(12,70,208,.28) 100%); }
+.perfil-img--empresarial .perfil-img-overlay { background:linear-gradient(145deg,rgba(13,28,54,.64) 0%,rgba(25,52,98,.48) 55%,rgba(10,58,128,.26) 100%); }
+
 /* ---- Área de conteúdo ---- */
 .perfil-content {
   padding:24px 26px 26px;
@@ -3863,10 +3883,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d1">
         <div class="perfil-img perfil-img--essencial">
           <div class="perfil-img-inner">
-            <i class="fas fa-mug-hot perfil-img-icon"></i>
+            <img src="essencial.jpg" alt="Plano Essencial" class="perfil-img-foto">
+            <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
-          <span class="perfil-img-swap">Substituir imagem</span>
         </div>
         <div class="perfil-content">
           <h3 class="perfil-name">Plano Essencial</h3>
@@ -3888,10 +3908,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card perfil-hero reveal d2">
         <div class="perfil-img perfil-img--familia">
           <div class="perfil-img-inner">
-            <i class="fas fa-people-roof perfil-img-icon"></i>
+            <img src="familia.jpg" alt="Plano Família" class="perfil-img-foto">
+            <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
-          <span class="perfil-img-swap">Substituir imagem</span>
         </div>
         <div class="perfil-content">
           <div class="perfil-badge">⭐ Mais popular</div>
@@ -3914,10 +3934,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d3">
         <div class="perfil-img perfil-img--avancado">
           <div class="perfil-img-inner">
-            <i class="fas fa-bolt perfil-img-icon"></i>
+            <img src="avancado.jpg" alt="Plano Avançado" class="perfil-img-foto">
+            <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
-          <span class="perfil-img-swap">Substituir imagem</span>
         </div>
         <div class="perfil-content">
           <h3 class="perfil-name">Plano Avançado</h3>
@@ -3939,10 +3959,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="perfil-card reveal d4">
         <div class="perfil-img perfil-img--empresarial">
           <div class="perfil-img-inner">
-            <i class="fas fa-store perfil-img-icon"></i>
+            <img src="empresarial.jpg" alt="Plano Empresarial" class="perfil-img-foto">
+            <div class="perfil-img-overlay"></div>
             <div class="perfil-img-dots"></div>
           </div>
-          <span class="perfil-img-swap">Substituir imagem</span>
         </div>
         <div class="perfil-content">
           <h3 class="perfil-name">Plano Empresarial</h3>
