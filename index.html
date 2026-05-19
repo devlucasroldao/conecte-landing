@@ -3403,52 +3403,50 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     overflow: hidden;
   }
 
-  /* flex-start: conteúdo sobe para o topo, sem gap fantasma */
+  /* flex-start: conteúdo sobe para o topo */
   .hero-content {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
     text-align: center !important;
-    padding: 78px 24px 110px !important;
+    padding: 78px 24px 80px !important;
     position: relative;
     z-index: 3;
     gap: 0 !important;
   }
 
-  /* ── Mascote: no fluxo, abaixo dos CTAs, totalmente opaco ── */
+  /* ── Mascote: absoluto, ancorado ao canto inferior-direito ── */
   .hero-right {
-    display: flex !important;
-    position: relative !important;
-    bottom: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    z-index: 2 !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: 72px !important;
+    right: 8px !important;
+    width: 185px !important;
+    height: 185px !important;
+    z-index: 1 !important;
     pointer-events: none !important;
     opacity: 1 !important;
     filter: none !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-top: 8px !important;
+    overflow: visible !important;
   }
 
   .mascote-wrap {
-    width: 220px !important;
-    height: 220px !important;
+    width: 185px !important;
+    height: 185px !important;
     animation: floatY 6s ease-in-out infinite !important;
   }
 
   .mascote-body {
-    width: 220px !important;
-    height: 220px !important;
+    width: 185px !important;
+    height: 185px !important;
     opacity: 1 !important;
   }
 
   .mascote-img-c {
-    width: 190px !important;
-    height: 190px !important;
-    filter: drop-shadow(0 12px 32px rgba(10,126,226,.55)) drop-shadow(0 0 18px rgba(255,222,89,.25)) !important;
+    width: 160px !important;
+    height: 160px !important;
+    filter: none !important;
   }
 
   .mascote-float        { display: none !important; }
@@ -3456,14 +3454,14 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .mascote-ambient-glow { display: none !important; }
   .mascote-badge-label  { display: none !important; }
 
-  /* ── Bubble: à esquerda do mascote, cauda aponta para ele ── */
+  /* ── Bubble: à esquerda do mascote, centralizado verticalmente ── */
   .gasturinha-bubble {
-    left: calc(50% - 180px) !important;
-    top: 18px !important;
+    left: -106px !important;
+    top: 50% !important;
     bottom: auto !important;
-    transform: none !important;
+    transform: translateY(-50%) !important;
     white-space: normal !important;
-    max-width: 108px !important;
+    max-width: 100px !important;
     font-size: 11.5px !important;
     padding: 8px 11px !important;
     border-radius: 16px 4px 16px 16px !important;
@@ -3473,7 +3471,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   }
   /* Cauda aponta para a direita — em direção ao mascote */
   .gasturinha-bubble::after {
-    top: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     left: auto !important;
     right: -9px !important;
     border: 9px solid transparent !important;
@@ -3495,11 +3494,11 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   /* ── Título: br preservado para não colar palavras ── */
   .hero-title br { display: initial !important; }
   .hero-title {
-    font-size: 36px !important;
-    line-height: 1.13 !important;
-    letter-spacing: -1.6px !important;
+    font-size: 44px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -2px !important;
     margin: 0 auto 16px !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
   }
 
   /* ── Subtítulo: presente, sutil, equilibra composição ── */
@@ -3548,9 +3547,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
 /* Telas muito baixas (ex: iPhone SE 1ª gen): mascote menor */
 @media (max-width: 768px) and (max-height: 700px) {
-  .mascote-wrap, .mascote-body { width: 160px !important; height: 160px !important; }
-  .mascote-img-c { width: 140px !important; height: 140px !important; }
-  .hero-right { margin-top: 4px !important; }
+  .hero-right { width: 150px !important; height: 150px !important; bottom: 72px !important; }
+  .mascote-wrap, .mascote-body { width: 150px !important; height: 150px !important; }
+  .mascote-img-c { width: 130px !important; height: 130px !important; }
+  .hero-title { font-size: 38px !important; }
 }
 
 </style>
