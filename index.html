@@ -167,7 +167,7 @@ body {
   .nav-logo:hover .logo-mark { transform:none; box-shadow:0 4px 20px rgba(0,0,0,.18), 0 0 0 2px rgba(255,255,255,.25); }
   .nav-logo:active .logo-mark { transform:scale(0.95); transition-duration:.1s; }
 }
-.logo-mark img { width:44px; height:44px; object-fit:contain; }
+.logo-mark img { width:100%; height:100%; object-fit:cover; object-position:center; }
 /* SVG logo mark */
 .logo-mark svg { width:22px; height:22px; }
 
@@ -3683,6 +3683,16 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .hero-title { font-size: 38px !important; }
 }
 
+/* ── Fix: <picture> como elemento transparente em containers de imagem ── */
+.perfil-img-inner > picture,
+.id-img > picture,
+.ver-photo > picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.loc-office-photo picture { display: block; }
+
 </style>
 </head>
 <body>
@@ -3696,7 +3706,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 <nav id="nav">
   <a href="#" class="nav-logo">
     <div class="logo-mark" style="background:transparent;border-radius:12px;padding:0">
-      <img src="logo-conecte.png" alt="Conecte Telecom" style="width:44px;height:44px;object-fit:contain">
+      <img src="logo-conecte.png" alt="Conecte Telecom" style="width:100%;height:100%;object-fit:cover;object-position:center">
     </div>
     <div>
       <div class="logo-name">Conecte <em>Telecom</em></div>
@@ -3738,7 +3748,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   <div class="mob-head">
     <a href="#" class="nav-logo">
       <div class="logo-mark" style="background:transparent;border-radius:12px;padding:0">
-        <img src="logo-conecte.png" alt="Conecte Telecom" style="width:44px;height:44px;object-fit:contain">
+        <img src="logo-conecte.png" alt="Conecte Telecom" style="width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
       <div><div class="logo-name" style="color:var(--texto)">Conecte <em style="color:var(--azul)">Telecom</em></div></div>
     </a>
