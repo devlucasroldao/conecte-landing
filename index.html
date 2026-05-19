@@ -134,7 +134,12 @@ body {
 }
 
 /* Logo */
-.nav-logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
+.nav-logo {
+  display:flex; align-items:center; gap:8px; text-decoration:none;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+  outline:none;
+}
+.nav-logo:focus-visible { outline:2px solid var(--azul); outline-offset:3px; border-radius:var(--r-md); }
 .logo-mark {
   width:48px; height:48px; border-radius:50%;
   background:white;
@@ -144,6 +149,11 @@ body {
   flex-shrink:0; overflow:hidden; padding:2px;
 }
 .nav-logo:hover .logo-mark { transform:scale(1.1) rotate(-4deg); box-shadow:0 8px 28px rgba(0,0,0,.22), 0 0 0 3px rgba(255,222,89,.5); }
+/* Evita hover persistente em dispositivos touch (Safari iOS) */
+@media(hover:none) {
+  .nav-logo:hover .logo-mark { transform:none; box-shadow:0 4px 20px rgba(0,0,0,.18), 0 0 0 2px rgba(255,255,255,.25); }
+  .nav-logo:active .logo-mark { transform:scale(0.95); transition-duration:.1s; }
+}
 .logo-mark img { width:44px; height:44px; object-fit:contain; }
 /* SVG logo mark */
 .logo-mark svg { width:22px; height:22px; }
@@ -1144,15 +1154,18 @@ body {
   background:radial-gradient(circle, rgba(10,126,226,.1) 0%, transparent 65%);
   pointer-events:none;
 }
-.loc-inner {
-  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
-}
+
+.loc-header { text-align:center; margin-bottom:52px; }
+.loc-header .section-sub { max-width:520px; margin:8px auto 0; }
+
+.loc-main-grid { display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:start; }
+
+/* Left column */
 .loc-left {}
-.loc-left .section-title { margin-bottom:20px; }
-.loc-info { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+.loc-contacts { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
 .loc-item {
   display:flex; align-items:flex-start; gap:14px;
-  padding:18px 20px; background:rgba(255,255,255,.82); backdrop-filter:blur(14px);
+  padding:16px 18px; background:rgba(255,255,255,.82); backdrop-filter:blur(14px);
   border-radius:var(--r-lg);
   border:1.5px solid rgba(255,255,255,.75);
   box-shadow:0 2px 14px rgba(10,126,226,.08);
@@ -1168,16 +1181,81 @@ body {
 .loc-item-text a { color:var(--azul); text-decoration:none; font-weight:600; }
 .loc-item-text a:hover { text-decoration:underline; }
 
+/* Schedule section */
+.loc-schedules { margin-bottom:24px; }
+.loc-sched-title {
+  font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.9px;
+  color:var(--muted); margin-bottom:10px; display:flex; align-items:center; gap:6px;
+}
+.loc-schedule-card {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:16px 18px; background:rgba(255,255,255,.82); backdrop-filter:blur(14px);
+  border-radius:var(--r-lg); border:1.5px solid rgba(255,255,255,.75);
+  box-shadow:0 2px 14px rgba(10,126,226,.07); margin-bottom:10px;
+  transition:all .25s;
+}
+.loc-schedule-card:hover { border-color:rgba(10,126,226,.15); box-shadow:0 6px 24px rgba(10,126,226,.1); transform:translateX(3px); }
+.loc-schedule-card:last-child { margin-bottom:0; }
+.loc-schedule-suporte {
+  background:linear-gradient(135deg, rgba(10,126,226,.07) 0%, rgba(10,126,226,.03) 100%);
+  border-color:rgba(10,126,226,.2);
+}
+.loc-schedule-suporte:hover { border-color:rgba(10,126,226,.35); box-shadow:0 8px 28px rgba(10,126,226,.15); transform:translateX(3px); }
+.loc-schedule-icon {
+  width:42px; height:42px; border-radius:12px; flex-shrink:0;
+  background:rgba(10,126,226,.08); color:var(--azul);
+  display:flex; align-items:center; justify-content:center; font-size:17px;
+}
+.loc-icon-suporte { background:var(--azul); color:white; box-shadow:0 4px 14px rgba(10,126,226,.3); }
+.loc-schedule-body { flex:1; min-width:0; }
+.loc-schedule-name { font-size:13px; font-weight:700; margin-bottom:8px; }
+.loc-schedule-rows { display:flex; flex-direction:column; gap:4px; }
+.loc-schedule-row { display:flex; align-items:baseline; justify-content:space-between; gap:8px; font-size:12.5px; }
+.loc-row-closed { opacity:.6; }
+.loc-day { font-weight:600; color:var(--texto); white-space:nowrap; flex-shrink:0; }
+.loc-time { color:var(--muted); text-align:right; }
+.loc-closed { font-style:italic; }
+.loc-suporte-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--azul); color:white; border-radius:var(--r-full);
+  font-size:12px; font-weight:700; padding:4px 12px; margin-bottom:8px;
+}
+.loc-suporte-badge i { font-size:11px; }
+.loc-suporte-note { font-size:12.5px; color:var(--muted); line-height:1.6; }
+
+/* Right column */
+.loc-right { display:flex; flex-direction:column; gap:16px; }
+
+/* Office photo */
+.loc-office-photo { border-radius:var(--r-xl); overflow:hidden; }
+.loc-office-img { width:100%; height:220px; object-fit:cover; display:block; border-radius:var(--r-xl); }
+.loc-photo-placeholder {
+  height:220px; position:relative; overflow:hidden;
+  background:linear-gradient(135deg, rgba(10,126,226,.07) 0%, rgba(10,126,226,.12) 50%, rgba(10,126,226,.07) 100%);
+  border:2px dashed rgba(10,126,226,.2); border-radius:var(--r-xl);
+  display:flex; align-items:center; justify-content:center;
+}
+.loc-photo-content {
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  color:var(--azul); opacity:.4; text-align:center;
+}
+.loc-photo-content i { font-size:40px; }
+.loc-photo-content span { font-size:13px; font-weight:600; line-height:1.5; }
+.loc-photo-badge {
+  position:absolute; bottom:14px; left:14px;
+  background:rgba(10,126,226,.88); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  color:white; font-size:11px; font-weight:700;
+  padding:5px 12px; border-radius:var(--r-full);
+  display:flex; align-items:center; gap:6px;
+}
+
+/* Map */
 .loc-map {
   border-radius:var(--r-xl); overflow:hidden;
   border:1.5px solid var(--border); box-shadow:var(--shadow-md);
-  background:var(--azul-light); height:360px;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:12px; position:relative;
+  height:260px; position:relative;
 }
-.loc-map iframe {
-  width:100%; height:100%; border:none; display:block;
-}
+.loc-map iframe { width:100%; height:100%; border:none; display:block; }
 .loc-map-overlay {
   position:absolute; inset:0;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
@@ -1192,7 +1270,17 @@ body {
 }
 .loc-map-overlay a:hover { background:var(--azul-mid); transform:translateY(-2px); }
 
-@media(max-width:860px) { .loc-inner { grid-template-columns:1fr; } .loc-map { height:280px; } }
+@media(max-width:900px) {
+  .loc-main-grid { grid-template-columns:1fr; gap:36px; }
+  .loc-map { height:240px; }
+  .loc-photo-placeholder,.loc-office-img { height:200px; }
+}
+@media(max-width:600px) {
+  .loc-schedule-row { flex-wrap:wrap; gap:2px; }
+  .loc-time { text-align:left; width:100%; }
+  .loc-map { height:200px; }
+  .loc-photo-placeholder,.loc-office-img { height:160px; }
+}
 
 /* ================================================================
    PREMIUM SECTION ACCENTS
@@ -1336,7 +1424,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   padding:12px 16px; padding-bottom:calc(12px + env(safe-area-inset-bottom));
   gap:10px; box-shadow:0 -8px 32px rgba(0,0,0,.1);
 }
-@media(max-width:768px) { .mobile-bar { display:flex; } }
+@media(max-width:768px) {
+  .mobile-bar { display:flex; }
+  footer { padding-bottom:calc(96px + env(safe-area-inset-bottom)); }
+}
 .mob-bar-btn {
   flex:1; display:flex; align-items:center; justify-content:center; gap:7px;
   padding:13px; border-radius:var(--r-full); font-size:14px; font-weight:800;
@@ -1367,7 +1458,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .id-float-a { right:0; }
   .id-float-b { left:0; }
   .ver-inner { grid-template-columns:1fr; gap:40px; }
-  .loc-inner { grid-template-columns:1fr; }
+  .loc-main-grid { grid-template-columns:1fr; }
   .dif-grid { grid-template-columns:1fr 1fr; }
   .dif-card.span2 { grid-column:span 2; }
 }
@@ -3930,7 +4021,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 60 Mbps de download</div>
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Essencial+(60+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
-          <p class="perfil-footnote">Fibra óptica · Wi-Fi 6 · Instalação grátis</p>
+          <p class="perfil-footnote">Fibra óptica · Instalação grátis</p>
         </div>
       </div>
 
@@ -3956,7 +4047,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 500 Mbps de download</div>
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Fam%C3%ADlia+(at%C3%A9+500+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
-          <p class="perfil-footnote">Fibra óptica · Wi-Fi 6 · Instalação grátis</p>
+          <p class="perfil-footnote">Fibra óptica · Instalação grátis</p>
         </div>
       </div>
 
@@ -3981,7 +4072,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 700 Mbps de download</div>
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Tenho+interesse+no+plano+Avan%C3%A7ado+(at%C3%A9+700+Mbps).+Podem+me+passar+mais+detalhes%3F" target="_blank" rel="noopener" class="btn-perfil">Quero esse plano</a>
-          <p class="perfil-footnote">Fibra óptica · Wi-Fi 6 · Instalação grátis</p>
+          <p class="perfil-footnote">Fibra óptica · Instalação grátis</p>
         </div>
       </div>
 
@@ -4006,7 +4097,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="perfil-spacer"></div>
           <div class="perfil-speed-chip"><i class="fas fa-wifi"></i> até 800 Mbps de download</div>
           <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Gostaria+de+conversar+sobre+o+plano+Empresarial+(800+Mbps).+Podem+me+indicar+a+melhor+op%C3%A7%C3%A3o%3F" target="_blank" rel="noopener" class="btn-perfil">Falar com consultor</a>
-          <p class="perfil-footnote">Fibra óptica · Wi-Fi 6 · Instalação grátis</p>
+          <p class="perfil-footnote">Fibra óptica · Instalação grátis</p>
         </div>
       </div>
 
@@ -4339,11 +4430,19 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
      ================================================================ -->
 <section class="localizacao" id="localizacao">
   <div class="section-wrap">
-    <div class="loc-inner">
+
+    <div class="loc-header reveal">
+      <div class="section-tag"><i class="fas fa-map-marker-alt"></i> Nossa localização</div>
+      <h2 class="section-title">Venha nos <span style="color:var(--azul)">conhecer</span></h2>
+      <p class="section-sub loc-header-sub">Estamos aqui de verdade — endereço físico, equipe local e atendimento que vai além do horário comercial.</p>
+    </div>
+
+    <div class="loc-main-grid">
+
+      <!-- ── ESQUERDA: contatos + horários ──────────────────── -->
       <div class="loc-left reveal from-left">
-        <div class="section-tag"><i class="fas fa-map-marker-alt"></i> Nossa localização</div>
-        <h2 class="section-title">Venha nos<br>conhecer</h2>
-        <div class="loc-info">
+
+        <div class="loc-contacts">
           <div class="loc-item">
             <div class="loc-ico azul"><i class="fas fa-map-marker-alt"></i></div>
             <div class="loc-item-text">
@@ -4358,17 +4457,62 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
               <p><a href="https://wa.me/555197597259" target="_blank" rel="noopener">(51) 9759-7259</a> — Respondemos todos os dias</p>
             </div>
           </div>
-          <div class="loc-item">
-            <div class="loc-ico amarelo"><i class="fas fa-clock"></i></div>
-            <div class="loc-item-text">
-              <h5>Horário de atendimento</h5>
-              <p>Segunda a Domingo, das 8h às 22h<br>Suporte técnico 7 dias por semana</p>
+        </div>
+
+        <div class="loc-schedules">
+          <div class="loc-sched-title"><i class="fas fa-clock"></i> Horários de atendimento</div>
+
+          <!-- Escritório -->
+          <div class="loc-schedule-card">
+            <div class="loc-schedule-icon"><i class="fas fa-building"></i></div>
+            <div class="loc-schedule-body">
+              <h4 class="loc-schedule-name">Escritório</h4>
+              <div class="loc-schedule-rows">
+                <div class="loc-schedule-row">
+                  <span class="loc-day">Seg — Sex</span>
+                  <span class="loc-time">08h30–12h · 13h30–18h</span>
+                </div>
+                <div class="loc-schedule-row">
+                  <span class="loc-day">Sábado</span>
+                  <span class="loc-time">08h30–12h</span>
+                </div>
+                <div class="loc-schedule-row loc-row-closed">
+                  <span class="loc-day">Domingo</span>
+                  <span class="loc-time loc-closed">Fechado</span>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Suporte Presencial -->
+          <div class="loc-schedule-card loc-schedule-suporte">
+            <div class="loc-schedule-icon loc-icon-suporte"><i class="fas fa-headset"></i></div>
+            <div class="loc-schedule-body">
+              <h4 class="loc-schedule-name">Suporte Presencial</h4>
+              <div class="loc-suporte-badge"><i class="fas fa-circle-check"></i> Todos os dias até às 21h</div>
+              <p class="loc-suporte-note">Inclusive sábados e domingos — mesmo com o escritório fechado, tem alguém da equipe aqui por você.</p>
+            </div>
+          </div>
+
         </div>
+
         <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener" class="btn-outline-dark"><i class="fas fa-directions"></i> Ver rotas no Google Maps</a>
       </div>
-      <div class="reveal from-right d1">
+
+      <!-- ── DIREITA: foto + mapa ───────────────────────────── -->
+      <div class="loc-right reveal from-right d1">
+
+        <!-- Foto do escritório — trocar div.loc-photo-placeholder por <img src="escritorio.jpg" class="loc-office-img"> quando disponível -->
+        <div class="loc-office-photo">
+          <div class="loc-photo-placeholder">
+            <div class="loc-photo-content">
+              <i class="fas fa-store-alt"></i>
+              <span>Foto do escritório<br>em breve</span>
+            </div>
+            <div class="loc-photo-badge"><i class="fas fa-map-pin"></i> Arroio do Sal — RS</div>
+          </div>
+        </div>
+
         <div class="loc-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d177.8!2d-49.886241!3d-29.548764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95227d569eb8c54f%3A0xbad1e89cd0af1a2a!2sConecte%20Telecom!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
@@ -4376,7 +4520,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
             referrerpolicy="no-referrer-when-downgrade" title="Localização Conecte Telecom">
           </iframe>
         </div>
+
       </div>
+
     </div>
   </div>
 </section>
@@ -4734,6 +4880,20 @@ const countObs = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));
 
 /* Maps iframe already embedded directly */
+
+/* Reset visual state da logo após clique (fix Safari iOS hover persistente) */
+(function() {
+  var logo = document.querySelector('.nav-logo');
+  if (!logo) return;
+  logo.addEventListener('click', function() {
+    var self = this;
+    setTimeout(function() { self.blur(); }, 150);
+  });
+  logo.addEventListener('touchend', function() {
+    var self = this;
+    setTimeout(function() { self.blur(); }, 150);
+  }, { passive:true });
+})();
 
 /* ================================================================
    THEME TOGGLE — Dark Mode Premium
