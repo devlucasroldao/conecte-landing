@@ -4383,28 +4383,15 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <p class="section-sub" style="max-width:480px;margin:0 auto">Bastidores, novidades e o dia a dia da equipe Conecte. Acompanha a gente!</p>
     </div>
 
-    <!--
-      BEHOLD.SO — COMO CONFIGURAR:
-      1. Acesse https://behold.so e crie uma conta gratuita
-      2. Conecte sua conta do Instagram (@seconecte2021)
-      3. Crie um novo widget e personalize o layout
-      4. Copie o widgetId gerado e substitua 'SEU_WIDGET_ID_AQUI' abaixo
-      5. Salve e o feed aparecerá automaticamente aqui
-    -->
     <div class="insta-widget-wrap reveal d1">
-      <div id="behold-widget">
-        <div class="insta-widget-loading">
-          <i class="fab fa-instagram"></i>
-          <span>Feed do Instagram carregando...</span>
-        </div>
-      </div>
+      <behold-widget feed-id="bNk2b01pmvColTNomfXT"></behold-widget>
+      <script>
+        (() => {
+          const d=document,s=d.createElement("script");s.type="module";
+          s.src="https://w.behold.so/widget.js";d.head.append(s);
+        })();
+      </script>
     </div>
-    <script>
-      window.BeholdWidgetV2Init = function() {
-        Behold.createFeed({ widgetId: 'SEU_WIDGET_ID_AQUI' });
-      };
-    </script>
-    <script src="https://w.behold.so/widget.js" async defer></script>
 
     <div class="insta-cta-wrap reveal d2">
       <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="btn-outline-dark">
