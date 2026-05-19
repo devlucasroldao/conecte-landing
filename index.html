@@ -496,18 +496,19 @@ body {
   padding:28px 0;
 }
 .trust-strip-inner {
-  max-width:1120px; margin:0 auto; padding:0 32px;
+  max-width:1120px; margin:0 auto; padding:0 40px;
   display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:nowrap; gap:0;
+  flex-wrap:nowrap;
 }
 .trust-item {
-  display:flex; align-items:center; gap:12px;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:5px; flex:1; padding:0 16px;
 }
 .trust-num {
-  font-size:28px; font-weight:800; color:var(--azul); letter-spacing:-1px; line-height:1;
+  font-size:30px; font-weight:800; color:var(--azul); letter-spacing:-1.5px; line-height:1; white-space:nowrap;
 }
-.trust-label { font-size:13px; color:var(--muted); font-weight:500; line-height:1.4; }
-.trust-div { width:1px; height:36px; background:var(--border); }
+.trust-label { font-size:12px; color:var(--muted); font-weight:500; line-height:1.4; text-align:center; }
+.trust-div { width:1px; height:40px; background:var(--border); flex-shrink:0; }
 @media(max-width:700px) {
   .trust-strip-inner { justify-content:center; gap:16px 32px; }
   .trust-div { display:none; }
@@ -3864,7 +3865,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="trust-div"></div>
     <div class="trust-item">
       <div class="trust-num">4.9<span style="font-size:16px;color:var(--amarelo)">★</span></div>
-      <div class="trust-label">nota média no Google Reviews</div>
+      <div class="trust-label">nota média no<br>Google Reviews</div>
     </div>
   </div>
 </div>
