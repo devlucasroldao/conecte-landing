@@ -2681,6 +2681,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 @media (max-width: 768px) {
   .insta-header { margin-bottom: 32px; }
   .insta-widget-wrap { border-radius: 20px; }
+  /* Remove espaço em branco abaixo da grade do widget Behold */
+  behold-widget { display: block; }
+  .insta-widget-wrap { padding-bottom: 0 !important; }
 }
 
 /* ================================================================
@@ -3769,7 +3772,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="mob-social-row">
       <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="mob-soc-btn insta" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="mob-soc-btn wpp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="mailto:contato@conectetelecom.com.br" class="mob-soc-btn" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+      <a href="mailto:conecte@seconecte.net" class="mob-soc-btn" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
       <a href="https://maps.google.com/?q=Rua+Paulista+183+Arroio+do+Sal+RS" target="_blank" rel="noopener" class="mob-soc-btn" aria-label="Localização"><i class="fas fa-map-pin"></i></a>
     </div>
   </div>
@@ -4241,10 +4244,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="st-ring-inner"></div>
           <div class="st-pulse-ring"></div>
           <div class="st-pulse-ring-2"></div>
-          <div class="st-center">
+          <a href="https://www.speedtest.net" target="_blank" rel="noopener" class="st-center" style="text-decoration:none;cursor:pointer;">
             <div class="st-center-icon"><i class="fas fa-wifi"></i></div>
             <div class="st-center-label">pronto para testar</div>
-          </div>
+          </a>
         </div>
         <div class="st-stats">
           <div class="st-stat dl">
@@ -4569,8 +4572,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
         <div class="faq-a"><p>Sim, 100% fibra óptica de ponta a ponta — sem cabo coaxial misturado. Isso garante estabilidade e a velocidade que você contratou chegando de verdade.</p></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)"><span>Tem fidelidade? E se eu quiser cancelar?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses. Mas a gente acredita tanto no serviço que não precisa prender ninguém — se quiser cancelar, a conversa é direta e sem burocracia.</p></div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Tem fidelidade?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><p>Os planos têm fidelidade de 12 meses.</p></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span>Vocês chegam até a minha rua?</span><div class="fi"><i class="fas fa-plus"></i></div></div>
@@ -4778,7 +4781,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="footer-anatel">CNPJ: 41.143.126/0001-00 · Registrado na ANATEL · Provedor autorizado</div>
     </div>
     <div style="display:flex;gap:16px">
-      <a href="https://github.com/devlucasroldao" target="_blank" rel="noopener"><i class="fab fa-github"></i> Criado por Lucas Roldão</a>
+      <a href="https://github.com/devlucasroldao" target="_blank" rel="noopener"><i class="fab fa-github"></i> site criado por Lucas Roldão</a>
     </div>
   </div>
 </footer>
