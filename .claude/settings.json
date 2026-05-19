@@ -37,7 +37,8 @@
       "PowerShell(cd \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\"; Get-ChildItem \"logo-conecte.png\",\"logo-conecte.svg\",\"favicon.png\",\"mascote.webp\",\"index.html\" | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\" })",
       "PowerShell(cd \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\"; Get-ChildItem -File | Where-Object { $_.Extension -match '\\\\.\\(jpg|jpeg|png|webp|svg|gif|ico\\)$' } | Sort-Object Name | ForEach-Object { \"$\\($_.Name\\): $\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\" })",
       "Bash(node move-planos.js)",
-      "Bash(node move-planos2.js)"
+      "Bash(node move-planos2.js)",
+      "Bash(git log *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory"
