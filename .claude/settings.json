@@ -68,7 +68,8 @@
       "PowerShell(Stop-Process -Id 22968 -Force -ErrorAction SilentlyContinue)",
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\\" | Where-Object { $_.Extension -match '\\\\.\\(png|webp|jpg|jpeg|svg\\)$' })",
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" | Select-Object Name, @{n='KB';e={[math]::Round\\($_.Length/1KB,0\\)}})",
-      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" -File | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })"
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" -File | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\\" -File | Where-Object { $_.Extension -match '\\\\.\\(png|webp|jpg|jpeg\\)$' } | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
