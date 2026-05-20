@@ -547,44 +547,54 @@ body {
 .dif-header .section-sub { max-width:520px; margin:0 auto; }
 
 .dif-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
 }
 .dif-card {
-  background:white; border-radius:var(--r-xl); padding:32px 28px;
+  background:white; border-radius:28px; padding:40px 32px 32px;
   border:1.5px solid rgba(10,126,226,.08);
-  box-shadow:0 2px 14px rgba(10,126,226,.055), 0 1px 3px rgba(0,0,0,.04);
-  transition:all .3s;
+  box-shadow:0 4px 24px rgba(10,126,226,.06), 0 1px 4px rgba(0,0,0,.04);
+  transition:all .35s cubic-bezier(.22,.68,0,1.2);
   position:relative; overflow:hidden;
+}
+.dif-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:var(--dif-accent,linear-gradient(90deg,var(--azul),#3b9eff));
+  border-radius:28px 28px 0 0;
 }
 .dif-card::after {
   content:''; position:absolute; top:0; left:-80%; width:60%; height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
-  transform:skewX(-18deg); transition:left .6s;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-18deg); transition:left .65s; pointer-events:none;
 }
 .dif-card:hover::after { left:120%; }
 .dif-card:hover {
-  border-color:rgba(10,126,226,.18);
-  transform:translateY(-5px);
-  box-shadow:var(--shadow-lg), 0 0 0 1px rgba(10,126,226,.06);
+  border-color:rgba(10,126,226,.16);
+  transform:translateY(-8px);
+  box-shadow:0 24px 64px rgba(10,126,226,.13), 0 4px 16px rgba(0,0,0,.06);
 }
-.dif-card.span2 { grid-column:span 2; display:flex; align-items:center; gap:24px; }
 .dif-icon {
-  width:52px; height:52px; border-radius:16px;
-  display:flex; align-items:center; justify-content:center; font-size:22px;
-  margin-bottom:18px; flex-shrink:0;
+  width:64px; height:64px; border-radius:20px;
+  display:flex; align-items:center; justify-content:center; font-size:26px;
+  margin-bottom:24px; flex-shrink:0;
 }
-.dif-card.span2 .dif-icon { margin-bottom:0; }
-.ic-b { background:rgba(10,126,226,.08); color:var(--azul); }
+.ic-b { background:rgba(10,126,226,.1); color:var(--azul); }
+.ic-g { background:rgba(34,197,94,.12); color:#16a34a; }
+.ic-o { background:rgba(217,119,6,.1); color:#d97706; }
 .ic-y { background:rgba(255,222,89,.18); color:#9a7800; }
-.ic-g { background:rgba(34,197,94,.1); color:#16a34a; }
-.ic-o { background:rgba(10,126,226,.1); color:var(--azul); }
 .ic-p { background:rgba(139,92,246,.1); color:#7c3aed; }
 .ic-r { background:rgba(236,72,153,.1); color:#db2777; }
-.dif-card h4 { font-size:17px; font-weight:800; margin-bottom:8px; letter-spacing:-.3px; }
-.dif-card p { font-size:14px; color:var(--muted); line-height:1.68; }
+.dif-card h4 { font-size:19px; font-weight:800; margin-bottom:10px; letter-spacing:-.4px; color:var(--texto); }
+.dif-card p { font-size:14.5px; color:var(--muted); line-height:1.72; }
+.dif-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:22px; }
+.dif-tag {
+  font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+  padding:4px 12px; border-radius:999px;
+  background:var(--dif-tag-bg,rgba(10,126,226,.07));
+  color:var(--dif-tag-color,var(--azul));
+}
 
-@media(max-width:900px) { .dif-grid { grid-template-columns:1fr 1fr; } .dif-card.span2 { grid-column:span 2; } }
-@media(max-width:580px) { .dif-grid { grid-template-columns:1fr; } .dif-card.span2 { grid-column:span 1; flex-direction:column; } }
+@media(max-width:900px) { .dif-grid { grid-template-columns:1fr 1fr; gap:16px; } }
+@media(max-width:580px) { .dif-grid { grid-template-columns:1fr; } }
 
 /* ================================================================
    IDENTIDADE LOCAL
@@ -1679,20 +1689,22 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 [data-theme="dark"] .diferenciais::before { background:linear-gradient(90deg,transparent 0%,rgba(10,126,226,.24) 50%,transparent 100%); }
 [data-theme="dark"] .dif-card {
   background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08);
-  box-shadow:0 2px 24px rgba(0,0,0,.34);
+  box-shadow:0 4px 28px rgba(0,0,0,.36);
 }
 [data-theme="dark"] .dif-card:hover {
   background:rgba(255,255,255,.07); border-color:rgba(10,126,226,.28);
-  box-shadow:0 12px 44px rgba(0,0,0,.46),0 0 0 1px rgba(10,126,226,.1);
+  box-shadow:0 20px 56px rgba(0,0,0,.5),0 0 0 1px rgba(10,126,226,.1);
 }
 [data-theme="dark"] .dif-card::after { background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent); }
-[data-theme="dark"] .ic-b { background:rgba(10,126,226,.15); }
+[data-theme="dark"] .ic-b { background:rgba(10,126,226,.15); color:#60a5fa; }
+[data-theme="dark"] .ic-g { background:rgba(34,197,94,.12); color:#4ade80; }
+[data-theme="dark"] .ic-o { background:rgba(217,119,6,.14); color:#fbbf24; }
 [data-theme="dark"] .ic-y { background:rgba(255,222,89,.1); color:#e6c400; }
-[data-theme="dark"] .ic-g { background:rgba(34,197,94,.1); color:#4ade80; }
-[data-theme="dark"] .ic-o { background:rgba(10,126,226,.15); color:rgba(10,126,226,.9); }
 [data-theme="dark"] .ic-p { background:rgba(139,92,246,.1); color:#a78bfa; }
 [data-theme="dark"] .ic-r { background:rgba(236,72,153,.1); color:#f472b6; }
+[data-theme="dark"] .dif-card h4 { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .dif-card p { color:rgba(255,255,255,.52); }
+[data-theme="dark"] .dif-tag { background:rgba(255,255,255,.08) !important; color:rgba(255,255,255,.6) !important; }
 
 /* ---- IDENTIDADE dark ---- */
 [data-theme="dark"] .identidade {
@@ -2942,12 +2954,12 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
    ================================================================ */
 @media (max-width: 768px) {
   .dif-grid { grid-template-columns: 1fr; gap: 12px; }
-  .dif-card { padding: 24px 20px; border-radius: 20px; }
-  .dif-card.span2 { grid-column: span 1; flex-direction: column; }
-  .dif-icon { width: 46px; height: 46px; border-radius: 14px; font-size: 20px; margin-bottom: 14px; }
-  .dif-card.span2 .dif-icon { margin-bottom: 14px; }
-  .dif-card h4 { font-size: 16px; }
+  .dif-card { padding: 28px 24px 24px; border-radius: 22px; }
+  .dif-icon { width: 52px; height: 52px; border-radius: 16px; font-size: 22px; margin-bottom: 18px; }
+  .dif-card h4 { font-size: 17px; }
   .dif-card p { font-size: 14px; line-height: 1.65; }
+  .dif-tags { margin-top: 16px; gap: 5px; }
+  .dif-tag { font-size: 10.5px; padding: 3px 10px; }
   /* Touch feedback */
   .dif-card:active { transform: scale(.98); transition: transform .12s ease; }
 }
@@ -4665,33 +4677,41 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <p class="section-sub">Somos moradores de Arroio do Sal que resolveram fazer diferente — menos enrolação, mais conexão de verdade.</p>
     </div>
     <div class="dif-grid">
-      <div class="dif-card reveal d1">
+
+      <!-- Card 1 — Atendimento -->
+      <div class="dif-card reveal d1" style="--dif-accent:linear-gradient(90deg,#0a7ee2,#38b2ff);--dif-tag-bg:rgba(10,126,226,.08);--dif-tag-color:var(--azul)">
         <div class="dif-icon ic-b"><i class="fas fa-headset"></i></div>
-        <h4>Sem robô, sem fila</h4>
-        <p>Atendimento humano de verdade. Quando você precisa, fala com alguém que mora na mesma cidade.</p>
-      </div>
-      <div class="dif-card reveal d2">
-        <div class="dif-icon ic-y"><i class="fas fa-bolt"></i></div>
-        <h4>Sem "até", sem letra miúda.</h4>
-        <p>O que está no contrato chega na sua casa — ponto.</p>
-      </div>
-      <div class="dif-card reveal d3">
-        <div class="dif-icon ic-g"><i class="fas fa-tools"></i></div>
-        <h4>Técnico vai até você</h4>
-        <p>Problema? Nossa equipe vai presencialmente. Sem te deixar ligando pra 0800 por horas.</p>
-      </div>
-      <div class="dif-card reveal d4">
-        <div class="dif-icon ic-o"><i class="fas fa-shield-alt"></i></div>
-        <h4>Rede preparada pro verão</h4>
-        <p>Infraestrutura dimensionada para a alta temporada — sem queda quando a cidade enche.</p>
-      </div>
-      <div class="dif-card span2 reveal d5">
-        <div class="dif-icon ic-p"><i class="fas fa-heart"></i></div>
-        <div>
-          <h4>Conexão com a comunidade</h4>
-          <p>Cada assinatura apoia o desenvolvimento digital de Arroio do Sal. A Conecte nasceu aqui, cresceu aqui, e entende o que a cidade precisa — porque vivemos essa realidade junto com você.</p>
+        <h4>Atendimento de verdade</h4>
+        <p>Você fala com uma pessoa real que mora na mesma cidade. Sem robô, sem fila, sem central de outro estado — direto com quem resolve.</p>
+        <div class="dif-tags">
+          <span class="dif-tag">Humano</span>
+          <span class="dif-tag">Local</span>
+          <span class="dif-tag">7 dias por semana</span>
         </div>
       </div>
+
+      <!-- Card 2 — Suporte presencial -->
+      <div class="dif-card reveal d2" style="--dif-accent:linear-gradient(90deg,#16a34a,#4ade80);--dif-tag-bg:rgba(34,197,94,.1);--dif-tag-color:#16a34a">
+        <div class="dif-icon ic-g"><i class="fas fa-screwdriver-wrench"></i></div>
+        <h4>Técnico vai até você</h4>
+        <p>Qualquer problema, nossa equipe vai presencialmente até sua casa. Sem te deixar horas no telefone com um roteiro de script.</p>
+        <div class="dif-tags">
+          <span class="dif-tag">Presencial</span>
+          <span class="dif-tag">Instalação grátis</span>
+        </div>
+      </div>
+
+      <!-- Card 3 — Infraestrutura local -->
+      <div class="dif-card reveal d3" style="--dif-accent:linear-gradient(90deg,#d97706,#fbbf24);--dif-tag-bg:rgba(217,119,6,.09);--dif-tag-color:#b45309">
+        <div class="dif-icon ic-o"><i class="fas fa-wifi"></i></div>
+        <h4>Rede feita pra cá</h4>
+        <p>Infraestrutura 100% fibra óptica dimensionada para Arroio do Sal — da baixa até quando a cidade enche na temporada de verão.</p>
+        <div class="dif-tags">
+          <span class="dif-tag">Fibra Óptica</span>
+          <span class="dif-tag">Alta Temporada</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
