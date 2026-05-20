@@ -59,7 +59,8 @@
       "Bash(Select-Object -ExpandProperty Content)",
       "Bash(Select-String \"cookie-banner\")",
       "Bash(Select-Object -First 5)",
-      "Bash(curl -s http://127.0.0.1:7432/)"
+      "Bash(curl -s http://127.0.0.1:7432/)",
+      "Bash(python -m http.server 7433 --bind 127.0.0.1)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
