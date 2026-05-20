@@ -2162,6 +2162,11 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
 @media(max-width:600px) {
   .insta-feed { padding:72px 0; }
+  /* Força 3 colunas no mobile: 9 posts = 3×3 sem sobra */
+  behold-widget {
+    --behold-columns: 3;
+    --behold-gap: 4px;
+  }
 }
 
 /* ================================================================
