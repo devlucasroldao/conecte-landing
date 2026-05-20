@@ -5818,5 +5818,283 @@ function svSetLoading(step, loading) {
 }
 </script>
 
+<!-- ================================================================
+     COOKIE CONSENT — PREMIUM LGPD
+     ================================================================ -->
+<style>
+/* ---- Banner ---- */
+#cookie-banner {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9900;
+  max-width: 420px;
+  width: calc(100% - 48px);
+  background: rgba(255,255,255,.93);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(10,126,226,.13);
+  border-radius: var(--r-lg);
+  box-shadow: 0 4px 32px rgba(0,0,0,.09), 0 0 0 1px rgba(255,255,255,.7) inset;
+  padding: 18px 18px 16px;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity .42s cubic-bezier(.4,0,.2,1), transform .42s cubic-bezier(.4,0,.2,1);
+}
+#cookie-banner.ck-visible  { opacity:1; transform:translateY(0); pointer-events:auto; }
+#cookie-banner.ck-hiding   { opacity:0; transform:translateY(14px); }
+
+.ck-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+
+.ck-icon {
+  width:34px; height:34px; flex-shrink:0;
+  border-radius:10px;
+  background:var(--azul-light);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--azul); font-size:15px;
+}
+
+.ck-title { font-size:13.5px; font-weight:700; color:var(--texto); letter-spacing:-.01em; }
+
+.ck-text {
+  font-size:12.5px; line-height:1.6; color:var(--muted); margin-bottom:14px;
+}
+
+.ck-link {
+  background:none; border:none; padding:0;
+  color:var(--azul); font-size:inherit; font-family:inherit; font-weight:600;
+  cursor:pointer; text-decoration:underline; text-underline-offset:2px;
+  transition:opacity .2s;
+}
+.ck-link:hover { opacity:.72; }
+
+.ck-actions { display:flex; gap:8px; align-items:center; }
+
+.ck-btn-accept {
+  flex:1; padding:9px 18px;
+  background:var(--azul); color:#fff; border:none;
+  border-radius:var(--r-full);
+  font-size:12.5px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;
+  cursor:pointer; letter-spacing:.01em;
+  box-shadow:0 4px 14px rgba(10,126,226,.32);
+  transition:background .2s, transform .15s, box-shadow .2s;
+}
+.ck-btn-accept:hover  { background:var(--azul-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(10,126,226,.44); }
+.ck-btn-accept:active { transform:translateY(0); }
+
+.ck-btn-dismiss {
+  padding:9px 14px; white-space:nowrap;
+  background:none; border:1.5px solid var(--border);
+  border-radius:var(--r-full);
+  font-size:12px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--muted); cursor:pointer;
+  transition:background .2s, color .2s, border-color .2s;
+}
+.ck-btn-dismiss:hover { background:var(--surface); color:var(--texto); border-color:rgba(0,0,0,.14); }
+
+/* Dark */
+[data-theme="dark"] #cookie-banner {
+  background:rgba(11,20,40,.95);
+  border-color:rgba(10,126,226,.2);
+  box-shadow:0 4px 36px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.04) inset;
+}
+[data-theme="dark"] .ck-icon  { background:rgba(10,126,226,.18); }
+[data-theme="dark"] .ck-btn-dismiss {
+  border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.45);
+}
+[data-theme="dark"] .ck-btn-dismiss:hover {
+  background:rgba(255,255,255,.07); color:rgba(255,255,255,.8); border-color:rgba(255,255,255,.16);
+}
+
+/* Mobile */
+@media (max-width:600px) {
+  #cookie-banner {
+    bottom:0; left:0; right:0;
+    max-width:100%; width:100%;
+    border-radius:var(--r-lg) var(--r-lg) 0 0;
+    border-bottom:none;
+    padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));
+    transform:translateY(100%);
+  }
+  #cookie-banner.ck-visible { transform:translateY(0); }
+  #cookie-banner.ck-hiding  { transform:translateY(100%); }
+}
+
+/* ---- Policy Modal ---- */
+#ck-policy-modal {
+  position:fixed; inset:0; z-index:9950;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  opacity:0; pointer-events:none;
+  transition:opacity .35s cubic-bezier(.4,0,.2,1);
+}
+#ck-policy-modal.ck-visible { opacity:1; pointer-events:auto; }
+
+.ck-policy-card {
+  background:var(--branco);
+  border-radius:var(--r-xl);
+  padding:32px 28px 28px;
+  max-width:520px; width:100%;
+  max-height:82vh; overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  transform:translateY(14px) scale(.98);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+}
+#ck-policy-modal.ck-visible .ck-policy-card { transform:translateY(0) scale(1); }
+
+.ck-policy-close {
+  position:absolute; top:14px; right:14px;
+  width:30px; height:30px; border-radius:50%;
+  border:1.5px solid var(--border); background:var(--surface);
+  color:var(--muted); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; font-size:13px;
+  transition:background .2s, color .2s;
+}
+.ck-policy-close:hover { background:var(--surface2); color:var(--texto); }
+
+.ck-policy-tag {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--azul); background:var(--azul-light);
+  padding:3px 9px; border-radius:var(--r-full); margin-bottom:10px;
+}
+
+.ck-policy-card h2 {
+  font-size:21px; font-weight:800; color:var(--texto);
+  letter-spacing:-.025em; margin-bottom:5px;
+}
+.ck-policy-sub { font-size:13px; color:var(--muted); line-height:1.55; margin-bottom:20px; }
+
+.ck-policy-divider { height:1px; background:var(--border); margin:16px 0; }
+
+.ck-policy-section { margin-bottom:16px; }
+.ck-policy-section h3 {
+  font-size:13px; font-weight:700; color:var(--texto);
+  display:flex; align-items:center; gap:8px; margin-bottom:5px;
+}
+.ck-ps-icon {
+  width:22px; height:22px; border-radius:7px; flex-shrink:0;
+  background:var(--azul-light);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--azul); font-size:10px;
+}
+.ck-policy-section p { font-size:12.5px; color:var(--muted); line-height:1.65; }
+
+.ck-policy-footer { display:flex; gap:8px; margin-top:22px; flex-wrap:wrap; }
+.ck-policy-footer .ck-btn-accept { flex:none; padding:10px 26px; }
+.ck-policy-footer .ck-btn-dismiss { padding:10px 18px; }
+
+[data-theme="dark"] .ck-policy-card {
+  background:#0d1a30;
+  border:1px solid rgba(255,255,255,.06);
+}
+[data-theme="dark"] .ck-policy-close {
+  background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1);
+}
+[data-theme="dark"] .ck-policy-close:hover { background:rgba(255,255,255,.11); color:#fff; }
+[data-theme="dark"] .ck-ps-icon { background:rgba(10,126,226,.18); }
+[data-theme="dark"] .ck-policy-tag { background:rgba(10,126,226,.18); }
+
+@media (max-width:600px) {
+  .ck-policy-card { padding:24px 18px 22px; border-radius:var(--r-lg); }
+  .ck-policy-footer { flex-direction:column; }
+}
+</style>
+
+<!-- Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+  <div class="ck-header">
+    <div class="ck-icon" aria-hidden="true"><i class="fa-solid fa-cookie-bite"></i></div>
+    <p class="ck-title">Cookies &amp; Privacidade</p>
+  </div>
+  <p class="ck-text">
+    Utilizamos cookies para melhorar sua experiência e oferecer uma navegação mais personalizada.
+    <button class="ck-link" onclick="ckShowPolicy()" aria-label="Saiba mais sobre nossa política de privacidade">Saiba mais</button>
+  </p>
+  <div class="ck-actions">
+    <button class="ck-btn-accept" onclick="ckAccept()">Aceitar</button>
+    <button class="ck-btn-dismiss" onclick="ckDismiss()">Agora não</button>
+  </div>
+</div>
+
+<!-- Policy Modal -->
+<div id="ck-policy-modal" role="dialog" aria-modal="true" aria-label="Política de Privacidade e Cookies" onclick="ckPolicyOverlay(event)">
+  <div class="ck-policy-card">
+    <button class="ck-policy-close" onclick="ckClosePolicy()" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    <span class="ck-policy-tag"><i class="fa-solid fa-shield-halved"></i>&nbsp;LGPD</span>
+    <h2>Privacidade &amp; Cookies</h2>
+    <p class="ck-policy-sub">Transparência total sobre como cuidamos dos seus dados — sem letras miúdas.</p>
+    <div class="ck-policy-divider"></div>
+    <div class="ck-policy-section">
+      <h3><span class="ck-ps-icon"><i class="fa-solid fa-cookie-bite"></i></span>O que são cookies?</h3>
+      <p>Cookies são pequenos arquivos de texto salvos no seu navegador para melhorar a experiência de navegação, lembrar preferências e entender como o site é usado.</p>
+    </div>
+    <div class="ck-policy-section">
+      <h3><span class="ck-ps-icon"><i class="fa-solid fa-gear"></i></span>Como usamos</h3>
+      <p>Utilizamos cookies essenciais para o funcionamento do site (como tema escuro e preferências) e cookies analíticos para entender como os visitantes interagem com nossas páginas. Nenhum dado sensível é armazenado.</p>
+    </div>
+    <div class="ck-policy-section">
+      <h3><span class="ck-ps-icon"><i class="fa-solid fa-lock"></i></span>Seus dados, seu controle</h3>
+      <p>Não vendemos nem compartilhamos seus dados com terceiros. As informações são usadas exclusivamente para melhorar sua experiência na Conecte Telecom. Você pode revogar o consentimento a qualquer momento limpando os dados do navegador.</p>
+    </div>
+    <div class="ck-policy-section">
+      <h3><span class="ck-ps-icon"><i class="fa-solid fa-envelope"></i></span>Contato</h3>
+      <p>Dúvidas sobre privacidade? Fale conosco pelo WhatsApp <strong>(51) 9759&#8209;7259</strong> ou pelo e-mail <strong>contato@seconecte.net</strong>.</p>
+    </div>
+    <div class="ck-policy-footer">
+      <button class="ck-btn-accept" onclick="ckAcceptFromPolicy()">Aceitar e fechar</button>
+      <button class="ck-btn-dismiss" onclick="ckClosePolicy()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY = 'conecte_ck_v1';
+  var DISMISS_DAYS = 7;
+  var banner = document.getElementById('cookie-banner');
+  var modal  = document.getElementById('ck-policy-modal');
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { return {}; }
+  }
+  function save(status) {
+    try { localStorage.setItem(KEY, JSON.stringify({status:status,ts:Date.now()})); } catch(e){}
+  }
+  function shouldShow() {
+    var d = load();
+    if (!d.status) return true;
+    if (d.status === 'accepted') return false;
+    if (d.status === 'dismissed') return (Date.now()-d.ts)/864e5 >= DISMISS_DAYS;
+    return true;
+  }
+  function hideBanner() {
+    banner.classList.add('ck-hiding');
+    setTimeout(function(){ banner.classList.remove('ck-visible','ck-hiding'); }, 440);
+  }
+
+  window.ckAccept = function() { save('accepted'); hideBanner(); };
+  window.ckDismiss = function() { save('dismissed'); hideBanner(); };
+  window.ckShowPolicy = function() { modal.classList.add('ck-visible'); };
+  window.ckClosePolicy = function() { modal.classList.remove('ck-visible'); };
+  window.ckPolicyOverlay = function(e) { if(e.target===modal) ckClosePolicy(); };
+  window.ckAcceptFromPolicy = function() { save('accepted'); ckClosePolicy(); hideBanner(); };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    if (!shouldShow()) return;
+    setTimeout(function(){ banner.classList.add('ck-visible'); }, 1400);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key==='Escape' && modal.classList.contains('ck-visible')) ckClosePolicy();
+  });
+})();
+</script>
+
 </body>
 </html>

@@ -49,7 +49,17 @@
       "Bash(grep -E \"\\\\.\\(webp|jpg\\)$\")",
       "Bash(mkdir -p \"c:/Users/lucas/Documents/MeusProjetos/conecte-landing/api/segunda-via\")",
       "Bash(git mv *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\" -Force)",
+      "Bash(Select-Object -Property Mode, Name)",
+      "Bash(python -m http.server 7432 --bind 127.0.0.1)",
+      "WebFetch(domain:127.0.0.1)",
+      "Bash(Start-Sleep -Seconds 2)",
+      "Bash(Invoke-WebRequest -Uri \"http://127.0.0.1:7432/\" -UseBasicParsing)",
+      "Bash(Select-Object -ExpandProperty Content)",
+      "Bash(Select-String \"cookie-banner\")",
+      "Bash(Select-Object -First 5)",
+      "Bash(curl -s http://127.0.0.1:7432/)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
