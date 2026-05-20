@@ -4078,21 +4078,21 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 /* ── Mascote mobile dedicado (filho direto do .hero) ── */
 .hero-mascote-mob { display: none; }
 @media (max-width: 768px) {
+  .hero { overflow: visible !important; }
   .hero-mascote-mob {
-    display: block;
-    position: absolute;
-    bottom: 80px;
-    right: 0;
-    width: 130px;
-    z-index: 5;
-    pointer-events: none;
+    display: block !important;
+    position: absolute !important;
+    bottom: 80px !important;
+    right: 0 !important;
+    width: 130px !important;
+    z-index: 999 !important;
+    pointer-events: none !important;
     animation: floatY 5s ease-in-out infinite;
     filter: drop-shadow(0 8px 24px rgba(10,126,226,.5)) drop-shadow(0 0 14px rgba(255,222,89,.25));
   }
   .hero-mascote-mob img {
-    width: 100%;
-    display: block;
-    object-fit: contain;
+    width: 130px !important;
+    display: block !important;
   }
 }
 
@@ -4594,10 +4594,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   </div>
 
   <!-- Mascote mobile (posicionado direto no hero, sem stacking context intermediário) -->
-  <div class="hero-mascote-mob" aria-hidden="true">
+  <div class="hero-mascote-mob" aria-hidden="true" style="position:absolute;bottom:80px;right:0;width:130px;z-index:999;display:none;">
     <picture>
       <source srcset="img/mascote-hero.webp" type="image/webp">
-      <img src="img/mascote-hero.png" alt="">
+      <img src="img/mascote-hero.png" alt="" style="width:130px;display:block;">
     </picture>
   </div>
 
