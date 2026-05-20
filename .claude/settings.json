@@ -65,7 +65,10 @@
       "PowerShell($tools = @\\('vercel', 'npx', 'python', 'python3', 'node'\\); foreach \\($t in $tools\\) { $p = Get-Command $t -ErrorAction SilentlyContinue; if \\($p\\) { \"$t -> $\\($p.Source\\)\" } else { \"$t -> NOT FOUND\" } })",
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:8743\" -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; \"Body length: $\\($r.Content.Length\\)\")",
       "WebFetch(domain:localhost)",
-      "PowerShell(Stop-Process -Id 22968 -Force -ErrorAction SilentlyContinue)"
+      "PowerShell(Stop-Process -Id 22968 -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\\" | Where-Object { $_.Extension -match '\\\\.\\(png|webp|jpg|jpeg|svg\\)$' })",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" | Select-Object Name, @{n='KB';e={[math]::Round\\($_.Length/1KB,0\\)}})",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" -File | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
