@@ -2314,6 +2314,34 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 [data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
 
+[data-theme="dark"] .segunda-via { background:linear-gradient(135deg,#091525 0%,#0b1927 100%); border-color:rgba(255,255,255,.07); }
+[data-theme="dark"] .sv-card { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); box-shadow:0 8px 40px rgba(0,0,0,.3); }
+[data-theme="dark"] .sv-input-group input { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.9); }
+[data-theme="dark"] .sv-input-group input:focus { background:rgba(10,126,226,.08); border-color:var(--azul); }
+[data-theme="dark"] .sv-input-group input::placeholder { color:rgba(255,255,255,.3); }
+[data-theme="dark"] .sv-otp-input { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.9); }
+[data-theme="dark"] .sv-otp-input:focus { background:rgba(10,126,226,.1); }
+[data-theme="dark"] .sv-otp-sep { color:rgba(255,255,255,.2); }
+[data-theme="dark"] .sv-fatura-card { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .sv-fatura-card:hover { border-color:var(--azul); }
+[data-theme="dark"] .sv-fatura-card.vencida { background:rgba(239,68,68,.04); border-color:rgba(239,68,68,.2); }
+[data-theme="dark"] .sv-fatura-valor { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .sv-fatura-venc { color:rgba(255,255,255,.45); }
+[data-theme="dark"] .sv-nome { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .sv-modal-box { background:#0d1829; }
+[data-theme="dark"] .sv-modal-title { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .sv-modal-codigo { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.08); color:rgba(255,255,255,.9); }
+[data-theme="dark"] .sv-btn-cod { background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.7); }
+[data-theme="dark"] .sv-btn-cod:hover { border-color:var(--azul); color:var(--azul); }
+[data-theme="dark"] .sv-voltar { border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.45); }
+[data-theme="dark"] .sv-voltar:hover { border-color:var(--azul); color:var(--azul); }
+[data-theme="dark"] .sv-modal-fechar { border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.4); }
+[data-theme="dark"] .sv-modal-fechar:hover { border-color:var(--azul); color:var(--azul); }
+[data-theme="dark"] .sv-step-label { color:rgba(255,255,255,.85); }
+[data-theme="dark"] .sv-hint { color:rgba(255,255,255,.45); }
+[data-theme="dark"] .sv-vazio { color:rgba(255,255,255,.45); }
+[data-theme="dark"] .sv-vazio strong { color:rgba(255,255,255,.8); }
+
 /* ================================================================
    MOBILE-FIRST PREMIUM — CONECTE TELECOM
    Revisão total da experiência mobile
@@ -2418,6 +2446,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 .mob-panel.open .mob-links li:nth-child(4) { animation-delay: .19s; }
 .mob-panel.open .mob-links li:nth-child(5) { animation-delay: .24s; }
 .mob-panel.open .mob-links li:nth-child(6) { animation-delay: .29s; }
+.mob-panel.open .mob-links li:nth-child(7) { animation-delay: .34s; }
 @keyframes mobLinkIn {
   from { opacity: 0; transform: translateX(18px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -3695,6 +3724,325 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   inset: 0;
 }
 
+/* ── SEGUNDA VIA ── */
+.segunda-via {
+  padding:100px 0;
+  background:linear-gradient(135deg,#f0f7ff 0%,#e8f3fd 100%);
+  border-top:1px solid var(--border);
+}
+
+.sv-card {
+  max-width:480px;
+  margin:40px auto 0;
+  background:white;
+  border-radius:24px;
+  border:1.5px solid var(--border);
+  padding:40px;
+  box-shadow:0 8px 40px rgba(10,126,226,.08);
+}
+
+.sv-step-label {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:15px;
+  font-weight:700;
+  color:var(--texto);
+  margin-bottom:20px;
+}
+.sv-step-num {
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--azul);
+  color:white;
+  font-size:13px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.sv-input-group { margin-bottom:16px; }
+.sv-input-group input {
+  width:100%;
+  padding:14px 16px;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  font-size:16px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--texto);
+  box-sizing:border-box;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  letter-spacing:1px;
+}
+.sv-input-group input:focus {
+  border-color:var(--azul);
+  box-shadow:0 0 0 3px rgba(10,126,226,.1);
+}
+
+.sv-btn-main {
+  width:100%;
+  padding:15px;
+  background:var(--azul);
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:all .2s;
+  margin-bottom:12px;
+}
+.sv-btn-main:hover { filter:brightness(1.1); transform:translateY(-1px); }
+.sv-btn-main:active { transform:translateY(0); }
+
+.sv-hint {
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 20px;
+  line-height:1.5;
+}
+.sv-otp-wrap {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:24px;
+}
+.sv-otp-input {
+  width:48px;
+  height:56px;
+  border:2px solid var(--border);
+  border-radius:12px;
+  text-align:center;
+  font-size:22px;
+  font-weight:800;
+  color:var(--texto);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  outline:none;
+  transition:all .2s;
+  caret-color:var(--azul);
+  background:white;
+}
+.sv-otp-input:focus {
+  border-color:var(--azul);
+  box-shadow:0 0 0 3px rgba(10,126,226,.12);
+  background:#f0f7ff;
+}
+.sv-otp-sep {
+  font-size:20px;
+  color:var(--border);
+  margin:0 2px;
+  user-select:none;
+}
+
+.sv-erro {
+  padding:11px 14px;
+  background:rgba(239,68,68,.06);
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:10px;
+  font-size:13px;
+  color:#dc2626;
+  text-align:center;
+  margin-top:10px;
+}
+
+.sv-link-btn {
+  display:block;
+  width:100%;
+  background:none;
+  border:none;
+  font-size:13px;
+  color:var(--azul);
+  cursor:pointer;
+  text-align:center;
+  padding:8px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  text-decoration:underline;
+  margin-top:4px;
+}
+
+.sv-voltar {
+  background:none;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:7px 12px;
+  font-size:13px;
+  cursor:pointer;
+  color:var(--muted);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .2s;
+  margin-bottom:20px;
+}
+.sv-voltar:hover { border-color:var(--azul); color:var(--azul); }
+
+.sv-resultado-header {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+.sv-nome {
+  font-size:15px;
+  font-weight:700;
+  color:var(--texto);
+}
+
+.sv-fatura-card {
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  transition:border-color .2s;
+}
+.sv-fatura-card:hover { border-color:var(--azul); }
+.sv-fatura-card.vencida {
+  border-color:rgba(239,68,68,.3);
+  background:rgba(239,68,68,.02);
+}
+.sv-fatura-valor {
+  font-size:20px;
+  font-weight:800;
+  color:var(--texto);
+  letter-spacing:-.5px;
+}
+.sv-fatura-venc {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.sv-status-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:999px;
+  margin-top:6px;
+}
+.sv-status-badge.pendente { background:rgba(234,179,8,.1); color:#a16207; }
+.sv-status-badge.vencida  { background:rgba(239,68,68,.1);  color:#dc2626; }
+
+.sv-fatura-acoes {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex-shrink:0;
+}
+.sv-btn-acao {
+  padding:8px 13px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:700;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  cursor:pointer;
+  border:none;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:all .2s;
+}
+.sv-btn-ver  { background:var(--azul); color:white; }
+.sv-btn-ver:hover { filter:brightness(1.1); }
+.sv-btn-cod  { background:#f1f5f9; color:var(--texto2); border:1.5px solid var(--border); }
+.sv-btn-cod:hover { border-color:var(--azul); color:var(--azul); }
+
+.sv-vazio {
+  text-align:center;
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+}
+.sv-vazio strong { font-size:17px; color:var(--texto); }
+
+.sv-modal {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(4px);
+}
+.sv-modal-box {
+  background:white;
+  border-radius:20px;
+  padding:32px;
+  max-width:460px;
+  width:100%;
+  box-shadow:0 24px 64px rgba(0,0,0,.2);
+}
+.sv-modal-title {
+  font-size:17px;
+  font-weight:800;
+  color:var(--texto);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.sv-modal-codigo {
+  background:#f8fafc;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  font-size:14px;
+  font-family:monospace;
+  color:var(--texto);
+  word-break:break-all;
+  line-height:1.8;
+  margin-bottom:16px;
+  user-select:all;
+  letter-spacing:1px;
+}
+.sv-modal-fechar {
+  width:100%;
+  padding:11px;
+  background:none;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  font-size:14px;
+  color:var(--muted);
+  cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  margin-top:10px;
+  transition:all .2s;
+}
+.sv-modal-fechar:hover { border-color:var(--azul); color:var(--azul); }
+
+@media(max-width:600px) {
+  .sv-card { padding:24px 18px; }
+  .sv-otp-input { width:42px; height:50px; font-size:20px; }
+  .sv-fatura-card { flex-direction:column; align-items:flex-start; }
+  .sv-fatura-acoes { flex-direction:row; width:100%; }
+  .sv-btn-acao { flex:1; justify-content:center; }
+}
+
 </style>
 </head>
 <body>
@@ -3722,6 +4070,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#localizacao">Localização</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#segunda-via"><i class="fas fa-file-invoice-dollar"></i> 2ª via</a></li>
   </ul>
 
   <div class="nav-right">
@@ -3766,6 +4115,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#localizacao" onclick="closeMob()"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
     <li><a href="#faq" onclick="closeMob()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
     <li><a href="#financeiro" onclick="closeMob()"><i class="fas fa-hand-holding-heart"></i> Financeiro</a></li>
+    <li><a href="#segunda-via" onclick="closeMob()"><i class="fas fa-file-invoice-dollar"></i> 2ª via de fatura</a></li>
   </ul>
   <div class="mob-social-sect">
     <div class="mob-social-title">Nossas redes</div>
@@ -4727,6 +5077,107 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
 
 
+<!-- ================================================================
+     SEGUNDA VIA DE FATURA
+     ================================================================ -->
+<section class="segunda-via" id="segunda-via">
+  <div class="section-wrap">
+    <div class="section-tag reveal">
+      <i class="fas fa-file-invoice-dollar"></i> &nbsp;Financeiro
+    </div>
+    <h2 class="section-title reveal">
+      Segunda via de <span style="color:var(--azul)">fatura</span>
+    </h2>
+    <p class="section-sub reveal">
+      Acesse suas faturas em aberto com segurança. Você receberá um código no seu e-mail cadastrado.
+    </p>
+
+    <div class="sv-card reveal">
+
+      <!-- STEP 1: CPF -->
+      <div id="sv-step-1">
+        <div class="sv-step-label">
+          <div class="sv-step-num">1</div>
+          Informe seu CPF
+        </div>
+        <div class="sv-input-group">
+          <input type="text" id="sv-cpf" placeholder="000.000.000-00"
+                 maxlength="14" inputmode="numeric"
+                 oninput="svMaskCPF(this)"
+                 onkeydown="if(event.key==='Enter') svSolicitar()">
+        </div>
+        <button class="sv-btn-main" onclick="svSolicitar()">
+          <span id="sv-btn1-text"><i class="fas fa-paper-plane"></i> Enviar código por e-mail</span>
+          <span id="sv-btn1-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Enviando...</span>
+        </button>
+        <div id="sv-erro-1" class="sv-erro" style="display:none"></div>
+      </div>
+
+      <!-- STEP 2: OTP -->
+      <div id="sv-step-2" style="display:none">
+        <button class="sv-voltar" onclick="svIrStep(1)">
+          <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+        <div class="sv-step-label">
+          <div class="sv-step-num">2</div>
+          Digite o código recebido
+        </div>
+        <p id="sv-email-hint" class="sv-hint"></p>
+        <div class="sv-otp-wrap">
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,0)" onkeydown="svOtpKey(event,0)">
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,1)" onkeydown="svOtpKey(event,1)">
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,2)" onkeydown="svOtpKey(event,2)">
+          <div class="sv-otp-sep">—</div>
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,3)" onkeydown="svOtpKey(event,3)">
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,4)" onkeydown="svOtpKey(event,4)">
+          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,5)" onkeydown="svOtpKey(event,5)">
+        </div>
+        <button class="sv-btn-main" onclick="svVerificar()">
+          <span id="sv-btn2-text"><i class="fas fa-unlock"></i> Verificar código</span>
+          <span id="sv-btn2-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Verificando...</span>
+        </button>
+        <div id="sv-erro-2" class="sv-erro" style="display:none"></div>
+        <button class="sv-link-btn" onclick="svSolicitar(true)">
+          Não recebeu? Reenviar código
+        </button>
+      </div>
+
+      <!-- STEP 3: Faturas -->
+      <div id="sv-step-3" style="display:none">
+        <div class="sv-resultado-header">
+          <button class="sv-voltar" onclick="svIrStep(1)">
+            <i class="fas fa-arrow-left"></i> Nova consulta
+          </button>
+          <div id="sv-nome-cliente" class="sv-nome"></div>
+        </div>
+        <div id="sv-lista-faturas"></div>
+        <div id="sv-sem-faturas" class="sv-vazio" style="display:none">
+          <i class="fas fa-check-circle" style="font-size:44px;color:#22c55e;margin-bottom:12px"></i>
+          <strong>Tudo em dia!</strong>
+          <span>Nenhuma fatura em aberto encontrada.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal linha digitável -->
+    <div id="sv-modal" class="sv-modal" style="display:none" onclick="svFecharModal(event)">
+      <div class="sv-modal-box">
+        <div class="sv-modal-title"><i class="fas fa-barcode"></i> Linha digitável</div>
+        <div id="sv-modal-codigo" class="sv-modal-codigo"></div>
+        <button class="sv-btn-main" onclick="svCopiar()">
+          <i class="fas fa-copy"></i> Copiar código
+        </button>
+        <div id="sv-copy-ok" style="display:none;text-align:center;color:#22c55e;font-weight:700;font-size:13px;margin-top:10px">
+          <i class="fas fa-check"></i> Copiado com sucesso!
+        </div>
+        <button class="sv-modal-fechar" onclick="svFecharModal()">Fechar</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -4961,6 +5412,245 @@ document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));
     if (localStorage.getItem(KEY) === null) applyTheme(e.matches, true);
   });
 })();
+</script>
+
+<script>
+/* ════════════════════════════════════════════
+   SEGUNDA VIA DE FATURA — Conecte Telecom
+   Fluxo: CPF → OTP por e-mail → Faturas
+   ════════════════════════════════════════════ */
+
+const SV = {
+  cpf: '',
+  codigoAtual: ''
+};
+
+function svIrStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById(`sv-step-${i}`).style.display = i === n ? 'block' : 'none';
+  });
+  if (n === 1) {
+    SV.cpf = '';
+    document.getElementById('sv-cpf').value = '';
+    ['sv-erro-1','sv-erro-2'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    document.querySelectorAll('.sv-otp-input').forEach(el => el.value = '');
+  }
+}
+
+function svMaskCPF(input) {
+  let v = input.value.replace(/\D/g,'').slice(0,11);
+  if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/,'$1.$2.$3-$4');
+  else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/,'$1.$2.$3');
+  else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/,'$1.$2');
+  input.value = v;
+}
+
+function svOtpNav(input, idx) {
+  input.value = input.value.replace(/\D/g,'').slice(-1);
+  const inputs = document.querySelectorAll('.sv-otp-input');
+  if (input.value && idx < 5) inputs[idx+1].focus();
+  const codigo = [...inputs].map(i => i.value).join('');
+  if (codigo.length === 6) svVerificar();
+}
+
+function svOtpKey(event, idx) {
+  const inputs = document.querySelectorAll('.sv-otp-input');
+  if (event.key === 'Backspace' && !inputs[idx].value && idx > 0) {
+    inputs[idx-1].focus();
+  }
+}
+
+async function svSolicitar(reenvio = false) {
+  const cpfRaw = document.getElementById('sv-cpf')?.value || SV.cpf;
+  const cpf = cpfRaw.replace(/\D/g,'');
+
+  if (cpf.length !== 11) {
+    svErro(1, 'Digite um CPF válido com 11 dígitos.');
+    return;
+  }
+
+  SV.cpf = cpfRaw;
+  svSetLoading(1, true);
+  document.getElementById('sv-erro-1').style.display = 'none';
+  document.getElementById('sv-erro-2').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/segunda-via/solicitar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cpf })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 404) {
+      svErro(1, 'CPF não encontrado em nosso cadastro. Dúvidas? Fale conosco pelo WhatsApp.');
+      return;
+    }
+    if (res.status === 429) {
+      svErro(reenvio ? 2 : 1, 'Aguarde 1 minuto antes de solicitar um novo código.');
+      return;
+    }
+    if (res.status === 422) {
+      svErro(1, 'Não há e-mail cadastrado para este CPF. Entre em contato com a Conecte.');
+      return;
+    }
+    if (!res.ok) {
+      svErro(1, 'Erro ao enviar o código. Tente novamente.');
+      return;
+    }
+
+    document.getElementById('sv-email-hint').textContent =
+      `Enviamos um código de 6 dígitos para ${data.emailMascarado}. Verifique sua caixa de entrada.`;
+
+    svIrStep(2);
+    setTimeout(() => {
+      document.querySelectorAll('.sv-otp-input')[0].focus();
+    }, 100);
+
+  } catch(e) {
+    svErro(1, 'Erro de conexão. Verifique sua internet.');
+  } finally {
+    svSetLoading(1, false);
+  }
+}
+
+async function svVerificar() {
+  const inputs = document.querySelectorAll('.sv-otp-input');
+  const codigo = [...inputs].map(i => i.value).join('');
+
+  if (codigo.length !== 6) {
+    svErro(2, 'Digite o código completo de 6 dígitos.');
+    return;
+  }
+
+  svSetLoading(2, true);
+  document.getElementById('sv-erro-2').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/segunda-via/verificar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cpf: SV.cpf.replace(/\D/g,''), codigo })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 401) {
+      const msg = data.error === 'codigo_expirado'
+        ? 'Código expirado. Solicite um novo.'
+        : 'Código incorreto. Verifique e tente novamente.';
+      svErro(2, msg);
+      return;
+    }
+    if (!res.ok) {
+      svErro(2, 'Erro ao verificar. Tente novamente.');
+      return;
+    }
+
+    svMostrarFaturas(data);
+
+  } catch(e) {
+    svErro(2, 'Erro de conexão. Verifique sua internet.');
+  } finally {
+    svSetLoading(2, false);
+  }
+}
+
+function svMostrarFaturas(data) {
+  svIrStep(3);
+  document.getElementById('sv-nome-cliente').textContent = data.nomeCliente;
+
+  const lista = document.getElementById('sv-lista-faturas');
+  const vazio = document.getElementById('sv-sem-faturas');
+  lista.innerHTML = '';
+
+  if (!data.faturas || data.faturas.length === 0) {
+    vazio.style.display = 'flex';
+    return;
+  }
+
+  vazio.style.display = 'none';
+
+  data.faturas.forEach(f => {
+    const vencida = f.status === 'OVERDUE';
+    const dataVenc = new Date(f.dueDate + 'T12:00:00')
+      .toLocaleDateString('pt-BR');
+    const valor = f.value.toLocaleString('pt-BR', {
+      style: 'currency', currency: 'BRL'
+    });
+
+    const card = document.createElement('div');
+    card.className = `sv-fatura-card${vencida ? ' vencida' : ''}`;
+    card.innerHTML = `
+      <div>
+        <div class="sv-fatura-valor">${valor}</div>
+        <div class="sv-fatura-venc">Vencimento: ${dataVenc}</div>
+        <div class="sv-status-badge ${vencida ? 'vencida' : 'pendente'}">
+          <i class="fas fa-circle" style="font-size:5px"></i>
+          ${vencida ? 'Vencida' : 'Em aberto'}
+        </div>
+      </div>
+      <div class="sv-fatura-acoes">
+        ${f.invoiceUrl ? `
+          <a href="${f.invoiceUrl}" target="_blank" rel="noopener" class="sv-btn-acao sv-btn-ver">
+            <i class="fas fa-external-link-alt"></i> Ver fatura
+          </a>` : ''}
+        ${f.billingType === 'BOLETO' ? `
+          <button class="sv-btn-acao sv-btn-cod" onclick="svBuscarLinha('${f.id}')">
+            <i class="fas fa-barcode"></i> Linha digitável
+          </button>` : ''}
+      </div>`;
+    lista.appendChild(card);
+  });
+}
+
+async function svBuscarLinha(paymentId) {
+  try {
+    const res = await fetch('/api/segunda-via/boleto', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ paymentId })
+    });
+    const data = await res.json();
+    if (data.identificationField) {
+      SV.codigoAtual = data.identificationField;
+      document.getElementById('sv-modal-codigo').textContent = data.identificationField;
+      document.getElementById('sv-copy-ok').style.display = 'none';
+      document.getElementById('sv-modal').style.display = 'flex';
+    }
+  } catch(e) {
+    alert('Erro ao buscar linha digitável. Tente novamente.');
+  }
+}
+
+function svCopiar() {
+  navigator.clipboard.writeText(SV.codigoAtual).then(() => {
+    document.getElementById('sv-copy-ok').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('sv-copy-ok').style.display = 'none';
+    }, 3000);
+  });
+}
+
+function svFecharModal(e) {
+  if (!e || e.target.id === 'sv-modal') {
+    document.getElementById('sv-modal').style.display = 'none';
+  }
+}
+
+function svErro(step, msg) {
+  const el = document.getElementById(`sv-erro-${step}`);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function svSetLoading(step, loading) {
+  document.getElementById(`sv-btn${step}-text`).style.display = loading ? 'none' : 'flex';
+  document.getElementById(`sv-btn${step}-load`).style.display = loading ? 'flex' : 'none';
+}
 </script>
 
 </body>
