@@ -60,7 +60,12 @@
       "Bash(Select-String \"cookie-banner\")",
       "Bash(Select-Object -First 5)",
       "Bash(curl -s http://127.0.0.1:7432/)",
-      "Bash(python -m http.server 7433 --bind 127.0.0.1)"
+      "Bash(python -m http.server 7433 --bind 127.0.0.1)",
+      "Bash(python -c ' *)",
+      "PowerShell($tools = @\\('vercel', 'npx', 'python', 'python3', 'node'\\); foreach \\($t in $tools\\) { $p = Get-Command $t -ErrorAction SilentlyContinue; if \\($p\\) { \"$t -> $\\($p.Source\\)\" } else { \"$t -> NOT FOUND\" } })",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:8743\" -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; \"Body length: $\\($r.Content.Length\\)\")",
+      "WebFetch(domain:localhost)",
+      "PowerShell(Stop-Process -Id 22968 -Force -ErrorAction SilentlyContinue)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
