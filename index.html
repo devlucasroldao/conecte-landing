@@ -2278,6 +2278,73 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .fin-wrap { padding:36px 24px; border-radius:var(--r-xl); }
 }
 
+/* ── MEGA FINANCEIRO ── */
+.mega-financeiro {
+  padding:100px 0;
+  background:linear-gradient(150deg,#f0f7ff 0%,#eaf3fd 60%,#f4f9ff 100%);
+  border-top:1px solid rgba(10,126,226,.1);
+}
+.mega-fin-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  margin-top:48px;
+  align-items:start;
+}
+.mega-fin-col {
+  background:white;
+  border-radius:var(--r-xl);
+  border:1.5px solid rgba(10,126,226,.11);
+  padding:36px;
+  box-shadow:0 8px 32px rgba(10,126,226,.07);
+}
+.mega-fin-col-header {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:28px;
+  padding-bottom:22px;
+  border-bottom:1.5px solid var(--border);
+}
+.mega-fin-icon {
+  width:52px;height:52px;
+  border-radius:var(--r-md);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:white;flex-shrink:0;
+}
+.mega-fin-col-title {
+  font-size:17px;font-weight:800;
+  color:var(--texto);letter-spacing:-.3px;
+}
+.mega-fin-col-sub {
+  font-size:13px;color:var(--muted);
+  margin-top:3px;line-height:1.4;
+}
+.mega-fin-side-list {
+  display:flex;flex-direction:column;
+  gap:10px;margin-bottom:28px;
+}
+.mega-fin-side-item {
+  display:flex;align-items:center;
+  gap:12px;padding:13px 16px;
+  background:var(--surface);
+  border-radius:var(--r-sm);
+  font-size:14px;font-weight:600;
+  color:var(--texto2);
+}
+.mega-fin-side-item i {
+  width:16px;text-align:center;
+  color:var(--verde);font-size:14px;flex-shrink:0;
+}
+@media(max-width:900px) {
+  .mega-fin-grid { grid-template-columns:1fr; gap:20px; }
+  .mega-financeiro { padding:70px 0; }
+}
+@media(max-width:600px) {
+  .mega-financeiro { padding:56px 0; }
+  .mega-fin-col { padding:24px 18px; }
+}
+
 /* ================================================================
    DARK MODE — NOVAS SEÇÕES
    ================================================================ */
@@ -2306,6 +2373,12 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   border-color:rgba(10,126,226,.22);
 }
 [data-theme="dark"] .financeiro { background:#0b1220; }
+[data-theme="dark"] .mega-financeiro { background:linear-gradient(150deg,#091525 0%,#0b1927 60%,#091525 100%); border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .mega-fin-col { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); box-shadow:0 8px 32px rgba(0,0,0,.25); }
+[data-theme="dark"] .mega-fin-col-header { border-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .mega-fin-col-title { color:rgba(255,255,255,.92); }
+[data-theme="dark"] .mega-fin-col-sub { color:rgba(255,255,255,.45); }
+[data-theme="dark"] .mega-fin-side-item { background:rgba(255,255,255,.04); color:rgba(255,255,255,.7); }
 [data-theme="dark"] .fin-wrap {
   background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.02) 100%);
   border-color:rgba(37,211,102,.18);
@@ -2313,8 +2386,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 [data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
-
-[data-theme="dark"] .segunda-via { background:linear-gradient(135deg,#091525 0%,#0b1927 100%); border-color:rgba(255,255,255,.07); }
 [data-theme="dark"] .sv-card { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); box-shadow:0 8px 40px rgba(0,0,0,.3); }
 [data-theme="dark"] .sv-input-group input { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.1); color:rgba(255,255,255,.9); }
 [data-theme="dark"] .sv-input-group input:focus { background:rgba(10,126,226,.08); border-color:var(--azul); }
@@ -4070,7 +4141,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#localizacao">Localização</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#segunda-via"><i class="fas fa-file-invoice-dollar"></i> 2ª via</a></li>
+    <li><a href="#financeiro">2ª via de boleto</a></li>
   </ul>
 
   <div class="nav-right">
@@ -4114,8 +4185,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre" onclick="closeMob()"><i class="fas fa-users"></i> Sobre nós</a></li>
     <li><a href="#localizacao" onclick="closeMob()"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
     <li><a href="#faq" onclick="closeMob()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
-    <li><a href="#financeiro" onclick="closeMob()"><i class="fas fa-hand-holding-heart"></i> Financeiro</a></li>
-    <li><a href="#segunda-via" onclick="closeMob()"><i class="fas fa-file-invoice-dollar"></i> 2ª via de fatura</a></li>
+    <li><a href="#financeiro" onclick="closeMob()"><i class="fas fa-file-invoice-dollar"></i> 2ª via de boleto</a></li>
   </ul>
   <div class="mob-social-sect">
     <div class="mob-social-title">Nossas redes</div>
@@ -4947,35 +5017,134 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </section>
 
 <!-- ================================================================
-     FINANCEIRO — SUPORTE FINANCEIRO
+     CENTRAL FINANCEIRA — MEGA SEÇÃO
      ================================================================ -->
-<section class="financeiro" id="financeiro">
-  <div class="section-wrap">
-    <div class="fin-wrap reveal">
+<section class="financeiro mega-financeiro" id="financeiro">
+  <span id="segunda-via" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
 
-      <div class="fin-deco">
-        <div class="fin-icon-wrap">
-          <i class="fas fa-hand-holding-heart"></i>
-        </div>
-      </div>
+  <div class="section-wrap" style="text-align:center">
+    <div class="section-tag reveal" style="display:inline-flex"><i class="fas fa-receipt"></i> &nbsp;Central financeira</div>
+    <h2 class="section-title reveal">Sua área <span style="color:var(--azul)">financeira</span></h2>
+    <p class="section-sub reveal">Emita sua 2ª via de boleto online ou fale com nossa equipe — resolvemos tudo com agilidade e sem burocracia.</p>
+  </div>
 
-      <div class="fin-content">
-        <div class="section-tag"><i class="fas fa-headset"></i> Suporte financeiro</div>
-        <h2 class="fin-title">Precisa de ajuda<br>com o financeiro?</h2>
-        <p class="fin-sub">A gente facilita tudo. Segunda via, confirmação de pagamento, dúvidas sobre fatura — é só chamar que a gente resolve rápido e sem burocracia.</p>
-        <div class="fin-itens">
-          <div class="fin-item"><i class="fas fa-file-invoice"></i> Segunda via de boleto</div>
-          <div class="fin-item"><i class="fas fa-check-circle"></i> Confirmação de pagamento</div>
-          <div class="fin-item"><i class="fas fa-question-circle"></i> Dúvidas sobre fatura</div>
-          <div class="fin-item"><i class="fas fa-handshake"></i> Negociação e parcelamento</div>
+  <div class="section-wrap" style="text-align:left">
+    <div class="mega-fin-grid reveal">
+
+      <!-- COL 1: Emitir 2ª via de boleto -->
+      <div class="mega-fin-col">
+        <div class="mega-fin-col-header">
+          <div class="mega-fin-icon" style="background:var(--azul);box-shadow:0 8px 24px rgba(10,126,226,.28)"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div>
+            <div class="mega-fin-col-title">Emitir 2ª via de boleto</div>
+            <div class="mega-fin-col-sub">Acesse suas faturas em aberto com segurança via e-mail.</div>
+          </div>
         </div>
-        <a href="https://wa.me/555199092312?text=Ol%C3%A1!+Preciso+de+ajuda+com+o+financeiro." target="_blank" rel="noopener" class="btn-wpp-fin">
+
+        <!-- STEP 1: CPF -->
+        <div id="sv-step-1">
+          <div class="sv-step-label">
+            <div class="sv-step-num">1</div>
+            Informe seu CPF
+          </div>
+          <div class="sv-input-group">
+            <input type="text" id="sv-cpf" placeholder="000.000.000-00"
+                   maxlength="14" inputmode="numeric"
+                   oninput="svMaskCPF(this)"
+                   onkeydown="if(event.key==='Enter') svSolicitar()">
+          </div>
+          <button class="sv-btn-main" onclick="svSolicitar()">
+            <span id="sv-btn1-text"><i class="fas fa-paper-plane"></i> Enviar código por e-mail</span>
+            <span id="sv-btn1-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Enviando...</span>
+          </button>
+          <div id="sv-erro-1" class="sv-erro" style="display:none"></div>
+        </div>
+
+        <!-- STEP 2: OTP -->
+        <div id="sv-step-2" style="display:none">
+          <button class="sv-voltar" onclick="svIrStep(1)">
+            <i class="fas fa-arrow-left"></i> Voltar
+          </button>
+          <div class="sv-step-label">
+            <div class="sv-step-num">2</div>
+            Digite o código recebido
+          </div>
+          <p id="sv-email-hint" class="sv-hint"></p>
+          <div class="sv-otp-wrap">
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,0)" onkeydown="svOtpKey(event,0)">
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,1)" onkeydown="svOtpKey(event,1)">
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,2)" onkeydown="svOtpKey(event,2)">
+            <div class="sv-otp-sep">—</div>
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,3)" onkeydown="svOtpKey(event,3)">
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,4)" onkeydown="svOtpKey(event,4)">
+            <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,5)" onkeydown="svOtpKey(event,5)">
+          </div>
+          <button class="sv-btn-main" onclick="svVerificar()">
+            <span id="sv-btn2-text"><i class="fas fa-unlock"></i> Verificar código</span>
+            <span id="sv-btn2-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Verificando...</span>
+          </button>
+          <div id="sv-erro-2" class="sv-erro" style="display:none"></div>
+          <button class="sv-link-btn" onclick="svSolicitar(true)">
+            Não recebeu? Reenviar código
+          </button>
+        </div>
+
+        <!-- STEP 3: Faturas -->
+        <div id="sv-step-3" style="display:none">
+          <div class="sv-resultado-header">
+            <button class="sv-voltar" onclick="svIrStep(1)">
+              <i class="fas fa-arrow-left"></i> Nova consulta
+            </button>
+            <div id="sv-nome-cliente" class="sv-nome"></div>
+          </div>
+          <div id="sv-lista-faturas"></div>
+          <div id="sv-sem-faturas" class="sv-vazio" style="display:none">
+            <i class="fas fa-check-circle" style="font-size:44px;color:#22c55e;margin-bottom:12px"></i>
+            <strong>Tudo em dia!</strong>
+            <span>Nenhuma fatura em aberto encontrada.</span>
+          </div>
+        </div>
+
+      </div><!-- /COL 1 -->
+
+      <!-- COL 2: Ajuda financeira via WhatsApp -->
+      <div class="mega-fin-col">
+        <div class="mega-fin-col-header">
+          <div class="mega-fin-icon" style="background:#25D366;box-shadow:0 8px 24px rgba(37,211,102,.28)"><i class="fas fa-headset"></i></div>
+          <div>
+            <div class="mega-fin-col-title">Precisa de ajuda?</div>
+            <div class="mega-fin-col-sub">Fale direto com nossa equipe financeira.</div>
+          </div>
+        </div>
+        <div class="mega-fin-side-list">
+          <div class="mega-fin-side-item"><i class="fas fa-file-invoice"></i> Segunda via de boleto</div>
+          <div class="mega-fin-side-item"><i class="fas fa-check-circle"></i> Confirmação de pagamento</div>
+          <div class="mega-fin-side-item"><i class="fas fa-question-circle"></i> Dúvidas sobre fatura</div>
+          <div class="mega-fin-side-item"><i class="fas fa-handshake"></i> Negociação e parcelamento</div>
+        </div>
+        <a href="https://wa.me/555199092312?text=Ol%C3%A1!+Preciso+de+ajuda+com+o+financeiro." target="_blank" rel="noopener" class="btn-wpp-fin" style="width:100%;justify-content:center">
           <i class="fab fa-whatsapp"></i> Falar com o financeiro agora
         </a>
-      </div>
+      </div><!-- /COL 2 -->
 
     </div>
   </div>
+
+  <!-- Modal linha digitável -->
+  <div id="sv-modal" class="sv-modal" style="display:none" onclick="svFecharModal(event)">
+    <div class="sv-modal-box">
+      <div class="sv-modal-title"><i class="fas fa-barcode"></i> Linha digitável</div>
+      <div id="sv-modal-codigo" class="sv-modal-codigo"></div>
+      <button class="sv-btn-main" onclick="svCopiar()">
+        <i class="fas fa-copy"></i> Copiar código
+      </button>
+      <div id="sv-copy-ok" style="display:none;text-align:center;color:#22c55e;font-weight:700;font-size:13px;margin-top:10px">
+        <i class="fas fa-check"></i> Copiado com sucesso!
+      </div>
+      <button class="sv-modal-fechar" onclick="svFecharModal()">Fechar</button>
+    </div>
+  </div>
+
 </section>
 
 
@@ -5077,106 +5246,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
 
 
-<!-- ================================================================
-     SEGUNDA VIA DE FATURA
-     ================================================================ -->
-<section class="segunda-via" id="segunda-via">
-  <div class="section-wrap">
-    <div class="section-tag reveal">
-      <i class="fas fa-file-invoice-dollar"></i> &nbsp;Financeiro
-    </div>
-    <h2 class="section-title reveal">
-      Segunda via de <span style="color:var(--azul)">fatura</span>
-    </h2>
-    <p class="section-sub reveal">
-      Acesse suas faturas em aberto com segurança. Você receberá um código no seu e-mail cadastrado.
-    </p>
-
-    <div class="sv-card reveal">
-
-      <!-- STEP 1: CPF -->
-      <div id="sv-step-1">
-        <div class="sv-step-label">
-          <div class="sv-step-num">1</div>
-          Informe seu CPF
-        </div>
-        <div class="sv-input-group">
-          <input type="text" id="sv-cpf" placeholder="000.000.000-00"
-                 maxlength="14" inputmode="numeric"
-                 oninput="svMaskCPF(this)"
-                 onkeydown="if(event.key==='Enter') svSolicitar()">
-        </div>
-        <button class="sv-btn-main" onclick="svSolicitar()">
-          <span id="sv-btn1-text"><i class="fas fa-paper-plane"></i> Enviar código por e-mail</span>
-          <span id="sv-btn1-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Enviando...</span>
-        </button>
-        <div id="sv-erro-1" class="sv-erro" style="display:none"></div>
-      </div>
-
-      <!-- STEP 2: OTP -->
-      <div id="sv-step-2" style="display:none">
-        <button class="sv-voltar" onclick="svIrStep(1)">
-          <i class="fas fa-arrow-left"></i> Voltar
-        </button>
-        <div class="sv-step-label">
-          <div class="sv-step-num">2</div>
-          Digite o código recebido
-        </div>
-        <p id="sv-email-hint" class="sv-hint"></p>
-        <div class="sv-otp-wrap">
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,0)" onkeydown="svOtpKey(event,0)">
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,1)" onkeydown="svOtpKey(event,1)">
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,2)" onkeydown="svOtpKey(event,2)">
-          <div class="sv-otp-sep">—</div>
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,3)" onkeydown="svOtpKey(event,3)">
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,4)" onkeydown="svOtpKey(event,4)">
-          <input class="sv-otp-input" type="text" maxlength="1" inputmode="numeric" oninput="svOtpNav(this,5)" onkeydown="svOtpKey(event,5)">
-        </div>
-        <button class="sv-btn-main" onclick="svVerificar()">
-          <span id="sv-btn2-text"><i class="fas fa-unlock"></i> Verificar código</span>
-          <span id="sv-btn2-load" style="display:none"><i class="fas fa-spinner fa-spin"></i> Verificando...</span>
-        </button>
-        <div id="sv-erro-2" class="sv-erro" style="display:none"></div>
-        <button class="sv-link-btn" onclick="svSolicitar(true)">
-          Não recebeu? Reenviar código
-        </button>
-      </div>
-
-      <!-- STEP 3: Faturas -->
-      <div id="sv-step-3" style="display:none">
-        <div class="sv-resultado-header">
-          <button class="sv-voltar" onclick="svIrStep(1)">
-            <i class="fas fa-arrow-left"></i> Nova consulta
-          </button>
-          <div id="sv-nome-cliente" class="sv-nome"></div>
-        </div>
-        <div id="sv-lista-faturas"></div>
-        <div id="sv-sem-faturas" class="sv-vazio" style="display:none">
-          <i class="fas fa-check-circle" style="font-size:44px;color:#22c55e;margin-bottom:12px"></i>
-          <strong>Tudo em dia!</strong>
-          <span>Nenhuma fatura em aberto encontrada.</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Modal linha digitável -->
-    <div id="sv-modal" class="sv-modal" style="display:none" onclick="svFecharModal(event)">
-      <div class="sv-modal-box">
-        <div class="sv-modal-title"><i class="fas fa-barcode"></i> Linha digitável</div>
-        <div id="sv-modal-codigo" class="sv-modal-codigo"></div>
-        <button class="sv-btn-main" onclick="svCopiar()">
-          <i class="fas fa-copy"></i> Copiar código
-        </button>
-        <div id="sv-copy-ok" style="display:none;text-align:center;color:#22c55e;font-weight:700;font-size:13px;margin-top:10px">
-          <i class="fas fa-check"></i> Copiado com sucesso!
-        </div>
-        <button class="sv-modal-fechar" onclick="svFecharModal()">Fechar</button>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <footer>
   <div class="footer-grid">
