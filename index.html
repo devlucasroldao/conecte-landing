@@ -231,6 +231,25 @@ body {
 }
 .nav-btn-wpp:hover { background:#1ebe5d; transform:translateY(-1px); box-shadow:0 6px 22px rgba(37,211,102,.4); }
 
+/* Google rating badge */
+.nav-google-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:12px; font-weight:700; white-space:nowrap;
+  color:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 13px; border-radius:var(--r-full);
+  text-decoration:none; backdrop-filter:blur(8px);
+  transition:all .2s;
+}
+.nav-google-badge:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.36); }
+.nav-google-badge .ngb-stars { color:var(--amarelo); font-size:10px; letter-spacing:1px; }
+.nav-google-badge .ngb-num { font-weight:800; font-size:13px; letter-spacing:-.3px; }
+#nav.scrolled .nav-google-badge { color:var(--texto2); background:var(--surface); border-color:var(--border); }
+#nav.scrolled .nav-google-badge:hover { background:var(--surface2); }
+#nav.scrolled .nav-google-badge .ngb-google { color:#4285f4; }
+@media(max-width:960px) { .nav-google-badge { display:none; } }
+
 .nav-burger {
   display:none; flex-direction:column; gap:5px; cursor:pointer;
   padding:9px; border-radius:10px; border:1.5px solid rgba(255,255,255,.2);
@@ -3980,7 +3999,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     </div>
     <div>
       <div class="logo-name">Conecte <em>Telecom</em></div>
-      <div class="logo-tagline">Arroio do Sal · RS</div>
+      <div class="logo-tagline">+5 anos · Arroio do Sal</div>
     </div>
   </a>
 
@@ -3993,6 +4012,13 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   </ul>
 
   <div class="nav-right">
+    <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z"
+       target="_blank" rel="noopener" class="nav-google-badge"
+       aria-label="Avaliação 4.9 estrelas no Google">
+      <span class="ngb-stars">★★★★★</span>
+      <span class="ngb-num">4.9</span>
+      <i class="fab fa-google ngb-google" style="font-size:10px;color:rgba(255,255,255,.55)"></i>
+    </a>
     <a href="#cobertura" class="nav-btn-outline"><i class="fas fa-map-pin"></i> Verificar cobertura</a>
     <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener"
        style="display:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);align-items:center;justify-content:center;color:white;font-size:16px;text-decoration:none;transition:all .2s"
@@ -4020,7 +4046,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="logo-mark" style="background:transparent;border-radius:12px;padding:0">
         <img src="img/logo-conecte.png" alt="Conecte Telecom" style="width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
-      <div><div class="logo-name" style="color:var(--texto)">Conecte <em style="color:var(--azul)">Telecom</em></div></div>
+      <div>
+        <div class="logo-name" style="color:var(--texto)">Conecte <em style="color:var(--azul)">Telecom</em></div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted2);margin-top:2px">+5 anos · Arroio do Sal</div>
+      </div>
     </a>
     <div style="display:flex;align-items:center;gap:8px">
       <button class="theme-toggle mob-theme-toggle" id="themeToggleMob" onclick="toggleTheme()" aria-label="Alternar tema"><i class="fas fa-moon"></i></button>
@@ -4046,6 +4075,14 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   <div class="mob-foot">
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="btn-wpp-full"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
     <a href="#planos" onclick="closeMob()" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-wifi"></i> Ver planos</a>
+    <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z"
+       target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none;padding:6px 0;">
+      <span style="color:var(--amarelo);font-size:10px;letter-spacing:1px">★★★★★</span>
+      <span style="color:var(--texto2);font-weight:800">4.9</span>
+      <span style="color:var(--muted)">no Google</span>
+      <i class="fab fa-google" style="font-size:10px;color:#4285f4"></i>
+    </a>
   </div>
 </div>
 
