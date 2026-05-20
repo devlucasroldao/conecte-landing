@@ -47,7 +47,9 @@
       "Bash(findstr /i \"\\\\.jpg \\\\.jpeg \\\\.png \\\\.webp \\\\.svg \\\\.ico\")",
       "Bash(dir /b)",
       "Bash(grep -E \"\\\\.\\(webp|jpg\\)$\")",
-      "Bash(mkdir -p \"c:/Users/lucas/Documents/MeusProjetos/conecte-landing/api/segunda-via\")"
+      "Bash(mkdir -p \"c:/Users/lucas/Documents/MeusProjetos/conecte-landing/api/segunda-via\")",
+      "Bash(git mv *)",
+      "Bash(git rm *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
