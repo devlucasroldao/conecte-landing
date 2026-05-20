@@ -3962,44 +3962,11 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     position: relative !important;
     z-index: 3 !important;
     gap: 0 !important;
-    min-height: 100svh !important;
   }
 
-  /* ── Mascote: canto inferior direito, não interfere no layout ── */
-  .hero-right {
-    display: block !important;
-    position: absolute !important;
-    bottom: 78px !important;
-    right: 0 !important;
-    width: 130px !important;
-    height: 130px !important;
-    z-index: 4 !important;
-    pointer-events: none !important;
-  }
-
-  .mascote-wrap {
-    width: 130px !important;
-    height: 130px !important;
-    animation: floatY 5s ease-in-out infinite !important;
-  }
-
-  .mascote-body {
-    width: 130px !important;
-    height: 130px !important;
-    opacity: 1 !important;
-  }
-
-  .mascote-img-c {
-    width: 120px !important;
-    height: 120px !important;
-    filter: drop-shadow(0 8px 24px rgba(10,126,226,.5)) drop-shadow(0 0 14px rgba(255,222,89,.25)) !important;
-  }
-
-  .mascote-float        { display: none !important; }
-  .mascote-glow         { display: none !important; }
-  .mascote-ambient-glow { display: none !important; }
-  .mascote-badge-label  { display: none !important; }
-  .gasturinha-bubble    { display: none !important; }
+  /* ── Mascote original: oculto no mobile (substituído por hero-mascote-mob) ── */
+  .hero-right        { display: none !important; }
+  .gasturinha-bubble { display: none !important; }
 
   /* ── Bubble: à esquerda do mascote, centralizado verticalmente ── */
   .gasturinha-bubble {
@@ -4105,6 +4072,28 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 @media (max-width: 768px) and (max-height: 700px) {
   .hero-right { display: none !important; }
   .hero-title { font-size: 38px !important; }
+  .hero-mascote-mob { display: none !important; }
+}
+
+/* ── Mascote mobile dedicado (filho direto do .hero) ── */
+.hero-mascote-mob { display: none; }
+@media (max-width: 768px) {
+  .hero-mascote-mob {
+    display: block;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 130px;
+    z-index: 5;
+    pointer-events: none;
+    animation: floatY 5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 24px rgba(10,126,226,.5)) drop-shadow(0 0 14px rgba(255,222,89,.25));
+  }
+  .hero-mascote-mob img {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+  }
 }
 
 /* ── Fix: <picture> como bloco posicionado em containers de imagem ── */
@@ -4602,6 +4591,14 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Mascote mobile (posicionado direto no hero, sem stacking context intermediário) -->
+  <div class="hero-mascote-mob" aria-hidden="true">
+    <picture>
+      <source srcset="img/mascote-hero.webp" type="image/webp">
+      <img src="img/mascote-hero.png" alt="">
+    </picture>
   </div>
 
   <!-- Waves (3 camadas independentes para loop fluido e sem corte) -->
