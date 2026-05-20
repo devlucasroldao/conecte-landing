@@ -110,6 +110,7 @@ body {
 @keyframes countUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 @keyframes slideInR  { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
 @keyframes progress  { from{width:0} to{width:var(--w)} }
+@keyframes acGradShimmer { 0%{background-position:200% center} 100%{background-position:-200% center} }
 
 /* ================================================================
    PROGRESS BAR
@@ -2283,321 +2284,409 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ================================================================
-   ÁREA DO CLIENTE — GATEWAY PREMIUM
+   ÁREA DO CLIENTE — REDESIGN PREMIUM TOTAL
    ================================================================ */
 .area-cliente {
-  padding:110px 0;
-  background:linear-gradient(150deg,#f0f7ff 0%,#eaf3fd 40%,#f4f9ff 70%,#f0f7ff 100%);
-  border-top:1px solid rgba(10,126,226,.1);
+  padding:120px 0;
+  background:linear-gradient(160deg,#020d1a 0%,#031524 40%,#041e32 70%,#020d1a 100%);
   position:relative;
   overflow:hidden;
 }
+/* Subtle grid texture */
 .area-cliente::before {
   content:'';
   position:absolute;
-  top:-200px;left:-200px;
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(10,126,226,.07) 0%,transparent 65%);
+  inset:0;
+  background-image:
+    linear-gradient(rgba(10,126,226,.042) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,126,226,.042) 1px,transparent 1px);
+  background-size:52px 52px;
   pointer-events:none;
+  z-index:0;
 }
+/* Edge fade */
 .area-cliente::after {
   content:'';
   position:absolute;
-  bottom:-150px;right:-150px;
-  width:500px;height:500px;
-  background:radial-gradient(circle,rgba(10,126,226,.05) 0%,transparent 65%);
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 35% at 50% 0%,rgba(2,13,26,.9) 0%,transparent 70%),
+    radial-gradient(ellipse 80% 35% at 50% 100%,rgba(2,13,26,.8) 0%,transparent 70%);
   pointer-events:none;
+  z-index:0;
 }
-.ac-inner {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:72px;
-  align-items:center;
+/* Ambient orbs */
+.ac-glow-1 {
+  position:absolute;
+  top:-100px;right:-80px;
+  width:560px;height:560px;
+  background:radial-gradient(circle,rgba(10,126,226,.22) 0%,transparent 65%);
+  pointer-events:none;
+  animation:orb1 12s ease-in-out infinite;
+  z-index:0;
 }
-/* ── Content side ── */
-.ac-content .section-tag { margin-bottom:20px; }
-.ac-title {
-  font-size:clamp(32px,4vw,54px);
-  font-weight:900;
-  letter-spacing:-1.5px;
-  line-height:1.07;
-  color:var(--texto);
-  margin-bottom:20px;
+.ac-glow-2 {
+  position:absolute;
+  bottom:-90px;left:-80px;
+  width:440px;height:440px;
+  background:radial-gradient(circle,rgba(5,99,184,.16) 0%,transparent 65%);
+  pointer-events:none;
+  animation:orb2 15s ease-in-out infinite;
+  z-index:0;
 }
-.ac-sub {
-  font-size:17px;
-  color:var(--muted);
-  line-height:1.72;
-  margin-bottom:36px;
-  max-width:480px;
-}
-/* ── Feature chips ── */
-.ac-features {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:40px;
-}
-.ac-feature {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:13px 16px;
-  background:white;
-  border:1.5px solid rgba(10,126,226,.11);
-  border-radius:var(--r-md);
-  font-size:13.5px;
-  font-weight:700;
-  color:var(--texto2);
-  box-shadow:0 2px 12px rgba(10,126,226,.05);
-  transition:all .2s;
-}
-.ac-feature:hover {
-  border-color:var(--azul);
-  box-shadow:0 4px 20px rgba(10,126,226,.12);
-  transform:translateY(-1px);
-}
-.ac-feature i {
-  width:18px;
+/* ── Hero headline (centered) ── */
+.ac-hero {
   text-align:center;
-  color:var(--azul);
-  font-size:14px;
-  flex-shrink:0;
-}
-/* ── CTA Button ── */
-.ac-btn-main {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-mid) 100%);
-  color:white;
-  font-size:16.5px;
-  font-weight:800;
-  padding:18px 28px;
-  border-radius:var(--r-full);
-  text-decoration:none;
-  box-shadow:0 12px 40px rgba(10,126,226,.35);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  letter-spacing:-.2px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  width:100%;
-  justify-content:flex-start;
-  animation:glow 3s ease-in-out infinite;
-}
-.ac-btn-main:hover {
-  transform:translateY(-3px);
-  box-shadow:0 20px 56px rgba(10,126,226,.45);
-  background:linear-gradient(135deg,#1a8ef0 0%,#0563b8 100%);
-}
-.ac-btn-main i:first-child { font-size:18px; }
-.ac-btn-arrow {
-  margin-left:auto;
-  opacity:.7;
-  font-size:14px;
-  transition:transform .3s;
-}
-.ac-btn-main:hover .ac-btn-arrow { transform:translateX(4px); opacity:1; }
-.ac-launch-note {
-  display:flex;
-  align-items:center;
-  gap:7px;
-  font-size:12px;
-  color:var(--muted2);
-  font-weight:600;
-  margin-top:14px;
-  padding-left:4px;
-}
-.ac-launch-note i { color:var(--verde);font-size:11px; }
-/* ── Portal mockup card ── */
-.ac-visual {
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.ac-orb-1 {
-  position:absolute;
-  top:-60px;right:-60px;
-  width:280px;height:280px;
-  background:radial-gradient(circle,rgba(10,126,226,.12) 0%,transparent 65%);
-  border-radius:50%;
-  pointer-events:none;
-  animation:orb1 8s ease-in-out infinite;
-}
-.ac-orb-2 {
-  position:absolute;
-  bottom:-40px;left:-40px;
-  width:200px;height:200px;
-  background:radial-gradient(circle,rgba(10,126,226,.08) 0%,transparent 65%);
-  border-radius:50%;
-  pointer-events:none;
-  animation:orb2 10s ease-in-out infinite;
-}
-.ac-portal-card {
-  background:white;
-  border-radius:20px;
-  border:1.5px solid rgba(10,126,226,.12);
-  box-shadow:0 24px 80px rgba(10,126,226,.15),0 8px 24px rgba(0,0,0,.07);
-  width:100%;
-  max-width:380px;
-  overflow:hidden;
+  margin-bottom:72px;
   position:relative;
   z-index:1;
 }
-/* Browser bar */
-.ac-portal-bar {
-  display:flex;
+.ac-badge {
+  display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:12px 16px;
-  background:#f8fafc;
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.ac-portal-dots { display:flex;gap:5px;flex-shrink:0; }
-.ac-portal-dots span { width:10px;height:10px;border-radius:50%; }
-.ac-portal-dots span:nth-child(1) { background:#ff5f57; }
-.ac-portal-dots span:nth-child(2) { background:#ffbd2e; }
-.ac-portal-dots span:nth-child(3) { background:#28c940; }
-.ac-portal-url {
-  flex:1;
-  text-align:center;
+  background:rgba(10,126,226,.14);
+  border:1px solid rgba(10,126,226,.32);
+  color:#7ec6ff;
   font-size:11.5px;
-  font-weight:700;
-  color:var(--muted);
-  letter-spacing:.1px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:6px;
-  padding:4px 10px;
-}
-/* Portal body */
-.ac-portal-body { padding:20px;display:flex;flex-direction:column;gap:14px; }
-.ac-portal-greeting {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 16px;
-  background:var(--azul-light);
-  border-radius:var(--r-md);
-  border:1.5px solid rgba(10,126,226,.15);
-}
-.ac-portal-avatar {
-  width:36px;height:36px;
-  border-radius:50%;
-  background:var(--azul);
-  color:white;
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;
-  flex-shrink:0;
-}
-.ac-portal-welcome { font-size:13px;font-weight:800;color:var(--texto); }
-.ac-portal-label { font-size:11px;color:var(--muted);margin-top:1px; }
-.ac-portal-badge {
-  margin-left:auto;
-  font-size:10px;
-  font-weight:700;
-  color:var(--verde);
-  display:flex;
-  align-items:center;
-  gap:4px;
-  background:rgba(34,197,94,.1);
-  padding:3px 8px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+  padding:7px 18px;
   border-radius:999px;
+  margin-bottom:28px;
+}
+.ac-badge-dot {
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#7ec6ff;
+  animation:pulse 2s ease-in-out infinite;
   flex-shrink:0;
 }
-.ac-dot {
-  width:5px;height:5px;
-  border-radius:50%;
-  background:var(--verde);
-  animation:pulse 1.8s ease-in-out infinite;
-  display:inline-block;
+.ac-headline {
+  font-size:clamp(38px,5.5vw,70px);
+  font-weight:900;
+  letter-spacing:-2.5px;
+  line-height:1.04;
+  color:white;
+  margin-bottom:22px;
 }
-.ac-portal-actions {
+.ac-headline em {
+  font-style:normal;
+  background:linear-gradient(90deg,#7ec6ff 0%,#fff 25%,#0a7ee2 50%,#fff 75%,#7ec6ff 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:acGradShimmer 6s linear infinite;
+}
+.ac-subtitle {
+  font-size:17px;
+  color:rgba(255,255,255,.5);
+  max-width:520px;
+  margin:0 auto;
+  line-height:1.76;
+}
+/* ── Body: 2-column ── */
+.ac-body {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:start;
+  position:relative;
+  z-index:1;
 }
-.ac-pa-btn {
+/* ── Phone mockup (left) ── */
+.ac-phone-wrap {
+  position:relative;
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  padding:10px 6px;
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:var(--r-sm);
-  font-size:9.5px;
-  font-weight:700;
-  color:var(--texto2);
-  text-align:center;
+  justify-content:center;
+  align-items:flex-start;
+}
+.ac-phone-glow {
+  position:absolute;
+  top:50px;left:50%;
+  transform:translateX(-50%);
+  width:280px;height:280px;
+  background:radial-gradient(circle,rgba(10,126,226,.32) 0%,transparent 65%);
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(24px);
+}
+.ac-phone {
+  width:272px;
+  background:linear-gradient(170deg,#0f1e35 0%,#091528 50%,#060f1e 100%);
+  border-radius:44px;
+  border:1.5px solid rgba(255,255,255,.1);
+  box-shadow:
+    0 48px 120px rgba(0,0,0,.75),
+    0 0 0 1px rgba(255,255,255,.04),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 0 80px rgba(10,126,226,.14);
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+  flex-shrink:0;
+}
+/* Dynamic island */
+.ac-phone-notch {
+  width:108px;height:30px;
+  background:#020d1a;
+  border-radius:0 0 22px 22px;
+  margin:0 auto;
+  display:flex;align-items:center;justify-content:center;
+  gap:7px;
+  position:relative;z-index:2;
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+.ac-phone-notch-cam {
+  width:10px;height:10px;border-radius:50%;
+  background:#0e1e32;
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:inset 0 0 4px rgba(10,126,226,.3);
+}
+.ac-phone-notch-dot {
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(10,126,226,.6);
+}
+/* App header */
+.ac-phone-header {
+  background:linear-gradient(150deg,#0a7ee2 0%,#0563b8 100%);
+  padding:18px 20px 36px;
+  position:relative;overflow:hidden;
+}
+.ac-phone-header::before {
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,transparent 60%);
+}
+.ac-phone-header::after {
+  content:'';
+  position:absolute;
+  bottom:-18px;left:50%;transform:translateX(-50%);
+  width:200%;height:36px;
+  background:#091528;
+  border-radius:50% 50% 0 0;
+}
+.ac-phone-header-logo {
+  font-size:9.5px;font-weight:800;
+  color:rgba(255,255,255,.65);
+  text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:10px;position:relative;z-index:1;
+}
+.ac-phone-greeting {
+  font-size:19px;font-weight:900;color:white;
+  letter-spacing:-.5px;position:relative;z-index:1;
+}
+.ac-phone-sub {
+  font-size:11px;color:rgba(255,255,255,.6);
+  margin-top:2px;position:relative;z-index:1;
+}
+/* Phone content */
+.ac-phone-content {
+  padding:22px 18px 16px;
+  display:flex;flex-direction:column;gap:10px;
+}
+/* Connection status card */
+.ac-phone-status {
+  background:rgba(34,197,94,.07);
+  border:1px solid rgba(34,197,94,.2);
+  border-radius:18px;
+  padding:13px 16px;
+  display:flex;align-items:center;gap:10px;
+}
+.ac-phone-status-icon {
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(34,197,94,.14);
+  color:#4ade80;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+}
+.ac-phone-status-lbl {
+  font-size:10.5px;font-weight:800;color:#4ade80;letter-spacing:.2px;
+}
+.ac-phone-status-val {
+  font-size:12px;color:rgba(255,255,255,.6);margin-top:1px;font-weight:600;
+}
+.ac-phone-status-speed {
+  margin-left:auto;text-align:right;
+  font-size:22px;font-weight:900;color:white;letter-spacing:-1px;line-height:1;
+}
+.ac-phone-status-unit {
+  font-size:9px;color:rgba(255,255,255,.45);
+  font-weight:700;text-transform:uppercase;letter-spacing:.5px;text-align:right;
+}
+/* Invoice card */
+.ac-phone-invoice {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  padding:13px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.ac-phone-inv-lbl {
+  font-size:9.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.7px;
+  color:rgba(255,255,255,.38);
+}
+.ac-phone-inv-val {
+  font-size:24px;font-weight:900;color:white;
+  letter-spacing:-1px;margin-top:3px;
+}
+.ac-phone-inv-badge {
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:700;color:#4ade80;
+  background:rgba(34,197,94,.1);padding:6px 11px;
+  border-radius:999px;flex-shrink:0;
+}
+/* Quick actions */
+.ac-phone-actions {
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
+}
+.ac-phone-action {
+  display:flex;flex-direction:column;align-items:center;
+  gap:5px;padding:11px 6px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  font-size:9px;font-weight:700;
+  color:rgba(255,255,255,.5);text-align:center;
+}
+.ac-phone-action i { font-size:16px;color:#7ec6ff; }
+/* Home indicator */
+.ac-phone-bar {
+  height:30px;display:flex;align-items:center;justify-content:center;
+}
+.ac-phone-bar-line {
+  width:100px;height:4px;border-radius:2px;
+  background:rgba(255,255,255,.18);
+}
+/* ── Mascote ── */
+.ac-mascote-wrap {
+  position:absolute;
+  bottom:-14px;right:-12px;
+  z-index:2;
+}
+.ac-mascote {
+  width:112px;
+  animation:floatY 4s ease-in-out infinite;
+  filter:drop-shadow(0 16px 28px rgba(10,126,226,.28));
+  display:block;
+}
+.ac-mascote-glow {
+  position:absolute;
+  bottom:0;left:50%;transform:translateX(-50%);
+  width:88px;height:28px;
+  background:radial-gradient(ellipse,rgba(10,126,226,.38) 0%,transparent 70%);
+  filter:blur(6px);
+  pointer-events:none;
+}
+/* ── Right side: feature list + CTA ── */
+.ac-right {
+  display:flex;flex-direction:column;gap:10px;
+  padding-top:8px;
+}
+.ac-feat-item {
+  display:flex;align-items:center;gap:16px;
+  padding:16px 18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
   cursor:default;
 }
-.ac-pa-btn i { font-size:15px;color:var(--azul); }
-.ac-portal-status-card {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px 16px;
-  background:white;
-  border:1.5px solid rgba(34,197,94,.2);
-  border-radius:var(--r-md);
-  box-shadow:0 2px 12px rgba(34,197,94,.08);
+.ac-feat-item:hover {
+  background:rgba(10,126,226,.1);
+  border-color:rgba(10,126,226,.3);
+  transform:translateX(5px);
+  box-shadow:0 4px 24px rgba(10,126,226,.12);
 }
-.ac-portal-status-dot {
-  width:10px;height:10px;
-  border-radius:50%;
-  background:var(--verde);
-  box-shadow:0 0 0 3px rgba(34,197,94,.2);
-  flex-shrink:0;
-  animation:pulse 2s ease-in-out infinite;
-}
-.ac-portal-status-label { font-size:11px;font-weight:700;color:var(--verde); }
-.ac-portal-status-val { font-size:12px;color:var(--muted);margin-top:2px;font-weight:600; }
-.ac-portal-speed {
-  margin-left:auto;
-  width:32px;height:32px;
-  border-radius:50%;
-  background:rgba(34,197,94,.12);
-  color:var(--verde);
+.ac-feat-icon {
+  width:42px;height:42px;border-radius:12px;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;
-  flex-shrink:0;
+  font-size:17px;flex-shrink:0;
 }
-.ac-portal-invoice {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 16px;
-  background:var(--surface);
-  border:1.5px solid var(--border);
-  border-radius:var(--r-md);
+.ac-feat-text { flex:1;min-width:0; }
+.ac-feat-title {
+  font-size:14px;font-weight:800;
+  color:rgba(255,255,255,.88);letter-spacing:-.2px;
 }
-.ac-portal-inv-label {
-  font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.5px;
-  color:var(--muted2);
+.ac-feat-desc {
+  font-size:11.5px;color:rgba(255,255,255,.38);
+  margin-top:2px;line-height:1.35;
 }
-.ac-portal-inv-val {
-  font-size:20px;font-weight:900;
-  color:var(--texto);margin-top:2px;letter-spacing:-.5px;
+.ac-feat-arrow {
+  color:rgba(255,255,255,.18);font-size:11px;
+  transition:all .25s;flex-shrink:0;
 }
-.ac-portal-inv-status {
-  display:flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:700;color:var(--verde);
-  background:rgba(34,197,94,.1);
-  padding:6px 12px;border-radius:999px;
+.ac-feat-item:hover .ac-feat-arrow {
+  color:rgba(10,126,226,.8);transform:translateX(3px);
 }
+/* ── CTA ── */
+.ac-cta-wrap {
+  margin-top:12px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.ac-btn-main {
+  display:flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,#0a7ee2 0%,#0563b8 100%);
+  color:white;
+  font-size:16px;font-weight:800;
+  padding:17px 26px;
+  border-radius:var(--r-full);
+  text-decoration:none;
+  box-shadow:0 12px 48px rgba(10,126,226,.48),0 0 0 1px rgba(255,255,255,.07);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  letter-spacing:-.2px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  width:100%;justify-content:flex-start;
+  position:relative;overflow:hidden;
+  animation:glow 3s ease-in-out infinite;
+}
+.ac-btn-main::before {
+  content:'';
+  position:absolute;top:0;left:-100%;
+  width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  animation:shimmer 3.5s ease-in-out infinite;
+}
+.ac-btn-main:hover {
+  transform:translateY(-3px);
+  box-shadow:0 20px 64px rgba(10,126,226,.6),0 0 0 1px rgba(255,255,255,.1);
+}
+.ac-btn-main i:first-child { font-size:18px; }
+.ac-btn-arrow {
+  margin-left:auto;opacity:.7;font-size:14px;transition:transform .3s;
+}
+.ac-btn-main:hover .ac-btn-arrow { transform:translateX(4px);opacity:1; }
+.ac-launch-note {
+  display:flex;align-items:center;gap:7px;
+  font-size:11.5px;color:rgba(255,255,255,.3);
+  font-weight:600;padding-left:4px;
+}
+.ac-launch-note i { color:#4ade80;font-size:11px; }
+/* ── Responsive ── */
 @media(max-width:960px) {
-  .ac-inner { grid-template-columns:1fr;gap:48px; }
-  .area-cliente { padding:80px 0; }
-  .ac-sub { max-width:100%; }
-  .ac-portal-card { max-width:100%; }
+  .area-cliente { padding:90px 0; }
+  .ac-hero { margin-bottom:52px; }
+  .ac-headline { letter-spacing:-2px; }
+  .ac-body { grid-template-columns:1fr;gap:44px; }
+  .ac-phone-wrap { justify-content:center; }
+  .ac-phone { width:300px; }
+  .ac-mascote { width:100px; }
+  .ac-right { padding-top:0; }
 }
 @media(max-width:600px) {
-  .area-cliente { padding:60px 0; }
-  .ac-features { grid-template-columns:1fr 1fr;gap:8px; }
-  .ac-feature { padding:11px 12px;font-size:12.5px; }
-  .ac-title { letter-spacing:-1px; }
+  .area-cliente { padding:72px 0; }
+  .ac-hero { margin-bottom:40px; }
+  .ac-headline { font-size:clamp(32px,10vw,44px);letter-spacing:-1.5px; }
+  .ac-subtitle { font-size:15px; }
+  .ac-phone { width:256px; }
+  .ac-feat-item { padding:14px 16px; }
+  .ac-feat-title { font-size:13.5px; }
+  .ac-mascote-wrap { right:-6px; }
+  .ac-mascote { width:88px; }
+  .ac-btn-main { font-size:15px;padding:15px 22px; }
 }
 
 /* ================================================================
@@ -2635,37 +2724,21 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 [data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
-/* ── Área do Cliente dark ── */
+/* ── Área do Cliente dark (já é dark, apenas reforça) ── */
 [data-theme="dark"] .area-cliente {
-  background:linear-gradient(150deg,#091525 0%,#0b1927 60%,#091525 100%);
+  background:linear-gradient(160deg,#010810 0%,#020f1c 40%,#031729 70%,#010810 100%);
+}
+[data-theme="dark"] .ac-phone {
+  box-shadow:0 48px 140px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.06),0 0 100px rgba(10,126,226,.18);
+}
+[data-theme="dark"] .ac-feat-item {
+  background:rgba(255,255,255,.025);
   border-color:rgba(255,255,255,.06);
 }
-[data-theme="dark"] .ac-feature {
-  background:rgba(255,255,255,.04);
-  border-color:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.75);
+[data-theme="dark"] .ac-feat-item:hover {
+  background:rgba(10,126,226,.12);
+  border-color:rgba(10,126,226,.32);
 }
-[data-theme="dark"] .ac-feature:hover {
-  border-color:var(--azul);
-  background:rgba(10,126,226,.08);
-  color:rgba(255,255,255,.9);
-}
-[data-theme="dark"] .ac-portal-card {
-  background:#0d1829;
-  border-color:rgba(10,126,226,.2);
-  box-shadow:0 24px 80px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.2);
-}
-[data-theme="dark"] .ac-portal-bar { background:#091220;border-color:rgba(255,255,255,.06); }
-[data-theme="dark"] .ac-portal-url { background:#0b1525;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.45); }
-[data-theme="dark"] .ac-portal-greeting { background:rgba(10,126,226,.12);border-color:rgba(10,126,226,.2); }
-[data-theme="dark"] .ac-portal-welcome { color:rgba(255,255,255,.9); }
-[data-theme="dark"] .ac-portal-label { color:rgba(255,255,255,.4); }
-[data-theme="dark"] .ac-pa-btn { background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.65); }
-[data-theme="dark"] .ac-portal-status-card { background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.18); }
-[data-theme="dark"] .ac-portal-status-val { color:rgba(255,255,255,.5); }
-[data-theme="dark"] .ac-portal-invoice { background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08); }
-[data-theme="dark"] .ac-portal-inv-val { color:rgba(255,255,255,.9); }
-[data-theme="dark"] .ac-launch-note { color:rgba(255,255,255,.35); }
 
 /* ================================================================
    MOBILE-FIRST PREMIUM — CONECTE TELECOM
@@ -5271,117 +5344,171 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </section>
 
 <!-- ================================================================
-     ÁREA DO CLIENTE — GATEWAY PREMIUM
+     ÁREA DO CLIENTE — EXPERIÊNCIA PREMIUM
      ================================================================ -->
 <section class="area-cliente" id="area-do-cliente">
   <!-- Backward-compat anchors -->
   <span id="financeiro" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
   <span id="segunda-via" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
 
-  <div class="section-wrap ac-inner">
+  <!-- Ambient glow orbs -->
+  <div class="ac-glow-1" aria-hidden="true"></div>
+  <div class="ac-glow-2" aria-hidden="true"></div>
 
-    <!-- ── LADO ESQUERDO: conteúdo ── -->
-    <div class="ac-content reveal">
-      <div class="section-tag" style="display:inline-flex">
-        <i class="fas fa-user-circle"></i>&nbsp;&nbsp;Área do Cliente
+  <div class="section-wrap">
+
+    <!-- ── HERO: título centralizado ── -->
+    <div class="ac-hero reveal">
+      <div class="ac-badge">
+        <span class="ac-badge-dot"></span>
+        Exclusivo para clientes
       </div>
-
-      <h2 class="ac-title">
-        Sua Conecte,<br>
-        <span style="color:var(--azul)">mais perto de você</span>
+      <h2 class="ac-headline">
+        Você que já é<br>
+        <em>nosso cliente</em> 💙
       </h2>
-
-      <p class="ac-sub">
-        Acesse boletos, acompanhe pagamentos, veja o status da sua conexão,
-        fale com o suporte e muito mais — tudo em um ambiente rápido,
-        moderno e seguro.
+      <p class="ac-subtitle">
+        Acesse boletos, acompanhe pagamentos, veja sua conexão em tempo real,
+        fale com o suporte e muito mais —
+        tudo em um lugar moderno e seguro.
       </p>
-
-      <!-- Feature chips -->
-      <div class="ac-features">
-        <div class="ac-feature"><i class="fas fa-file-invoice-dollar"></i> 2ª via de boleto</div>
-        <div class="ac-feature"><i class="fas fa-credit-card"></i> Pagamentos</div>
-        <div class="ac-feature"><i class="fas fa-wifi"></i> Status da conexão</div>
-        <div class="ac-feature"><i class="fas fa-headset"></i> Suporte rápido</div>
-        <div class="ac-feature"><i class="fas fa-user"></i> Dados cadastrais</div>
-        <div class="ac-feature"><i class="fas fa-history"></i> Histórico financeiro</div>
-      </div>
-
-      <!-- CTA principal -->
-      <a href="https://cliente.seconecte.net" target="_blank" rel="noopener" class="ac-btn-main">
-        <i class="fas fa-user-circle"></i>
-        Acessar Área do Cliente
-        <i class="fas fa-arrow-right ac-btn-arrow"></i>
-      </a>
-
-      <div class="ac-launch-note">
-        <i class="fas fa-lock"></i>
-        Ambiente seguro &middot; cliente.seconecte.net
-      </div>
     </div>
 
-    <!-- ── LADO DIREITO: mockup do portal ── -->
-    <div class="ac-visual reveal" style="--reveal-delay:.15s">
-      <div class="ac-orb-1"></div>
-      <div class="ac-orb-2"></div>
+    <!-- ── BODY: phone mockup + feature stack ── -->
+    <div class="ac-body">
 
-      <div class="ac-portal-card">
-        <!-- Browser bar -->
-        <div class="ac-portal-bar">
-          <div class="ac-portal-dots">
-            <span></span><span></span><span></span>
+      <!-- Esquerda: phone frame + mascote -->
+      <div class="ac-phone-wrap reveal" style="--reveal-delay:.12s">
+        <div class="ac-phone-glow" aria-hidden="true"></div>
+
+        <div class="ac-phone">
+          <!-- Dynamic island -->
+          <div class="ac-phone-notch" aria-hidden="true">
+            <div class="ac-phone-notch-cam"></div>
+            <div class="ac-phone-notch-dot"></div>
           </div>
-          <div class="ac-portal-url">cliente.seconecte.net</div>
-          <i class="fas fa-lock" style="font-size:10px;color:var(--verde);flex-shrink:0"></i>
+
+          <!-- App header gradient -->
+          <div class="ac-phone-header">
+            <div class="ac-phone-header-logo">Conecte Telecom</div>
+            <div class="ac-phone-greeting">Olá, cliente! 👋</div>
+            <div class="ac-phone-sub">Bem-vindo à sua área</div>
+          </div>
+
+          <!-- App content -->
+          <div class="ac-phone-content">
+
+            <!-- Conexão ativa -->
+            <div class="ac-phone-status">
+              <div class="ac-phone-status-icon"><i class="fas fa-wifi"></i></div>
+              <div>
+                <div class="ac-phone-status-lbl">Conexão ativa</div>
+                <div class="ac-phone-status-val">Fibra Óptica</div>
+              </div>
+              <div>
+                <div class="ac-phone-status-speed">600</div>
+                <div class="ac-phone-status-unit">Mbps</div>
+              </div>
+            </div>
+
+            <!-- Próxima fatura -->
+            <div class="ac-phone-invoice">
+              <div>
+                <div class="ac-phone-inv-lbl">Próxima fatura</div>
+                <div class="ac-phone-inv-val">R$&nbsp;99,90</div>
+              </div>
+              <div class="ac-phone-inv-badge">
+                <i class="fas fa-check-circle"></i> Em dia
+              </div>
+            </div>
+
+            <!-- Ações rápidas -->
+            <div class="ac-phone-actions">
+              <div class="ac-phone-action"><i class="fas fa-file-invoice-dollar"></i>Boleto</div>
+              <div class="ac-phone-action"><i class="fas fa-headset"></i>Suporte</div>
+              <div class="ac-phone-action"><i class="fas fa-credit-card"></i>Pagar</div>
+              <div class="ac-phone-action"><i class="fas fa-history"></i>Histórico</div>
+            </div>
+
+          </div>
+
+          <!-- Indicador home -->
+          <div class="ac-phone-bar" aria-hidden="true">
+            <div class="ac-phone-bar-line"></div>
+          </div>
         </div>
 
-        <!-- Portal body -->
-        <div class="ac-portal-body">
-          <!-- Saudação do usuário -->
-          <div class="ac-portal-greeting">
-            <div class="ac-portal-avatar"><i class="fas fa-user"></i></div>
-            <div>
-              <div class="ac-portal-welcome">Olá, cliente!</div>
-              <div class="ac-portal-label">Conecte Telecom</div>
-            </div>
-            <div class="ac-portal-badge">
-              Online <span class="ac-dot"></span>
-            </div>
-          </div>
-
-          <!-- Ações rápidas -->
-          <div class="ac-portal-actions">
-            <div class="ac-pa-btn"><i class="fas fa-file-invoice-dollar"></i> Boleto</div>
-            <div class="ac-pa-btn"><i class="fas fa-wifi"></i> Status</div>
-            <div class="ac-pa-btn"><i class="fas fa-headset"></i> Suporte</div>
-            <div class="ac-pa-btn"><i class="fas fa-credit-card"></i> Pagar</div>
-          </div>
-
-          <!-- Status da conexão -->
-          <div class="ac-portal-status-card">
-            <div class="ac-portal-status-dot"></div>
-            <div>
-              <div class="ac-portal-status-label">Conexão ativa</div>
-              <div class="ac-portal-status-val">600 Mbps &mdash; Fibra Óptica</div>
-            </div>
-            <div class="ac-portal-speed"><i class="fas fa-bolt"></i></div>
-          </div>
-
-          <!-- Fatura -->
-          <div class="ac-portal-invoice">
-            <div>
-              <div class="ac-portal-inv-label">Próxima fatura</div>
-              <div class="ac-portal-inv-val">R$&nbsp;99,90</div>
-            </div>
-            <div class="ac-portal-inv-status">
-              Em dia <i class="fas fa-check-circle"></i>
-            </div>
-          </div>
+        <!-- Mascote Gasturinha -->
+        <div class="ac-mascote-wrap">
+          <div class="ac-mascote-glow" aria-hidden="true"></div>
+          <img src="img/mascote.png" alt="Gasturinha" class="ac-mascote" loading="lazy">
         </div>
       </div>
-    </div>
 
-  </div>
+      <!-- Direita: feature list + CTA -->
+      <div class="ac-right reveal" style="--reveal-delay:.22s">
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(10,126,226,.14);color:#7ec6ff"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">2ª via de boleto</div>
+            <div class="ac-feat-desc">Acesse e pague faturas em aberto</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(34,197,94,.12);color:#4ade80"><i class="fas fa-wifi"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Status da conexão</div>
+            <div class="ac-feat-desc">Velocidade e estabilidade em tempo real</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(168,85,247,.12);color:#c084fc"><i class="fas fa-headset"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Suporte rápido</div>
+            <div class="ac-feat-desc">Abra chamados e acompanhe atendimentos</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(251,191,36,.1);color:#fbbf24"><i class="fas fa-history"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Histórico financeiro</div>
+            <div class="ac-feat-desc">Acompanhe todos os seus pagamentos</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(236,72,153,.1);color:#f472b6"><i class="fas fa-user"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Dados cadastrais</div>
+            <div class="ac-feat-desc">Consulte e atualize seu cadastro</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <!-- CTA -->
+        <div class="ac-cta-wrap">
+          <a href="https://cliente.seconecte.net" target="_blank" rel="noopener" class="ac-btn-main">
+            <i class="fas fa-user-circle"></i>
+            Acessar Área do Cliente
+            <i class="fas fa-arrow-right ac-btn-arrow"></i>
+          </a>
+          <div class="ac-launch-note">
+            <i class="fas fa-lock"></i>
+            Ambiente seguro &middot; cliente.seconecte.net
+          </div>
+        </div>
+
+      </div><!-- /ac-right -->
+    </div><!-- /ac-body -->
+  </div><!-- /section-wrap -->
 </section>
 
 
