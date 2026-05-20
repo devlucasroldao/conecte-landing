@@ -4,6 +4,9 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "errors": [
+    { "statusCode": 404, "source": "/(.*)", "destination": "/404" }
+  ],
   "functions": {
     "api/**/*.js": {
       "maxDuration": 15

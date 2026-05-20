@@ -41,6 +41,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://w.behold.so">
+<link rel="dns-prefetch" href="https://w.behold.so">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/solid.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css">
@@ -113,10 +115,9 @@ body {
 @keyframes shimmer   { 0%{left:-80%} 100%{left:120%} }
 @keyframes wifiPulse { 0%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.15)} 100%{opacity:1;transform:scale(1)} }
 @keyframes tailWag   { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(8deg)} 75%{transform:rotate(-8deg)} }
-@keyframes eyeBlink  { 0%,90%,100%{scaleY:1} 95%{scaleY:0.05} }
+@keyframes eyeBlink  { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.05)} }
 @keyframes bounce    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 @keyframes drawLine  { from{stroke-dashoffset:300} to{stroke-dashoffset:0} }
-@keyframes countUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 @keyframes slideInR  { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
 @keyframes progress  { from{width:0} to{width:var(--w)} }
 @keyframes acGradShimmer { 0%{background-position:200% center} 100%{background-position:-200% center} }
@@ -1675,6 +1676,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   border-bottom-color:rgba(10,126,226,.14);
 }
 [data-theme="dark"] .trust-div { background:rgba(255,255,255,.08); }
+[data-theme="dark"] .trust-strip::after { background:linear-gradient(to left,#0b1220,transparent); }
 
 /* ---- DIFERENCIAIS dark ---- */
 [data-theme="dark"] .diferenciais {
@@ -1891,6 +1893,15 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   box-shadow:var(--shadow-sm) !important;
 }
 [data-theme="dark"] .social-card:hover { background:rgba(255,255,255,.07) !important; }
+
+/* Social cards hover — CSS nativo, com transition e reduced-motion */
+.social-card { transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease, border-color .28s ease; }
+.social-card:hover { transform:translateY(-6px); }
+.social-card--insta:hover  { box-shadow:0 16px 48px rgba(225,48,108,.18); border-color:rgba(225,48,108,.3) !important; }
+.social-card--fb:hover     { box-shadow:0 16px 48px rgba(24,119,242,.18);  border-color:rgba(24,119,242,.3) !important; }
+.social-card--wpp:hover    { box-shadow:0 16px 48px rgba(37,211,102,.18);  border-color:rgba(37,211,102,.3) !important; }
+.social-card--gmaps:hover  { box-shadow:0 16px 48px rgba(10,126,226,.18);  border-color:rgba(10,126,226,.3) !important; }
+@media (prefers-reduced-motion:reduce) { .social-card { transition:none; } }
 
 /* ---- MOBILE BAR dark ---- */
 [data-theme="dark"] .mobile-bar {
@@ -3340,15 +3351,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     margin: 0 !important;
   }
   /* Indicador de swipe: dica visual */
-  .bairros-header::after {
-    content: '← deslize para ver todos os bairros →';
-    display: block;
-    font-size: 11.5px;
-    color: var(--muted);
-    margin-top: 10px;
-    letter-spacing: .2px;
-    opacity: .75;
-  }
 }
 
 /* ----------------------------------------------------------------
@@ -4500,7 +4502,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="ac-body">
 
       <!-- Esquerda: phone frame + mascote -->
-      <div class="ac-phone-wrap reveal" style="--reveal-delay:.12s">
+      <div class="ac-phone-wrap reveal">
         <div class="ac-phone-glow" aria-hidden="true"></div>
 
         <div class="ac-phone">
@@ -4570,7 +4572,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </div>
 
       <!-- Direita: feature list + CTA -->
-      <div class="ac-right reveal" style="--reveal-delay:.22s">
+      <div class="ac-right reveal">
 
         <div class="ac-feat-item">
           <div class="ac-feat-icon" style="background:rgba(255,255,255,.1);color:#93c5fd"><i class="fas fa-file-invoice-dollar"></i></div>
@@ -4912,7 +4914,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="loc-header reveal">
       <div class="section-tag"><i class="fas fa-map-marker-alt"></i> Nossa localização</div>
       <h2 class="section-title">Venha nos <span style="color:var(--azul)">conhecer</span></h2>
-      <p class="section-sub loc-header-sub">Estamos aqui de verdade — endereço físico, equipe local e atendimento que vai além do horário comercial.</p>
+      <p class="section-sub">Estamos aqui de verdade — endereço físico, equipe local e atendimento que vai além do horário comercial.</p>
     </div>
 
     <div class="loc-main-grid">
@@ -5061,10 +5063,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="reveal social-grid" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:stretch">
 
       <!-- Instagram -->
-      <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="social-card"
-         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
-         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(225,48,108,.18)';this.style.borderColor='rgba(225,48,108,.3)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
+      <a href="https://www.instagram.com/seconecte2021/" target="_blank" rel="noopener" class="social-card social-card--insta"
+         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;min-width:180px;box-shadow:var(--shadow-sm);">
         <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(225,48,108,.3)">
           <i class="fab fa-instagram"></i>
         </div>
@@ -5076,10 +5076,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- Facebook -->
-      <a href="https://www.facebook.com/seconecte2021/?locale=pt_BR" target="_blank" rel="noopener" class="social-card"
-         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
-         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(24,119,242,.18)';this.style.borderColor='rgba(24,119,242,.3)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
+      <a href="https://www.facebook.com/seconecte2021/?locale=pt_BR" target="_blank" rel="noopener" class="social-card social-card--fb"
+         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;min-width:180px;box-shadow:var(--shadow-sm);">
         <div style="width:64px;height:64px;border-radius:18px;background:#1877f2;display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(24,119,242,.3)">
           <i class="fab fa-facebook-f"></i>
         </div>
@@ -5091,10 +5089,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- WhatsApp -->
-      <a href="https://wa.me/555197597259?text=Olá+Conecte+Telecom!" target="_blank" rel="noopener" class="social-card"
-         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
-         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(37,211,102,.18)';this.style.borderColor='rgba(37,211,102,.3)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
+      <a href="https://wa.me/555197597259?text=Olá+Conecte+Telecom!" target="_blank" rel="noopener" class="social-card social-card--wpp"
+         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;min-width:180px;box-shadow:var(--shadow-sm);">
         <div style="width:64px;height:64px;border-radius:18px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(37,211,102,.3)">
           <i class="fab fa-whatsapp"></i>
         </div>
@@ -5106,10 +5102,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </a>
 
       <!-- Google Maps -->
-      <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener" class="social-card"
-         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;transition:all .3s;min-width:180px;box-shadow:var(--shadow-sm);"
-         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 48px rgba(10,126,226,.18)';this.style.borderColor='rgba(10,126,226,.3)'"
-         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)';this.style.borderColor='var(--border)'">
+      <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z" target="_blank" rel="noopener" class="social-card social-card--gmaps"
+         style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:36px 40px;background:white;border-radius:24px;border:1.5px solid var(--border);text-decoration:none;min-width:180px;box-shadow:var(--shadow-sm);">
         <div style="width:64px;height:64px;border-radius:18px;background:var(--azul);display:flex;align-items:center;justify-content:center;font-size:28px;color:white;box-shadow:0 8px 24px rgba(10,126,226,.3)">
           <i class="fas fa-map-marker-alt"></i>
         </div>

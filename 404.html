@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada — Conecte Telecom</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="shortcut icon" href="icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/solid.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #03407a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Background orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(10,126,226,.45) 0%, transparent 70%);
+    top: -200px; left: -150px;
+    animation: orbFloat 10s ease-in-out infinite;
+  }
+  .orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,222,89,.18) 0%, transparent 70%);
+    bottom: -150px; right: -100px;
+    animation: orbFloat 12s ease-in-out infinite reverse;
+  }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(30px, -30px); }
+  }
+
+  /* Card */
+  .card {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 32px;
+    padding: 56px 48px 48px;
+    max-width: 480px;
+    width: calc(100% - 48px);
+    text-align: center;
+    box-shadow: 0 32px 80px rgba(0,0,0,.3);
+  }
+
+  /* Logo */
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-bottom: 40px;
+  }
+  .logo-img {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    padding: 3px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  }
+  .logo-img img { width: 100%; height: 100%; object-fit: cover; }
+  .logo-name {
+    font-size: 20px; font-weight: 800;
+    color: white; letter-spacing: -.3px;
+  }
+  .logo-name em { font-style: normal; color: #ffde59; }
+
+  /* Mascote */
+  .mascote-wrap {
+    margin: 0 auto 28px;
+    width: 120px;
+    animation: mascoteFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 12px 32px rgba(10,126,226,.5)) drop-shadow(0 0 16px rgba(255,222,89,.2));
+  }
+  .mascote-wrap img { width: 100%; display: block; }
+  @keyframes mascoteFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  /* 404 badge */
+  .badge-404 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,222,89,.12);
+    border: 1px solid rgba(255,222,89,.25);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffde59;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -.5px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 15px;
+    color: rgba(255,255,255,.58);
+    line-height: 1.65;
+    margin-bottom: 36px;
+  }
+
+  /* Buttons */
+  .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffde59;
+    color: #111;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 15px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 28px rgba(255,222,89,.35);
+  }
+  .btn-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(255,222,89,.5);
+  }
+  .btn-wpp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.85);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.14);
+    transition: background .2s, border-color .2s;
+  }
+  .btn-wpp:hover {
+    background: rgba(255,255,255,.14);
+    border-color: rgba(255,255,255,.28);
+  }
+  .btn-wpp i { color: #4ade80; }
+
+  /* Footer note */
+  .footer-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: rgba(255,255,255,.28);
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 40px 24px 36px; }
+    h1 { font-size: 23px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mascote-wrap, .orb-1, .orb-2 { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card">
+
+  <a href="/" class="logo">
+    <div class="logo-img">
+      <img src="img/logo-conecte.png" alt="">
+    </div>
+    <div class="logo-name">Conecte <em>Telecom</em></div>
+  </a>
+
+  <div class="mascote-wrap">
+    <img src="img/mascote.png" alt="">
+  </div>
+
+  <div class="badge-404">
+    <i class="fas fa-exclamation-triangle"></i>
+    Erro 404
+  </div>
+
+  <h1>Essa página não existe por aqui</h1>
+
+  <p>Pode ter sido removida, o endereço mudou, ou talvez você digitou algo diferente. Mas a nossa internet de verdade — essa existe, e muito!</p>
+
+  <div class="btns">
+    <a href="/" class="btn-home">
+      <i class="fas fa-home"></i>
+      Voltar para o início
+    </a>
+    <a href="https://wa.me/555197597259?text=Olá+Conecte!" target="_blank" rel="noopener" class="btn-wpp">
+      <i class="fab fa-whatsapp"></i>
+      Falar no WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<p class="footer-note">Conecte Telecom · Arroio do Sal — RS</p>
+
+</body>
+</html>
