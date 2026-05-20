@@ -2288,101 +2288,87 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
    ================================================================ */
 .area-cliente {
   padding:120px 0;
-  background:linear-gradient(160deg,#020d1a 0%,#031524 40%,#041e32 70%,#020d1a 100%);
+  background:linear-gradient(152deg,#060d1a 0%,#081d42 22%,#083c88 52%,#0a6acc 75%,#0a7ee2 100%);
   position:relative;
   overflow:hidden;
 }
-/* Subtle grid texture */
+/* Grid dots (igual ao hero) */
 .area-cliente::before {
   content:'';
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(10,126,226,.042) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(10,126,226,.042) 1px,transparent 1px);
-  background-size:52px 52px;
-  pointer-events:none;
-  z-index:0;
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;z-index:0;
 }
-/* Edge fade */
+/* Grain texture */
 .area-cliente::after {
   content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse 80% 35% at 50% 0%,rgba(2,13,26,.9) 0%,transparent 70%),
-    radial-gradient(ellipse 80% 35% at 50% 100%,rgba(2,13,26,.8) 0%,transparent 70%);
-  pointer-events:none;
-  z-index:0;
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.045;mix-blend-mode:soft-light;
+  pointer-events:none;z-index:0;
 }
-/* Ambient orbs */
+/* Ambient orbs (estilo hero) */
 .ac-glow-1 {
   position:absolute;
-  top:-100px;right:-80px;
-  width:560px;height:560px;
-  background:radial-gradient(circle,rgba(10,126,226,.22) 0%,transparent 65%);
+  top:-140px;right:-100px;
+  width:720px;height:720px;
+  background:radial-gradient(circle,rgba(10,126,226,.5) 0%,transparent 68%);
   pointer-events:none;
-  animation:orb1 12s ease-in-out infinite;
-  z-index:0;
+  animation:orb1 14s ease-in-out infinite;
+  filter:blur(4px);z-index:0;
 }
 .ac-glow-2 {
   position:absolute;
-  bottom:-90px;left:-80px;
-  width:440px;height:440px;
-  background:radial-gradient(circle,rgba(5,99,184,.16) 0%,transparent 65%);
+  bottom:40px;left:-120px;
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(255,222,89,.18) 0%,transparent 68%);
   pointer-events:none;
-  animation:orb2 15s ease-in-out infinite;
-  z-index:0;
+  animation:orb2 18s ease-in-out infinite;
+  filter:blur(6px);z-index:0;
 }
 /* ── Hero headline (centered) ── */
 .ac-hero {
   text-align:center;
   margin-bottom:72px;
-  position:relative;
-  z-index:1;
+  position:relative;z-index:1;
 }
 .ac-badge {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(10,126,226,.14);
-  border:1px solid rgba(10,126,226,.32);
-  color:#7ec6ff;
-  font-size:11.5px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1.4px;
-  padding:7px 18px;
-  border-radius:999px;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);
+  color:rgba(255,255,255,.9);
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.2px;
+  padding:7px 18px;border-radius:999px;
   margin-bottom:28px;
 }
 .ac-badge-dot {
-  width:6px;height:6px;
+  width:7px;height:7px;
   border-radius:50%;
-  background:#7ec6ff;
-  animation:pulse 2s ease-in-out infinite;
+  background:var(--verde);
+  animation:blink 2.2s ease infinite;
   flex-shrink:0;
 }
 .ac-headline {
-  font-size:clamp(38px,5.5vw,70px);
+  font-size:clamp(36px,5.5vw,68px);
   font-weight:900;
   letter-spacing:-2.5px;
-  line-height:1.04;
+  line-height:1.06;
   color:white;
   margin-bottom:22px;
 }
 .ac-headline em {
   font-style:normal;
-  background:linear-gradient(90deg,#7ec6ff 0%,#fff 25%,#0a7ee2 50%,#fff 75%,#7ec6ff 100%);
-  background-size:300% auto;
+  background:linear-gradient(130deg,var(--amarelo) 0%,#ffaa00 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  animation:acGradShimmer 6s linear infinite;
 }
 .ac-subtitle {
   font-size:17px;
-  color:rgba(255,255,255,.5);
+  color:rgba(255,255,255,.65);
   max-width:520px;
   margin:0 auto;
   line-height:1.76;
@@ -2393,8 +2379,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   grid-template-columns:1fr 1fr;
   gap:64px;
   align-items:start;
-  position:relative;
-  z-index:1;
+  position:relative;z-index:1;
 }
 /* ── Phone mockup (left) ── */
 .ac-phone-wrap {
@@ -2404,181 +2389,194 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   align-items:flex-start;
 }
 .ac-phone-glow {
-  position:absolute;
-  top:50px;left:50%;
+  position:absolute;top:50px;left:50%;
   transform:translateX(-50%);
-  width:280px;height:280px;
-  background:radial-gradient(circle,rgba(10,126,226,.32) 0%,transparent 65%);
-  pointer-events:none;
-  border-radius:50%;
-  filter:blur(24px);
+  width:340px;height:340px;
+  background:radial-gradient(circle,rgba(10,126,226,.4) 0%,transparent 65%);
+  pointer-events:none;border-radius:50%;filter:blur(28px);
 }
 .ac-phone {
-  width:272px;
+  width:322px;
   background:linear-gradient(170deg,#0f1e35 0%,#091528 50%,#060f1e 100%);
-  border-radius:44px;
-  border:1.5px solid rgba(255,255,255,.1);
+  border-radius:48px;
+  border:1.5px solid rgba(255,255,255,.12);
   box-shadow:
-    0 48px 120px rgba(0,0,0,.75),
-    0 0 0 1px rgba(255,255,255,.04),
-    inset 0 1px 0 rgba(255,255,255,.09),
-    0 0 80px rgba(10,126,226,.14);
+    0 56px 140px rgba(0,0,0,.6),
+    0 0 0 1px rgba(255,255,255,.05),
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 0 100px rgba(10,126,226,.2);
   overflow:hidden;
-  position:relative;
-  z-index:1;
-  flex-shrink:0;
+  position:relative;z-index:1;flex-shrink:0;
 }
 /* Dynamic island */
 .ac-phone-notch {
-  width:108px;height:30px;
+  width:120px;height:32px;
   background:#020d1a;
-  border-radius:0 0 22px 22px;
+  border-radius:0 0 24px 24px;
   margin:0 auto;
   display:flex;align-items:center;justify-content:center;
-  gap:7px;
+  gap:8px;
   position:relative;z-index:2;
-  box-shadow:0 4px 12px rgba(0,0,0,.4);
+  box-shadow:0 4px 14px rgba(0,0,0,.45);
 }
 .ac-phone-notch-cam {
-  width:10px;height:10px;border-radius:50%;
+  width:11px;height:11px;border-radius:50%;
   background:#0e1e32;
-  border:1px solid rgba(255,255,255,.07);
-  box-shadow:inset 0 0 4px rgba(10,126,226,.3);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:inset 0 0 5px rgba(10,126,226,.35);
 }
 .ac-phone-notch-dot {
   width:5px;height:5px;border-radius:50%;
-  background:rgba(10,126,226,.6);
+  background:rgba(10,126,226,.65);
 }
 /* App header */
 .ac-phone-header {
   background:linear-gradient(150deg,#0a7ee2 0%,#0563b8 100%);
-  padding:18px 20px 36px;
+  padding:20px 22px 40px;
   position:relative;overflow:hidden;
 }
 .ac-phone-header::before {
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(255,255,255,.09) 0%,transparent 60%);
+  background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,transparent 60%);
 }
 .ac-phone-header::after {
   content:'';
   position:absolute;
-  bottom:-18px;left:50%;transform:translateX(-50%);
-  width:200%;height:36px;
+  bottom:-20px;left:50%;transform:translateX(-50%);
+  width:200%;height:40px;
   background:#091528;
   border-radius:50% 50% 0 0;
 }
-.ac-phone-header-logo {
-  font-size:9.5px;font-weight:800;
-  color:rgba(255,255,255,.65);
+.ac-phone-header-top {
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:12px;
+  position:relative;z-index:1;
+}
+.ac-phone-logo {
+  width:22px;height:22px;
+  object-fit:contain;
+  border-radius:5px;
+  filter:brightness(0) invert(1);
+  opacity:.85;
+}
+.ac-phone-header-name {
+  font-size:10px;font-weight:800;
+  color:rgba(255,255,255,.7);
   text-transform:uppercase;letter-spacing:1.5px;
-  margin-bottom:10px;position:relative;z-index:1;
 }
 .ac-phone-greeting {
-  font-size:19px;font-weight:900;color:white;
+  font-size:20px;font-weight:900;color:white;
   letter-spacing:-.5px;position:relative;z-index:1;
 }
 .ac-phone-sub {
-  font-size:11px;color:rgba(255,255,255,.6);
-  margin-top:2px;position:relative;z-index:1;
+  font-size:11.5px;color:rgba(255,255,255,.62);
+  margin-top:3px;position:relative;z-index:1;
 }
 /* Phone content */
 .ac-phone-content {
-  padding:22px 18px 16px;
-  display:flex;flex-direction:column;gap:10px;
+  padding:24px 20px 18px;
+  display:flex;flex-direction:column;gap:11px;
 }
-/* Connection status card */
+/* Connection status card — clean */
 .ac-phone-status {
-  background:rgba(34,197,94,.07);
-  border:1px solid rgba(34,197,94,.2);
-  border-radius:18px;
-  padding:13px 16px;
-  display:flex;align-items:center;gap:10px;
+  background:rgba(34,197,94,.09);
+  border:1px solid rgba(34,197,94,.25);
+  border-radius:20px;
+  padding:15px 18px;
+  display:flex;align-items:center;gap:12px;
 }
 .ac-phone-status-icon {
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(34,197,94,.14);
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(34,197,94,.16);
   color:#4ade80;
   display:flex;align-items:center;justify-content:center;
-  font-size:15px;flex-shrink:0;
+  font-size:17px;flex-shrink:0;
 }
 .ac-phone-status-lbl {
-  font-size:10.5px;font-weight:800;color:#4ade80;letter-spacing:.2px;
+  font-size:13px;font-weight:900;color:#4ade80;letter-spacing:-.2px;
 }
 .ac-phone-status-val {
-  font-size:12px;color:rgba(255,255,255,.6);margin-top:1px;font-weight:600;
+  font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;font-weight:600;
 }
-.ac-phone-status-speed {
-  margin-left:auto;text-align:right;
-  font-size:22px;font-weight:900;color:white;letter-spacing:-1px;line-height:1;
+.ac-phone-status-badge {
+  margin-left:auto;flex-shrink:0;
+  display:flex;align-items:center;gap:5px;
+  background:rgba(34,197,94,.15);
+  border:1px solid rgba(34,197,94,.3);
+  color:#4ade80;
+  font-size:10.5px;font-weight:800;
+  padding:5px 11px;border-radius:999px;
 }
-.ac-phone-status-unit {
-  font-size:9px;color:rgba(255,255,255,.45);
-  font-weight:700;text-transform:uppercase;letter-spacing:.5px;text-align:right;
+.ac-phone-status-badge .ac-dot {
+  width:6px;height:6px;border-radius:50%;
+  background:#4ade80;
+  animation:blink 2s ease-in-out infinite;
+  display:inline-block;
 }
 /* Invoice card */
 .ac-phone-invoice {
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;
-  padding:13px 16px;
+  border-radius:20px;
+  padding:15px 18px;
   display:flex;align-items:center;justify-content:space-between;
 }
 .ac-phone-inv-lbl {
-  font-size:9.5px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.7px;
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.8px;
   color:rgba(255,255,255,.38);
 }
 .ac-phone-inv-val {
-  font-size:24px;font-weight:900;color:white;
+  font-size:26px;font-weight:900;color:white;
   letter-spacing:-1px;margin-top:3px;
 }
 .ac-phone-inv-badge {
   display:flex;align-items:center;gap:5px;
-  font-size:11px;font-weight:700;color:#4ade80;
-  background:rgba(34,197,94,.1);padding:6px 11px;
-  border-radius:999px;flex-shrink:0;
+  font-size:11.5px;font-weight:700;color:#4ade80;
+  background:rgba(34,197,94,.12);
+  padding:7px 13px;border-radius:999px;flex-shrink:0;
 }
 /* Quick actions */
 .ac-phone-actions {
-  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
 }
 .ac-phone-action {
   display:flex;flex-direction:column;align-items:center;
-  gap:5px;padding:11px 6px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:14px;
-  font-size:9px;font-weight:700;
-  color:rgba(255,255,255,.5);text-align:center;
+  gap:6px;padding:13px 8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  font-size:9.5px;font-weight:700;
+  color:rgba(255,255,255,.55);text-align:center;
 }
-.ac-phone-action i { font-size:16px;color:#7ec6ff; }
+.ac-phone-action i { font-size:17px;color:#93c5fd; }
 /* Home indicator */
 .ac-phone-bar {
-  height:30px;display:flex;align-items:center;justify-content:center;
+  height:32px;display:flex;align-items:center;justify-content:center;
 }
 .ac-phone-bar-line {
-  width:100px;height:4px;border-radius:2px;
-  background:rgba(255,255,255,.18);
+  width:110px;height:4px;border-radius:2px;
+  background:rgba(255,255,255,.2);
 }
 /* ── Mascote ── */
 .ac-mascote-wrap {
   position:absolute;
-  bottom:-14px;right:-12px;
+  bottom:-16px;right:-16px;
   z-index:2;
 }
 .ac-mascote {
-  width:112px;
+  width:120px;
   animation:floatY 4s ease-in-out infinite;
-  filter:drop-shadow(0 16px 28px rgba(10,126,226,.28));
+  filter:drop-shadow(0 16px 32px rgba(10,126,226,.32));
   display:block;
 }
 .ac-mascote-glow {
   position:absolute;
   bottom:0;left:50%;transform:translateX(-50%);
-  width:88px;height:28px;
-  background:radial-gradient(ellipse,rgba(10,126,226,.38) 0%,transparent 70%);
-  filter:blur(6px);
+  width:96px;height:30px;
+  background:radial-gradient(ellipse,rgba(10,126,226,.42) 0%,transparent 70%);
+  filter:blur(7px);
   pointer-events:none;
 }
 /* ── Right side: feature list + CTA ── */
@@ -2589,38 +2587,39 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 .ac-feat-item {
   display:flex;align-items:center;gap:16px;
   padding:16px 18px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
   border-radius:16px;
+  backdrop-filter:blur(12px);
   transition:all .25s cubic-bezier(.4,0,.2,1);
   cursor:default;
 }
 .ac-feat-item:hover {
-  background:rgba(10,126,226,.1);
-  border-color:rgba(10,126,226,.3);
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.24);
   transform:translateX(5px);
-  box-shadow:0 4px 24px rgba(10,126,226,.12);
+  box-shadow:0 6px 28px rgba(0,0,0,.25);
 }
 .ac-feat-icon {
-  width:42px;height:42px;border-radius:12px;
+  width:44px;height:44px;border-radius:13px;
   display:flex;align-items:center;justify-content:center;
-  font-size:17px;flex-shrink:0;
+  font-size:18px;flex-shrink:0;
 }
 .ac-feat-text { flex:1;min-width:0; }
 .ac-feat-title {
-  font-size:14px;font-weight:800;
-  color:rgba(255,255,255,.88);letter-spacing:-.2px;
+  font-size:14.5px;font-weight:800;
+  color:rgba(255,255,255,.92);letter-spacing:-.2px;
 }
 .ac-feat-desc {
-  font-size:11.5px;color:rgba(255,255,255,.38);
+  font-size:12px;color:rgba(255,255,255,.52);
   margin-top:2px;line-height:1.35;
 }
 .ac-feat-arrow {
-  color:rgba(255,255,255,.18);font-size:11px;
+  color:rgba(255,255,255,.28);font-size:11px;
   transition:all .25s;flex-shrink:0;
 }
 .ac-feat-item:hover .ac-feat-arrow {
-  color:rgba(10,126,226,.8);transform:translateX(3px);
+  color:rgba(255,255,255,.75);transform:translateX(3px);
 }
 /* ── CTA ── */
 .ac-cta-wrap {
@@ -2629,39 +2628,38 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 .ac-btn-main {
   display:flex;align-items:center;gap:12px;
-  background:linear-gradient(135deg,#0a7ee2 0%,#0563b8 100%);
-  color:white;
-  font-size:16px;font-weight:800;
-  padding:17px 26px;
+  background:linear-gradient(130deg,var(--amarelo) 0%,#ffaa00 100%);
+  color:#0d1117;
+  font-size:16px;font-weight:900;
+  padding:18px 28px;
   border-radius:var(--r-full);
   text-decoration:none;
-  box-shadow:0 12px 48px rgba(10,126,226,.48),0 0 0 1px rgba(255,255,255,.07);
+  box-shadow:0 12px 48px rgba(255,222,89,.4),0 0 0 1px rgba(255,222,89,.2);
   transition:all .3s cubic-bezier(.4,0,.2,1);
   letter-spacing:-.2px;
   font-family:'Plus Jakarta Sans',sans-serif;
   width:100%;justify-content:flex-start;
   position:relative;overflow:hidden;
-  animation:glow 3s ease-in-out infinite;
 }
 .ac-btn-main::before {
   content:'';
   position:absolute;top:0;left:-100%;
   width:50%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
   animation:shimmer 3.5s ease-in-out infinite;
 }
 .ac-btn-main:hover {
   transform:translateY(-3px);
-  box-shadow:0 20px 64px rgba(10,126,226,.6),0 0 0 1px rgba(255,255,255,.1);
+  box-shadow:0 20px 64px rgba(255,222,89,.55),0 0 0 1px rgba(255,222,89,.3);
 }
 .ac-btn-main i:first-child { font-size:18px; }
 .ac-btn-arrow {
-  margin-left:auto;opacity:.7;font-size:14px;transition:transform .3s;
+  margin-left:auto;opacity:.8;font-size:14px;transition:transform .3s;
 }
 .ac-btn-main:hover .ac-btn-arrow { transform:translateX(4px);opacity:1; }
 .ac-launch-note {
   display:flex;align-items:center;gap:7px;
-  font-size:11.5px;color:rgba(255,255,255,.3);
+  font-size:11.5px;color:rgba(255,255,255,.5);
   font-weight:600;padding-left:4px;
 }
 .ac-launch-note i { color:#4ade80;font-size:11px; }
@@ -2672,21 +2670,21 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .ac-headline { letter-spacing:-2px; }
   .ac-body { grid-template-columns:1fr;gap:44px; }
   .ac-phone-wrap { justify-content:center; }
-  .ac-phone { width:300px; }
-  .ac-mascote { width:100px; }
+  .ac-phone { width:330px; }
+  .ac-mascote { width:106px; }
   .ac-right { padding-top:0; }
 }
 @media(max-width:600px) {
   .area-cliente { padding:72px 0; }
   .ac-hero { margin-bottom:40px; }
-  .ac-headline { font-size:clamp(32px,10vw,44px);letter-spacing:-1.5px; }
+  .ac-headline { font-size:clamp(30px,10vw,44px);letter-spacing:-1.5px; }
   .ac-subtitle { font-size:15px; }
-  .ac-phone { width:256px; }
+  .ac-phone { width:285px; }
   .ac-feat-item { padding:14px 16px; }
   .ac-feat-title { font-size:13.5px; }
   .ac-mascote-wrap { right:-6px; }
-  .ac-mascote { width:88px; }
-  .ac-btn-main { font-size:15px;padding:15px 22px; }
+  .ac-mascote { width:92px; }
+  .ac-btn-main { font-size:15px;padding:16px 22px; }
 }
 
 /* ================================================================
@@ -2724,20 +2722,17 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 [data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
 [data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
-/* ── Área do Cliente dark (já é dark, apenas reforça) ── */
+/* ── Área do Cliente dark ── */
 [data-theme="dark"] .area-cliente {
-  background:linear-gradient(160deg,#010810 0%,#020f1c 40%,#031729 70%,#010810 100%);
-}
-[data-theme="dark"] .ac-phone {
-  box-shadow:0 48px 140px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.06),0 0 100px rgba(10,126,226,.18);
+  background:linear-gradient(152deg,#030810 0%,#050f22 22%,#062a5e 52%,#084d96 75%,#0a5eb5 100%);
 }
 [data-theme="dark"] .ac-feat-item {
-  background:rgba(255,255,255,.025);
-  border-color:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.1);
 }
 [data-theme="dark"] .ac-feat-item:hover {
-  background:rgba(10,126,226,.12);
-  border-color:rgba(10,126,226,.32);
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.22);
 }
 
 /* ================================================================
@@ -4930,6 +4925,176 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </section>
 
 <!-- ================================================================
+     ÁREA DO CLIENTE — EXPERIÊNCIA PREMIUM
+     ================================================================ -->
+<section class="area-cliente" id="area-do-cliente">
+  <!-- Backward-compat anchors -->
+  <span id="financeiro" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
+  <span id="segunda-via" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
+
+  <!-- Ambient glow orbs -->
+  <div class="ac-glow-1" aria-hidden="true"></div>
+  <div class="ac-glow-2" aria-hidden="true"></div>
+
+  <div class="section-wrap">
+
+    <!-- ── HERO: título centralizado ── -->
+    <div class="ac-hero reveal">
+      <div class="ac-badge">
+        <span class="ac-badge-dot"></span>
+        Exclusivo para clientes
+      </div>
+      <h2 class="ac-headline">
+        Para você que já é<br>
+        <em>nosso cliente!</em>
+      </h2>
+      <p class="ac-subtitle">
+        Acesse boletos, acompanhe pagamentos, veja sua conexão em tempo real,
+        fale com o suporte e muito mais —
+        tudo em um lugar moderno e seguro.
+      </p>
+    </div>
+
+    <!-- ── BODY: phone mockup + feature stack ── -->
+    <div class="ac-body">
+
+      <!-- Esquerda: phone frame + mascote -->
+      <div class="ac-phone-wrap reveal" style="--reveal-delay:.12s">
+        <div class="ac-phone-glow" aria-hidden="true"></div>
+
+        <div class="ac-phone">
+          <!-- Dynamic island -->
+          <div class="ac-phone-notch" aria-hidden="true">
+            <div class="ac-phone-notch-cam"></div>
+            <div class="ac-phone-notch-dot"></div>
+          </div>
+
+          <!-- App header gradient -->
+          <div class="ac-phone-header">
+            <div class="ac-phone-header-top">
+              <img src="img/logo-conecte.png" alt="" class="ac-phone-logo" loading="lazy">
+              <div class="ac-phone-header-name">Conecte Telecom</div>
+            </div>
+            <div class="ac-phone-greeting">Olá, Fulano! 👋</div>
+            <div class="ac-phone-sub">Bem-vindo à sua área</div>
+          </div>
+
+          <!-- App content -->
+          <div class="ac-phone-content">
+
+            <!-- Conexão ativa — clean -->
+            <div class="ac-phone-status">
+              <div class="ac-phone-status-icon"><i class="fas fa-wifi"></i></div>
+              <div>
+                <div class="ac-phone-status-lbl">Conexão ativa</div>
+                <div class="ac-phone-status-val">Fibra Óptica</div>
+              </div>
+              <div class="ac-phone-status-badge">
+                <span class="ac-dot"></span> Online
+              </div>
+            </div>
+
+            <!-- Próxima fatura -->
+            <div class="ac-phone-invoice">
+              <div>
+                <div class="ac-phone-inv-lbl">Próxima fatura</div>
+                <div class="ac-phone-inv-val">R$&nbsp;99,90</div>
+              </div>
+              <div class="ac-phone-inv-badge">
+                <i class="fas fa-check-circle"></i> Em dia
+              </div>
+            </div>
+
+            <!-- Ações rápidas -->
+            <div class="ac-phone-actions">
+              <div class="ac-phone-action"><i class="fas fa-file-invoice-dollar"></i>Boleto</div>
+              <div class="ac-phone-action"><i class="fas fa-headset"></i>Suporte</div>
+              <div class="ac-phone-action"><i class="fas fa-credit-card"></i>Pagar</div>
+              <div class="ac-phone-action"><i class="fas fa-history"></i>Histórico</div>
+            </div>
+
+          </div>
+
+          <!-- Indicador home -->
+          <div class="ac-phone-bar" aria-hidden="true">
+            <div class="ac-phone-bar-line"></div>
+          </div>
+        </div>
+
+        <!-- Mascote Gasturinha -->
+        <div class="ac-mascote-wrap">
+          <div class="ac-mascote-glow" aria-hidden="true"></div>
+          <img src="img/mascote.png" alt="Gasturinha" class="ac-mascote" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Direita: feature list + CTA -->
+      <div class="ac-right reveal" style="--reveal-delay:.22s">
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(255,255,255,.1);color:#93c5fd"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">2ª via de boleto</div>
+            <div class="ac-feat-desc">Acesse e pague faturas em aberto</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(74,222,128,.12);color:#4ade80"><i class="fas fa-wifi"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Status da conexão</div>
+            <div class="ac-feat-desc">Velocidade e estabilidade em tempo real</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(192,132,252,.12);color:#c084fc"><i class="fas fa-headset"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Suporte rápido</div>
+            <div class="ac-feat-desc">Abra chamados e acompanhe atendimentos</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(251,191,36,.12);color:#fbbf24"><i class="fas fa-history"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Histórico financeiro</div>
+            <div class="ac-feat-desc">Acompanhe todos os seus pagamentos</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <div class="ac-feat-item">
+          <div class="ac-feat-icon" style="background:rgba(244,114,182,.1);color:#f472b6"><i class="fas fa-user"></i></div>
+          <div class="ac-feat-text">
+            <div class="ac-feat-title">Dados cadastrais</div>
+            <div class="ac-feat-desc">Consulte e atualize seu cadastro</div>
+          </div>
+          <i class="fas fa-chevron-right ac-feat-arrow"></i>
+        </div>
+
+        <!-- CTA -->
+        <div class="ac-cta-wrap">
+          <a href="https://cliente.seconecte.net" target="_blank" rel="noopener" class="ac-btn-main">
+            <i class="fas fa-user-circle"></i>
+            Acessar Área do Cliente
+            <i class="fas fa-arrow-right ac-btn-arrow"></i>
+          </a>
+          <div class="ac-launch-note">
+            <i class="fas fa-lock"></i>
+            Ambiente seguro &middot; cliente.seconecte.net
+          </div>
+        </div>
+
+      </div><!-- /ac-right -->
+    </div><!-- /ac-body -->
+  </div><!-- /section-wrap -->
+</section>
+
+<!-- ================================================================
      COMO FUNCIONA
      ================================================================ -->
 <section class="como">
@@ -5343,173 +5508,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   </div>
 </section>
 
-<!-- ================================================================
-     ÁREA DO CLIENTE — EXPERIÊNCIA PREMIUM
-     ================================================================ -->
-<section class="area-cliente" id="area-do-cliente">
-  <!-- Backward-compat anchors -->
-  <span id="financeiro" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
-  <span id="segunda-via" style="position:absolute;visibility:hidden" aria-hidden="true"></span>
-
-  <!-- Ambient glow orbs -->
-  <div class="ac-glow-1" aria-hidden="true"></div>
-  <div class="ac-glow-2" aria-hidden="true"></div>
-
-  <div class="section-wrap">
-
-    <!-- ── HERO: título centralizado ── -->
-    <div class="ac-hero reveal">
-      <div class="ac-badge">
-        <span class="ac-badge-dot"></span>
-        Exclusivo para clientes
-      </div>
-      <h2 class="ac-headline">
-        Você que já é<br>
-        <em>nosso cliente</em> 💙
-      </h2>
-      <p class="ac-subtitle">
-        Acesse boletos, acompanhe pagamentos, veja sua conexão em tempo real,
-        fale com o suporte e muito mais —
-        tudo em um lugar moderno e seguro.
-      </p>
-    </div>
-
-    <!-- ── BODY: phone mockup + feature stack ── -->
-    <div class="ac-body">
-
-      <!-- Esquerda: phone frame + mascote -->
-      <div class="ac-phone-wrap reveal" style="--reveal-delay:.12s">
-        <div class="ac-phone-glow" aria-hidden="true"></div>
-
-        <div class="ac-phone">
-          <!-- Dynamic island -->
-          <div class="ac-phone-notch" aria-hidden="true">
-            <div class="ac-phone-notch-cam"></div>
-            <div class="ac-phone-notch-dot"></div>
-          </div>
-
-          <!-- App header gradient -->
-          <div class="ac-phone-header">
-            <div class="ac-phone-header-logo">Conecte Telecom</div>
-            <div class="ac-phone-greeting">Olá, cliente! 👋</div>
-            <div class="ac-phone-sub">Bem-vindo à sua área</div>
-          </div>
-
-          <!-- App content -->
-          <div class="ac-phone-content">
-
-            <!-- Conexão ativa -->
-            <div class="ac-phone-status">
-              <div class="ac-phone-status-icon"><i class="fas fa-wifi"></i></div>
-              <div>
-                <div class="ac-phone-status-lbl">Conexão ativa</div>
-                <div class="ac-phone-status-val">Fibra Óptica</div>
-              </div>
-              <div>
-                <div class="ac-phone-status-speed">600</div>
-                <div class="ac-phone-status-unit">Mbps</div>
-              </div>
-            </div>
-
-            <!-- Próxima fatura -->
-            <div class="ac-phone-invoice">
-              <div>
-                <div class="ac-phone-inv-lbl">Próxima fatura</div>
-                <div class="ac-phone-inv-val">R$&nbsp;99,90</div>
-              </div>
-              <div class="ac-phone-inv-badge">
-                <i class="fas fa-check-circle"></i> Em dia
-              </div>
-            </div>
-
-            <!-- Ações rápidas -->
-            <div class="ac-phone-actions">
-              <div class="ac-phone-action"><i class="fas fa-file-invoice-dollar"></i>Boleto</div>
-              <div class="ac-phone-action"><i class="fas fa-headset"></i>Suporte</div>
-              <div class="ac-phone-action"><i class="fas fa-credit-card"></i>Pagar</div>
-              <div class="ac-phone-action"><i class="fas fa-history"></i>Histórico</div>
-            </div>
-
-          </div>
-
-          <!-- Indicador home -->
-          <div class="ac-phone-bar" aria-hidden="true">
-            <div class="ac-phone-bar-line"></div>
-          </div>
-        </div>
-
-        <!-- Mascote Gasturinha -->
-        <div class="ac-mascote-wrap">
-          <div class="ac-mascote-glow" aria-hidden="true"></div>
-          <img src="img/mascote.png" alt="Gasturinha" class="ac-mascote" loading="lazy">
-        </div>
-      </div>
-
-      <!-- Direita: feature list + CTA -->
-      <div class="ac-right reveal" style="--reveal-delay:.22s">
-
-        <div class="ac-feat-item">
-          <div class="ac-feat-icon" style="background:rgba(10,126,226,.14);color:#7ec6ff"><i class="fas fa-file-invoice-dollar"></i></div>
-          <div class="ac-feat-text">
-            <div class="ac-feat-title">2ª via de boleto</div>
-            <div class="ac-feat-desc">Acesse e pague faturas em aberto</div>
-          </div>
-          <i class="fas fa-chevron-right ac-feat-arrow"></i>
-        </div>
-
-        <div class="ac-feat-item">
-          <div class="ac-feat-icon" style="background:rgba(34,197,94,.12);color:#4ade80"><i class="fas fa-wifi"></i></div>
-          <div class="ac-feat-text">
-            <div class="ac-feat-title">Status da conexão</div>
-            <div class="ac-feat-desc">Velocidade e estabilidade em tempo real</div>
-          </div>
-          <i class="fas fa-chevron-right ac-feat-arrow"></i>
-        </div>
-
-        <div class="ac-feat-item">
-          <div class="ac-feat-icon" style="background:rgba(168,85,247,.12);color:#c084fc"><i class="fas fa-headset"></i></div>
-          <div class="ac-feat-text">
-            <div class="ac-feat-title">Suporte rápido</div>
-            <div class="ac-feat-desc">Abra chamados e acompanhe atendimentos</div>
-          </div>
-          <i class="fas fa-chevron-right ac-feat-arrow"></i>
-        </div>
-
-        <div class="ac-feat-item">
-          <div class="ac-feat-icon" style="background:rgba(251,191,36,.1);color:#fbbf24"><i class="fas fa-history"></i></div>
-          <div class="ac-feat-text">
-            <div class="ac-feat-title">Histórico financeiro</div>
-            <div class="ac-feat-desc">Acompanhe todos os seus pagamentos</div>
-          </div>
-          <i class="fas fa-chevron-right ac-feat-arrow"></i>
-        </div>
-
-        <div class="ac-feat-item">
-          <div class="ac-feat-icon" style="background:rgba(236,72,153,.1);color:#f472b6"><i class="fas fa-user"></i></div>
-          <div class="ac-feat-text">
-            <div class="ac-feat-title">Dados cadastrais</div>
-            <div class="ac-feat-desc">Consulte e atualize seu cadastro</div>
-          </div>
-          <i class="fas fa-chevron-right ac-feat-arrow"></i>
-        </div>
-
-        <!-- CTA -->
-        <div class="ac-cta-wrap">
-          <a href="https://cliente.seconecte.net" target="_blank" rel="noopener" class="ac-btn-main">
-            <i class="fas fa-user-circle"></i>
-            Acessar Área do Cliente
-            <i class="fas fa-arrow-right ac-btn-arrow"></i>
-          </a>
-          <div class="ac-launch-note">
-            <i class="fas fa-lock"></i>
-            Ambiente seguro &middot; cliente.seconecte.net
-          </div>
-        </div>
-
-      </div><!-- /ac-right -->
-    </div><!-- /ac-body -->
-  </div><!-- /section-wrap -->
-</section>
 
 
 
