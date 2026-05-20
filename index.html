@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
@@ -13,6 +14,7 @@
 <meta property="og:title" content="Conecte Telecom — Fibra de verdade em Arroio do Sal">
 <meta property="og:description" content="Internet 100% fibra óptica feita por moradores de Arroio do Sal. Suporte local, sem robô, sem enrolação.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Conecte Telecom">
 <meta property="og:url" content="https://seconecte.net">
 <meta property="og:image" content="https://seconecte.net/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -27,7 +29,12 @@
 
 <!-- Schema LocalBusiness -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Conecte Telecom","description":"Provedor de internet fibra óptica em Arroio do Sal - RS","address":{"@type":"PostalAddress","streetAddress":"Rua Paulista, 183","addressLocality":"Arroio do Sal","addressRegion":"RS","addressCountry":"BR"},"telephone":"+555197597259","areaServed":"Arroio do Sal","openingHours":"Mo-Su 08:00-22:00","priceRange":"R$89-R$149"}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Conecte Telecom","description":"Provedor de internet fibra óptica em Arroio do Sal - RS","address":{"@type":"PostalAddress","streetAddress":"Rua Paulista, 183","addressLocality":"Arroio do Sal","addressRegion":"RS","addressCountry":"BR"},"telephone":"+555197597259","areaServed":"Arroio do Sal","openingHours":"Mo-Su 08:00-22:00"}
+</script>
+
+<!-- Schema FAQPage — rich snippets Google -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Vou ter que pagar pela instalação?","acceptedAnswer":{"@type":"Answer","text":"Não! A instalação é 100% gratuita. O roteador fica em comodato — sem custo adicional enquanto você for nosso cliente."}},{"@type":"Question","name":"A internet é realmente fibra óptica?","acceptedAnswer":{"@type":"Answer","text":"Sim, 100% fibra óptica de ponta a ponta — sem cabo coaxial misturado. Isso garante estabilidade e a velocidade que você contratou chegando de verdade."}},{"@type":"Question","name":"Tem fidelidade?","acceptedAnswer":{"@type":"Answer","text":"Os planos têm fidelidade de 12 meses."}},{"@type":"Question","name":"Vocês chegam até a minha rua?","acceptedAnswer":{"@type":"Answer","text":"Atendemos mais de 30 bairros em Arroio do Sal — do Loteamento Esmeralda à Praia Azul. Verifique na seção de cobertura ou mande mensagem no WhatsApp para confirmar."}},{"@type":"Question","name":"Sou veranista. Posso contratar por temporada?","acceptedAnswer":{"@type":"Answer","text":"Sim! Temos opções pensadas para temporadistas. Fala com a gente no WhatsApp — sem formulário, sem espera."}},{"@type":"Question","name":"E se der problema num domingo?","acceptedAnswer":{"@type":"Answer","text":"Atendemos 7 dias por semana. Não é robô, não é fila de 0800 — é alguém da cidade, que te responde pelo WhatsApp, de verdade."}}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,16 +413,6 @@ body {
   animation:fadeUp .7s ease both .26s;
 }
 
-.hero-trust {
-  display:flex; gap:28px; flex-wrap:wrap;
-  animation:fadeUp .7s ease both .34s;
-}
-.hero-trust-item {
-  display:flex; align-items:center; gap:8px;
-  color:rgba(255,255,255,.62); font-size:13px; font-weight:500;
-}
-.hero-trust-item i { color:var(--verde); font-size:13px; }
-
 /* Right — mascote */
 .hero-right {
   display:flex; align-items:center; justify-content:center;
@@ -500,7 +497,6 @@ body {
 @media(max-width:900px) {
   .hero-content { grid-template-columns:1fr; text-align:center; padding:120px 24px 80px; gap:48px; }
   .hero-ctas { justify-content:center; }
-  .hero-trust { justify-content:center; }
   .hero-sub { margin:0 auto 36px; }
   .hero-right { display:none; }
 }
@@ -523,12 +519,15 @@ body {
   gap:5px; flex:1; padding:0 16px;
 }
 .trust-num {
-  font-size:30px; font-weight:800; color:var(--azul); letter-spacing:-1.5px; line-height:1; white-space:nowrap;
+  font-size:30px; font-weight:800; color:var(--azul); letter-spacing:-1.5px; line-height:1; white-space:nowrap; opacity:0; transition:opacity .3s ease;
 }
 .trust-label { font-size:12px; color:var(--muted); font-weight:500; line-height:1.4; text-align:center; }
 .trust-div { width:1px; height:40px; background:var(--border); flex-shrink:0; }
 @media(max-width:700px) {
-  .trust-strip-inner { justify-content:center; gap:16px 32px; }
+  .trust-strip { position:relative; }
+  .trust-strip-inner { justify-content:flex-start; gap:16px 32px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; padding:0 24px; flex-wrap:nowrap; }
+  .trust-strip-inner::-webkit-scrollbar { display:none; }
+  .trust-strip::after { content:''; position:absolute; right:0; top:0; bottom:0; width:48px; background:linear-gradient(to left, white, transparent); pointer-events:none; }
   .trust-div { display:none; }
 }
 
@@ -1496,7 +1495,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 @media(max-width:900px) {
   .hero-content { grid-template-columns:1fr; text-align:center; padding:120px 24px 80px; gap:48px; }
   .hero-ctas { justify-content:center; }
-  .hero-trust { justify-content:center; }
   .hero-sub { margin:0 auto 36px; }
   .hero-right { display:none; }
   .id-inner { grid-template-columns:1fr; gap:48px; }
@@ -1523,8 +1521,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .hero-badge { font-size:11px; }
   .hero-ctas { flex-direction:column; align-items:stretch; }
   .hero-ctas .btn-primary,.hero-ctas .btn-glass { justify-content:center; }
-  .hero-trust { gap:14px; }
-  .hero-trust-item { font-size:12px; }
   .hero-waves { height:80px; }
 
   /* Trust strip */
@@ -2182,125 +2178,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 
 /* ================================================================
-   FINANCEIRO — SEÇÃO AJUDA FINANCEIRA
-   ================================================================ */
-.financeiro {
-  padding:80px 0;
-  background:var(--branco);
-  position:relative;
-  overflow:hidden;
-}
-.fin-wrap {
-  background:linear-gradient(135deg,var(--bg-tinted) 0%,var(--bg-mist) 100%);
-  border:1.5px solid rgba(10,126,226,.14);
-  border-radius:var(--r-2xl);
-  padding:60px;
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:52px;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-  box-shadow:var(--shadow-md);
-}
-.fin-wrap::before {
-  content:'';
-  position:absolute;
-  top:-40%;
-  right:-5%;
-  width:400px;
-  height:400px;
-  background:radial-gradient(circle,rgba(37,211,102,.06) 0%,transparent 65%);
-  pointer-events:none;
-}
-.fin-deco {
-  flex-shrink:0;
-}
-.fin-icon-wrap {
-  width:90px;
-  height:90px;
-  border-radius:var(--r-xl);
-  background:linear-gradient(135deg,#25D366 0%,#1ebe5d 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  color:white;
-  box-shadow:0 12px 40px rgba(37,211,102,.28);
-  animation:floatY 4s ease-in-out infinite;
-}
-.fin-content .section-tag { display:inline-flex; margin-bottom:16px; }
-.fin-title {
-  font-size:clamp(26px,3.5vw,40px);
-  font-weight:800;
-  letter-spacing:-1px;
-  line-height:1.08;
-  margin-bottom:14px;
-  color:var(--texto);
-}
-.fin-sub {
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.72;
-  margin-bottom:28px;
-  max-width:520px;
-}
-.fin-itens {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px 24px;
-  margin-bottom:32px;
-}
-.fin-item {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-size:14px;
-  font-weight:600;
-  color:var(--texto2);
-}
-.fin-item i {
-  width:16px;
-  text-align:center;
-  color:var(--verde);
-  font-size:13px;
-}
-.btn-wpp-fin {
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  background:#25D366;
-  color:white;
-  font-size:16px;
-  font-weight:800;
-  padding:16px 32px;
-  border-radius:var(--r-full);
-  text-decoration:none;
-  box-shadow:0 8px 28px rgba(37,211,102,.32);
-  transition:all .25s;
-  letter-spacing:-.2px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-}
-.btn-wpp-fin:hover {
-  background:#1ebe5d;
-  transform:translateY(-3px);
-  box-shadow:0 14px 40px rgba(37,211,102,.44);
-}
-.btn-wpp-fin i { font-size:20px; }
-
-@media(max-width:900px) {
-  .fin-wrap { grid-template-columns:1fr; gap:32px; padding:48px 36px; text-align:center; }
-  .fin-deco { display:flex; justify-content:center; }
-  .fin-itens { grid-template-columns:1fr; }
-  .fin-content .section-tag,.fin-item { justify-content:center; }
-  .fin-item { justify-content:flex-start; }
-}
-@media(max-width:600px) {
-  .financeiro { padding:56px 0; }
-  .fin-wrap { padding:36px 24px; border-radius:var(--r-xl); }
-}
-
-/* ================================================================
    ÁREA DO CLIENTE — REDESIGN PREMIUM TOTAL
    ================================================================ */
 .area-cliente {
@@ -2733,14 +2610,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   background:#0c1628;
   border-color:rgba(10,126,226,.22);
 }
-[data-theme="dark"] .financeiro { background:#0b1220; }
-[data-theme="dark"] .fin-wrap {
-  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.02) 100%);
-  border-color:rgba(37,211,102,.18);
-  box-shadow:var(--shadow-md);
-}
-[data-theme="dark"] .fin-title { color:rgba(255,255,255,.92); }
-[data-theme="dark"] .fin-item { color:rgba(255,255,255,.7); }
 /* ── Área do Cliente dark ── */
 [data-theme="dark"] .area-cliente {
   background:linear-gradient(152deg,#030810 0%,#050f22 22%,#062a5e 52%,#084d96 75%,#0a5eb5 100%);
@@ -2880,7 +2749,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     text-align: center;
   }
   .hero-ctas { justify-content: center; }
-  .hero-trust { justify-content: center; }
   .hero-sub { margin: 0 auto 32px; }
   .hero-right { display: none; }
 }
@@ -2933,7 +2801,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .diferenciais, .identidade, .como, .bairros, .depos,
   .veranistas, .localizacao, .faq, .speedtest, .insta-feed { padding: 72px 0; }
   .planos { padding: 72px 0; }
-  .financeiro { padding: 56px 0; }
   .cta-final { padding: 80px 0; }
   .section-wrap { padding: 0 20px; }
 
@@ -3191,29 +3058,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     border-radius: 16px; min-height: 56px;
   }
   .cta-online { font-size: 12.5px; margin-top: 20px; }
-}
-
-/* ================================================================
-   FINANCEIRO MOBILE
-   ================================================================ */
-@media (max-width: 768px) {
-  .fin-wrap {
-    padding: 34px 22px;
-    border-radius: 22px;
-    grid-template-columns: 1fr;
-    gap: 26px;
-    text-align: center;
-  }
-  .fin-deco { display: flex; justify-content: center; }
-  .fin-icon-wrap { width: 74px; height: 74px; font-size: 30px; border-radius: 20px; }
-  .fin-title { font-size: clamp(22px, 6vw, 32px); }
-  .fin-sub { font-size: 15px; margin-bottom: 20px; }
-  .fin-itens { grid-template-columns: 1fr; gap: 8px; }
-  .fin-item { justify-content: flex-start; }
-  .btn-wpp-fin {
-    width: 100%; justify-content: center;
-    padding: 16px 24px; border-radius: 16px; min-height: 54px;
-  }
 }
 
 /* ================================================================
@@ -3575,9 +3419,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 @media (max-width: 768px) {
   /* Botão speedtest: full-width com border-radius móvel */
   .btn-speedtest { border-radius: 16px !important; }
-
-  /* Botão financeiro WPP */
-  .btn-wpp-fin { border-radius: 16px !important; }
 
   /* FAQ: respostas com mais respiro */
   .faq-a p { padding-bottom: 20px; line-height: 1.74; }
@@ -4077,10 +3918,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     border-color: rgba(255,255,255,0.18) !important;
   }
 
-  /* ── Métricas: visíveis no mobile, fonte compacta ── */
-  .hero-trust { display: flex !important; gap: 10px 16px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 4px !important; }
-  .hero-trust-item { font-size: 11.5px !important; }
-
   /* ── Wave ── */
   .hero-waves { height: 72px !important; }
 }
@@ -4121,324 +3958,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   inset: 0;
 }
 
-/* ── SEGUNDA VIA ── */
-.segunda-via {
-  padding:100px 0;
-  background:linear-gradient(135deg,#f0f7ff 0%,#e8f3fd 100%);
-  border-top:1px solid var(--border);
-}
-
-.sv-card {
-  max-width:480px;
-  margin:40px auto 0;
-  background:white;
-  border-radius:24px;
-  border:1.5px solid var(--border);
-  padding:40px;
-  box-shadow:0 8px 40px rgba(10,126,226,.08);
-}
-
-.sv-step-label {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:15px;
-  font-weight:700;
-  color:var(--texto);
-  margin-bottom:20px;
-}
-.sv-step-num {
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:var(--azul);
-  color:white;
-  font-size:13px;
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-}
-
-.sv-input-group { margin-bottom:16px; }
-.sv-input-group input {
-  width:100%;
-  padding:14px 16px;
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  font-size:16px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  color:var(--texto);
-  box-sizing:border-box;
-  outline:none;
-  transition:border-color .2s, box-shadow .2s;
-  letter-spacing:1px;
-}
-.sv-input-group input:focus {
-  border-color:var(--azul);
-  box-shadow:0 0 0 3px rgba(10,126,226,.1);
-}
-
-.sv-btn-main {
-  width:100%;
-  padding:15px;
-  background:var(--azul);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:700;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  transition:all .2s;
-  margin-bottom:12px;
-}
-.sv-btn-main:hover { filter:brightness(1.1); transform:translateY(-1px); }
-.sv-btn-main:active { transform:translateY(0); }
-
-.sv-hint {
-  font-size:13px;
-  color:var(--muted);
-  margin:0 0 20px;
-  line-height:1.5;
-}
-.sv-otp-wrap {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:24px;
-}
-.sv-otp-input {
-  width:48px;
-  height:56px;
-  border:2px solid var(--border);
-  border-radius:12px;
-  text-align:center;
-  font-size:22px;
-  font-weight:800;
-  color:var(--texto);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  outline:none;
-  transition:all .2s;
-  caret-color:var(--azul);
-  background:white;
-}
-.sv-otp-input:focus {
-  border-color:var(--azul);
-  box-shadow:0 0 0 3px rgba(10,126,226,.12);
-  background:#f0f7ff;
-}
-.sv-otp-sep {
-  font-size:20px;
-  color:var(--border);
-  margin:0 2px;
-  user-select:none;
-}
-
-.sv-erro {
-  padding:11px 14px;
-  background:rgba(239,68,68,.06);
-  border:1px solid rgba(239,68,68,.2);
-  border-radius:10px;
-  font-size:13px;
-  color:#dc2626;
-  text-align:center;
-  margin-top:10px;
-}
-
-.sv-link-btn {
-  display:block;
-  width:100%;
-  background:none;
-  border:none;
-  font-size:13px;
-  color:var(--azul);
-  cursor:pointer;
-  text-align:center;
-  padding:8px;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  text-decoration:underline;
-  margin-top:4px;
-}
-
-.sv-voltar {
-  background:none;
-  border:1.5px solid var(--border);
-  border-radius:8px;
-  padding:7px 12px;
-  font-size:13px;
-  cursor:pointer;
-  color:var(--muted);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  transition:all .2s;
-  margin-bottom:20px;
-}
-.sv-voltar:hover { border-color:var(--azul); color:var(--azul); }
-
-.sv-resultado-header {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:20px;
-  flex-wrap:wrap;
-}
-.sv-nome {
-  font-size:15px;
-  font-weight:700;
-  color:var(--texto);
-}
-
-.sv-fatura-card {
-  border:1.5px solid var(--border);
-  border-radius:14px;
-  padding:18px 20px;
-  margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  transition:border-color .2s;
-}
-.sv-fatura-card:hover { border-color:var(--azul); }
-.sv-fatura-card.vencida {
-  border-color:rgba(239,68,68,.3);
-  background:rgba(239,68,68,.02);
-}
-.sv-fatura-valor {
-  font-size:20px;
-  font-weight:800;
-  color:var(--texto);
-  letter-spacing:-.5px;
-}
-.sv-fatura-venc {
-  font-size:12px;
-  color:var(--muted);
-  margin-top:3px;
-}
-.sv-status-badge {
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  font-size:11px;
-  font-weight:700;
-  padding:3px 9px;
-  border-radius:999px;
-  margin-top:6px;
-}
-.sv-status-badge.pendente { background:rgba(234,179,8,.1); color:#a16207; }
-.sv-status-badge.vencida  { background:rgba(239,68,68,.1);  color:#dc2626; }
-
-.sv-fatura-acoes {
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  flex-shrink:0;
-}
-.sv-btn-acao {
-  padding:8px 13px;
-  border-radius:9px;
-  font-size:12px;
-  font-weight:700;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  cursor:pointer;
-  border:none;
-  display:flex;
-  align-items:center;
-  gap:5px;
-  text-decoration:none;
-  white-space:nowrap;
-  transition:all .2s;
-}
-.sv-btn-ver  { background:var(--azul); color:white; }
-.sv-btn-ver:hover { filter:brightness(1.1); }
-.sv-btn-cod  { background:#f1f5f9; color:var(--texto2); border:1.5px solid var(--border); }
-.sv-btn-cod:hover { border-color:var(--azul); color:var(--azul); }
-
-.sv-vazio {
-  text-align:center;
-  padding:40px 20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  color:var(--muted);
-  font-size:14px;
-}
-.sv-vazio strong { font-size:17px; color:var(--texto); }
-
-.sv-modal {
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  backdrop-filter:blur(4px);
-}
-.sv-modal-box {
-  background:white;
-  border-radius:20px;
-  padding:32px;
-  max-width:460px;
-  width:100%;
-  box-shadow:0 24px 64px rgba(0,0,0,.2);
-}
-.sv-modal-title {
-  font-size:17px;
-  font-weight:800;
-  color:var(--texto);
-  margin-bottom:16px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.sv-modal-codigo {
-  background:#f8fafc;
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  padding:16px;
-  font-size:14px;
-  font-family:monospace;
-  color:var(--texto);
-  word-break:break-all;
-  line-height:1.8;
-  margin-bottom:16px;
-  user-select:all;
-  letter-spacing:1px;
-}
-.sv-modal-fechar {
-  width:100%;
-  padding:11px;
-  background:none;
-  border:1.5px solid var(--border);
-  border-radius:10px;
-  font-size:14px;
-  color:var(--muted);
-  cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  margin-top:10px;
-  transition:all .2s;
-}
-.sv-modal-fechar:hover { border-color:var(--azul); color:var(--azul); }
-
-@media(max-width:600px) {
-  .sv-card { padding:24px 18px; }
-  .sv-otp-input { width:42px; height:50px; font-size:20px; }
-  .sv-fatura-card { flex-direction:column; align-items:flex-start; }
-  .sv-fatura-acoes { flex-direction:row; width:100%; }
-  .sv-btn-acao { flex:1; justify-content:center; }
-}
 
 </style>
 </head>
@@ -4467,7 +3986,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#localizacao">Localização</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#area-do-cliente">Área do Cliente</a></li>
   </ul>
 
   <div class="nav-right">
@@ -4484,7 +4002,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Alternar tema">
       <i class="fas fa-moon"></i>
     </button>
-    <div class="nav-burger" onclick="openMob()" aria-label="Menu">
+    <div class="nav-burger" id="navBurger" onclick="openMob()" role="button" tabindex="0" aria-label="Abrir menu" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMob()}">
       <span></span><span></span><span></span>
     </div>
   </div>
@@ -4511,7 +4029,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <li><a href="#sobre" onclick="closeMob()"><i class="fas fa-users"></i> Sobre nós</a></li>
     <li><a href="#localizacao" onclick="closeMob()"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
     <li><a href="#faq" onclick="closeMob()"><i class="fas fa-question-circle"></i> Dúvidas</a></li>
-    <li><a href="#area-do-cliente" onclick="closeMob()"><i class="fas fa-user-circle"></i> Área do Cliente</a></li>
   </ul>
   <div class="mob-social-sect">
     <div class="mob-social-title">Nossas redes</div>
@@ -4610,7 +4127,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   </div>
 
   <!-- Mascote mobile (posicionado direto no hero, sem stacking context intermediário) -->
-  <div class="hero-mascote-mob" aria-hidden="true" style="position:absolute;bottom:106px;right:0;width:130px;z-index:3;display:none;">
+  <div class="hero-mascote-mob" aria-hidden="true" style="position:absolute;bottom:106px;right:0;width:130px;z-index:3;">
     <picture>
       <source srcset="img/mascote-hero.webp" type="image/webp">
       <img src="img/mascote-hero.png" alt="" style="width:130px;display:block;">
@@ -5098,14 +4615,14 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 
         <!-- CTA -->
         <div class="ac-cta-wrap">
-          <a href="https://cliente.seconecte.net" target="_blank" rel="noopener" class="ac-btn-main">
-            <i class="fas fa-user-circle"></i>
-            Acessar Área do Cliente
-            <i class="fas fa-arrow-right ac-btn-arrow"></i>
-          </a>
+          <div class="ac-btn-main ac-btn-soon" aria-disabled="true" style="opacity:.55;cursor:not-allowed;pointer-events:none;">
+            <i class="fas fa-clock"></i>
+            Em breve
+            <span class="ac-btn-arrow" style="font-size:12px;opacity:.7;font-weight:400;letter-spacing:0">— em desenvolvimento</span>
+          </div>
           <div class="ac-launch-note">
-            <i class="fas fa-lock"></i>
-            Ambiente seguro &middot; cliente.seconecte.net
+            <i class="fas fa-tools"></i>
+            A Área do Cliente estará disponível em breve
           </div>
         </div>
 
@@ -5488,7 +5005,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
     <div class="faq-header reveal">
       <div class="section-tag"><i class="fas fa-question-circle"></i> Perguntas frequentes</div>
       <div class="faq-mascote">
-        <img src="img/logo-conecte.png" alt="Conecte Telecom" style="height:72px;width:auto;filter:drop-shadow(0 4px 16px rgba(10,126,226,.3))">
+        <img src="img/mascote.png" alt="" style="height:72px;width:auto;filter:drop-shadow(0 4px 16px rgba(10,126,226,.3))">
       </div>
       <h2 class="section-title">Sem mistério,<br>sem letra miúda</h2>
       <p class="section-sub" style="margin:0 auto;max-width:480px">Se a gente não respondeu aqui, é só chamar no WhatsApp!</p>
@@ -5633,7 +5150,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="img/logo-conecte.png" alt="Conecte Telecom" style="height:44px;width:auto">
+        <img src="img/logo-conecte.png" alt="" style="height:44px;width:auto">
         <span class="footer-logo-name">Conecte <span>Telecom</span></span>
       </div>
       <p class="footer-desc">Provedor regional de internet 100% fibra óptica em Arroio do Sal — RS. Criado por moradores, para moradores.</p>
@@ -5724,12 +5241,16 @@ function openMob() {
   document.getElementById('mobOverlay').classList.add('open');
   document.getElementById('mobPanel').classList.add('open');
   document.querySelector('.nav-burger').classList.add('is-open');
+  document.getElementById('navBurger').setAttribute('aria-expanded', 'true');
+  document.getElementById('navBurger').setAttribute('aria-label', 'Fechar menu');
   document.body.style.overflow = 'hidden';
 }
 function closeMob() {
   document.getElementById('mobOverlay').classList.remove('open');
   document.getElementById('mobPanel').classList.remove('open');
   document.querySelector('.nav-burger').classList.remove('is-open');
+  document.getElementById('navBurger').setAttribute('aria-expanded', 'false');
+  document.getElementById('navBurger').setAttribute('aria-label', 'Abrir menu');
   document.body.style.overflow = '';
 }
 
@@ -5764,8 +5285,6 @@ function verificar() {
   window.open('https://wa.me/555197597259?text=' +
     encodeURIComponent('Olá! Gostaria de saber se vocês atendem no bairro: ' + b + '. Podem me confirmar?'), '_blank');
 }
-document.getElementById('bairroInput').addEventListener('keydown', e => { if (e.key === 'Enter') verificar(); });
-
 document.querySelectorAll('.rpill').forEach(pill => {
   pill.addEventListener('click', () => {
     const inp = document.getElementById('bairroInput');
@@ -5784,6 +5303,7 @@ document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
 /* Counter animation */
 function animateCount(el) {
+  el.style.opacity = '1';
   const target = parseInt(el.dataset.target);
   const suffix = el.dataset.suffix || '';
   const dur = 1800;
