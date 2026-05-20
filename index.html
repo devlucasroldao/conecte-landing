@@ -5109,7 +5109,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
         </div>
 
         <!-- STEP 1: CPF -->
-        <div id="sv-step-1">
+        <div id="sv-step-1" style="display:flex;flex-direction:column;flex:1">
           <div class="sv-step-label">
             <div class="sv-step-num">1</div>
             Informe seu CPF
@@ -5119,6 +5119,29 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
                    maxlength="14" inputmode="numeric"
                    oninput="svMaskCPF(this)"
                    onkeydown="if(event.key==='Enter') svSolicitar()">
+          </div>
+          <!-- Como funciona — empurrado para baixo, botão alinhado ao fundo -->
+          <div class="sv-explainer">
+            <div class="sv-exp-title">Como funciona</div>
+            <div class="sv-exp-steps">
+              <div class="sv-exp-step">
+                <div class="sv-exp-num">1</div>
+                <div class="sv-exp-label">Informe seu CPF</div>
+              </div>
+              <div class="sv-exp-arrow"><i class="fas fa-chevron-right"></i></div>
+              <div class="sv-exp-step">
+                <div class="sv-exp-num">2</div>
+                <div class="sv-exp-label">Confirme o código no e-mail</div>
+              </div>
+              <div class="sv-exp-arrow"><i class="fas fa-chevron-right"></i></div>
+              <div class="sv-exp-step">
+                <div class="sv-exp-num">3</div>
+                <div class="sv-exp-label">Baixe ou copie sua fatura</div>
+              </div>
+            </div>
+            <div class="sv-exp-security">
+              <i class="fas fa-lock"></i> Dados protegidos com criptografia
+            </div>
           </div>
           <button class="sv-btn-main" onclick="svSolicitar()">
             <span id="sv-btn1-text"><i class="fas fa-paper-plane"></i> Enviar código por e-mail</span>
@@ -5172,29 +5195,6 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           </div>
         </div>
 
-        <!-- Como funciona + segurança -->
-        <div class="sv-explainer">
-          <div class="sv-exp-title">Como funciona</div>
-          <div class="sv-exp-steps">
-            <div class="sv-exp-step">
-              <div class="sv-exp-num">1</div>
-              <div class="sv-exp-label">Informe seu CPF</div>
-            </div>
-            <div class="sv-exp-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="sv-exp-step">
-              <div class="sv-exp-num">2</div>
-              <div class="sv-exp-label">Confirme o código no e-mail</div>
-            </div>
-            <div class="sv-exp-arrow"><i class="fas fa-chevron-right"></i></div>
-            <div class="sv-exp-step">
-              <div class="sv-exp-num">3</div>
-              <div class="sv-exp-label">Baixe ou copie sua fatura</div>
-            </div>
-          </div>
-          <div class="sv-exp-security">
-            <i class="fas fa-lock"></i> Dados protegidos com criptografia
-          </div>
-        </div>
 
       </div><!-- /COL 1 -->
 
