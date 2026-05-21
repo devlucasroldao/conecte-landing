@@ -4020,6 +4020,108 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   inset: 0;
 }
 
+/* ================================================================
+   SHARE FAB + TOAST + NUDGE
+   ================================================================ */
+.share-fab {
+  position: fixed;
+  bottom: calc(74px + env(safe-area-inset-bottom) + 14px);
+  right: 16px;
+  z-index: 399;
+}
+@media (min-width: 769px) {
+  .share-fab { bottom: 100px; right: 24px; }
+}
+.share-fab button {
+  width: 48px; height: 48px;
+  background: var(--azul);
+  border: none; cursor: pointer;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: white;
+  box-shadow: 0 8px 28px rgba(10,126,226,.45);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  position: relative;
+}
+@media (min-width: 769px) {
+  .share-fab button { width: 52px; height: 52px; font-size: 22px; }
+}
+.share-fab button:hover { transform: scale(1.13); box-shadow: 0 12px 40px rgba(10,126,226,.6); }
+.share-fab button:active { transform: scale(.93); }
+.share-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--azul);
+  animation: pulse 2.8s ease-out infinite;
+  animation-delay: .5s;
+}
+.share-tip {
+  position: absolute; right: 60px; top: 50%;
+  transform: translateY(-50%);
+  background: white; color: var(--texto);
+  font-size: 13px; font-weight: 700;
+  padding: 9px 16px; border-radius: 12px;
+  white-space: nowrap; box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.share-fab:hover .share-tip { opacity: 1; }
+.share-tip::after {
+  content: ''; position: absolute; left: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent; border-left-color: white;
+}
+[data-theme="dark"] .share-tip { background: #1c2a3e; color: rgba(255,255,255,.9); }
+[data-theme="dark"] .share-tip::after { border-left-color: #1c2a3e; }
+
+/* Toast */
+.share-toast {
+  position: fixed;
+  bottom: calc(74px + env(safe-area-inset-bottom) + 72px);
+  left: 50%; transform: translateX(-50%) translateY(12px);
+  background: #0d1117; color: white;
+  font-size: 14px; font-weight: 700;
+  padding: 13px 24px; border-radius: 50px;
+  display: flex; align-items: center; gap: 9px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.38);
+  z-index: 9999;
+  opacity: 0; pointer-events: none;
+  transition: opacity .28s, transform .28s cubic-bezier(.34,1.56,.64,1);
+  white-space: nowrap;
+}
+.share-toast i { color: #22c55e; font-size: 15px; }
+.share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (min-width: 769px) {
+  .share-toast { bottom: 32px; }
+}
+[data-theme="dark"] .share-toast { background: #1c2a3e; box-shadow: 0 8px 40px rgba(0,0,0,.6); }
+
+/* Share Nudge — seção de avaliações */
+.share-nudge { margin-top: 28px; display: flex; justify-content: center; }
+.share-nudge-inner {
+  display: flex; align-items: center; gap: 18px;
+  background: rgba(10,126,226,.05);
+  border: 1.5px solid rgba(10,126,226,.13);
+  padding: 16px 28px; border-radius: var(--r-xl);
+  flex-wrap: wrap; justify-content: center;
+}
+.share-nudge-inner p {
+  margin: 0; font-size: 14px; color: var(--muted);
+  font-weight: 500; text-align: center; line-height: 1.5;
+}
+.btn-share-cta {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--azul); color: white;
+  border: none; cursor: pointer;
+  padding: 11px 22px; border-radius: var(--r-full);
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 20px rgba(10,126,226,.3);
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+  white-space: nowrap; flex-shrink: 0;
+}
+.btn-share-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,126,226,.45); }
+.btn-share-cta:active { transform: scale(.96); }
+[data-theme="dark"] .share-nudge-inner { background: rgba(10,126,226,.1); border-color: rgba(10,126,226,.2); }
+[data-theme="dark"] .share-nudge-inner p { color: rgba(255,255,255,.55); }
+
 
 </style>
 </head>
@@ -5009,6 +5111,16 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       </div>
     </div>
 
+    <div class="share-nudge reveal d3">
+      <div class="share-nudge-inner">
+        <p>Gostou das avaliações? Indique a Conecte para seus vizinhos e amigos! 💙</p>
+        <button class="btn-share-cta" onclick="shareConecte()">
+          <i class="fas fa-share-nodes"></i>
+          <span>Compartilhar com alguém</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -5342,6 +5454,22 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 </footer>
 
 <!-- ================================================================
+     SHARE FAB
+     ================================================================ -->
+<div class="share-fab" id="shareFab">
+  <div class="share-tip">Compartilhar o site</div>
+  <button onclick="shareConecte()" aria-label="Compartilhar o site da Conecte Telecom">
+    <div class="share-ring"></div>
+    <i class="fas fa-share-nodes"></i>
+  </button>
+</div>
+
+<div class="share-toast" id="shareToast" role="status" aria-live="polite">
+  <i class="fas fa-check-circle"></i>
+  <span>Link copiado! ✨</span>
+</div>
+
+<!-- ================================================================
      FLOATING WPP
      ================================================================ -->
 <div class="wpp-fab">
@@ -5364,6 +5492,40 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
      JAVASCRIPT
      ================================================================ -->
 <script>
+/* Compartilhar */
+async function shareConecte() {
+  const shareData = {
+    title: 'Conecte Telecom — Fibra óptica em Arroio do Sal',
+    text: 'É mais que internet, é Conecte 💙',
+    url: 'https://seconecte.net'
+  };
+  if (navigator.share) {
+    try { await navigator.share(shareData); }
+    catch(e) { if (e.name !== 'AbortError') copyShareLink(); }
+  } else {
+    copyShareLink();
+  }
+}
+function copyShareLink() {
+  const url = 'https://seconecte.net';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(showShareToast).catch(() => legacyCopy(url));
+  } else {
+    legacyCopy(url);
+  }
+}
+function legacyCopy(text) {
+  const t = document.createElement('textarea');
+  t.value = text; t.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); showShareToast(); } finally { document.body.removeChild(t); }
+}
+function showShareToast() {
+  const el = document.getElementById('shareToast');
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 3200);
+}
+
 /* Progress bar */
 window.addEventListener('scroll', () => {
   const doc = document.documentElement;
