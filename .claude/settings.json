@@ -104,7 +104,8 @@
       "Bash(pkill -f \"python -m http.server 8099\")",
       "PowerShell($f = \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\"; $info = Get-Item $f; Write-Host \"Tamanho: $\\($info.Length\\) bytes \\($\\([math]::Round\\($info.Length/1KB, 1\\)\\) KB\\)\")",
       "PowerShell(node --version)",
-      "PowerShell(npm --version)"
+      "PowerShell(npm --version)",
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\" \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\og-image.jpg\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
