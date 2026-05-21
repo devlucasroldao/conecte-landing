@@ -11,22 +11,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Conecte Telecom — É mais que internet, é Conecte! | Arroio do Sal</title>
 <meta name="description" content="Internet fibra óptica em Arroio do Sal — RS. Atendimento humanizado, equipe local, suporte todos os dias. É mais que internet, é Conecte!">
-<meta property="og:title" content="Conecte Telecom — Fibra de verdade em Arroio do Sal">
-<meta property="og:description" content="Internet 100% fibra óptica feita por moradores de Arroio do Sal. Suporte local, sem robô, sem enrolação.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://seconecte.net/">
 <meta property="og:site_name" content="Conecte Telecom">
-<meta property="og:url" content="https://seconecte.net">
+<meta property="og:title" content="Conecte Telecom — Internet fibra óptica em Arroio do Sal">
+<meta property="og:description" content="Internet sem enrolação, suporte humanizado e uma equipe que mora aqui. Fibra óptica de verdade em Arroio do Sal.">
 <meta property="og:image" content="https://seconecte.net/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Conecte Telecom — Fibra óptica em Arroio do Sal">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Conecte Telecom — Fibra de verdade em Arroio do Sal">
-<meta name="twitter:description" content="Internet 100% fibra óptica feita por moradores de Arroio do Sal. Suporte local, sem robô, sem enrolação.">
+<meta name="twitter:title" content="Conecte Telecom — Internet fibra óptica em Arroio do Sal">
+<meta name="twitter:description" content="Internet sem enrolação, suporte humanizado e uma equipe que mora aqui.">
 <meta name="twitter:image" content="https://seconecte.net/img/og-image.jpg">
 <meta name="twitter:image:alt" content="Conecte Telecom — Fibra óptica em Arroio do Sal">
-<meta property="og:image:alt" content="Conecte Telecom — Fibra óptica em Arroio do Sal">
-<link rel="canonical" href="https://seconecte.net">
+<link rel="canonical" href="https://seconecte.net/">
 <meta name="theme-color" content="#0a7ee2">
 
 <!-- Schema LocalBusiness -->
@@ -5495,9 +5495,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 /* Compartilhar */
 async function shareConecte() {
   const shareData = {
-    title: 'Conecte Telecom — Fibra óptica em Arroio do Sal',
-    text: 'É mais que internet, é Conecte 💙',
-    url: 'https://seconecte.net'
+    title: 'Conecte Telecom',
+    text: 'Olha essa internet fibra aqui de Arroio do Sal 👀',
+    url: 'https://seconecte.net/'
   };
   if (navigator.share) {
     try { await navigator.share(shareData); }
@@ -5507,7 +5507,7 @@ async function shareConecte() {
   }
 }
 function copyShareLink() {
-  const url = 'https://seconecte.net';
+  const url = 'https://seconecte.net/';
   if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(showShareToast).catch(() => legacyCopy(url));
   } else {

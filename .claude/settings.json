@@ -101,7 +101,10 @@
       "PowerShell(\\(Get-Command npx\\).Source | Split-Path)",
       "Read(//c/Program Files/nodejs/node_modules/**)",
       "Read(//c/Users/lucas/AppData/Local/Temp/**)",
-      "Bash(pkill -f \"python -m http.server 8099\")"
+      "Bash(pkill -f \"python -m http.server 8099\")",
+      "PowerShell($f = \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\"; $info = Get-Item $f; Write-Host \"Tamanho: $\\($info.Length\\) bytes \\($\\([math]::Round\\($info.Length/1KB, 1\\)\\) KB\\)\")",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
