@@ -107,7 +107,13 @@
       "PowerShell(npm --version)",
       "PowerShell(Copy-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\" \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\og-image.jpg\")",
       "PowerShell(cd \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\"; $f = Get-Item \"og-image.jpg\"; Write-Host \"Tamanho: $\\([math]::Round\\($f.Length/1KB,1\\)\\) KB\"; $bytes = [System.IO.File]::ReadAllBytes\\($f.FullName\\); Write-Host \"Formato: $\\($bytes[0].ToString\\('X2'\\)\\) $\\($bytes[1].ToString\\('X2'\\)\\)\")",
-      "PowerShell(Copy-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\og-image.jpg\" \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\" -Force)"
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\og-image.jpg\" \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\" -Force)",
+      "PowerShell($file = \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\"; $size = \\(Get-Item $file\\).Length; \"$\\([math]::Round\\($size/1KB, 1\\)\\) KB\")",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\" -Recurse -File | Select-Object Name, @{N='KB';E={[math]::Round\\($_.Length/1KB,1\\)}} | Sort-Object KB -Descending | Format-Table -AutoSize)",
+      "PowerShell($tools = @\\(\"cwebp\",\"magick\",\"ffmpeg\",\"sharp\"\\); foreach\\($t in $tools\\){ $r = Get-Command $t -ErrorAction SilentlyContinue; if\\($r\\){ \"$t -> $\\($r.Source\\)\" } else { \"$t -> nao encontrado\" } })",
+      "PowerShell(node -e \"try{require\\('sharp'\\);console.log\\('sharp ok'\\)}catch\\(e\\){console.log\\('no sharp'\\)}\" 2>$null)",
+      "PowerShell(node --version 2>$null)",
+      "PowerShell($f = Get-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\escritorio.webp\"; \"$\\([math]::Round\\($f.Length/1KB,1\\)\\) KB \\(era 467 KB\\)\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
