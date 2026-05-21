@@ -2382,14 +2382,28 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 /* Dynamic island */
 .ac-phone-notch {
-  width:120px;height:32px;
+  width:92px;height:30px;
   background:#1c1c1e;
-  border-radius:0 0 22px 22px;
+  border-radius:0 0 20px 20px;
   margin:0 auto;
   display:flex;align-items:center;justify-content:center;
-  gap:8px;
+  gap:7px;
   position:relative;z-index:2;
   box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+/* Status bar */
+.ac-phone-statusbar {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 18px 4px;
+  background:#f2f2f7;
+}
+.ac-phone-time {
+  font-size:11px;font-weight:700;
+  color:#1c1c1e;letter-spacing:-.2px;
+}
+.ac-phone-sb-icons {
+  display:flex;align-items:center;gap:5px;
+  font-size:10px;color:#1c1c1e;
 }
 .ac-phone-notch-cam {
   width:11px;height:11px;border-radius:50%;
@@ -2404,7 +2418,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 /* App header (stays blue) */
 .ac-phone-header {
   background:linear-gradient(150deg,#1488f0 0%,#0563b8 100%);
-  padding:16px 17px 38px;
+  padding:22px 17px 64px;
   position:relative;overflow:hidden;
 }
 .ac-phone-header::before {
@@ -2464,15 +2478,15 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 /* Phone content — light theme */
 .ac-phone-content {
-  padding:20px 13px 14px;
-  display:flex;flex-direction:column;gap:9px;
+  padding:28px 13px 22px;
+  display:flex;flex-direction:column;gap:14px;
 }
 /* Connection status card */
 .ac-phone-status {
   background:white;
   border:1px solid rgba(34,197,94,.22);
   border-radius:14px;
-  padding:11px 12px;
+  padding:16px 12px;
   display:flex;align-items:center;gap:10px;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
@@ -2509,7 +2523,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   background:white;
   border:1px solid #e5e7eb;
   border-radius:14px;
-  padding:11px 12px;
+  padding:16px 12px;
   display:flex;align-items:center;justify-content:space-between;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
@@ -2535,7 +2549,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 .ac-phone-action {
   display:flex;flex-direction:column;align-items:center;
-  gap:4px;padding:10px 4px;
+  gap:5px;padding:15px 4px;
   background:white;
   border:1px solid #e5e7eb;
   border-radius:12px;
@@ -2543,10 +2557,10 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   color:#4b5563;text-align:center;
   box-shadow:0 1px 3px rgba(0,0,0,.05);
 }
-.ac-phone-action i { font-size:15px;color:#0a7ee2; }
+.ac-phone-action i { font-size:16px;color:#0a7ee2; }
 /* Home indicator */
 .ac-phone-bar {
-  height:26px;display:flex;align-items:center;justify-content:center;
+  height:38px;display:flex;align-items:center;justify-content:center;
   background:#f2f2f7;
 }
 .ac-phone-bar-line {
@@ -4558,6 +4572,16 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="ac-phone-notch" aria-hidden="true">
             <div class="ac-phone-notch-cam"></div>
             <div class="ac-phone-notch-dot"></div>
+          </div>
+
+          <!-- Status bar -->
+          <div class="ac-phone-statusbar" aria-hidden="true">
+            <span class="ac-phone-time">9:41</span>
+            <div class="ac-phone-sb-icons">
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-three-quarters"></i>
+            </div>
           </div>
 
           <!-- App header gradient -->
