@@ -232,6 +232,15 @@ body {
 }
 .nav-btn-wpp:hover { background:#1ebe5d; transform:translateY(-1px); box-shadow:0 6px 22px rgba(37,211,102,.4); }
 
+.nav-btn-cliente {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:13px; font-weight:700; padding:9px 18px; border-radius:var(--r-full);
+  color:white; background:var(--azul); text-decoration:none;
+  box-shadow:0 4px 14px rgba(10,126,226,.3); transition:all .2s;
+}
+.nav-btn-cliente:hover { background:#0a6fc2; transform:translateY(-1px); box-shadow:0 6px 22px rgba(10,126,226,.45); }
+#nav:not(.scrolled) .nav-btn-cliente { background:rgba(10,126,226,.82); box-shadow:0 4px 14px rgba(10,126,226,.25); }
+
 .nav-burger {
   display:none; flex-direction:column; gap:5px; cursor:pointer;
   padding:9px; border-radius:10px; border:1.5px solid rgba(255,255,255,.2);
@@ -242,7 +251,7 @@ body {
 #nav.scrolled .nav-burger span { background:var(--texto); }
 
 @media(max-width:960px) {
-  .nav-links,.nav-btn-outline { display:none; }
+  .nav-links,.nav-btn-outline,.nav-btn-cliente { display:none; }
   .nav-burger { display:flex; }
   #nav { padding:16px 20px; }
   #nav.scrolled { padding:12px 20px; }
@@ -1685,6 +1694,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 [data-theme="dark"] #nav.scrolled .nav-links a:hover { color:white; background:rgba(255,255,255,.08); }
 [data-theme="dark"] #nav.scrolled .nav-btn-outline { color:rgba(10,126,226,.92); border-color:rgba(10,126,226,.3); }
 [data-theme="dark"] #nav.scrolled .nav-btn-outline:hover { background:rgba(10,126,226,.12); }
+[data-theme="dark"] .nav-btn-cliente { background:var(--azul); }
+[data-theme="dark"] .nav-btn-cliente:hover { background:#0a6fc2; }
 [data-theme="dark"] #nav.scrolled .nav-burger { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.1); }
 [data-theme="dark"] #nav.scrolled .nav-burger span { background:rgba(255,255,255,.85); }
 [data-theme="dark"] #nav.scrolled .theme-toggle { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.75); }
@@ -4159,6 +4170,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
        class="nav-insta" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
+    <a href="#" class="nav-btn-cliente" target="_blank" rel="noopener">
+      <i class="fas fa-user-circle"></i> Área do Cliente
+    </a>
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="nav-btn-wpp">
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
@@ -4206,6 +4220,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   <div class="mob-foot">
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="btn-wpp-full"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
     <a href="#planos" onclick="closeMob()" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-wifi"></i> Ver planos</a>
+    <a href="#" target="_blank" rel="noopener" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-user-circle"></i> Área do Cliente</a>
   </div>
 </div>
 
