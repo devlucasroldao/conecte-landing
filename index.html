@@ -2326,66 +2326,103 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 .ac-phone-glow {
   position:absolute;top:50px;left:50%;
   transform:translateX(-50%);
-  width:340px;height:340px;
+  width:380px;height:380px;
   background:radial-gradient(circle,rgba(10,126,226,.4) 0%,transparent 65%);
   pointer-events:none;border-radius:50%;filter:blur(28px);
 }
+/* ── iPhone 17-style titanium frame ── */
+.ac-phone-frame {
+  position:relative;
+  z-index:1;
+  flex-shrink:0;
+  border-radius:54px;
+  background:linear-gradient(155deg,#5a5a5e 0%,#2c2c2e 15%,#1c1c1e 35%,#2c2c2e 55%,#3d3d41 80%,#1c1c1e 100%);
+  padding:10px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.18),
+    inset 0 -2px 0 rgba(0,0,0,.45),
+    inset 2px 0 0 rgba(255,255,255,.07),
+    inset -2px 0 0 rgba(0,0,0,.3),
+    0 60px 160px rgba(0,0,0,.65),
+    0 20px 40px rgba(0,0,0,.35),
+    0 0 90px rgba(10,126,226,.25);
+}
+/* Physical side buttons — left */
+.ac-phone-btn-action,
+.ac-phone-btn-vol-up,
+.ac-phone-btn-vol-down {
+  position:absolute;
+  left:-4px;
+  width:4px;
+  background:linear-gradient(90deg,#1c1c1e,#3d3d41,#1c1c1e);
+  border-radius:2px 0 0 2px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.ac-phone-btn-action  { top:88px;height:24px; }
+.ac-phone-btn-vol-up  { top:138px;height:46px; }
+.ac-phone-btn-vol-down{ top:200px;height:46px; }
+/* Power button — right */
+.ac-phone-btn-power {
+  position:absolute;
+  right:-4px;
+  top:158px;
+  width:4px;height:68px;
+  background:linear-gradient(270deg,#1c1c1e,#3d3d41,#1c1c1e);
+  border-radius:0 2px 2px 0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+/* Phone screen */
 .ac-phone {
   width:322px;
-  background:linear-gradient(170deg,#0f1e35 0%,#091528 50%,#060f1e 100%);
-  border-radius:48px;
-  border:1.5px solid rgba(255,255,255,.12);
-  box-shadow:
-    0 56px 140px rgba(0,0,0,.6),
-    0 0 0 1px rgba(255,255,255,.05),
-    inset 0 1px 0 rgba(255,255,255,.1),
-    0 0 100px rgba(10,126,226,.2);
+  background:#f2f2f7;
+  border-radius:44px;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.06);
   overflow:hidden;
   position:relative;z-index:1;flex-shrink:0;
 }
 /* Dynamic island */
 .ac-phone-notch {
   width:120px;height:32px;
-  background:#020d1a;
-  border-radius:0 0 24px 24px;
+  background:#1c1c1e;
+  border-radius:0 0 22px 22px;
   margin:0 auto;
   display:flex;align-items:center;justify-content:center;
   gap:8px;
   position:relative;z-index:2;
-  box-shadow:0 4px 14px rgba(0,0,0,.45);
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
 }
 .ac-phone-notch-cam {
   width:11px;height:11px;border-radius:50%;
-  background:#0e1e32;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:inset 0 0 5px rgba(10,126,226,.35);
+  background:#111;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:inset 0 0 5px rgba(10,126,226,.4);
 }
 .ac-phone-notch-dot {
   width:5px;height:5px;border-radius:50%;
-  background:rgba(10,126,226,.65);
+  background:rgba(10,126,226,.7);
 }
-/* App header */
+/* App header (stays blue) */
 .ac-phone-header {
-  background:linear-gradient(150deg,#0a7ee2 0%,#0563b8 100%);
-  padding:20px 22px 40px;
+  background:linear-gradient(150deg,#1488f0 0%,#0563b8 100%);
+  padding:18px 20px 42px;
   position:relative;overflow:hidden;
 }
 .ac-phone-header::before {
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,transparent 60%);
+  background:linear-gradient(180deg,rgba(255,255,255,.12) 0%,transparent 60%);
 }
 .ac-phone-header::after {
   content:'';
   position:absolute;
   bottom:-20px;left:50%;transform:translateX(-50%);
   width:200%;height:40px;
-  background:#091528;
+  background:#f2f2f7;
   border-radius:50% 50% 0 0;
 }
 .ac-phone-header-top {
   display:flex;align-items:center;gap:8px;
-  margin-bottom:12px;
+  margin-bottom:14px;
   position:relative;z-index:1;
 }
 .ac-phone-logo {
@@ -2400,99 +2437,121 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   color:rgba(255,255,255,.7);
   text-transform:uppercase;letter-spacing:1.5px;
 }
+/* Greeting row with user avatar */
+.ac-phone-greeting-row {
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:1;
+}
 .ac-phone-greeting {
   font-size:20px;font-weight:900;color:white;
-  letter-spacing:-.5px;position:relative;z-index:1;
+  letter-spacing:-.5px;
 }
 .ac-phone-sub {
-  font-size:11.5px;color:rgba(255,255,255,.62);
-  margin-top:3px;position:relative;z-index:1;
+  font-size:11.5px;color:rgba(255,255,255,.65);
+  margin-top:3px;
 }
-/* Phone content */
+/* User avatar placeholder (replace with <img> when ready) */
+.ac-user-avatar {
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.22);
+  border:2.5px solid rgba(255,255,255,.55);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.9);font-size:20px;
+  flex-shrink:0;overflow:hidden;
+}
+.ac-user-avatar img {
+  width:100%;height:100%;object-fit:cover;
+}
+/* Phone content — light theme */
 .ac-phone-content {
-  padding:24px 20px 18px;
-  display:flex;flex-direction:column;gap:11px;
+  padding:22px 16px 16px;
+  display:flex;flex-direction:column;gap:10px;
 }
-/* Connection status card — clean */
+/* Connection status card */
 .ac-phone-status {
-  background:rgba(34,197,94,.09);
-  border:1px solid rgba(34,197,94,.25);
-  border-radius:20px;
-  padding:15px 18px;
-  display:flex;align-items:center;gap:12px;
+  background:white;
+  border:1px solid rgba(34,197,94,.22);
+  border-radius:16px;
+  padding:13px 14px;
+  display:flex;align-items:center;gap:11px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .ac-phone-status-icon {
-  width:38px;height:38px;border-radius:50%;
-  background:rgba(34,197,94,.16);
-  color:#4ade80;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(34,197,94,.12);
+  color:#16a34a;
   display:flex;align-items:center;justify-content:center;
-  font-size:17px;flex-shrink:0;
+  font-size:16px;flex-shrink:0;
 }
 .ac-phone-status-lbl {
-  font-size:13px;font-weight:900;color:#4ade80;letter-spacing:-.2px;
+  font-size:13px;font-weight:900;color:#16a34a;letter-spacing:-.2px;
 }
 .ac-phone-status-val {
-  font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;font-weight:600;
+  font-size:11.5px;color:#6b7280;margin-top:2px;font-weight:600;
 }
 .ac-phone-status-badge {
   margin-left:auto;flex-shrink:0;
   display:flex;align-items:center;gap:5px;
-  background:rgba(34,197,94,.15);
-  border:1px solid rgba(34,197,94,.3);
-  color:#4ade80;
-  font-size:10.5px;font-weight:800;
-  padding:5px 11px;border-radius:999px;
+  background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.25);
+  color:#15803d;
+  font-size:10px;font-weight:800;
+  padding:4px 10px;border-radius:999px;
 }
 .ac-phone-status-badge .ac-dot {
   width:6px;height:6px;border-radius:50%;
-  background:#4ade80;
+  background:#22c55e;
   animation:blink 2s ease-in-out infinite;
   display:inline-block;
 }
 /* Invoice card */
 .ac-phone-invoice {
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:20px;
-  padding:15px 18px;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:13px 14px;
   display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .ac-phone-inv-lbl {
   font-size:10px;font-weight:700;
   text-transform:uppercase;letter-spacing:.8px;
-  color:rgba(255,255,255,.38);
+  color:#9ca3af;
 }
 .ac-phone-inv-val {
-  font-size:26px;font-weight:900;color:white;
+  font-size:24px;font-weight:900;color:#111827;
   letter-spacing:-1px;margin-top:3px;
 }
 .ac-phone-inv-badge {
   display:flex;align-items:center;gap:5px;
-  font-size:11.5px;font-weight:700;color:#4ade80;
-  background:rgba(34,197,94,.12);
-  padding:7px 13px;border-radius:999px;flex-shrink:0;
+  font-size:11px;font-weight:700;color:#15803d;
+  background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.2);
+  padding:7px 12px;border-radius:999px;flex-shrink:0;
 }
 /* Quick actions */
 .ac-phone-actions {
-  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
 }
 .ac-phone-action {
   display:flex;flex-direction:column;align-items:center;
-  gap:6px;padding:13px 8px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;
-  font-size:9.5px;font-weight:700;
-  color:rgba(255,255,255,.55);text-align:center;
+  gap:5px;padding:12px 5px;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  font-size:9px;font-weight:700;
+  color:#4b5563;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
 }
-.ac-phone-action i { font-size:17px;color:#93c5fd; }
+.ac-phone-action i { font-size:16px;color:#0a7ee2; }
 /* Home indicator */
 .ac-phone-bar {
-  height:32px;display:flex;align-items:center;justify-content:center;
+  height:28px;display:flex;align-items:center;justify-content:center;
+  background:#f2f2f7;
 }
 .ac-phone-bar-line {
-  width:110px;height:4px;border-radius:2px;
-  background:rgba(255,255,255,.2);
+  width:100px;height:4px;border-radius:2px;
+  background:rgba(0,0,0,.18);
 }
 /* ── Mascote ── */
 .ac-mascote-wrap {
@@ -2607,7 +2666,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .ac-headline { letter-spacing:-2px; }
   .ac-body { grid-template-columns:1fr;gap:44px; }
   .ac-phone-wrap { justify-content:center; }
-  .ac-phone { width:330px; }
+  .ac-phone { width:310px; }
+  .ac-phone-frame { border-radius:50px; }
   .ac-mascote { width:106px; }
   .ac-right { padding-top:0; }
 }
@@ -2616,7 +2676,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .ac-hero { margin-bottom:40px; }
   .ac-headline { font-size:clamp(30px,10vw,44px);letter-spacing:-1.5px; }
   .ac-subtitle { font-size:15px; }
-  .ac-phone { width:285px; }
+  .ac-phone { width:262px; }
+  .ac-phone-frame { border-radius:46px;padding:8px; }
   .ac-feat-item { padding:14px 16px; }
   .ac-feat-title { font-size:13.5px; }
   .ac-mascote-wrap { right:-6px; }
@@ -4486,7 +4547,13 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
       <div class="ac-phone-wrap reveal">
         <div class="ac-phone-glow" aria-hidden="true"></div>
 
-        <div class="ac-phone">
+        <div class="ac-phone-frame">
+          <div class="ac-phone-btn-action" aria-hidden="true"></div>
+          <div class="ac-phone-btn-vol-up" aria-hidden="true"></div>
+          <div class="ac-phone-btn-vol-down" aria-hidden="true"></div>
+          <div class="ac-phone-btn-power" aria-hidden="true"></div>
+
+          <div class="ac-phone">
           <!-- Dynamic island -->
           <div class="ac-phone-notch" aria-hidden="true">
             <div class="ac-phone-notch-cam"></div>
@@ -4499,8 +4566,15 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
               <img src="img/logo-conecte.png" alt="" class="ac-phone-logo" loading="lazy">
               <div class="ac-phone-header-name">Conecte Telecom</div>
             </div>
-            <div class="ac-phone-greeting">Olá, Fulano! 👋</div>
-            <div class="ac-phone-sub">Bem-vindo à sua área</div>
+            <div class="ac-phone-greeting-row">
+              <div>
+                <div class="ac-phone-greeting">Olá, Fulano! 👋</div>
+                <div class="ac-phone-sub">Bem-vindo à sua área</div>
+              </div>
+              <div class="ac-user-avatar" aria-label="Foto do usuário">
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
           </div>
 
           <!-- App content -->
@@ -4543,7 +4617,8 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
           <div class="ac-phone-bar" aria-hidden="true">
             <div class="ac-phone-bar-line"></div>
           </div>
-        </div>
+          </div><!-- /.ac-phone -->
+        </div><!-- /.ac-phone-frame -->
 
         <!-- Mascote Gasturinha -->
         <div class="ac-mascote-wrap">

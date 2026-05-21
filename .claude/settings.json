@@ -75,7 +75,15 @@
       "Bash(npx serve *)",
       "Bash(Start-Process \"http://localhost:3939/#avaliacoes\")",
       "PowerShell(Start-Process \"http://localhost:3939/#avaliacoes\")",
-      "Bash(python -m http.server 3939)"
+      "Bash(python -m http.server 3939)",
+      "Bash(npx --version)",
+      "Bash(npx playwright *)",
+      "Bash(cd /tmp)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Read(//tmp/**)",
+      "Read(//c/tmp/**)",
+      "Bash(pkill -f \"serve \\\\.\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
