@@ -74,7 +74,8 @@
       "PowerShell($content = Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -Raw -Encoding UTF8; $idx = $content.IndexOf\\('<!-- Instagram -->'\\); $content.Substring\\($idx, 400\\))",
       "Bash(npx serve *)",
       "Bash(Start-Process \"http://localhost:3939/#avaliacoes\")",
-      "PowerShell(Start-Process \"http://localhost:3939/#avaliacoes\")"
+      "PowerShell(Start-Process \"http://localhost:3939/#avaliacoes\")",
+      "Bash(python -m http.server 3939)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
