@@ -71,7 +71,10 @@
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\\" -File | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })",
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\\" -File | Where-Object { $_.Extension -match '\\\\.\\(png|webp|jpg|jpeg\\)$' } | ForEach-Object { \"$\\($_.Name\\) — $\\([math]::Round\\($_.Length/1KB,0\\)\\) KB\" })",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\"\\); \"Dimensões: $\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
-      "PowerShell($content = Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -Raw -Encoding UTF8; $idx = $content.IndexOf\\('<!-- Instagram -->'\\); $content.Substring\\($idx, 400\\))"
+      "PowerShell($content = Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\index.html\" -Raw -Encoding UTF8; $idx = $content.IndexOf\\('<!-- Instagram -->'\\); $content.Substring\\($idx, 400\\))",
+      "Bash(npx serve *)",
+      "Bash(Start-Process \"http://localhost:3939/#avaliacoes\")",
+      "PowerShell(Start-Process \"http://localhost:3939/#avaliacoes\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
