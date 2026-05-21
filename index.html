@@ -2373,7 +2373,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 /* Phone screen */
 .ac-phone {
-  width:322px;
+  width:268px;
   background:#f2f2f7;
   border-radius:44px;
   box-shadow:inset 0 2px 8px rgba(0,0,0,.06);
@@ -2404,7 +2404,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 /* App header (stays blue) */
 .ac-phone-header {
   background:linear-gradient(150deg,#1488f0 0%,#0563b8 100%);
-  padding:18px 20px 42px;
+  padding:16px 17px 38px;
   position:relative;overflow:hidden;
 }
 .ac-phone-header::before {
@@ -2437,26 +2437,26 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   color:rgba(255,255,255,.7);
   text-transform:uppercase;letter-spacing:1.5px;
 }
-/* Greeting row with user avatar */
+/* Greeting row — avatar LEFT, text RIGHT */
 .ac-phone-greeting-row {
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;gap:11px;
   position:relative;z-index:1;
 }
 .ac-phone-greeting {
-  font-size:20px;font-weight:900;color:white;
-  letter-spacing:-.5px;
+  font-size:18px;font-weight:900;color:white;
+  letter-spacing:-.4px;
 }
 .ac-phone-sub {
-  font-size:11.5px;color:rgba(255,255,255,.65);
-  margin-top:3px;
+  font-size:11px;color:rgba(255,255,255,.65);
+  margin-top:2px;
 }
-/* User avatar placeholder (replace with <img> when ready) */
+/* User avatar — placeholder, troque por <img> quando tiver a foto */
 .ac-user-avatar {
-  width:46px;height:46px;border-radius:50%;
+  width:42px;height:42px;border-radius:50%;
   background:rgba(255,255,255,.22);
   border:2.5px solid rgba(255,255,255,.55);
   display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.9);font-size:20px;
+  color:rgba(255,255,255,.9);font-size:18px;
   flex-shrink:0;overflow:hidden;
 }
 .ac-user-avatar img {
@@ -2464,42 +2464,42 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 }
 /* Phone content — light theme */
 .ac-phone-content {
-  padding:22px 16px 16px;
-  display:flex;flex-direction:column;gap:10px;
+  padding:20px 13px 14px;
+  display:flex;flex-direction:column;gap:9px;
 }
 /* Connection status card */
 .ac-phone-status {
   background:white;
   border:1px solid rgba(34,197,94,.22);
-  border-radius:16px;
-  padding:13px 14px;
-  display:flex;align-items:center;gap:11px;
+  border-radius:14px;
+  padding:11px 12px;
+  display:flex;align-items:center;gap:10px;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .ac-phone-status-icon {
-  width:36px;height:36px;border-radius:50%;
+  width:32px;height:32px;border-radius:50%;
   background:rgba(34,197,94,.12);
   color:#16a34a;
   display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
+  font-size:14px;flex-shrink:0;
 }
 .ac-phone-status-lbl {
-  font-size:13px;font-weight:900;color:#16a34a;letter-spacing:-.2px;
+  font-size:12px;font-weight:900;color:#16a34a;letter-spacing:-.2px;
 }
 .ac-phone-status-val {
-  font-size:11.5px;color:#6b7280;margin-top:2px;font-weight:600;
+  font-size:10.5px;color:#6b7280;margin-top:2px;font-weight:600;
 }
 .ac-phone-status-badge {
   margin-left:auto;flex-shrink:0;
-  display:flex;align-items:center;gap:5px;
+  display:flex;align-items:center;gap:4px;
   background:rgba(34,197,94,.1);
   border:1px solid rgba(34,197,94,.25);
   color:#15803d;
-  font-size:10px;font-weight:800;
-  padding:4px 10px;border-radius:999px;
+  font-size:9.5px;font-weight:800;
+  padding:3px 9px;border-radius:999px;
 }
 .ac-phone-status-badge .ac-dot {
-  width:6px;height:6px;border-radius:50%;
+  width:5px;height:5px;border-radius:50%;
   background:#22c55e;
   animation:blink 2s ease-in-out infinite;
   display:inline-block;
@@ -2508,49 +2508,49 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
 .ac-phone-invoice {
   background:white;
   border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:13px 14px;
+  border-radius:14px;
+  padding:11px 12px;
   display:flex;align-items:center;justify-content:space-between;
   box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .ac-phone-inv-lbl {
-  font-size:10px;font-weight:700;
+  font-size:9px;font-weight:700;
   text-transform:uppercase;letter-spacing:.8px;
   color:#9ca3af;
 }
 .ac-phone-inv-val {
-  font-size:24px;font-weight:900;color:#111827;
-  letter-spacing:-1px;margin-top:3px;
+  font-size:21px;font-weight:900;color:#111827;
+  letter-spacing:-1px;margin-top:2px;
 }
 .ac-phone-inv-badge {
-  display:flex;align-items:center;gap:5px;
-  font-size:11px;font-weight:700;color:#15803d;
+  display:flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;color:#15803d;
   background:rgba(34,197,94,.1);
   border:1px solid rgba(34,197,94,.2);
-  padding:7px 12px;border-radius:999px;flex-shrink:0;
+  padding:6px 10px;border-radius:999px;flex-shrink:0;
 }
 /* Quick actions */
 .ac-phone-actions {
-  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
 }
 .ac-phone-action {
   display:flex;flex-direction:column;align-items:center;
-  gap:5px;padding:12px 5px;
+  gap:4px;padding:10px 4px;
   background:white;
   border:1px solid #e5e7eb;
-  border-radius:14px;
-  font-size:9px;font-weight:700;
+  border-radius:12px;
+  font-size:8.5px;font-weight:700;
   color:#4b5563;text-align:center;
   box-shadow:0 1px 3px rgba(0,0,0,.05);
 }
-.ac-phone-action i { font-size:16px;color:#0a7ee2; }
+.ac-phone-action i { font-size:15px;color:#0a7ee2; }
 /* Home indicator */
 .ac-phone-bar {
-  height:28px;display:flex;align-items:center;justify-content:center;
+  height:26px;display:flex;align-items:center;justify-content:center;
   background:#f2f2f7;
 }
 .ac-phone-bar-line {
-  width:100px;height:4px;border-radius:2px;
+  width:88px;height:4px;border-radius:2px;
   background:rgba(0,0,0,.18);
 }
 /* ── Mascote ── */
@@ -2666,7 +2666,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .ac-headline { letter-spacing:-2px; }
   .ac-body { grid-template-columns:1fr;gap:44px; }
   .ac-phone-wrap { justify-content:center; }
-  .ac-phone { width:310px; }
+  .ac-phone { width:258px; }
   .ac-phone-frame { border-radius:50px; }
   .ac-mascote { width:106px; }
   .ac-right { padding-top:0; }
@@ -2676,7 +2676,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   .ac-hero { margin-bottom:40px; }
   .ac-headline { font-size:clamp(30px,10vw,44px);letter-spacing:-1.5px; }
   .ac-subtitle { font-size:15px; }
-  .ac-phone { width:262px; }
+  .ac-phone { width:240px; }
   .ac-phone-frame { border-radius:46px;padding:8px; }
   .ac-feat-item { padding:14px 16px; }
   .ac-feat-title { font-size:13.5px; }
@@ -4567,12 +4567,12 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
               <div class="ac-phone-header-name">Conecte Telecom</div>
             </div>
             <div class="ac-phone-greeting-row">
+              <div class="ac-user-avatar" aria-label="Foto do usuário">
+                <i class="fas fa-user"></i>
+              </div>
               <div>
                 <div class="ac-phone-greeting">Olá, Fulano! 👋</div>
                 <div class="ac-phone-sub">Bem-vindo à sua área</div>
-              </div>
-              <div class="ac-user-avatar" aria-label="Foto do usuário">
-                <i class="fas fa-user"></i>
               </div>
             </div>
           </div>
