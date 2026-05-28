@@ -113,7 +113,8 @@
       "PowerShell($tools = @\\(\"cwebp\",\"magick\",\"ffmpeg\",\"sharp\"\\); foreach\\($t in $tools\\){ $r = Get-Command $t -ErrorAction SilentlyContinue; if\\($r\\){ \"$t -> $\\($r.Source\\)\" } else { \"$t -> nao encontrado\" } })",
       "PowerShell(node -e \"try{require\\('sharp'\\);console.log\\('sharp ok'\\)}catch\\(e\\){console.log\\('no sharp'\\)}\" 2>$null)",
       "PowerShell(node --version 2>$null)",
-      "PowerShell($f = Get-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\escritorio.webp\"; \"$\\([math]::Round\\($f.Length/1KB,1\\)\\) KB \\(era 467 KB\\)\")"
+      "PowerShell($f = Get-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\escritorio.webp\"; \"$\\([math]::Round\\($f.Length/1KB,1\\)\\) KB \\(era 467 KB\\)\")",
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\og-image.jpg\"\\).Length; \\(Get-Item \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\og-image.jpg\"\\).Length)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
