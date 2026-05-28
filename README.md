@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://www.seconecte.net/favicon.ico" width="80" alt="Conecte Telecom Logo" />
+<img src="https://raw.githubusercontent.com/devlucasroldao/conecte-landing/main/img/logo-conecte.png" width="180" alt="Conecte Telecom" />
 
 # Conecte Telecom — Landing Page
 
