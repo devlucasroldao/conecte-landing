@@ -1,0 +1,18 @@
+# Variáveis de ambiente — NUNCA commitar
+.env
+.env.local
+.env.production
+.env.development
+ 
+# Dependências
+node_modules/
+ 
+# Build
+.vercel/
+dist/
+build/
+ 
+# Sistema
+.DS_Store
+Thumbs.db
+ 
