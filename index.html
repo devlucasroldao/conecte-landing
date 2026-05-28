@@ -240,6 +240,13 @@ body {
 }
 .nav-btn-cliente:hover { background:#0a6fc2; transform:translateY(-1px); box-shadow:0 6px 22px rgba(10,126,226,.45); }
 #nav:not(.scrolled) .nav-btn-cliente { background:rgba(10,126,226,.82); box-shadow:0 4px 14px rgba(10,126,226,.25); }
+.nav-btn-soon { opacity:.55; cursor:not-allowed; }
+.nav-btn-soon:hover { background:var(--azul); transform:none; box-shadow:0 4px 14px rgba(10,126,226,.3); }
+.soon-badge { font-size:9px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; background:rgba(255,255,255,.2); padding:2px 8px; border-radius:20px; white-space:nowrap; }
+.mob-btn-soon { display:flex; align-items:center; justify-content:center; gap:8px; padding:13px 24px; border-radius:14px; border:1.5px solid var(--border); color:var(--muted2); font-size:14px; font-weight:600; cursor:not-allowed; opacity:.5; }
+.mob-btn-soon .soon-badge { background:rgba(10,126,226,.1); color:var(--azul); border:1px solid rgba(10,126,226,.18); }
+[data-theme="dark"] .mob-btn-soon { border-color:rgba(10,126,226,.18); color:rgba(255,255,255,.3); }
+[data-theme="dark"] .mob-btn-soon .soon-badge { color:rgba(10,126,226,.7); background:rgba(10,126,226,.08); border-color:rgba(10,126,226,.15); }
 
 .nav-burger {
   display:none; flex-direction:column; gap:5px; cursor:pointer;
@@ -4170,9 +4177,9 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
        class="nav-insta" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-    <a href="#" class="nav-btn-cliente" target="_blank" rel="noopener">
-      <i class="fas fa-user-circle"></i> Área do Cliente
-    </a>
+    <span class="nav-btn-cliente nav-btn-soon" title="Em construção — disponível em breve">
+      <i class="fas fa-user-circle"></i> Área do Cliente <span class="soon-badge">Em breve</span>
+    </span>
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="nav-btn-wpp">
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
@@ -4220,7 +4227,7 @@ footer { background:#060c18; color:rgba(255,255,255,.48); padding:64px 0 40px; }
   <div class="mob-foot">
     <a href="https://wa.me/555197597259" target="_blank" rel="noopener" class="btn-wpp-full"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
     <a href="#planos" onclick="closeMob()" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-wifi"></i> Ver planos</a>
-    <a href="#" target="_blank" rel="noopener" class="btn-outline-dark" style="justify-content:center"><i class="fas fa-user-circle"></i> Área do Cliente</a>
+    <span class="mob-btn-soon" title="Em construção — disponível em breve"><i class="fas fa-user-circle"></i> Área do Cliente <span class="soon-badge">Em breve</span></span>
   </div>
 </div>
 
