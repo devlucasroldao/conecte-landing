@@ -121,7 +121,8 @@
       "Bash(node fix-links.js)",
       "Bash(node redesign-links.js)",
       "Bash(node refine-links.js)",
-      "Bash(grep -v \"^$\")"
+      "Bash(grep -v \"^$\")",
+      "Bash(node patch-links.js)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
