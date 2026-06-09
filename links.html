@@ -157,6 +157,28 @@
     }
     .h-strong { font-weight: 700; color: rgba(255,255,255,.85); }
 
+    /* ── Hint ── */
+    .links-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,.38);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+    .links-hint i {
+      font-size: 10px;
+      animation: bounceDown 1.8s ease-in-out infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(3px); }
+    }
+
     /* ── Botões ── */
     .links {
       width: 100%;
@@ -340,6 +362,10 @@
     </div>
 
     <!-- Botões -->
+    <div class="links-hint">
+      <span>Selecione uma opção abaixo</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
     <div class="links">
 
       <a href="https://seconecte.net"
