@@ -119,7 +119,9 @@
       "Bash(python3 -)",
       "Bash(python3 /dev/stdin)",
       "Bash(node fix-links.js)",
-      "Bash(node redesign-links.js)"
+      "Bash(node redesign-links.js)",
+      "Bash(node refine-links.js)",
+      "Bash(grep -v \"^$\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",

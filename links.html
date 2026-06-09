@@ -15,7 +15,7 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100svh;
-      background: linear-gradient(160deg, #030f24 0%, #051c3f 30%, #072e6b 60%, #0a4a9e 100%);
+      background: linear-gradient(150deg, #0f2d6e 0%, #1243a8 38%, #1565d8 68%, #1e80f0 100%);
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -30,9 +30,9 @@
       top: -15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(10,126,226,.4) 0%, rgba(8,60,136,.15) 50%, transparent 70%);
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(30,128,240,.32) 0%, rgba(18,67,168,.12) 50%, transparent 70%);
       pointer-events: none;
       z-index: 0;
       animation: glowPulse 7s ease-in-out infinite;
@@ -42,9 +42,9 @@
       position: fixed;
       bottom: -10%;
       right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,222,89,.12) 0%, rgba(10,126,226,.08) 50%, transparent 65%);
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255,222,89,.1) 0%, rgba(30,128,240,.06) 50%, transparent 65%);
       pointer-events: none;
       z-index: 0;
       animation: glowMove 9s ease-in-out infinite alternate;
@@ -52,11 +52,11 @@
 
     @keyframes glowPulse {
       0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
-      50%       { opacity: .6; transform: translateX(-50%) scale(1.2); }
+      50%       { opacity: .55; transform: translateX(-50%) scale(1.18); }
     }
     @keyframes glowMove {
-      0%   { opacity: .9; transform: translate(0, 0) scale(1); }
-      100% { opacity: .4; transform: translate(-40px, -25px) scale(1.15); }
+      0%   { opacity: .85; transform: translate(0, 0) scale(1); }
+      100% { opacity: .38; transform: translate(-35px, -20px) scale(1.12); }
     }
     @keyframes floatY {
       0%, 100% { transform: translateY(0); }
@@ -78,26 +78,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     .logo-wrap {
-      width: 112px;
-      height: 112px;
+      width: 108px;
+      height: 108px;
       border-radius: 50%;
       overflow: hidden;
-      background: #fff;
+      background: rgba(8,40,110,.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow:
-        0 0 0 2px rgba(10,126,226,.55),
-        0 0 28px rgba(10,126,226,.55),
-        0 0 56px rgba(10,126,226,.2),
-        0 16px 40px rgba(0,0,0,.45);
+        0 0 0 2px rgba(30,128,240,.45),
+        0 0 28px rgba(30,128,240,.65),
+        0 0 64px rgba(30,128,240,.22),
+        0 12px 40px rgba(0,0,0,.5);
       animation: floatY 4s ease-in-out infinite;
       flex-shrink: 0;
     }
     .logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 94%;
+      height: 94%;
+      object-fit: contain;
       display: block;
     }
     .brand-name {
@@ -105,61 +108,52 @@
       font-weight: 800;
       color: #fff;
       letter-spacing: -.5px;
-      margin-top: 20px;
+      margin-top: 18px;
       margin-bottom: 4px;
       text-align: center;
     }
     .brand-name span { color: #ffde59; }
     .brand-sub {
       font-size: 13px;
-      color: rgba(255,255,255,.45);
+      color: rgba(255,255,255,.5);
       text-align: center;
     }
 
-    /* ── Hours card ── */
+    /* ── Hours ── */
     .hours-card {
       width: 100%;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 16px;
-      padding: 14px 18px;
-      margin-top: 22px;
-      margin-bottom: 28px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-top: 16px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .hours-row {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 8px 0;
+      align-items: center;
+      gap: 9px;
+      padding: 5px 0;
+      font-size: 12px;
+      color: rgba(255,255,255,.6);
+      line-height: 1.3;
     }
     .hours-row + .hours-row {
       border-top: 1px solid rgba(255,255,255,.07);
     }
     .hours-icon {
-      font-size: 13px;
+      font-size: 11px;
       color: #ffde59;
       opacity: .85;
       flex-shrink: 0;
-      margin-top: 2px;
-      width: 16px;
+      width: 14px;
       text-align: center;
     }
-    .hours-text { flex: 1; }
-    .hours-label {
-      display: block;
-      font-size: 12.5px;
+    .h-strong {
       font-weight: 700;
-      color: rgba(255,255,255,.88);
-      line-height: 1.3;
-    }
-    .hours-detail {
-      display: block;
-      font-size: 11.5px;
-      color: rgba(255,255,255,.45);
-      margin-top: 1px;
-      line-height: 1.4;
+      color: rgba(255,255,255,.85);
     }
 
     /* ── Buttons ── */
@@ -176,37 +170,31 @@
       align-items: center;
       gap: 14px;
       width: 100%;
-      padding: 14px 18px;
+      padding: 15px 18px;
       border-radius: 14px;
       text-decoration: none;
       color: #fff;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(135deg, #1a6ed4 0%, #0a3a8a 100%);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 4px 18px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
       transition: all .22s cubic-bezier(.4,0,.2,1);
       position: relative;
       overflow: hidden;
     }
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
     .link-btn:hover {
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(135deg, #2480e8 0%, #0f4aaa 100%);
+      border-color: rgba(255,255,255,.28);
       transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+      box-shadow: 0 8px 28px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.12);
     }
     .link-btn:active { transform: translateY(0); }
-
-    /* CTA principal */
-    .btn-cta {
-      background: linear-gradient(135deg, #0a7ee2 0%, #062f70 100%);
-      border-color: rgba(10,126,226,.45);
-      box-shadow: 0 4px 20px rgba(10,126,226,.28);
-    }
-    .btn-cta:hover {
-      background: linear-gradient(135deg, #1e91f5 0%, #0a4a9e 100%);
-      border-color: rgba(10,126,226,.65);
-      box-shadow: 0 8px 30px rgba(10,126,226,.42);
-    }
 
     .link-icon {
       width: 40px;
@@ -217,11 +205,12 @@
       justify-content: center;
       font-size: 18px;
       flex-shrink: 0;
-      background: rgba(255,255,255,.1);
+      background: rgba(255,255,255,.12);
+      position: relative;
+      z-index: 1;
     }
-    .btn-cta .link-icon { background: rgba(255,255,255,.18); }
 
-    .link-text { flex: 1; }
+    .link-text { flex: 1; position: relative; z-index: 1; }
     .link-title {
       display: block;
       font-size: 14px;
@@ -232,19 +221,21 @@
       display: block;
       font-size: 11px;
       font-weight: 500;
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,.52);
       margin-top: 2px;
     }
     .link-arrow {
       font-size: 11px;
       opacity: .35;
       flex-shrink: 0;
+      position: relative;
+      z-index: 1;
     }
 
     /* Icon brand colors */
     .icon-wpp    { color: #25d366; }
     .icon-insta  { color: #e1306c; }
-    .icon-fb     { color: #4f9ef8; }
+    .icon-fb     { color: #5ca5ff; }
     .icon-google { color: #ea4335; }
     .icon-site   { color: #ffde59; }
     .icon-wifi   { color: #7dd3fc; }
@@ -253,14 +244,14 @@
     .footer { text-align: center; }
     .footer-site {
       font-size: 12px;
-      color: rgba(255,255,255,.3);
+      color: rgba(255,255,255,.35);
       text-decoration: none;
       transition: color .2s;
     }
-    .footer-site:hover { color: rgba(255,255,255,.6); }
+    .footer-site:hover { color: rgba(255,255,255,.65); }
     .footer-copy {
       font-size: 11px;
-      color: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.2);
       margin-top: 6px;
     }
   </style>
@@ -277,28 +268,19 @@
       <div class="brand-sub">Internet fibra óptica · Arroio do Sal, RS</div>
     </div>
 
-    <!-- Horários -->
+    <!-- Horários compactos -->
     <div class="hours-card">
       <div class="hours-row">
         <i class="fas fa-map-marker-alt hours-icon"></i>
-        <div class="hours-text">
-          <span class="hours-label">Arroio do Sal – RS</span>
-          <span class="hours-detail">Rua Dois de Setembro, 239</span>
-        </div>
+        <span><span class="h-strong">Arroio do Sal – RS</span></span>
       </div>
       <div class="hours-row">
         <i class="far fa-clock hours-icon"></i>
-        <div class="hours-text">
-          <span class="hours-label">Atendimento Comercial</span>
-          <span class="hours-detail">Segunda a Sexta: 08h às 18h</span>
-        </div>
+        <span><span class="h-strong">Comercial:</span> Seg–Sex · 08h às 18h</span>
       </div>
       <div class="hours-row">
         <i class="fas fa-tools hours-icon"></i>
-        <div class="hours-text">
-          <span class="hours-label">Suporte Técnico</span>
-          <span class="hours-detail">Todos os dias, até 21h</span>
-        </div>
+        <span><span class="h-strong">Suporte:</span> Todos os dias · até 21h</span>
       </div>
     </div>
 
@@ -306,7 +288,7 @@
     <div class="links">
 
       <a href="https://seconecte.net"
-         target="_blank" rel="noopener" class="link-btn btn-cta">
+         target="_blank" rel="noopener" class="link-btn">
         <div class="link-icon"><i class="fas fa-globe icon-site"></i></div>
         <div class="link-text">
           <span class="link-title">Visitar Site</span>
