@@ -118,7 +118,8 @@
       "Bash(Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\links.html\" -TotalCount 5)",
       "Bash(python3 -)",
       "Bash(python3 /dev/stdin)",
-      "Bash(node fix-links.js)"
+      "Bash(node fix-links.js)",
+      "Bash(node redesign-links.js)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",

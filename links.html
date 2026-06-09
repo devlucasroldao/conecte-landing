@@ -15,25 +15,24 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100svh;
-      background: linear-gradient(160deg, #051c3f 0%, #083c88 35%, #0a5aad 65%, #0a7ee2 100%);
+      background: linear-gradient(160deg, #030f24 0%, #051c3f 30%, #072e6b 60%, #0a4a9e 100%);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 40px 20px 60px;
+      padding: 52px 20px 72px;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Background glow */
     body::before {
       content: '';
       position: fixed;
-      top: -20%;
+      top: -15%;
       left: 50%;
       transform: translateX(-50%);
       width: 700px;
       height: 700px;
-      background: radial-gradient(circle, rgba(10,126,226,.45) 0%, rgba(8,60,136,.2) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(10,126,226,.4) 0%, rgba(8,60,136,.15) 50%, transparent 70%);
       pointer-events: none;
       z-index: 0;
       animation: glowPulse 7s ease-in-out infinite;
@@ -45,33 +44,55 @@
       right: -10%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(255,222,89,.18) 0%, rgba(10,126,226,.1) 50%, transparent 65%);
+      background: radial-gradient(circle, rgba(255,222,89,.12) 0%, rgba(10,126,226,.08) 50%, transparent 65%);
       pointer-events: none;
       z-index: 0;
       animation: glowMove 9s ease-in-out infinite alternate;
     }
 
+    @keyframes glowPulse {
+      0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+      50%       { opacity: .6; transform: translateX(-50%) scale(1.2); }
+    }
+    @keyframes glowMove {
+      0%   { opacity: .9; transform: translate(0, 0) scale(1); }
+      100% { opacity: .4; transform: translate(-40px, -25px) scale(1.15); }
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-7px); }
+    }
+
     .container {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       position: relative;
       z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
     }
 
     /* ── Logo ── */
+    .logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 32px;
+    }
     .logo-wrap {
-      width: 130px;
-      height: 130px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
-      padding: 0;
-      box-shadow: 0 0 0 3px rgba(10,126,226,.5), 0 0 40px rgba(10,126,226,.6), 0 0 80px rgba(10,126,226,.25), 0 20px 60px rgba(0,0,0,.35);
-      margin-bottom: 20px;
-      animation: floatY 4s ease-in-out infinite;
       overflow: hidden;
+      background: #fff;
+      box-shadow:
+        0 0 0 2px rgba(10,126,226,.55),
+        0 0 28px rgba(10,126,226,.55),
+        0 0 56px rgba(10,126,226,.2),
+        0 16px 40px rgba(0,0,0,.45);
+      animation: floatY 4s ease-in-out infinite;
+      flex-shrink: 0;
     }
     .logo-wrap img {
       width: 100%;
@@ -79,60 +100,74 @@
       object-fit: cover;
       display: block;
     }
-    @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    @keyframes glowPulse {
-      0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
-      50% { opacity: .65; transform: translateX(-50%) scale(1.2); }
-    }
-    @keyframes glowMove {
-      0% { opacity: .9; transform: translate(0, 0) scale(1); }
-      100% { opacity: .45; transform: translate(-40px, -25px) scale(1.15); }
-    }
-
-    /* ── Nome ── */
     .brand-name {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
-      color: white;
+      color: #fff;
       letter-spacing: -.5px;
-      margin-bottom: 6px;
+      margin-top: 20px;
+      margin-bottom: 4px;
       text-align: center;
     }
-    .brand-name span {
-      color: #ffde59;
-    }
+    .brand-name span { color: #ffde59; }
     .brand-sub {
       font-size: 13px;
-      color: rgba(255,255,255,.55);
-      margin-bottom: 8px;
+      color: rgba(255,255,255,.45);
       text-align: center;
     }
 
-    /* ── Badge ── */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 999px;
-      padding: 5px 14px;
+    /* ── Hours card ── */
+    .hours-card {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-top: 22px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .hours-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+    }
+    .hours-row + .hours-row {
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .hours-icon {
+      font-size: 13px;
+      color: #ffde59;
+      opacity: .85;
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 16px;
+      text-align: center;
+    }
+    .hours-text { flex: 1; }
+    .hours-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,.88);
+      line-height: 1.3;
+    }
+    .hours-detail {
+      display: block;
       font-size: 11.5px;
-      font-weight: 600;
-      color: rgba(255,255,255,.7);
-      margin-bottom: 36px;
+      color: rgba(255,255,255,.45);
+      margin-top: 1px;
+      line-height: 1.4;
     }
 
-
-    /* ── Botões ── */
+    /* ── Buttons ── */
     .links {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 32px;
     }
 
@@ -141,154 +176,91 @@
       align-items: center;
       gap: 14px;
       width: 100%;
-      padding: 16px 22px;
-      border-radius: 16px;
+      padding: 14px 18px;
+      border-radius: 14px;
       text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      transition: all .25s cubic-bezier(.4,0,.2,1);
+      color: #fff;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all .22s cubic-bezier(.4,0,.2,1);
       position: relative;
       overflow: hidden;
-      border: 1.5px solid transparent;
-    }
-    .link-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0);
-      transition: background .25s;
-    }
-    .link-btn:hover::before {
-      background: rgba(255,255,255,.08);
     }
     .link-btn:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.18);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.25);
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
     }
-    .link-btn:active {
-      transform: translateY(0);
+    .link-btn:active { transform: translateY(0); }
+
+    /* CTA principal */
+    .btn-cta {
+      background: linear-gradient(135deg, #0a7ee2 0%, #062f70 100%);
+      border-color: rgba(10,126,226,.45);
+      box-shadow: 0 4px 20px rgba(10,126,226,.28);
+    }
+    .btn-cta:hover {
+      background: linear-gradient(135deg, #1e91f5 0%, #0a4a9e 100%);
+      border-color: rgba(10,126,226,.65);
+      box-shadow: 0 8px 30px rgba(10,126,226,.42);
     }
 
     .link-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
       flex-shrink: 0;
+      background: rgba(255,255,255,.1);
     }
+    .btn-cta .link-icon { background: rgba(255,255,255,.18); }
 
-    .link-text {
-      flex: 1;
-    }
+    .link-text { flex: 1; }
     .link-title {
       display: block;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.2;
     }
     .link-desc {
       display: block;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 500;
-      opacity: .7;
-      margin-top: 1px;
+      color: rgba(255,255,255,.55);
+      margin-top: 2px;
     }
-
     .link-arrow {
-      font-size: 13px;
-      opacity: .5;
+      font-size: 11px;
+      opacity: .35;
       flex-shrink: 0;
     }
 
-    /* Variantes */
-    .btn-wpp-comercial {
-      background: linear-gradient(135deg, #16a34a, #15803d);
-      color: white;
-      border-color: rgba(255,255,255,.1);
-    }
-    .btn-wpp-comercial .link-icon { background: rgba(255,255,255,.15); color: white; }
-
-    .btn-wpp-suporte {
-      background: linear-gradient(135deg, #0a5aad, #083c88);
-      color: white;
-      border-color: rgba(10,126,226,.35);
-    }
-    .btn-wpp-suporte .link-icon { background: rgba(255,255,255,.15); color: white; }
-
-    .btn-planos {
-      background: linear-gradient(135deg, #ffde59, #f5c800);
-      color: #111;
-      border-color: rgba(255,255,255,.2);
-    }
-    .btn-planos .link-icon { background: rgba(0,0,0,.08); color: #111; }
-    .btn-planos .link-desc { color: rgba(0,0,0,.6); }
-    .btn-planos .link-arrow { color: #111; }
-
-    .btn-instagram {
-      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-      color: white;
-      border-color: rgba(255,255,255,.1);
-    }
-    .btn-instagram .link-icon { background: rgba(255,255,255,.15); color: white; }
-
-    .btn-facebook {
-      background: linear-gradient(135deg, #1877f2, #0d5bbf);
-      color: white;
-      border-color: rgba(255,255,255,.1);
-    }
-    .btn-facebook .link-icon { background: rgba(255,255,255,.15); color: white; }
-
-    .btn-google {
-      background: rgba(255,255,255,.1);
-      color: white;
-      border-color: rgba(255,255,255,.2);
-      backdrop-filter: blur(12px);
-    }
-    .btn-google .link-icon { background: rgba(255,255,255,.12); color: white; }
-
-    /* ── Redes sociais ── */
-    .socials {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .social-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,.7);
-      font-size: 18px;
-      text-decoration: none;
-      transition: all .2s;
-    }
-    .social-icon:hover {
-      background: rgba(255,255,255,.2);
-      color: white;
-      transform: translateY(-2px);
-    }
+    /* Icon brand colors */
+    .icon-wpp    { color: #25d366; }
+    .icon-insta  { color: #e1306c; }
+    .icon-fb     { color: #4f9ef8; }
+    .icon-google { color: #ea4335; }
+    .icon-site   { color: #ffde59; }
+    .icon-wifi   { color: #7dd3fc; }
 
     /* ── Footer ── */
-    .footer {
-      text-align: center;
-    }
+    .footer { text-align: center; }
     .footer-site {
       font-size: 12px;
-      color: rgba(255,255,255,.35);
+      color: rgba(255,255,255,.3);
       text-decoration: none;
       transition: color .2s;
     }
     .footer-site:hover { color: rgba(255,255,255,.6); }
     .footer-copy {
       font-size: 11px;
-      color: rgba(255,255,255,.2);
+      color: rgba(255,255,255,.18);
       margin-top: 6px;
     }
   </style>
@@ -297,27 +269,55 @@
   <div class="container">
 
     <!-- Logo -->
-    <div class="logo-wrap">
-      <img src="img/logo-conecte.png" alt="Conecte Telecom">
+    <div class="logo-section">
+      <div class="logo-wrap">
+        <img src="img/logo-conecte.png" alt="Conecte Telecom">
+      </div>
+      <div class="brand-name">Conecte <span>Telecom</span></div>
+      <div class="brand-sub">Internet fibra óptica · Arroio do Sal, RS</div>
     </div>
 
-    <!-- Nome -->
-    <div class="brand-name">Conecte <span>Telecom</span></div>
-    <div class="brand-sub">Internet fibra óptica · Arroio do Sal, RS</div>
-
-    <!-- Badge -->
-    <div class="badge">
-      <i class="far fa-clock" style="font-size:10px;opacity:.8"></i>
-      Seg–Sex 8h–18h · Sáb 8h–12h
+    <!-- Horários -->
+    <div class="hours-card">
+      <div class="hours-row">
+        <i class="fas fa-map-marker-alt hours-icon"></i>
+        <div class="hours-text">
+          <span class="hours-label">Arroio do Sal – RS</span>
+          <span class="hours-detail">Rua Dois de Setembro, 239</span>
+        </div>
+      </div>
+      <div class="hours-row">
+        <i class="far fa-clock hours-icon"></i>
+        <div class="hours-text">
+          <span class="hours-label">Atendimento Comercial</span>
+          <span class="hours-detail">Segunda a Sexta: 08h às 18h</span>
+        </div>
+      </div>
+      <div class="hours-row">
+        <i class="fas fa-tools hours-icon"></i>
+        <div class="hours-text">
+          <span class="hours-label">Suporte Técnico</span>
+          <span class="hours-detail">Todos os dias, até 21h</span>
+        </div>
+      </div>
     </div>
 
     <!-- Botões -->
     <div class="links">
 
-      <!-- WhatsApp Comercial -->
-      <a href="https://wa.me/555197214917?text=Olá!+Gostaria+de+conhecer+os+planos+da+Conecte+Telecom"
-         target="_blank" rel="noopener" class="link-btn btn-wpp-comercial">
-        <div class="link-icon"><i class="fab fa-whatsapp"></i></div>
+      <a href="https://seconecte.net"
+         target="_blank" rel="noopener" class="link-btn btn-cta">
+        <div class="link-icon"><i class="fas fa-globe icon-site"></i></div>
+        <div class="link-text">
+          <span class="link-title">Visitar Site</span>
+          <span class="link-desc">Conheça nossa página oficial</span>
+        </div>
+        <i class="fas fa-chevron-right link-arrow"></i>
+      </a>
+
+      <a href="https://wa.me/555197214917?text=Ol%C3%A1!+Gostaria+de+conhecer+os+planos+da+Conecte+Telecom"
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fab fa-whatsapp icon-wpp"></i></div>
         <div class="link-text">
           <span class="link-title">Comercial</span>
           <span class="link-desc">Contratar um plano de internet</span>
@@ -325,10 +325,9 @@
         <i class="fas fa-chevron-right link-arrow"></i>
       </a>
 
-      <!-- WhatsApp Suporte -->
-      <a href="https://wa.me/555197597259?text=Olá!+Preciso+de+suporte+técnico"
-         target="_blank" rel="noopener" class="link-btn btn-wpp-suporte">
-        <div class="link-icon"><i class="fab fa-whatsapp"></i></div>
+      <a href="https://wa.me/555197597259?text=Ol%C3%A1!+Preciso+de+suporte+t%C3%A9cnico"
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fab fa-whatsapp icon-wpp"></i></div>
         <div class="link-text">
           <span class="link-title">Suporte Técnico</span>
           <span class="link-desc">Plantão de atendimento</span>
@@ -336,10 +335,9 @@
         <i class="fas fa-chevron-right link-arrow"></i>
       </a>
 
-      <!-- Planos -->
       <a href="https://www.seconecte.net/#planos"
-         target="_blank" rel="noopener" class="link-btn btn-planos">
-        <div class="link-icon"><i class="fas fa-wifi"></i></div>
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fas fa-wifi icon-wifi"></i></div>
         <div class="link-text">
           <span class="link-title">Nossos Planos</span>
           <span class="link-desc">Ver velocidades disponíveis</span>
@@ -347,10 +345,9 @@
         <i class="fas fa-chevron-right link-arrow"></i>
       </a>
 
-      <!-- Instagram -->
       <a href="https://www.instagram.com/seconecte2021/"
-         target="_blank" rel="noopener" class="link-btn btn-instagram">
-        <div class="link-icon"><i class="fab fa-instagram"></i></div>
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fab fa-instagram icon-insta"></i></div>
         <div class="link-text">
           <span class="link-title">Instagram</span>
           <span class="link-desc">@seconecte2021</span>
@@ -358,10 +355,9 @@
         <i class="fas fa-chevron-right link-arrow"></i>
       </a>
 
-      <!-- Facebook -->
       <a href="https://www.facebook.com/seconecte2021/?locale=pt_BR"
-         target="_blank" rel="noopener" class="link-btn btn-facebook">
-        <div class="link-icon"><i class="fab fa-facebook-f"></i></div>
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fab fa-facebook-f icon-fb"></i></div>
         <div class="link-text">
           <span class="link-title">Facebook</span>
           <span class="link-desc">Conecte Telecom</span>
@@ -369,10 +365,9 @@
         <i class="fas fa-chevron-right link-arrow"></i>
       </a>
 
-      <!-- Avaliar no Google -->
       <a href="https://www.google.com/maps/place/Conecte+Telecom/@-29.5487333,-49.8863887,20.5z"
-         target="_blank" rel="noopener" class="link-btn btn-google">
-        <div class="link-icon"><i class="fab fa-google"></i></div>
+         target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon"><i class="fab fa-google icon-google"></i></div>
         <div class="link-text">
           <span class="link-title">Avaliar no Google</span>
           <span class="link-desc">4.9 ★ · Deixe sua avaliação</span>
@@ -387,7 +382,7 @@
       <a href="https://www.seconecte.net" target="_blank" class="footer-site">
         🌐 www.seconecte.net
       </a>
-      <div class="footer-copy">© 2025 Conecte Telecom · Arroio do Sal, RS</div>
+      <div class="footer-copy">© 2026 Conecte Telecom · Arroio do Sal, RS</div>
     </div>
 
   </div>
