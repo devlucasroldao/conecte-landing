@@ -124,7 +124,8 @@
       "Bash(grep -v \"^$\")",
       "Bash(node patch-links.js)",
       "Bash(identify \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\mascote.png\")",
-      "Bash(node mobile-links.js)"
+      "Bash(node mobile-links.js)",
+      "Bash(node patch2.js)"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",
