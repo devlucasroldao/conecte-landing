@@ -15,52 +15,59 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100svh;
-      background: linear-gradient(150deg, #0a1f52 0%, #0e3280 38%, #124fb5 68%, #1868d0 100%);
+      /* Gradiente + pontilhados sobrepostos */
+      background:
+        radial-gradient(rgba(255,255,255,.16) 1.5px, transparent 0) 0 0 / 28px 28px,
+        radial-gradient(rgba(255,255,255,.06) 1px,   transparent 0) 14px 14px / 28px 28px,
+        linear-gradient(155deg, #081840 0%, #0c2b72 28%, #1048b0 56%, #1460c8 78%, #1670dc 100%);
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      padding: 52px 20px 72px;
+      padding: 48px 16px 60px;
       position: relative;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
+    /* Glow topo */
     body::before {
       content: '';
       position: fixed;
-      top: -15%;
+      top: -20%;
       left: 50%;
       transform: translateX(-50%);
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(30,128,240,.32) 0%, rgba(18,67,168,.12) 50%, transparent 70%);
+      width: 75vmax;
+      height: 75vmax;
+      background: radial-gradient(circle, rgba(30,128,240,.26) 0%, rgba(18,67,168,.1) 50%, transparent 70%);
       pointer-events: none;
       z-index: 0;
       animation: glowPulse 7s ease-in-out infinite;
     }
+    /* Glow rodapé */
     body::after {
       content: '';
       position: fixed;
-      bottom: -10%;
-      right: -10%;
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(255,222,89,.1) 0%, rgba(30,128,240,.06) 50%, transparent 65%);
+      bottom: -12%;
+      right: -12%;
+      width: 55vmax;
+      height: 55vmax;
+      background: radial-gradient(circle, rgba(255,222,89,.07) 0%, rgba(30,128,240,.05) 50%, transparent 65%);
       pointer-events: none;
       z-index: 0;
       animation: glowMove 9s ease-in-out infinite alternate;
     }
 
     @keyframes glowPulse {
-      0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
-      50%       { opacity: .55; transform: translateX(-50%) scale(1.18); }
+      0%, 100% { opacity: 1;   transform: translateX(-50%) scale(1); }
+      50%       { opacity: .5; transform: translateX(-50%) scale(1.15); }
     }
     @keyframes glowMove {
-      0%   { opacity: .85; transform: translate(0, 0) scale(1); }
-      100% { opacity: .38; transform: translate(-35px, -20px) scale(1.12); }
+      0%   { opacity: .8;  transform: translate(0,0)           scale(1); }
+      100% { opacity: .35; transform: translate(-30px,-20px)   scale(1.1); }
     }
     @keyframes floatY {
       0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-7px); }
+      50%       { transform: translateY(-6px); }
     }
 
     .container {
@@ -78,122 +85,133 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .logo-wrap {
-      width: 108px;
-      height: 108px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       overflow: hidden;
-      background: rgba(8,40,110,.55);
+      background: rgba(8,40,110,.5);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
-        0 0 28px rgba(30,128,240,.55),
-        0 0 64px rgba(30,128,240,.18),
-        0 12px 40px rgba(0,0,0,.5);
+        0 0 22px rgba(30,128,240,.5),
+        0 0 52px rgba(30,128,240,.16),
+        0 10px 32px rgba(0,0,0,.5);
       animation: floatY 4s ease-in-out infinite;
       flex-shrink: 0;
     }
     .logo-wrap img {
-      width: 94%;
-      height: 94%;
+      width: 92%;
+      height: 92%;
       object-fit: contain;
       display: block;
     }
     .brand-name {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       color: #fff;
-      letter-spacing: -.5px;
-      margin-top: 18px;
-      margin-bottom: 4px;
+      letter-spacing: -.4px;
+      margin-top: 16px;
+      margin-bottom: 3px;
       text-align: center;
     }
     .brand-name span { color: #ffde59; }
     .brand-sub {
-      font-size: 13px;
-      color: rgba(255,255,255,.5);
+      font-size: 12.5px;
+      color: rgba(255,255,255,.45);
       text-align: center;
     }
 
-    /* ── Hours ── */
+    /* ── Horários ── */
     .hours-card {
       width: 100%;
-      background: rgba(0,0,0,.18);
-      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.09);
       border-radius: 12px;
       padding: 10px 14px;
-      margin-top: 16px;
-      margin-bottom: 22px;
+      margin-top: 14px;
+      margin-bottom: 20px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
     .hours-row {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       padding: 5px 0;
       font-size: 12px;
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.55);
       line-height: 1.3;
     }
-    .hours-row + .hours-row {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
+    .hours-row + .hours-row { border-top: 1px solid rgba(255,255,255,.07); }
     .hours-icon {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #ffde59;
       opacity: .85;
       flex-shrink: 0;
       width: 14px;
       text-align: center;
     }
-    .h-strong {
-      font-weight: 700;
-      color: rgba(255,255,255,.85);
-    }
+    .h-strong { font-weight: 700; color: rgba(255,255,255,.85); }
 
-    /* ── Buttons ── */
+    /* ── Botões ── */
     .links {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 32px;
+      gap: 9px;
+      margin-bottom: 28px;
     }
 
     .link-btn {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       width: 100%;
-      padding: 15px 18px;
+      padding: 14px 16px;
       border-radius: 14px;
       text-decoration: none;
       color: #fff;
-      background: linear-gradient(135deg, #1a6ed4 0%, #0a3a8a 100%);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 4px 18px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08);
-      transition: all .22s cubic-bezier(.4,0,.2,1);
+      background: linear-gradient(140deg, #1e74da 0%, #0d45a0 100%);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow:
+        0 4px 18px rgba(0,0,0,.32),
+        0 1px 3px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.1);
+      transition: transform .18s ease, box-shadow .18s ease, filter .12s ease;
       position: relative;
       overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
     }
-    .link-btn::after {
+    /* Brilho interno sutil */
+    .link-btn::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.04) 0%, transparent 60%);
+      top: 0; left: 0; right: 0;
+      height: 52%;
+      background: linear-gradient(180deg, rgba(255,255,255,.07) 0%, transparent 100%);
+      border-radius: 14px 14px 0 0;
       pointer-events: none;
     }
     .link-btn:hover {
-      background: linear-gradient(135deg, #2480e8 0%, #0f4aaa 100%);
-      border-color: rgba(255,255,255,.28);
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.12);
+      box-shadow:
+        0 8px 26px rgba(0,0,0,.38),
+        0 2px 6px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.24);
     }
-    .link-btn:active { transform: translateY(0); }
+    /* Feedback ao toque (mobile) */
+    .link-btn:active {
+      transform: scale(.975);
+      filter: brightness(.86);
+      transition-duration: .07s;
+      box-shadow: 0 2px 10px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
+    }
 
     .link-icon {
       width: 40px;
@@ -202,36 +220,42 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 17px;
       flex-shrink: 0;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.92);
       position: relative;
       z-index: 1;
     }
 
-    .link-text { flex: 1; position: relative; z-index: 1; }
+    .link-text { flex: 1; position: relative; z-index: 1; min-width: 0; }
     .link-title {
       display: block;
       font-size: 14px;
       font-weight: 700;
       line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .link-desc {
       display: block;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 500;
-      color: rgba(255,255,255,.52);
+      color: rgba(255,255,255,.5);
       margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .link-arrow {
-      font-size: 11px;
-      opacity: .35;
+      font-size: 10px;
+      opacity: .3;
       flex-shrink: 0;
       position: relative;
       z-index: 1;
     }
 
-    /* Icon brand colors */
+    /* Cores dos ícones */
     .icon-wpp    { color: #25d366; }
     .icon-insta  { color: #e1306c; }
     .icon-fb     { color: #1877f2; }
@@ -239,19 +263,66 @@
     .icon-site   { color: #0a5aad; }
     .icon-wifi   { color: #0a5aad; }
 
-    /* ── Footer ── */
-    .footer { text-align: center; }
+    /* ── Footer com mascote ── */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-mascot {
+      margin-bottom: -6px;
+    }
+    .footer-mascot img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,.35));
+    }
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      margin-bottom: 14px;
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 10px;
+    }
+    .footer-brand strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .2px;
+    }
+    .footer-brand span {
+      font-size: 11px;
+      color: rgba(255,255,255,.28);
+    }
     .footer-site {
-      font-size: 12px;
-      color: rgba(255,255,255,.35);
+      font-size: 11.5px;
+      color: rgba(255,255,255,.28);
       text-decoration: none;
       transition: color .2s;
+      margin-bottom: 5px;
     }
-    .footer-site:hover { color: rgba(255,255,255,.65); }
+    .footer-site:hover { color: rgba(255,255,255,.6); }
     .footer-copy {
-      font-size: 11px;
-      color: rgba(255,255,255,.2);
-      margin-top: 6px;
+      font-size: 10.5px;
+      color: rgba(255,255,255,.16);
+    }
+
+    /* ── iPhone SE e telas pequenas (≤390px) ── */
+    @media (max-width: 390px) {
+      body            { padding: 40px 14px 52px; }
+      .logo-wrap      { width: 88px; height: 88px; }
+      .brand-name     { font-size: 20px; margin-top: 14px; }
+      .link-btn       { padding: 13px 14px; }
+      .footer-mascot img { width: 86px; }
     }
   </style>
 </head>
@@ -267,7 +338,7 @@
       <div class="brand-sub">Internet fibra óptica · Arroio do Sal, RS</div>
     </div>
 
-    <!-- Horários compactos -->
+    <!-- Horários -->
     <div class="hours-card">
       <div class="hours-row">
         <i class="far fa-clock hours-icon"></i>
@@ -354,12 +425,20 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- Footer com mascote -->
     <div class="footer">
-      <a href="https://www.seconecte.net" target="_blank" class="footer-site">
-        🌐 www.seconecte.net
+      <div class="footer-mascot">
+        <img src="img/mascote.webp" alt="Gasturinha" loading="lazy">
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-brand">
+        <strong>Conecte Telecom</strong>
+        <span>Internet fibra óptica em Arroio do Sal</span>
+      </div>
+      <a href="https://www.seconecte.net" target="_blank" rel="noopener" class="footer-site">
+        www.seconecte.net
       </a>
-      <div class="footer-copy">© 2026 Conecte Telecom · Arroio do Sal, RS</div>
+      <div class="footer-copy">© 2026 Conecte Telecom · Todos os direitos reservados</div>
     </div>
 
   </div>
