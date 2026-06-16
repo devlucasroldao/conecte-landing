@@ -15,10 +15,10 @@
     --blue: #0a7ee2;
     --blue-dark: #083c88;
     --blue-mid: #0a5aad;
-    --blue-light: #e8f3fd;
+    --blue-light: #dbeafe;
     --dark: #1e293b;
-    --gray: #f8fafc;
-    --border: #e2e8f0;
+    --gray: #f0f5ff;
+    --border: #d1dff7;
     --text: #1e293b;
     --muted: #64748b;
     --white: #FFFFFF;
@@ -30,7 +30,8 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
-    background: var(--gray);
+    background: linear-gradient(180deg, #dbeafe 0%, #eef3ff 120px, #edf2ff 100%);
+    background-attachment: fixed;
     color: var(--text);
     min-height: 100vh;
   }
@@ -168,7 +169,26 @@
   .field input:focus, .field select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(10,126,226,.1); outline: none; }
   .field input::placeholder { color: #bbb; }
 
+  /* BANNER DE BOAS-VINDAS */
+  .welcome-banner {
+    background: linear-gradient(135deg, #051c3f 0%, #083c88 60%, #0a5aad 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  .welcome-banner h2 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .welcome-banner h2 em { font-style:normal; color: #ffde59; }
+  .welcome-banner p { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 16px; }
+  .welcome-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .welcome-step { background: rgba(255,255,255,.1); border-radius: 10px; padding: 10px 8px; text-align: center; }
+  .welcome-step-icon { width: 32px; height: 32px; background: rgba(255,222,89,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; }
+  .welcome-step-icon svg { width: 16px; height: 16px; stroke: #ffde59; fill: none; stroke-width: 2; }
+  .welcome-step span { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.8); display: block; line-height: 1.3; }
+
   /* PLANOS */
+  .plans-note { font-size: 12px; color: var(--muted); background: var(--blue-light); border-radius: 8px; padding: 8px 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+  .plans-note svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; }
   .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .plan-card {
     border: 2px solid var(--border);
@@ -191,42 +211,37 @@
     color: var(--blue);
     font-weight: 700;
   }
-  .plan-name { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; }
-  .plan-speed { font-size: 26px; font-weight: 700; color: var(--blue); line-height: 1.1; }
-  .plan-speed span { font-size: 13px; font-weight: 400; color: var(--muted); }
-  .plan-price { font-size: 15px; font-weight: 700; color: var(--text); margin-top: 8px; }
-  .plan-price-sem { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .fidelidade-tag {
-    display: inline-block;
-    background: #FFF8E1;
-    color: #F57F17;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-top: 6px;
-    letter-spacing: .3px;
-  }
+  .plan-name { font-size: 12px; font-weight: 700; color: var(--blue-mid); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .4px; }
+  .plan-speed { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .plan-speed span { font-size: 13px; font-weight: 500; color: var(--muted); }
+  .plan-price { font-size: 16px; font-weight: 800; color: var(--dark); margin-top: 6px; }
+  .plan-desc { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.4; }
 
   /* CONTRATO PREVIEW */
   .contract-tabs { display: flex; gap: 0; margin-bottom: 0; border-radius: 10px 10px 0 0; overflow: hidden; border: 1px solid var(--border); border-bottom: none; }
   .ctab {
-    flex: 1; padding: 10px; text-align: center; font-size: 12px; font-weight: 600;
+    flex: 1; padding: 13px 8px; text-align: center; font-size: 13px; font-weight: 700;
     background: var(--gray); color: var(--muted); cursor: pointer; transition: all .2s;
     border-right: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; gap: 7px;
   }
+  .ctab svg { width: 16px; height: 16px; flex-shrink: 0; }
   .ctab:last-child { border-right: none; }
-  .ctab.active { background: var(--white); color: var(--blue); }
+  .ctab.active { background: var(--white); color: var(--blue); border-bottom: 2px solid var(--blue); }
+  .ctab.read { color: var(--green); }
+  .ctab.read.active { color: var(--blue); }
   .contract-box {
     border: 1px solid var(--border);
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 12px 12px;
     background: var(--white);
     padding: 20px;
-    max-height: 340px;
+    min-height: 420px;
+    max-height: 560px;
     overflow-y: auto;
     font-size: 12.5px;
     line-height: 1.85;
     color: var(--text);
+    scroll-behavior: smooth;
   }
   .contract-box h3 { font-size: 13px; font-weight: 700; color: var(--blue); margin: 14px 0 6px; text-transform: uppercase; letter-spacing: .5px; }
   .contract-box h3:first-child { margin-top: 0; }
@@ -254,12 +269,24 @@
   }
   .sig-placeholder svg { width: 32px; height: 32px; margin-bottom: 6px; opacity: .4; }
   .sig-placeholder p { font-size: 12px; }
-  /* TABS DE ASSINATURA */
-  .sig-mode-tabs { display:flex; border-radius:10px 10px 0 0; overflow:hidden; border:1px solid var(--border); border-bottom:none; margin-bottom:0; }
-  .sig-mode-tab { flex:1; padding:10px 6px; font-size:12px; font-weight:600; cursor:pointer; background:var(--gray); color:var(--muted); border:none; transition:all .2s; font-family:inherit; }
-  .sig-mode-tab.active { background:var(--blue); color:#fff; }
-  .sig-mode-tab:first-child { border-radius:10px 0 0 0; }
-  .sig-mode-tab:last-child { border-radius:0 10px 0 0; }
+  /* TABS DE ASSINATURA — estilo card de escolha */
+  .sig-mode-tabs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+  .sig-mode-tab {
+    padding:16px 12px; font-size:13px; font-weight:700; cursor:pointer;
+    background:var(--white); color:var(--muted);
+    border:2px solid var(--border); border-radius:12px;
+    transition:all .2s; font-family:inherit;
+    display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;
+  }
+  .sig-mode-tab svg { width:24px; height:24px; flex-shrink:0; }
+  .sig-mode-tab .tab-sub { font-size:11px; font-weight:400; color:var(--muted); }
+  .sig-mode-tab.active {
+    background: linear-gradient(135deg, #e8f3fd, #dbeafe);
+    color:var(--blue); border-color:var(--blue);
+    box-shadow: 0 4px 14px rgba(10,126,226,.15);
+  }
+  .sig-mode-tab.active svg { stroke:var(--blue); }
+  .sig-mode-tab.active .tab-sub { color:var(--blue-mid); }
   /* ASSINATURA DIGITAL */
   .typed-sig-box { border:2px dashed var(--border); border-radius:0 0 10px 10px; background:#FAFBFD; padding:20px 16px; }
   .typed-sig-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
@@ -281,19 +308,23 @@
   .sig-info { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
   .sig-info svg { width: 14px; height: 14px; }
 
-  /* CONSENT */
-  .consent-box {
-    background: linear-gradient(135deg, #e8f3fd, #dbeafe);
-    border: 1.5px solid rgba(10,126,226,.2);
+  /* CONSENT CARDS */
+  .consent-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .consent-card {
+    background: var(--white);
+    border: 2px solid var(--border);
     border-radius: 12px;
-    padding: 16px;
+    padding: 14px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: flex-start;
-    margin-top: 16px;
+    cursor: pointer;
+    transition: all .2s;
   }
-  .consent-box input[type=checkbox] { margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; accent-color: var(--blue); }
-  .consent-box label { font-size: 13px; color: var(--text); cursor: pointer; line-height: 1.6; }
+  .consent-card:has(input:checked) { border-color: var(--green); background: #f0fdf4; }
+  .consent-card input[type=checkbox] { margin-top: 2px; flex-shrink: 0; width: 18px; height: 18px; cursor: pointer; accent-color: var(--green); }
+  .consent-card label { font-size: 12px; color: var(--text); cursor: pointer; line-height: 1.5; }
+  .consent-card label strong { display: block; font-size: 13px; margin-bottom: 2px; color: var(--dark); }
 
   /* BOTÕES DE NAVEGAÇÃO */
   .nav { display: flex; justify-content: space-between; margin-top: 8px; gap: 12px; }
@@ -398,10 +429,15 @@
 
     .contract-box { max-height: 280px; padding: 14px; font-size: 12px; }
 
-    .sig-mode-tab { padding: 12px 4px; font-size: 11px; }
+    .welcome-steps { grid-template-columns: repeat(2, 1fr); }
+    .consent-cards { grid-template-columns: 1fr; }
+    .sig-mode-tabs { grid-template-columns: 1fr 1fr; gap:8px; }
+    .sig-mode-tab { padding: 12px 8px; font-size: 12px; gap:6px; }
+    .sig-mode-tab svg { width: 20px; height: 20px; }
     .typed-sig-box { padding: 16px 14px; }
     .typed-sig-value { font-size: 16px; }
     .typed-sig-phrase { font-size: 13px; padding: 12px; }
+    .contract-box { min-height: 300px; max-height: 400px; }
 
     .nav { flex-direction: column-reverse; gap: 8px; }
     .btn-back { width: 100%; text-align: center; padding: 13px; }
@@ -445,6 +481,28 @@
 
   <!-- ETAPA 1: DADOS -->
   <div class="screen active" id="s1">
+    <div class="welcome-banner">
+      <h2>Assine seu contrato <em>100% digital</em></h2>
+      <p>Tudo rápido, seguro e sem precisar sair de casa. Preencha seus dados, escolha seu plano, leia e assine — em menos de 5 minutos.</p>
+      <div class="welcome-steps">
+        <div class="welcome-step">
+          <div class="welcome-step-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <span>1. Seus dados</span>
+        </div>
+        <div class="welcome-step">
+          <div class="welcome-step-icon"><svg viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
+          <span>2. Escolha o plano</span>
+        </div>
+        <div class="welcome-step">
+          <div class="welcome-step-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <span>3. Leia os contratos</span>
+        </div>
+        <div class="welcome-step">
+          <div class="welcome-step-icon"><svg viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div>
+          <span>4. Assine</span>
+        </div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-title">Dados pessoais</div>
       <div class="form-grid">
@@ -461,7 +519,7 @@
         <div class="field full"><label>Rua / Avenida e número *</label><input id="end" placeholder="Ex: Rua das Flores, 123"></div>
         <div class="field"><label>Complemento</label><input id="comp" placeholder="Apto, casa, etc. (opcional)"></div>
         <div class="field"><label>Bairro *</label><select id="bairro"><option value="">Selecione o bairro</option><option>Ancora</option><option>Areias Brancas</option><option>Arroio do Sal Sul</option><option>Arroio Novo</option><option>Arroio Seco</option><option>Balneario Alfa</option><option>Balneario Atlantico</option><option>Balneario São Jorge</option><option>Balneario São Paulo</option><option>Balneario São Pedro</option><option>Bom Jesus</option><option>Camboim</option><option>Centro</option><option>Condominio Parque das Figueiras</option><option>Costa da Lagoa</option><option>Estrada do Mar</option><option>Figueirinha</option><option>Jardim Olivia</option><option>Jardim Olivia Norte</option><option>Jardim Raiante</option><option>Loteamento Sol Nascente</option><option>Malinsky</option><option>Marambaia</option><option>Novo Arroio do Sal</option><option>Pérola</option><option>Piquenique</option><option>Praia Azul</option><option>Quatro Lagos</option><option>Rondinha Maggi</option><option>Rondinha Nova</option><option>Rondinha Velha</option><option>Sereia do Mar</option><option>Torres Sul</option><option>Tupancy</option><option>Verde Mar</option><option>Vila das Flores</option><option>Vista Alegre</option></select></div>
-        <div class="field"><label>Cidade *</label><select id="cidade"><option value="">Selecione a cidade</option><option selected>Arroio do Sal</option><option>Torres</option><option>Três Cachoeiras</option><option>Dom Pedro de Alcântara</option><option>Morrinhos do Sul</option></select></div>
+        <div class="field"><label>Cidade</label><input id="cidade" value="Arroio do Sal" readonly style="background:#eef4ff;color:var(--blue-mid);font-weight:600;cursor:default;border-color:var(--blue-light)"></div>
         <div class="field"><label>Estado</label><input id="estado" placeholder="RS" value="RS"></div>
         <div class="field"><label>CEP *</label><input id="cep" placeholder="95585-000"></div>
       </div>
@@ -484,43 +542,47 @@
            descontoMensal = diferença entre os dois (precoS - precoC)
            totalBeneficio = descontoMensal x 12
            ====================================================== -->
+      <div class="plans-note">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Todos os planos incluem <strong>12 meses de fidelidade</strong>, instalação gratuita e roteador em comodato.
+      </div>
       <div class="plans">
         <div class="plan-card selected" id="p1" onclick="selectPlan(this,'60 Mbps','Plano Básico','R$ 89,90','R$ 109,90',20.00,240.00)">
           <div class="plan-name">Plano Básico</div>
           <div class="plan-speed">60 <span>Mbps</span></div>
           <div class="plan-price">R$ 89,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Ideal para uso do dia a dia, redes sociais e streaming</div>
         </div>
         <div class="plan-card" id="p2" onclick="selectPlan(this,'300 Mbps','Plano Conecte Família','R$ 99,90','R$ 119,90',20.00,240.00)">
           <div class="plan-name">Plano Conecte Família</div>
           <div class="plan-speed">300 <span>Mbps</span></div>
           <div class="plan-price">R$ 99,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Para famílias com vários dispositivos conectados</div>
         </div>
         <div class="plan-card" id="p3" onclick="selectPlan(this,'500 Mbps','Plano Família Max','R$ 109,90','R$ 129,90',20.00,240.00)" style="position:relative">
-          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#111;font-size:10px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.5px">⭐ Mais popular</div>
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#111;font-size:10px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.5px;display:flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="#b45309" width="10" height="10"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Mais popular</div>
           <div class="plan-name">Plano Família Max</div>
           <div class="plan-speed">500 <span>Mbps</span></div>
           <div class="plan-price">R$ 109,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Gaming, streaming 4K e home office em casa</div>
         </div>
         <div class="plan-card" id="p4" onclick="selectPlan(this,'600 Mbps','Plano Alta Performance','R$ 119,90','R$ 139,90',20.00,240.00)">
           <div class="plan-name">Plano Alta Performance</div>
           <div class="plan-speed">600 <span>Mbps</span></div>
           <div class="plan-price">R$ 119,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Máximo desempenho para múltiplos usuários simultâneos</div>
         </div>
         <div class="plan-card" id="p5" onclick="selectPlan(this,'700 Mbps','Plano Potência Premium','R$ 129,90','R$ 149,90',20.00,240.00)">
           <div class="plan-name">Plano Potência Premium</div>
           <div class="plan-speed">700 <span>Mbps</span></div>
           <div class="plan-price">R$ 129,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Para quem exige alta velocidade e estabilidade</div>
         </div>
         <div class="plan-card" id="p6" onclick="selectPlan(this,'800 Mbps','Plano Topo da Velocidade','R$ 149,90','R$ 169,90',20.00,240.00)">
           <div class="plan-name">Plano Topo da Velocidade</div>
           <div class="plan-speed">800 <span>Mbps</span></div>
           <div class="plan-price">R$ 149,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
+          <div class="plan-desc">Nossa maior velocidade — sem limitações</div>
         </div>
       </div>
     </div>
@@ -535,14 +597,32 @@
     <div class="card">
       <div class="card-title">Leia os contratos com atenção</div>
       <div class="contract-tabs">
-        <div class="ctab active" onclick="trocarAba(0)">📄 Termo de Adesão</div>
-        <div class="ctab" onclick="trocarAba(1)">📋 Contrato de Permanência</div>
+        <div class="ctab active" id="ctab0" onclick="trocarAba(0)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Termo de Adesão
+        </div>
+        <div class="ctab" id="ctab1" onclick="trocarAba(1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+          Contrato de Permanência
+        </div>
       </div>
       <div class="contract-box" id="contratoBox"></div>
     </div>
-    <div class="consent-box">
-      <input type="checkbox" id="chk">
-      <label for="chk">Li e compreendi os termos do <strong>Termo de Adesão</strong> e do <strong>Contrato de Permanência</strong>, incluindo as condições de fidelidade, multa rescisória, equipamentos em comodato e os dados do plano contratado.</label>
+    <div class="consent-cards">
+      <div class="consent-card">
+        <input type="checkbox" id="chkAdesao">
+        <label for="chkAdesao">
+          <strong>Termo de Adesão</strong>
+          Li e compreendi este contrato, incluindo velocidade, valores e condições do serviço.
+        </label>
+      </div>
+      <div class="consent-card">
+        <input type="checkbox" id="chkPermanencia">
+        <label for="chkPermanencia">
+          <strong>Contrato de Permanência</strong>
+          Li e concordo com a fidelidade de 12 meses e as condições de multa rescisória.
+        </label>
+      </div>
     </div>
     <div class="nav" style="margin-top:14px">
       <button class="btn-back" onclick="ir(2,1)">← Voltar</button>
@@ -555,21 +635,32 @@
     <div class="card">
       <div class="card-title">Sua assinatura</div>
       <div class="sig-mode-tabs">
-        <button class="sig-mode-tab active" id="tabDesenhar" onclick="setSigMode('draw')">✏️ Assinar (mouse/dedo)</button>
-        <button class="sig-mode-tab" id="tabDigital" onclick="setSigMode('typed')">📱 Confirmação Digital</button>
+        <button class="sig-mode-tab active" id="tabDesenhar" onclick="setSigMode('draw')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Assinar à mão
+          <span class="tab-sub">Mouse ou dedo na tela</span>
+        </button>
+        <button class="sig-mode-tab" id="tabDigital" onclick="setSigMode('typed')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          Confirmação Digital
+          <span class="tab-sub">Mais rápido — válido por lei</span>
+        </button>
       </div>
 
       <!-- MODO DESENHAR -->
       <div id="drawSigArea">
         <div class="sig-wrap" style="border-radius:0 0 10px 10px">
-          <canvas id="sigCanvas" height="180"></canvas>
+          <canvas id="sigCanvas" height="260"></canvas>
           <div class="sig-placeholder" id="sigHint">
             <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
             <p>Clique aqui e assine</p>
           </div>
         </div>
         <div class="sig-btns">
-          <button class="btn-clear" onclick="limpar()">🗑 Limpar assinatura</button>
+          <button class="btn-clear" onclick="limpar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;vertical-align:-2px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            Limpar assinatura
+          </button>
           <div class="sig-info">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             Registrado com data, hora e IP
@@ -602,10 +693,6 @@
             <div class="typed-sig-label">Data e horário</div>
             <div class="typed-sig-value" id="typedDataHora">—</div>
           </div>
-          <div class="typed-sig-field">
-            <div class="typed-sig-label">Protocolo</div>
-            <div class="typed-sig-value" id="typedProtocolo">—</div>
-          </div>
           <div><span class="typed-sig-stamp">✓ Assinatura eletrônica simples — Lei 14.063/2020</span></div>
           <div class="typed-sig-validity">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -614,7 +701,7 @@
         </div>
       </div>
     </div>
-    <div class="card" style="padding:16px">
+    <div class="card" style="padding:16px;background:linear-gradient(135deg,#edf3ff,#dbeafe);border-color:rgba(10,126,226,.15)">
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <div style="flex:1;min-width:140px">
           <div style="font-size:11px;color:var(--muted);margin-bottom:2px">Data e hora</div>
@@ -628,9 +715,7 @@
           <div style="font-size:11px;color:var(--muted);margin-bottom:2px">Plano</div>
           <div style="font-size:13px;font-weight:600" id="regPlano"></div>
         </div>
-        <div style="flex:1;min-width:140px">
-          <div style="font-size:11px;color:var(--muted);margin-bottom:2px">Protocolo</div>
-          <div style="font-size:13px;font-weight:600" id="regProto"></div>
+        <div style="display:none" id="regProto">
         </div>
       </div>
     </div>
@@ -651,10 +736,10 @@
         <div class="success-sub">Sua assinatura foi registrada com sucesso. Agora baixe o PDF ou envie diretamente pelo WhatsApp para a Conecte Telecom.</div>
       </div>
       <div class="proto-box">
-        <div class="proto-row"><span class="proto-label">Protocolo</span><span class="proto-val" id="fProto"></span></div>
         <div class="proto-row"><span class="proto-label">Assinante</span><span class="proto-val" id="fNome"></span></div>
         <div class="proto-row"><span class="proto-label">Plano</span><span class="proto-val" id="fPlano"></span></div>
         <div class="proto-row"><span class="proto-label">Registrado em</span><span class="proto-val" id="fData"></span></div>
+        <span style="display:none" id="fProto"></span>
       </div>
       <div class="final-actions">
         <button class="btn-pdf" onclick="baixarPDF()">
@@ -753,7 +838,6 @@ function validateStep1() {
     { id:'tel',    label:'Telefone', min:13 },
     { id:'end',    label:'Endereço', min:5 },
     { id:'bairro', label:'Bairro', min:2 },
-    { id:'cidade', label:'Cidade', min:2 },
     { id:'cep',    label:'CEP', exactLen:9 },
   ];
   campos.forEach(c => {
@@ -905,10 +989,11 @@ function gerarContratos() {
 // ASSINATURA
 // ============================================================
 function irAssinar() {
-  if (!document.getElementById('chk').checked) {
-    alert('Marque que leu e concorda com os contratos para continuar.');
-    return;
-  }
+  const a = document.getElementById('chkAdesao').checked;
+  const p = document.getElementById('chkPermanencia').checked;
+  if (!a && !p) { alert('Confirme a leitura dos dois contratos antes de continuar.'); return; }
+  if (!a) { alert('Confirme que leu o Termo de Adesão antes de continuar.'); return; }
+  if (!p) { alert('Confirme que leu o Contrato de Permanência antes de continuar.'); return; }
   ir(4);
 }
 
@@ -931,7 +1016,6 @@ function setSigMode(mode) {
     document.getElementById('typedNome').textContent = g('nome');
     document.getElementById('typedCPF').textContent = g('cpf');
     document.getElementById('typedDataHora').textContent = dataHora;
-    document.getElementById('typedProtocolo').textContent = protocolo;
   }
 }
 
@@ -971,7 +1055,7 @@ function initCanvas() {
   const ctx = canvas.getContext('2d');
   canvas.width = canvas.offsetWidth * window.devicePixelRatio;
   canvas.height = 180 * window.devicePixelRatio;
-  canvas.style.height = '180px';
+  canvas.style.height = '260px';
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
   ctx.strokeStyle = '#1565C0';
   ctx.lineWidth = 2.5;
@@ -1015,7 +1099,7 @@ function finalizar() {
 // ASSINATURA DIGITAL NO PDF (renderização direta)
 // ============================================================
 function _adicionarSigDigitalPDF(doc, _y, ml, cw, W) {
-  const bx = ml, bw = cw, bh = 38;
+  const bx = ml, bw = cw, bh = 26;
   doc.setFillColor(240, 247, 255);
   doc.roundedRect(bx, _y, bw, bh, 3, 3, 'F');
   doc.setDrawColor(10, 126, 226); doc.setLineWidth(0.4);
@@ -1023,24 +1107,21 @@ function _adicionarSigDigitalPDF(doc, _y, ml, cw, W) {
   doc.setFillColor(10, 126, 226);
   doc.rect(bx, _y, 3, bh, 'F');
 
-  doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(21, 101, 192);
-  doc.text(g('nome'), bx + 8, _y + 9);
-
-  doc.setFontSize(8.5); doc.setFont('helvetica','normal'); doc.setTextColor(80, 100, 130);
-  doc.text('CPF: ' + g('cpf'), bx + 8, _y + 16);
+  doc.setFontSize(10); doc.setFont('helvetica','bold'); doc.setTextColor(21, 101, 192);
+  doc.text(g('nome') + '  —  CPF ' + g('cpf'), bx + 8, _y + 8);
 
   doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(50, 65, 85);
-  const frase = '"Declaro que li e aceito os termos do contrato da Conecte Telecom."';
-  const linhas = doc.splitTextToSize(frase, bw - 16);
-  linhas.forEach((l, i) => doc.text(l, bx + 8, _y + 23 + i * 4.5));
+  const frase = '"Declaro que li e aceito integralmente os termos do Termo de Adesão e do Contrato de Permanência da Conecte Telecom."';
+  const linhas = doc.splitTextToSize(frase, bw - 70);
+  linhas.forEach((l, i) => doc.text(l, bx + 8, _y + 15 + i * 4.5));
 
   doc.setFontSize(7); doc.setFont('helvetica','normal'); doc.setTextColor(100, 120, 140);
-  doc.text(dataHora + '  |  Protocolo: ' + protocolo, bx + 8, _y + 33);
+  doc.text(dataHora, bx + 8, _y + 23);
 
   doc.setFillColor(22, 163, 74);
-  doc.roundedRect(bx + bw - 58, _y + 4, 54, 9, 2, 2, 'F');
-  doc.setFontSize(6.5); doc.setFont('helvetica','bold'); doc.setTextColor(255, 255, 255);
-  doc.text('✓  Assin. Eletr. — Lei 14.063/2020', bx + bw - 56, _y + 9.5);
+  doc.roundedRect(bx + bw - 54, _y + 4, 50, 8, 2, 2, 'F');
+  doc.setFontSize(6); doc.setFont('helvetica','bold'); doc.setTextColor(255, 255, 255);
+  doc.text('✓ Assin. Eletr. Lei 14.063/2020', bx + bw - 53, _y + 9);
 }
 
 // GERAR PDF
@@ -1131,7 +1212,7 @@ function baixarPDF() {
   hr();
 
   // Assinatura no Termo de Adesão
-  checkPage(40);
+  checkPage(75);
   addLine(8);
   doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(45,55,72);
   doc.text('Arroio do Sal, ' + dataHoje(), ml, y); addLine(10);
@@ -1149,13 +1230,14 @@ function baixarPDF() {
   } else {
     const sigImg = getSignatureDataURL();
     const sigW = 70, sigH = 25;
+    doc.addImage(sigImg, 'PNG', ml, y, sigW, sigH);
+    addLine(sigH + 1);
     doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
     doc.line(ml, y, ml + sigW, y);
-    doc.addImage(sigImg, 'PNG', ml, y - sigH, sigW, sigH);
+    doc.line(W/2, y, W/2 + sigW, y);
     doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
     doc.text(g('nome'), ml, y + 5);
     doc.text('CPF: ' + g('cpf'), ml, y + 9);
-    doc.line(W/2, y, W/2 + sigW, y);
     doc.text('Conecte Telecom LTDA', W/2, y + 5);
     doc.text('Representante Autorizado', W/2, y + 9);
     addLine(20);
@@ -1224,7 +1306,7 @@ function baixarPDF() {
   para('6.1 Em caso de suspensão por solicitação do ASSINANTE ou inadimplência, o prazo de permanência fica igualmente suspenso. 6.2 Este instrumento é complementar e indissociável ao Contrato de Prestação de Serviços e ao Termo de Adesão. 6.3 Fica eleito o Foro do domicílio do Assinante como competente para dirimir qualquer conflito oriundo deste Termo.');
   hr();
 
-  checkPage(45);
+  checkPage(75);
   addLine(8);
   doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(45,55,72);
   doc.text('Arroio do Sal, ' + dataHoje(), ml, y); addLine(10);
@@ -1242,13 +1324,14 @@ function baixarPDF() {
   } else {
     const sigImg2 = getSignatureDataURL();
     const sigW2 = 70, sigH2 = 25;
+    doc.addImage(sigImg2, 'PNG', ml, y, sigW2, sigH2);
+    addLine(sigH2 + 1);
     doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
     doc.line(ml, y, ml + sigW2, y);
-    doc.addImage(sigImg2, 'PNG', ml, y - sigH2, sigW2, sigH2);
+    doc.line(W/2, y, W/2 + sigW2, y);
     doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
     doc.text(g('nome'), ml, y + 5);
     doc.text('CPF: ' + g('cpf'), ml, y + 9);
-    doc.line(W/2, y, W/2 + sigW2, y);
     doc.text('Conecte Telecom LTDA', W/2, y + 5);
     doc.text('Representante Autorizado', W/2, y + 9);
     addLine(20);
