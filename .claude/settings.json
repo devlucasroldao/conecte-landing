@@ -125,7 +125,9 @@
       "Bash(node patch-links.js)",
       "Bash(identify \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\img\\\\mascote.png\")",
       "Bash(node mobile-links.js)",
-      "Bash(node patch2.js)"
+      "Bash(node patch2.js)",
+      "PowerShell($lines = Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\contratos.html\"; $lines[1040..1070] | ForEach-Object { \"$\\($lines.IndexOf\\($_\\)+1\\): $_\" })",
+      "PowerShell($lines = Get-Content \"c:\\\\Users\\\\lucas\\\\Documents\\\\MeusProjetos\\\\conecte-landing\\\\contratos.html\" -Encoding UTF8; \\($lines | Select-String \"id=.bairro.\"\\)[0].Line.Substring\\(0, 80\\))"
     ],
     "additionalDirectories": [
       "c:\\Users\\lucas\\.claude\\projects\\c--Users-lucas-Documents-MeusProjetos-conecte-landing\\memory",

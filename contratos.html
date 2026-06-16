@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conecte Telecom — Portal de Contratos</title>
+<link rel="shortcut icon" href="icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -154,6 +157,7 @@
     background: var(--white);
     transition: border .2s;
     outline: none;
+    font-family: inherit;
   }
   .field input:focus, .field select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(10,126,226,.1); outline: none; }
   .field input::placeholder { color: #bbb; }
@@ -244,6 +248,23 @@
   }
   .sig-placeholder svg { width: 32px; height: 32px; margin-bottom: 6px; opacity: .4; }
   .sig-placeholder p { font-size: 12px; }
+  /* TABS DE ASSINATURA */
+  .sig-mode-tabs { display:flex; border-radius:10px 10px 0 0; overflow:hidden; border:1px solid var(--border); border-bottom:none; margin-bottom:0; }
+  .sig-mode-tab { flex:1; padding:10px 6px; font-size:12px; font-weight:600; cursor:pointer; background:var(--gray); color:var(--muted); border:none; transition:all .2s; font-family:inherit; }
+  .sig-mode-tab.active { background:var(--blue); color:#fff; }
+  .sig-mode-tab:first-child { border-radius:10px 0 0 0; }
+  .sig-mode-tab:last-child { border-radius:0 10px 0 0; }
+  /* ASSINATURA DIGITAL */
+  .typed-sig-box { border:2px dashed var(--border); border-radius:0 0 10px 10px; background:#FAFBFD; padding:20px 16px; }
+  .typed-sig-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .typed-sig-logo { height:36px; }
+  .typed-sig-label { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; margin-bottom:2px; }
+  .typed-sig-value { font-size:15px; font-weight:700; color:var(--dark); }
+  .typed-sig-field { margin-bottom:12px; }
+  .typed-sig-phrase { background:var(--blue-light); border-left:3px solid var(--blue); padding:10px 14px; font-size:12px; color:var(--dark); border-radius:0 8px 8px 0; margin:14px 0; line-height:1.5; }
+  .typed-sig-stamp { display:inline-block; background:rgba(22,163,74,.1); border:1.5px solid rgba(22,163,74,.4); color:#15803d; font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; margin-top:6px; }
+  .typed-sig-validity { font-size:11px; color:var(--muted); margin-top:12px; padding-top:10px; border-top:1px solid var(--border); display:flex; gap:6px; align-items:flex-start; }
+
   .sig-btns { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
   .btn-clear {
     background: none; border: 1.5px solid var(--border); border-radius: 8px;
@@ -382,9 +403,9 @@
       <div class="form-grid">
         <div class="field full"><label>Nome completo *</label><input id="nome" placeholder="Seu nome completo"></div>
         <div class="field"><label>CPF *</label><input id="cpf" placeholder="000.000.000-00"></div>
-        <div class="field"><label>RG *</label><input id="rg" placeholder="0000000"></div>
+        <div class="field"><label>RG</label><input id="rg" placeholder="0000000 (opcional)"></div>
         <div class="field"><label>Telefone / WhatsApp *</label><input id="tel" placeholder="(51) 99999-9999"></div>
-        <div class="field"><label>E-mail *</label><input id="email" type="email" placeholder="seu@email.com"></div>
+        <div class="field"><label>E-mail</label><input id="email" type="email" placeholder="seu@email.com (opcional)"></div>
       </div>
     </div>
     <div class="card">
@@ -392,7 +413,7 @@
       <div class="form-grid">
         <div class="field full"><label>Rua / Avenida e número *</label><input id="end" placeholder="Ex: Rua das Flores, 123"></div>
         <div class="field"><label>Complemento</label><input id="comp" placeholder="Apto, casa, etc. (opcional)"></div>
-        <div class="field"><label>Bairro *</label><input id="bairro" placeholder="Ex: Centro"></div>
+        <div class="field"><label>Bairro *</label><select id="bairro"><option value="">Selecione o bairro</option><option>Ancora</option><option>Areias Brancas</option><option>Arroio do Sal Sul</option><option>Arroio Novo</option><option>Arroio Seco</option><option>Balneario Alfa</option><option>Balneario Atlantico</option><option>Balneario São Jorge</option><option>Balneario São Paulo</option><option>Balneario São Pedro</option><option>Bom Jesus</option><option>Camboim</option><option>Centro</option><option>Condominio Parque das Figueiras</option><option>Costa da Lagoa</option><option>Estrada do Mar</option><option>Figueirinha</option><option>Jardim Olivia</option><option>Jardim Olivia Norte</option><option>Jardim Raiante</option><option>Loteamento Sol Nascente</option><option>Malinsky</option><option>Marambaia</option><option>Novo Arroio do Sal</option><option>Pérola</option><option>Piquenique</option><option>Praia Azul</option><option>Quatro Lagos</option><option>Rondinha Maggi</option><option>Rondinha Nova</option><option>Rondinha Velha</option><option>Sereia do Mar</option><option>Torres Sul</option><option>Tupancy</option><option>Verde Mar</option><option>Vila das Flores</option><option>Vista Alegre</option></select></div>
         <div class="field"><label>Cidade *</label><input id="cidade" placeholder="Ex: Arroio do Sal"></div>
         <div class="field"><label>Estado</label><input id="estado" placeholder="RS" value="RS"></div>
         <div class="field"><label>CEP *</label><input id="cep" placeholder="95585-000"></div>
@@ -417,33 +438,41 @@
            totalBeneficio = descontoMensal x 12
            ====================================================== -->
       <div class="plans">
-        <div class="plan-card selected" id="p1" onclick="selectPlan(this,'50 Mbps','Parceiro Anual 50M','R$ 69,90','R$ 89,90',20.00,240.00)">
-          <div class="plan-name">Parceiro Anual 50M</div>
-          <div class="plan-speed">50 <span>Mbps</span></div>
-          <div class="plan-price">R$ 69,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="plan-price-sem">Sem fidelidade: R$ 89,90</div>
-          <div class="fidelidade-tag">12 meses de fidelidade</div>
-        </div>
-        <div class="plan-card" id="p2" onclick="selectPlan(this,'100 Mbps','Parceiro Anual 100M','R$ 89,90','R$ 109,90',20.00,240.00)">
-          <div class="plan-name">Parceiro Anual 100M</div>
-          <div class="plan-speed">100 <span>Mbps</span></div>
+        <div class="plan-card selected" id="p1" onclick="selectPlan(this,'60 Mbps','Plano Básico','R$ 89,90','R$ 109,90',20.00,240.00)">
+          <div class="plan-name">Plano Básico</div>
+          <div class="plan-speed">60 <span>Mbps</span></div>
           <div class="plan-price">R$ 89,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="plan-price-sem">Sem fidelidade: R$ 109,90</div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
         </div>
-        <div class="plan-card" id="p3" onclick="selectPlan(this,'300 Mbps','Parceiro Anual 300M','R$ 109,90','R$ 129,90',20.00,240.00)" style="position:relative">
-          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#111;font-size:10px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.5px">⭐ Mais popular</div>
-          <div class="plan-name">Parceiro Anual 300M</div>
+        <div class="plan-card" id="p2" onclick="selectPlan(this,'300 Mbps','Plano Família 300M','R$ 99,90','R$ 119,90',20.00,240.00)">
+          <div class="plan-name">Plano Família 300M</div>
           <div class="plan-speed">300 <span>Mbps</span></div>
-          <div class="plan-price">R$ 109,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="plan-price-sem">Sem fidelidade: R$ 129,90</div>
+          <div class="plan-price">R$ 99,90<small style="font-weight:400;font-size:12px">/mês</small></div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
         </div>
-        <div class="plan-card" id="p4" onclick="selectPlan(this,'600 Mbps','Parceiro Anual 600M','R$ 139,90','R$ 169,90',30.00,360.00)">
-          <div class="plan-name">Parceiro Anual 600M</div>
+        <div class="plan-card" id="p3" onclick="selectPlan(this,'500 Mbps','Plano Família 500M','R$ 109,90','R$ 129,90',20.00,240.00)" style="position:relative">
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#111;font-size:10px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.5px">⭐ Mais popular</div>
+          <div class="plan-name">Plano Família 500M</div>
+          <div class="plan-speed">500 <span>Mbps</span></div>
+          <div class="plan-price">R$ 109,90<small style="font-weight:400;font-size:12px">/mês</small></div>
+          <div class="fidelidade-tag">12 meses de fidelidade</div>
+        </div>
+        <div class="plan-card" id="p4" onclick="selectPlan(this,'600 Mbps','Plano Alta Performance','R$ 119,90','R$ 139,90',20.00,240.00)">
+          <div class="plan-name">Plano Alta Performance</div>
           <div class="plan-speed">600 <span>Mbps</span></div>
-          <div class="plan-price">R$ 139,90<small style="font-weight:400;font-size:12px">/mês</small></div>
-          <div class="plan-price-sem">Sem fidelidade: R$ 169,90</div>
+          <div class="plan-price">R$ 119,90<small style="font-weight:400;font-size:12px">/mês</small></div>
+          <div class="fidelidade-tag">12 meses de fidelidade</div>
+        </div>
+        <div class="plan-card" id="p5" onclick="selectPlan(this,'700 Mbps','Plano Potência Premium','R$ 129,90','R$ 149,90',20.00,240.00)">
+          <div class="plan-name">Plano Potência Premium</div>
+          <div class="plan-speed">700 <span>Mbps</span></div>
+          <div class="plan-price">R$ 129,90<small style="font-weight:400;font-size:12px">/mês</small></div>
+          <div class="fidelidade-tag">12 meses de fidelidade</div>
+        </div>
+        <div class="plan-card" id="p6" onclick="selectPlan(this,'800 Mbps','Plano Topo da Velocidade','R$ 149,90','R$ 169,90',20.00,240.00)">
+          <div class="plan-name">Plano Topo da Velocidade</div>
+          <div class="plan-speed">800 <span>Mbps</span></div>
+          <div class="plan-price">R$ 149,90<small style="font-weight:400;font-size:12px">/mês</small></div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
         </div>
       </div>
@@ -478,19 +507,63 @@
   <div class="screen" id="s4">
     <div class="card">
       <div class="card-title">Sua assinatura</div>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Assine no espaço abaixo. No celular, use o dedo. No computador, use o mouse.</p>
-      <div class="sig-wrap">
-        <canvas id="sigCanvas" height="180"></canvas>
-        <div class="sig-placeholder" id="sigHint">
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-          <p>Clique aqui e assine</p>
+      <div class="sig-mode-tabs">
+        <button class="sig-mode-tab active" id="tabDesenhar" onclick="setSigMode('draw')">✏️ Assinar (mouse/dedo)</button>
+        <button class="sig-mode-tab" id="tabDigital" onclick="setSigMode('typed')">📱 Confirmação Digital</button>
+      </div>
+
+      <!-- MODO DESENHAR -->
+      <div id="drawSigArea">
+        <div class="sig-wrap" style="border-radius:0 0 10px 10px">
+          <canvas id="sigCanvas" height="180"></canvas>
+          <div class="sig-placeholder" id="sigHint">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+            <p>Clique aqui e assine</p>
+          </div>
+        </div>
+        <div class="sig-btns">
+          <button class="btn-clear" onclick="limpar()">🗑 Limpar assinatura</button>
+          <div class="sig-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Registrado com data, hora e IP
+          </div>
         </div>
       </div>
-      <div class="sig-btns">
-        <button class="btn-clear" onclick="limpar()">🗑 Limpar assinatura</button>
-        <div class="sig-info">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Registrado com data, hora e IP
+
+      <!-- MODO CONFIRMAÇÃO DIGITAL -->
+      <div id="typedSigArea" style="display:none">
+        <div class="typed-sig-box">
+          <div class="typed-sig-header">
+            <img data-logo="1" class="typed-sig-logo" alt="Conecte Telecom">
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--dark)">Conecte Telecom</div>
+              <div style="font-size:11px;color:var(--muted)">Confirmação de Contrato Digital</div>
+            </div>
+          </div>
+          <div class="typed-sig-field">
+            <div class="typed-sig-label">Assinante</div>
+            <div class="typed-sig-value" id="typedNome">—</div>
+          </div>
+          <div class="typed-sig-field">
+            <div class="typed-sig-label">CPF</div>
+            <div class="typed-sig-value" id="typedCPF">—</div>
+          </div>
+          <div class="typed-sig-phrase">
+            "Declaro que li e aceito integralmente os termos do Termo de Adesão e do Contrato de Permanência da Conecte Telecom, estando ciente de todas as condições, valores e obrigações descritas."
+          </div>
+          <div class="typed-sig-field">
+            <div class="typed-sig-label">Data e horário</div>
+            <div class="typed-sig-value" id="typedDataHora">—</div>
+          </div>
+          <div class="typed-sig-field">
+            <div class="typed-sig-label">Protocolo</div>
+            <div class="typed-sig-value" id="typedProtocolo">—</div>
+          </div>
+          <div><span class="typed-sig-stamp">✓ Assinatura eletrônica simples — Lei 14.063/2020</span></div>
+          <div class="typed-sig-validity">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Esta modalidade é uma <strong>assinatura eletrônica simples</strong>, válida para contratos de telecomunicações conforme a Lei 14.063/2020. O IP, data/hora e protocolo são registrados para fins probatórios.
+          </div>
         </div>
       </div>
     </div>
@@ -558,10 +631,11 @@
 const WA_NUMBER = '5551997597259'; // WhatsApp da Conecte Telecom
 
 // Estado global
-let plano = { vel:'50 Mbps', nome:'Parceiro Anual 50M', preco:'R$ 69,90', precoSem:'R$ 89,90', descMensal:20.00, totalBeneficio:240.00 };
+let plano = { vel:'60 Mbps', nome:'Plano Básico', preco:'R$ 89,90', precoSem:'R$ 109,90', descMensal:20.00, totalBeneficio:240.00 };
 let protocolo = '';
 let sigDrawn = false;
 let dataHora = '';
+let sigMode = 'draw'; // 'draw' | 'typed'
 
 // ============================================================
 // MÁSCARAS
@@ -629,9 +703,7 @@ function validateStep1() {
   const campos = [
     { id:'nome',   label:'Nome completo', min:3 },
     { id:'cpf',    label:'CPF', exactLen:14 },
-    { id:'rg',     label:'RG', min:5 },
     { id:'tel',    label:'Telefone', min:13 },
-    { id:'email',  label:'E-mail', email:true },
     { id:'end',    label:'Endereço', min:5 },
     { id:'bairro', label:'Bairro', min:2 },
     { id:'cidade', label:'Cidade', min:2 },
@@ -668,7 +740,7 @@ function ir(n, from) {
     if (i + 1 === n) t.classList.add('active');
   });
   if (n === 3) { gerarContratos(); trocarAba(0); }
-  if (n === 4) { preencherRegistro(); initCanvas(); }
+  if (n === 4) { preencherRegistro(); initCanvas(); setSigMode('draw'); }
   window.scrollTo(0, 0);
 }
 
@@ -695,6 +767,10 @@ function trocarAba(n) {
 }
 
 function g(id) { return document.getElementById(id).value.trim() || '_______________'; }
+function gOpt(id, prefix, suffix) {
+  const v = document.getElementById(id).value.trim();
+  return v ? (prefix || '') + v + (suffix || '') : '';
+}
 
 function dataHoje() {
   return new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
@@ -704,7 +780,7 @@ function gerarAdesao() {
   const comp = g('comp') !== '_______________' ? ', ' + g('comp') : '';
   return `
     <h3>Termo de Adesão ao Contrato de Prestação de Serviços de Comunicação Multimídia, Serviço de Valor Adicionado, Locação e Outras Avenças</h3>
-    <p>Por este instrumento particular, <span class="highlight">${g('nome')}</span>, inscrito(a) no CPF sob o nº <span class="highlight">${g('cpf')}</span>, RG nº <span class="highlight">${g('rg')}</span>, residente e domiciliado(a) na <span class="highlight">${g('end')}${comp}, ${g('bairro')}, ${g('cidade')}/${g('estado')}, CEP ${g('cep')}</span>, e-mail <span class="highlight">${g('email')}</span>, telefone <span class="highlight">${g('tel')}</span>, doravante denominado <strong>ASSINANTE</strong>, contrata e adere ao Serviço da <strong>PRESTADORA Conecte Telecom LTDA</strong>, CNPJ nº 41.143.126/0001-00, sede na Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, CEP 95585-000, Fone: (51) 99759-7259, E-mail: conecte@seconecte.net, autorizada pela ANATEL pelo Ato nº 3423, de 14 de maio de 2021.</p>
+    <p>Por este instrumento particular, <span class="highlight">${g('nome')}</span>, inscrito(a) no CPF sob o nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente e domiciliado(a) na <span class="highlight">${g('end')}${comp}, ${g('bairro')}, ${g('cidade')}/${g('estado')}, CEP ${g('cep')}</span>${gOpt('email', ', e-mail <span class="highlight">', '</span>')}, telefone <span class="highlight">${g('tel')}</span>, doravante denominado <strong>ASSINANTE</strong>, contrata e adere ao Serviço da <strong>PRESTADORA Conecte Telecom LTDA</strong>, CNPJ nº 41.143.126/0001-00, sede na Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, CEP 95585-000, Fone: (51) 99759-7259, E-mail: conecte@seconecte.net, autorizada pela ANATEL pelo Ato nº 3423, de 14 de maio de 2021.</p>
     <hr class="section-divider">
     <h3>1. Dados técnicos e comerciais do plano</h3>
     <p><strong>Plano:</strong> ${plano.nome} &nbsp;|&nbsp; <strong>Velocidade:</strong> ${plano.vel} (download e upload) &nbsp;|&nbsp; <strong>Tipo de IP:</strong> Variável &nbsp;|&nbsp; <strong>Prazo contratual:</strong> Indeterminado</p>
@@ -750,7 +826,7 @@ function gerarPermanencia() {
     <hr class="section-divider">
     <h3>1. Qualificação das partes</h3>
     <p><strong>PRESTADORA:</strong> Conecte Telecom LTDA, CNPJ nº 41.143.126/0001-00, Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, autorizada pela ANATEL – Ato nº 3423/2021.</p>
-    <p><strong>ASSINANTE:</strong> <span class="highlight">${g('nome')}</span>, CPF nº <span class="highlight">${g('cpf')}</span>, RG nº <span class="highlight">${g('rg')}</span>, residente na <span class="highlight">${g('end')}, ${g('bairro')}, ${g('cidade')}/${g('estado')}</span>.</p>
+    <p><strong>ASSINANTE:</strong> <span class="highlight">${g('nome')}</span>, CPF nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente na <span class="highlight">${g('end')}, ${g('bairro')}, ${g('cidade')}/${g('estado')}</span>.</p>
     <hr class="section-divider">
     <h3>2. Plano e benefícios concedidos</h3>
     <p><strong>Plano:</strong> ${plano.nome} &nbsp;|&nbsp; <strong>Valor com fidelidade:</strong> ${plano.preco}/mês &nbsp;|&nbsp; <strong>Valor sem fidelidade:</strong> ${plano.precoSem}/mês</p>
@@ -798,6 +874,51 @@ function preencherRegistro() {
   document.getElementById('regProto').textContent = protocolo;
 }
 
+function setSigMode(mode) {
+  sigMode = mode;
+  document.getElementById('tabDesenhar').classList.toggle('active', mode === 'draw');
+  document.getElementById('tabDigital').classList.toggle('active', mode === 'typed');
+  document.getElementById('drawSigArea').style.display = mode === 'draw' ? '' : 'none';
+  document.getElementById('typedSigArea').style.display = mode === 'typed' ? '' : 'none';
+  if (mode === 'typed') {
+    document.getElementById('typedNome').textContent = g('nome');
+    document.getElementById('typedCPF').textContent = g('cpf');
+    document.getElementById('typedDataHora').textContent = dataHora;
+    document.getElementById('typedProtocolo').textContent = protocolo;
+  }
+}
+
+function getSignatureDataURL() {
+  if (sigMode === 'draw') {
+    return document.getElementById('sigCanvas').toDataURL('image/png');
+  }
+  const c = document.createElement('canvas');
+  c.width = 560; c.height = 130;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#f0f7ff';
+  ctx.fillRect(0, 0, 560, 130);
+  ctx.strokeStyle = '#0a7ee2';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(0.5, 0.5, 559, 129);
+  ctx.fillStyle = '#1565C0';
+  ctx.font = 'bold 18px sans-serif';
+  ctx.fillText(g('nome'), 14, 32);
+  ctx.font = '13px sans-serif';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('CPF: ' + g('cpf'), 14, 54);
+  ctx.font = 'italic 11px sans-serif';
+  ctx.fillStyle = '#334155';
+  const frase = 'Declaro que li e aceito os termos do contrato da Conecte Telecom.';
+  ctx.fillText(frase, 14, 76);
+  ctx.font = '11px sans-serif';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText(dataHora + '  |  Protocolo: ' + protocolo, 14, 98);
+  ctx.fillStyle = '#16a34a';
+  ctx.font = 'bold 10px sans-serif';
+  ctx.fillText('✓ Assinatura eletrônica simples — Lei 14.063/2020', 14, 118);
+  return c.toDataURL('image/png');
+}
+
 function initCanvas() {
   const canvas = document.getElementById('sigCanvas');
   const ctx = canvas.getContext('2d');
@@ -835,7 +956,7 @@ function limpar() {
 // FINALIZAR
 // ============================================================
 function finalizar() {
-  if (!sigDrawn) { alert('Por favor, faça sua assinatura antes de continuar.'); return; }
+  if (sigMode === 'draw' && !sigDrawn) { alert('Por favor, faça sua assinatura antes de continuar.'); return; }
   document.getElementById('fProto').textContent = protocolo;
   document.getElementById('fNome').textContent = g('nome');
   document.getElementById('fPlano').textContent = plano.nome + ' — ' + plano.preco + '/mês';
@@ -899,9 +1020,9 @@ function baixarPDF() {
   doc.text('Protocolo: ' + protocolo + '   |   Data: ' + dataHoje(), W/2, y+2, { align:'center' }); addLine(10);
 
   subtitle('1. QUALIFICAÇÃO DO ASSINANTE');
-  para('Nome: ' + g('nome') + '   |   CPF: ' + g('cpf') + '   |   RG: ' + g('rg'));
+  para('Nome: ' + g('nome') + '   |   CPF: ' + g('cpf') + (document.getElementById('rg').value.trim() ? '   |   RG: ' + g('rg') : ''));
   para('Endereço: ' + g('end') + comp + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + ', CEP ' + g('cep'));
-  para('Telefone: ' + g('tel') + '   |   E-mail: ' + g('email'));
+  para('Telefone: ' + g('tel') + (document.getElementById('email').value.trim() ? '   |   E-mail: ' + g('email') : ''));
   hr();
 
   subtitle('2. DADOS TÉCNICOS E COMERCIAIS DO PLANO');
@@ -937,8 +1058,7 @@ function baixarPDF() {
   doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(45,55,72);
   doc.text('Arroio do Sal, ' + dataHoje(), ml, y); addLine(10);
 
-  const sigCanvas = document.getElementById('sigCanvas');
-  const sigImg = sigCanvas.toDataURL('image/png');
+  const sigImg = getSignatureDataURL();
   const sigW = 70, sigH = 25;
 
   doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
@@ -971,7 +1091,7 @@ function baixarPDF() {
 
   subtitle('1. QUALIFICAÇÃO DAS PARTES');
   para('PRESTADORA: Conecte Telecom LTDA, CNPJ nº 41.143.126/0001-00, Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS. Autorizada pela ANATEL – Ato nº 3423/2021.');
-  para('ASSINANTE: ' + g('nome') + ', CPF nº ' + g('cpf') + ', RG nº ' + g('rg') + ', residente na ' + g('end') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '.');
+  para('ASSINANTE: ' + g('nome') + ', CPF nº ' + g('cpf') + (document.getElementById('rg').value.trim() ? ', RG nº ' + g('rg') : '') + ', residente na ' + g('end') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '.');
   hr();
 
   subtitle('2. OBJETO E CONDIÇÕES DA FIDELIDADE');
@@ -1037,13 +1157,44 @@ function baixarPDF() {
   doc.setFontSize(7.5); doc.setTextColor(120,120,120);
   doc.text('Protocolo: ' + protocolo + '  |  Registrado em: ' + dataHora + '  |  ANATEL – Ato nº 3423/2021', W/2, y, { align:'center' });
 
-  doc.save('Contratos_Conecte_' + g('nome').replace(/ /g,'_') + '_' + protocolo + '.pdf');
+  const _pdfFileName = 'Contratos_Conecte_' + g('nome').replace(/ /g,'_') + '_' + protocolo + '.pdf';
+  const _pdfBlob = doc.output('blob');
+  doc.save(_pdfFileName);
+  return { blob: _pdfBlob, name: _pdfFileName };
 }
 
 // ============================================================
 // ENVIAR WHATSAPP
 // ============================================================
-function enviarWA() {
+async function enviarWA() {
+  const btn = document.querySelector('.btn-wa');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Gerando PDF...';
+  btn.disabled = true;
+
+  try {
+    const resultado = baixarPDF();
+    const file = new File([resultado.blob], resultado.name, { type: 'application/pdf' });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      btn.innerHTML = '📤 Abrindo compartilhamento...';
+      await navigator.share({
+        files: [file],
+        title: 'Contratos Assinados — Conecte Telecom',
+        text: '📋 Contratos assinados digitalmente. Protocolo: ' + protocolo
+      });
+    } else {
+      _abrirWATexto();
+    }
+  } catch(e) {
+    if (e && e.name !== 'AbortError') _abrirWATexto();
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+}
+
+function _abrirWATexto() {
   const msg = encodeURIComponent(
     '📋 *CONTRATOS ASSINADOS — CONECTE TELECOM*\n\n' +
     '📌 *Protocolo:* ' + protocolo + '\n' +
@@ -1052,7 +1203,7 @@ function enviarWA() {
     '📍 *Endereço:* ' + g('end') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '\n' +
     '📶 *Plano:* ' + plano.nome + ' — ' + plano.preco + '/mês\n' +
     '📅 *Data/Hora:* ' + dataHora + '\n\n' +
-    '✅ Os contratos (Termo de Adesão + Contrato de Permanência) foram assinados digitalmente pelo cliente. Por favor, também faça o download do PDF pelo portal.'
+    '⬇️ O PDF foi baixado no dispositivo. Por favor, *anexe o arquivo nesta conversa*.'
   );
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
 }
