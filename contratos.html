@@ -37,41 +37,47 @@
 
   /* HEADER */
   .header {
-    background: linear-gradient(135deg, #051c3f 0%, #083c88 60%, #0a5aad 100%);
-    border-bottom: 1px solid rgba(255,255,255,.1);
-    padding: 14px 24px;
+    background: linear-gradient(135deg, #051c3f 0%, #083c88 55%, #0a5aad 100%);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 12px 20px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 20px rgba(8,60,136,.4);
+    box-shadow: 0 2px 24px rgba(8,60,136,.45);
   }
   .logo-box {
-    width: 44px; height: 44px;
+    width: 46px; height: 46px;
     background: white;
-    border-radius: 12px;
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    padding: 4px;
+    padding: 3px;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,.22), 0 0 0 2px rgba(255,255,255,.2);
+    overflow: hidden;
   }
-  .logo-box img { width: 100%; height: 100%; object-fit: contain; }
-  .header-title { font-size: 15px; font-weight: 800; color: white; letter-spacing: -.3px; }
-  .header-sub { font-size: 12px; color: rgba(255,255,255,.6); }
+  .logo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .header-text { display:flex; flex-direction:column; gap:1px; }
+  .header-title {
+    font-size: 18px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1;
+  }
+  .header-title em { font-style:normal; color: #ffde59; }
+  .header-sub { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing:.1px; }
   .header-badge {
     margin-left: auto;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.2);
-    color: rgba(255,255,255,.9);
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.18);
+    color: rgba(255,255,255,.85);
     font-size: 11px;
     font-weight: 600;
-    padding: 5px 12px;
+    padding: 5px 11px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
   }
 
   /* PROGRESS */
@@ -363,11 +369,52 @@
   .screen { display: none; }
   .screen.active { display: block; }
 
-  @media (max-width: 540px) {
-    .form-grid { grid-template-columns: 1fr; }
+  /* ── MOBILE-FIRST ── */
+  @media (max-width: 600px) {
+    body { font-size: 15px; }
+    .header { padding: 10px 16px; gap: 10px; }
+    .logo-box { width: 40px; height: 40px; }
+    .header-title { font-size: 16px; }
+    .header-badge { font-size: 10px; padding: 4px 9px; }
+
+    .progress-wrap { padding: 0 12px; }
+    .step { font-size: 10px; padding: 12px 2px; }
+    .step-num { width: 24px; height: 24px; font-size: 11px; }
+
+    .main { padding: 16px 12px 64px; }
+    .card { padding: 18px 16px; border-radius: 14px; margin-bottom: 12px; }
+    .card-title { font-size: 11px; margin-bottom: 14px; }
+
+    .form-grid { grid-template-columns: 1fr; gap: 12px; }
     .form-grid.cols3 { grid-template-columns: 1fr 1fr; }
-    .plans { grid-template-columns: 1fr; }
-    .header-badge { display: none; }
+    .field input, .field select { padding: 13px 12px; font-size: 16px; border-radius: 10px; }
+    .field label { font-size: 12px; }
+
+    .plans { grid-template-columns: 1fr; gap: 10px; }
+    .plan-card { padding: 18px 16px; margin-top: 10px; border-radius: 14px; }
+    .plan-name { font-size: 13px; }
+    .plan-speed { font-size: 32px; }
+    .plan-price { font-size: 17px; }
+
+    .contract-box { max-height: 280px; padding: 14px; font-size: 12px; }
+
+    .sig-mode-tab { padding: 12px 4px; font-size: 11px; }
+    .typed-sig-box { padding: 16px 14px; }
+    .typed-sig-value { font-size: 16px; }
+    .typed-sig-phrase { font-size: 13px; padding: 12px; }
+
+    .nav { flex-direction: column-reverse; gap: 8px; }
+    .btn-back { width: 100%; text-align: center; padding: 13px; }
+    .btn-next { width: 100%; padding: 15px; font-size: 15px; border-radius: 14px; }
+
+    .btn-pdf, .btn-wa { padding: 17px; font-size: 16px; border-radius: 14px; }
+    .btn-pdf svg, .btn-wa svg { width: 24px; height: 24px; }
+
+    .consent-box { padding: 14px 12px; }
+    .consent-box label { font-size: 13px; }
+
+    .success-title { font-size: 22px; }
+    .proto-row { font-size: 14px; }
   }
 </style>
 </head>
@@ -375,13 +422,13 @@
 
 <div class="header">
   <div class="logo-box">
-    <img src="" data-logo="1" alt="Conecte Telecom">
+    <img src="img/logo-conecte.png" alt="Conecte Telecom">
   </div>
-  <div>
-    <div class="header-title">Conecte Telecom</div>
-    <div class="header-sub">Portal de assinatura de contratos</div>
+  <div class="header-text">
+    <div class="header-title">Conecte <em>Telecom</em></div>
+    <div class="header-sub">Portal de contratos digitais</div>
   </div>
-  <div class="header-badge">🔒 Ambiente seguro</div>
+  <div class="header-badge">🔒 Seguro</div>
 </div>
 
 <div class="progress-wrap">
@@ -414,7 +461,7 @@
         <div class="field full"><label>Rua / Avenida e número *</label><input id="end" placeholder="Ex: Rua das Flores, 123"></div>
         <div class="field"><label>Complemento</label><input id="comp" placeholder="Apto, casa, etc. (opcional)"></div>
         <div class="field"><label>Bairro *</label><select id="bairro"><option value="">Selecione o bairro</option><option>Ancora</option><option>Areias Brancas</option><option>Arroio do Sal Sul</option><option>Arroio Novo</option><option>Arroio Seco</option><option>Balneario Alfa</option><option>Balneario Atlantico</option><option>Balneario São Jorge</option><option>Balneario São Paulo</option><option>Balneario São Pedro</option><option>Bom Jesus</option><option>Camboim</option><option>Centro</option><option>Condominio Parque das Figueiras</option><option>Costa da Lagoa</option><option>Estrada do Mar</option><option>Figueirinha</option><option>Jardim Olivia</option><option>Jardim Olivia Norte</option><option>Jardim Raiante</option><option>Loteamento Sol Nascente</option><option>Malinsky</option><option>Marambaia</option><option>Novo Arroio do Sal</option><option>Pérola</option><option>Piquenique</option><option>Praia Azul</option><option>Quatro Lagos</option><option>Rondinha Maggi</option><option>Rondinha Nova</option><option>Rondinha Velha</option><option>Sereia do Mar</option><option>Torres Sul</option><option>Tupancy</option><option>Verde Mar</option><option>Vila das Flores</option><option>Vista Alegre</option></select></div>
-        <div class="field"><label>Cidade *</label><input id="cidade" placeholder="Ex: Arroio do Sal"></div>
+        <div class="field"><label>Cidade *</label><select id="cidade"><option value="">Selecione a cidade</option><option selected>Arroio do Sal</option><option>Torres</option><option>Três Cachoeiras</option><option>Dom Pedro de Alcântara</option><option>Morrinhos do Sul</option></select></div>
         <div class="field"><label>Estado</label><input id="estado" placeholder="RS" value="RS"></div>
         <div class="field"><label>CEP *</label><input id="cep" placeholder="95585-000"></div>
       </div>
@@ -444,15 +491,15 @@
           <div class="plan-price">R$ 89,90<small style="font-weight:400;font-size:12px">/mês</small></div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
         </div>
-        <div class="plan-card" id="p2" onclick="selectPlan(this,'300 Mbps','Plano Família 300M','R$ 99,90','R$ 119,90',20.00,240.00)">
-          <div class="plan-name">Plano Família 300M</div>
+        <div class="plan-card" id="p2" onclick="selectPlan(this,'300 Mbps','Plano Conecte Família','R$ 99,90','R$ 119,90',20.00,240.00)">
+          <div class="plan-name">Plano Conecte Família</div>
           <div class="plan-speed">300 <span>Mbps</span></div>
           <div class="plan-price">R$ 99,90<small style="font-weight:400;font-size:12px">/mês</small></div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
         </div>
-        <div class="plan-card" id="p3" onclick="selectPlan(this,'500 Mbps','Plano Família 500M','R$ 109,90','R$ 129,90',20.00,240.00)" style="position:relative">
+        <div class="plan-card" id="p3" onclick="selectPlan(this,'500 Mbps','Plano Família Max','R$ 109,90','R$ 129,90',20.00,240.00)" style="position:relative">
           <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--amarelo);color:#111;font-size:10px;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:.5px">⭐ Mais popular</div>
-          <div class="plan-name">Plano Família 500M</div>
+          <div class="plan-name">Plano Família Max</div>
           <div class="plan-speed">500 <span>Mbps</span></div>
           <div class="plan-price">R$ 109,90<small style="font-weight:400;font-size:12px">/mês</small></div>
           <div class="fidelidade-tag">12 meses de fidelidade</div>
@@ -965,6 +1012,37 @@ function finalizar() {
 }
 
 // ============================================================
+// ASSINATURA DIGITAL NO PDF (renderização direta)
+// ============================================================
+function _adicionarSigDigitalPDF(doc, _y, ml, cw, W) {
+  const bx = ml, bw = cw, bh = 38;
+  doc.setFillColor(240, 247, 255);
+  doc.roundedRect(bx, _y, bw, bh, 3, 3, 'F');
+  doc.setDrawColor(10, 126, 226); doc.setLineWidth(0.4);
+  doc.roundedRect(bx, _y, bw, bh, 3, 3, 'S');
+  doc.setFillColor(10, 126, 226);
+  doc.rect(bx, _y, 3, bh, 'F');
+
+  doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(21, 101, 192);
+  doc.text(g('nome'), bx + 8, _y + 9);
+
+  doc.setFontSize(8.5); doc.setFont('helvetica','normal'); doc.setTextColor(80, 100, 130);
+  doc.text('CPF: ' + g('cpf'), bx + 8, _y + 16);
+
+  doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(50, 65, 85);
+  const frase = '"Declaro que li e aceito os termos do contrato da Conecte Telecom."';
+  const linhas = doc.splitTextToSize(frase, bw - 16);
+  linhas.forEach((l, i) => doc.text(l, bx + 8, _y + 23 + i * 4.5));
+
+  doc.setFontSize(7); doc.setFont('helvetica','normal'); doc.setTextColor(100, 120, 140);
+  doc.text(dataHora + '  |  Protocolo: ' + protocolo, bx + 8, _y + 33);
+
+  doc.setFillColor(22, 163, 74);
+  doc.roundedRect(bx + bw - 58, _y + 4, 54, 9, 2, 2, 'F');
+  doc.setFontSize(6.5); doc.setFont('helvetica','bold'); doc.setTextColor(255, 255, 255);
+  doc.text('✓  Assin. Eletr. — Lei 14.063/2020', bx + bw - 56, _y + 9.5);
+}
+
 // GERAR PDF
 // ============================================================
 function baixarPDF() {
@@ -1058,21 +1136,30 @@ function baixarPDF() {
   doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(45,55,72);
   doc.text('Arroio do Sal, ' + dataHoje(), ml, y); addLine(10);
 
-  const sigImg = getSignatureDataURL();
-  const sigW = 70, sigH = 25;
-
-  doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
-  doc.line(ml, y, ml + sigW, y);
-  doc.addImage(sigImg, 'PNG', ml, y - sigH, sigW, sigH);
-  doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
-  doc.text(g('nome'), ml, y + 5);
-  doc.text('CPF: ' + g('cpf'), ml, y + 9);
-
-  doc.line(W/2, y, W/2 + sigW, y);
-  doc.text('Conecte Telecom LTDA', W/2, y + 5);
-  doc.text('Representante Autorizado', W/2, y + 9);
-  addLine(20);
-
+  if (sigMode === 'typed') {
+    checkPage(50);
+    _adicionarSigDigitalPDF(doc, y, ml, cw, W);
+    addLine(44);
+    doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
+    doc.line(W/2, y, W/2 + 70, y);
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
+    doc.text('Conecte Telecom LTDA', W/2, y + 5);
+    doc.text('Representante Autorizado', W/2, y + 9);
+    addLine(15);
+  } else {
+    const sigImg = getSignatureDataURL();
+    const sigW = 70, sigH = 25;
+    doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
+    doc.line(ml, y, ml + sigW, y);
+    doc.addImage(sigImg, 'PNG', ml, y - sigH, sigW, sigH);
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
+    doc.text(g('nome'), ml, y + 5);
+    doc.text('CPF: ' + g('cpf'), ml, y + 9);
+    doc.line(W/2, y, W/2 + sigW, y);
+    doc.text('Conecte Telecom LTDA', W/2, y + 5);
+    doc.text('Representante Autorizado', W/2, y + 9);
+    addLine(20);
+  }
   doc.setFontSize(7.5); doc.setTextColor(120,120,120);
   doc.text('Protocolo: ' + protocolo + '  |  Registrado em: ' + dataHora + '  |  ANATEL – Ato nº 3423/2021', W/2, y, { align:'center' });
   doc.text('A cópia integral do Contrato pode ser obtida no Cartório de Registro de Títulos e Documentos da Comarca de Arroio do Sal/RS.', W/2, y + 4, { align:'center' });
@@ -1142,18 +1229,30 @@ function baixarPDF() {
   doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(45,55,72);
   doc.text('Arroio do Sal, ' + dataHoje(), ml, y); addLine(10);
 
-  doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
-  doc.line(ml, y, ml + sigW, y);
-  doc.addImage(sigImg, 'PNG', ml, y - sigH, sigW, sigH);
-  doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
-  doc.text(g('nome'), ml, y + 5);
-  doc.text('CPF: ' + g('cpf'), ml, y + 9);
-
-  doc.line(W/2, y, W/2 + sigW, y);
-  doc.text('Conecte Telecom LTDA', W/2, y + 5);
-  doc.text('Representante Autorizado', W/2, y + 9);
-  addLine(20);
-
+  if (sigMode === 'typed') {
+    checkPage(50);
+    _adicionarSigDigitalPDF(doc, y, ml, cw, W);
+    addLine(44);
+    doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
+    doc.line(W/2, y, W/2 + 70, y);
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
+    doc.text('Conecte Telecom LTDA', W/2, y + 5);
+    doc.text('Representante Autorizado', W/2, y + 9);
+    addLine(15);
+  } else {
+    const sigImg2 = getSignatureDataURL();
+    const sigW2 = 70, sigH2 = 25;
+    doc.setDrawColor(200,215,230); doc.setLineWidth(0.3);
+    doc.line(ml, y, ml + sigW2, y);
+    doc.addImage(sigImg2, 'PNG', ml, y - sigH2, sigW2, sigH2);
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,100,100);
+    doc.text(g('nome'), ml, y + 5);
+    doc.text('CPF: ' + g('cpf'), ml, y + 9);
+    doc.line(W/2, y, W/2 + sigW2, y);
+    doc.text('Conecte Telecom LTDA', W/2, y + 5);
+    doc.text('Representante Autorizado', W/2, y + 9);
+    addLine(20);
+  }
   doc.setFontSize(7.5); doc.setTextColor(120,120,120);
   doc.text('Protocolo: ' + protocolo + '  |  Registrado em: ' + dataHora + '  |  ANATEL – Ato nº 3423/2021', W/2, y, { align:'center' });
 
