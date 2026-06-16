@@ -30,7 +30,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
-    background: linear-gradient(180deg, #dbeafe 0%, #eef3ff 120px, #edf2ff 100%);
+    background: linear-gradient(180deg, #b8d4f5 0%, #c8dffb 40%, #d4e8ff 100%);
     background-attachment: fixed;
     color: var(--text);
     min-height: 100vh;
@@ -50,36 +50,41 @@
     box-shadow: 0 2px 24px rgba(8,60,136,.45);
   }
   .logo-box {
-    width: 46px; height: 46px;
-    background: white;
+    width: 58px; height: 58px;
+    background: transparent;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    padding: 3px;
+    padding: 0;
     flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(0,0,0,.22), 0 0 0 2px rgba(255,255,255,.2);
     overflow: hidden;
   }
-  .logo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .logo-box img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
   .header-text { display:flex; flex-direction:column; gap:1px; }
   .header-title {
     font-size: 18px; font-weight: 800; color: white; letter-spacing: -.4px; line-height: 1;
   }
   .header-title em { font-style:normal; color: #ffde59; }
-  .header-sub { font-size: 11px; color: rgba(255,255,255,.55); letter-spacing:.1px; }
+  .header-sub { font-size: 11px; color: rgba(255,255,255,.6); letter-spacing:.1px; }
   .header-badge {
     margin-left: auto;
-    background: rgba(255,255,255,.1);
-    border: 1px solid rgba(255,255,255,.18);
-    color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.12);
+    border: 1.5px solid rgba(255,255,255,.25);
+    color: #fff;
     font-size: 11px;
-    font-weight: 600;
-    padding: 5px 11px;
+    font-weight: 700;
+    padding: 6px 12px 6px 10px;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
     white-space: nowrap;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.3;
   }
+  .header-badge svg { width: 18px; height: 18px; stroke: #7dd3fc; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .header-badge-title { font-size: 11px; font-weight: 700; color: #fff; }
+  .header-badge-sub { font-size: 9.5px; font-weight: 500; color: rgba(255,255,255,.65); letter-spacing: .2px; }
 
   /* PROGRESS */
   .progress-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 24px; box-shadow: 0 1px 0 var(--border); }
@@ -362,23 +367,43 @@
   .success-title { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
   .success-sub { font-size: 14px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 1.6; }
 
-  .final-actions { display: flex; flex-direction: column; gap: 12px; }
+  .save-alert {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border: 2px solid #f59e0b;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .save-alert svg { width: 22px; height: 22px; flex-shrink: 0; stroke: #d97706; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
+  .save-alert-title { font-size: 13px; font-weight: 700; color: #92400e; margin-bottom: 4px; }
+  .save-alert-body { font-size: 12px; color: #78350f; line-height: 1.6; }
+
+  .final-actions { display: flex; flex-direction: column; gap: 14px; }
   .btn-pdf {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 700;
-    cursor: pointer; transition: all .25s; border: 2px solid var(--blue);
+    display: flex; align-items: center; justify-content: flex-start; gap: 14px;
+    padding: 16px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: all .25s; border: 2.5px solid var(--blue);
     background: var(--white); color: var(--blue); text-decoration: none;
+    box-shadow: 0 2px 8px rgba(10,126,226,.1);
   }
-  .btn-pdf:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(10,126,226,.2); }
-  .btn-pdf svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; }
+  .btn-pdf:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,126,226,.22); }
+  .btn-pdf svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; }
   .btn-wa {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; justify-content: flex-start; gap: 14px;
+    padding: 16px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
     cursor: pointer; transition: all .2s; border: none;
-    background: var(--wa); color: #fff; text-decoration: none;
+    background: linear-gradient(135deg, #25D366, #1EB854);
+    color: #fff; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(37,211,102,.35);
   }
-  .btn-wa:hover { background: #1EB854; }
-  .btn-wa svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+  .btn-wa:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+  .btn-wa svg { width: 26px; height: 26px; fill: #fff; flex-shrink: 0; }
+  .btn-label { display: flex; flex-direction: column; gap: 2px; }
+  .btn-label-main { font-size: 15px; font-weight: 700; line-height: 1.2; }
+  .btn-label-sub { font-size: 11px; font-weight: 500; opacity: .75; }
   .proto-box {
     background: linear-gradient(135deg, #f0f7ff, #e8f3fd);
     border: 1.5px solid rgba(10,126,226,.15);
@@ -404,7 +429,7 @@
   @media (max-width: 600px) {
     body { font-size: 15px; }
     .header { padding: 10px 16px; gap: 10px; }
-    .logo-box { width: 40px; height: 40px; }
+    .logo-box { width: 50px; height: 50px; }
     .header-title { font-size: 16px; }
     .header-badge { font-size: 10px; padding: 4px 9px; }
 
@@ -462,9 +487,13 @@
   </div>
   <div class="header-text">
     <div class="header-title">Conecte <em>Telecom</em></div>
-    <div class="header-sub">Portal de contratos digitais</div>
+    <div class="header-sub">Assinatura digital segura • SSL criptografado</div>
   </div>
-  <div class="header-badge">🔒 Seguro</div>
+  <div class="header-badge">
+    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+    <span class="header-badge-title">100% Seguro</span>
+    <span class="header-badge-sub">Dados protegidos</span>
+  </div>
 </div>
 
 <div class="progress-wrap">
@@ -733,7 +762,7 @@
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <div class="success-title">Contratos assinados!</div>
-        <div class="success-sub">Sua assinatura foi registrada com sucesso. Agora baixe o PDF ou envie diretamente pelo WhatsApp para a Conecte Telecom.</div>
+        <div class="success-sub">Sua assinatura foi registrada com sucesso. Agora conclua o processo escolhendo uma das opções abaixo.</div>
       </div>
       <div class="proto-box">
         <div class="proto-row"><span class="proto-label">Assinante</span><span class="proto-val" id="fNome"></span></div>
@@ -741,14 +770,27 @@
         <div class="proto-row"><span class="proto-label">Registrado em</span><span class="proto-val" id="fData"></span></div>
         <span style="display:none" id="fProto"></span>
       </div>
+      <div class="save-alert">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <div class="save-alert-title">Ação necessária para ativar seu serviço</div>
+          <div class="save-alert-body">Salve o PDF no seu dispositivo <strong>ou</strong> nos envie diretamente pelo WhatsApp. Nossa equipe precisa receber os contratos para validar sua assinatura e confirmar a instalação.</div>
+        </div>
+      </div>
       <div class="final-actions">
         <button class="btn-pdf" onclick="baixarPDF()">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
-          Baixar PDF dos contratos
+          <div class="btn-label">
+            <span class="btn-label-main">Baixar PDF dos contratos</span>
+            <span class="btn-label-sub">Salve uma cópia no seu dispositivo</span>
+          </div>
         </button>
         <button class="btn-wa" onclick="enviarWA()">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Enviar pelo WhatsApp para a Conecte Telecom
+          <div class="btn-label">
+            <span class="btn-label-main">Enviar pelo WhatsApp</span>
+            <span class="btn-label-sub">Envie direto para a Conecte Telecom — recomendado</span>
+          </div>
         </button>
       </div>
     </div>
