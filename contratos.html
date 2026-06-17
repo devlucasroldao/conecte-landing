@@ -30,7 +30,10 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
-    background: linear-gradient(180deg, #b8d4f5 0%, #c8dffb 40%, #d4e8ff 100%);
+    background:
+      radial-gradient(rgba(255,255,255,.05) 1.5px, transparent 0) 0 0 / 28px 28px,
+      radial-gradient(rgba(255,255,255,.025) 1px, transparent 0) 14px 14px / 28px 28px,
+      linear-gradient(155deg, #081840 0%, #0c2b72 28%, #1048b0 56%, #1460c8 78%, #1670dc 100%);
     background-attachment: fixed;
     color: var(--text);
     min-height: 100vh;
@@ -67,27 +70,26 @@
   .header-sub { font-size: 11px; color: rgba(255,255,255,.6); letter-spacing:.1px; }
   .header-badge {
     margin-left: auto;
-    background: rgba(255,255,255,.12);
-    border: 1.5px solid rgba(255,255,255,.25);
+    background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+    border: 1.5px solid rgba(255,255,255,.28);
     color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 6px 12px 6px 10px;
-    border-radius: 20px;
+    padding: 8px 14px 8px 10px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     white-space: nowrap;
-    flex-direction: column;
-    text-align: center;
-    line-height: 1.3;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.15);
   }
-  .header-badge svg { width: 18px; height: 18px; stroke: #7dd3fc; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .header-badge-title { font-size: 11px; font-weight: 700; color: #fff; }
-  .header-badge-sub { font-size: 9.5px; font-weight: 500; color: rgba(255,255,255,.65); letter-spacing: .2px; }
+  .header-badge svg { width: 20px; height: 20px; stroke: #38bdf8; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  .header-badge-texts { display: flex; flex-direction: column; gap: 1px; }
+  .header-badge-title { font-size: 11.5px; font-weight: 800; color: #fff; line-height: 1.1; }
+  .header-badge-sub { font-size: 9.5px; font-weight: 500; color: rgba(255,255,255,.7); letter-spacing: .3px; }
 
   /* PROGRESS */
-  .progress-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 24px; box-shadow: 0 1px 0 var(--border); }
+  .progress-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 24px; box-shadow: 0 1px 0 var(--border); position: relative; z-index: 10; }
   .steps {
     display: flex;
     max-width: 700px;
@@ -125,14 +127,29 @@
   /* MAIN */
   .main { max-width: 700px; margin: 0 auto; padding: 24px 16px 48px; }
 
+  body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75vmax;
+    height: 75vmax;
+    background: radial-gradient(circle, rgba(30,128,240,.22) 0%, rgba(18,67,168,.08) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* CARD */
   .card {
     background: var(--white);
-    border: 1.5px solid var(--border);
+    border: 1.5px solid rgba(255,255,255,.15);
     border-radius: 16px;
     padding: 24px;
     margin-bottom: 16px;
-    box-shadow: 0 2px 12px rgba(10,126,226,.06);
+    box-shadow: 0 8px 32px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);
+    position: relative;
+    z-index: 1;
   }
   .card-title {
     font-size: 12px;
@@ -368,45 +385,54 @@
   .success-sub { font-size: 14px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 1.6; }
 
   .save-alert {
-    background: linear-gradient(135deg, #fffbeb, #fef9c3);
-    border: 2.5px solid #f59e0b;
-    border-left: 5px solid #d97706;
+    background: linear-gradient(135deg, #7c2d12, #92400e);
+    border: none;
     border-radius: 14px;
-    padding: 18px 18px 18px 16px;
+    padding: 16px 18px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
     margin-bottom: 18px;
-    box-shadow: 0 4px 18px rgba(245,158,11,.18);
+    box-shadow: 0 6px 24px rgba(180,83,9,.35);
+    position: relative;
+    overflow: hidden;
   }
-  .save-alert svg { width: 28px; height: 28px; flex-shrink: 0; stroke: #b45309; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
-  .save-alert-title { font-size: 14px; font-weight: 800; color: #78350f; margin-bottom: 6px; letter-spacing: -.1px; }
-  .save-alert-body { font-size: 13px; color: #92400e; line-height: 1.65; }
+  .save-alert::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
+    pointer-events: none;
+  }
+  .save-alert svg { width: 26px; height: 26px; flex-shrink: 0; stroke: #fcd34d; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
+  .save-alert-title { font-size: 14px; font-weight: 800; color: #fef3c7; margin-bottom: 5px; letter-spacing: -.1px; }
+  .save-alert-body { font-size: 13px; color: rgba(255,237,213,.88); line-height: 1.6; }
+  .save-alert-body strong { color: #fcd34d; }
 
-  .final-actions { display: flex; flex-direction: column; gap: 14px; }
+  .final-actions { display: flex; flex-direction: column; gap: 12px; }
   .btn-pdf {
-    display: flex; align-items: center; justify-content: flex-start; gap: 14px;
-    padding: 16px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; gap: 14px;
+    padding: 17px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
     cursor: pointer; transition: all .25s; border: none;
-    background: linear-gradient(135deg, #0a7ee2, #083c88);
+    background: linear-gradient(135deg, #1d6fd8, #083c88);
     color: #fff; text-decoration: none;
-    box-shadow: 0 4px 16px rgba(10,126,226,.35);
+    box-shadow: 0 4px 18px rgba(10,62,136,.45);
   }
-  .btn-pdf:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(10,126,226,.45); }
+  .btn-pdf:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(10,62,136,.55); }
   .btn-pdf svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; flex-shrink: 0; }
   .btn-wa {
-    display: flex; align-items: center; justify-content: flex-start; gap: 14px;
-    padding: 16px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; gap: 14px;
+    padding: 17px 20px; border-radius: 14px; font-size: 15px; font-weight: 700;
     cursor: pointer; transition: all .2s; border: none;
-    background: linear-gradient(135deg, #25D366, #1EB854);
+    background: linear-gradient(135deg, #22c55e, #15803d);
     color: #fff; text-decoration: none;
-    box-shadow: 0 4px 16px rgba(37,211,102,.35);
+    box-shadow: 0 4px 18px rgba(21,128,61,.4);
   }
-  .btn-wa:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+  .btn-wa:hover { filter: brightness(1.07); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(21,128,61,.5); }
   .btn-wa svg { width: 26px; height: 26px; fill: #fff; flex-shrink: 0; }
-  .btn-label { display: flex; flex-direction: column; gap: 2px; }
+  .btn-label { display: flex; flex-direction: column; gap: 2px; flex: 1; }
   .btn-label-main { font-size: 15px; font-weight: 700; line-height: 1.2; }
-  .btn-label-sub { font-size: 11px; font-weight: 500; opacity: .75; }
+  .btn-label-sub { font-size: 11px; font-weight: 500; opacity: .78; }
   .proto-box {
     background: linear-gradient(135deg, #f0f7ff, #e8f3fd);
     border: 1.5px solid rgba(10,126,226,.15);
@@ -431,54 +457,72 @@
   /* ── MOBILE-FIRST ── */
   @media (max-width: 600px) {
     body { font-size: 15px; }
-    .header { padding: 10px 16px; gap: 10px; }
-    .logo-box { width: 50px; height: 50px; }
-    .header-title { font-size: 16px; }
-    .header-badge { font-size: 10px; padding: 4px 9px; }
+    .header { padding: 10px 14px; gap: 10px; }
+    .logo-box { width: 46px; height: 46px; }
+    .header-title { font-size: 15px; }
+    .header-sub { font-size: 10px; }
+    .header-badge { padding: 6px 10px 6px 8px; gap: 6px; }
+    .header-badge svg { width: 16px; height: 16px; }
+    .header-badge-title { font-size: 10.5px; }
+    .header-badge-sub { font-size: 9px; }
 
-    .progress-wrap { padding: 0 12px; }
-    .step { font-size: 10px; padding: 12px 2px; }
-    .step-num { width: 24px; height: 24px; font-size: 11px; }
+    .progress-wrap { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .steps { gap: 0; }
+    .step { font-size: 9.5px; padding: 10px 4px; }
+    .step-num { width: 22px; height: 22px; font-size: 10px; margin-bottom: 4px; }
 
-    .main { padding: 16px 12px 64px; }
-    .card { padding: 18px 16px; border-radius: 14px; margin-bottom: 12px; }
-    .card-title { font-size: 11px; margin-bottom: 14px; }
+    .main { padding: 14px 10px 72px; }
+    .card { padding: 16px 14px; border-radius: 14px; margin-bottom: 10px; }
+    .card-title { font-size: 10.5px; margin-bottom: 12px; }
 
     .form-grid { grid-template-columns: 1fr; gap: 12px; }
     .form-grid.cols3 { grid-template-columns: 1fr 1fr; }
-    .field input, .field select { padding: 13px 12px; font-size: 16px; border-radius: 10px; }
+    .field input, .field select { padding: 14px 12px; font-size: 16px; border-radius: 10px; min-height: 48px; }
     .field label { font-size: 12px; }
 
     .plans { grid-template-columns: 1fr; gap: 10px; }
-    .plan-card { padding: 18px 16px; margin-top: 10px; border-radius: 14px; }
+    .plan-card { padding: 18px 16px; margin-top: 8px; border-radius: 14px; }
     .plan-name { font-size: 13px; }
-    .plan-speed { font-size: 32px; }
-    .plan-price { font-size: 17px; }
+    .plan-speed { font-size: 34px; }
+    .plan-price { font-size: 18px; }
 
-    .contract-box { max-height: 280px; padding: 14px; font-size: 12px; }
-
-    .welcome-steps { grid-template-columns: repeat(2, 1fr); }
+    .welcome-steps { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .consent-cards { grid-template-columns: 1fr; }
-    .sig-mode-tabs { grid-template-columns: 1fr 1fr; gap:8px; }
-    .sig-mode-tab { padding: 12px 8px; font-size: 12px; gap:6px; }
+    .consent-card { padding: 14px 12px; }
+    .contract-box { max-height: 300px; padding: 14px; font-size: 12.5px; min-height: 280px; }
+
+    .sig-mode-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .sig-mode-tab { padding: 14px 8px; font-size: 12px; gap: 6px; border-radius: 12px; }
     .sig-mode-tab svg { width: 20px; height: 20px; }
-    .typed-sig-box { padding: 16px 14px; }
-    .typed-sig-value { font-size: 16px; }
-    .typed-sig-phrase { font-size: 13px; padding: 12px; }
-    .contract-box { min-height: 300px; max-height: 400px; }
+    .tab-sub { font-size: 10.5px; }
+    .typed-sig-box { padding: 16px 12px; }
+    .typed-sig-value { font-size: 18px; }
+    .typed-sig-phrase { font-size: 12.5px; padding: 12px; }
 
     .nav { flex-direction: column-reverse; gap: 8px; }
-    .btn-back { width: 100%; text-align: center; padding: 13px; }
-    .btn-next { width: 100%; padding: 15px; font-size: 15px; border-radius: 14px; }
+    .btn-back { width: 100%; text-align: center; padding: 14px; font-size: 14px; }
+    .btn-next { width: 100%; padding: 16px; font-size: 15px; border-radius: 14px; min-height: 52px; }
 
-    .btn-pdf, .btn-wa { padding: 17px; font-size: 16px; border-radius: 14px; }
-    .btn-pdf svg, .btn-wa svg { width: 24px; height: 24px; }
+    .btn-pdf, .btn-wa { padding: 16px 16px; border-radius: 14px; gap: 12px; min-height: 64px; }
+    .btn-pdf svg, .btn-wa svg { width: 26px; height: 26px; }
+    .btn-label-main { font-size: 15px; }
+    .btn-label-sub { font-size: 11.5px; }
+
+    .save-alert { padding: 14px 14px; gap: 12px; }
+    .save-alert svg { width: 24px; height: 24px; }
+    .save-alert-title { font-size: 13.5px; }
+    .save-alert-body { font-size: 12.5px; }
 
     .consent-box { padding: 14px 12px; }
     .consent-box label { font-size: 13px; }
 
+    .success-header { padding: 20px 12px 16px; }
     .success-title { font-size: 22px; }
-    .proto-row { font-size: 14px; }
+    .success-sub { font-size: 13px; }
+    .proto-box { padding: 14px 12px; }
+    .proto-row { font-size: 13px; flex-direction: column; gap: 1px; padding: 6px 0; border-bottom: 1px solid rgba(10,126,226,.08); }
+    .proto-row:last-child { border-bottom: none; }
+    .proto-val { font-size: 14px; }
   }
 </style>
 </head>
@@ -494,8 +538,10 @@
   </div>
   <div class="header-badge">
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-    <span class="header-badge-title">100% Seguro</span>
-    <span class="header-badge-sub">Dados protegidos</span>
+    <div class="header-badge-texts">
+      <span class="header-badge-title">100% Seguro</span>
+      <span class="header-badge-sub">SSL · Dados protegidos</span>
+    </div>
   </div>
 </div>
 
@@ -548,7 +594,8 @@
     <div class="card">
       <div class="card-title">Endereço de instalação</div>
       <div class="form-grid">
-        <div class="field full"><label>Rua / Avenida e número *</label><input id="end" placeholder="Ex: Rua das Flores, 123"></div>
+        <div class="field" style="grid-column:1/-1"><label>Rua / Avenida *</label><input id="end" placeholder="Ex: Rua das Flores"></div>
+        <div class="field"><label>Número *</label><input id="num" placeholder="Ex: 123" inputmode="numeric" maxlength="10"></div>
         <div class="field"><label>Complemento</label><input id="comp" placeholder="Apto, casa, etc. (opcional)"></div>
         <div class="field"><label>Bairro *</label><select id="bairro"><option value="">Selecione o bairro</option><option>Ancora</option><option>Areias Brancas</option><option>Arroio do Sal Sul</option><option>Arroio Novo</option><option>Arroio Seco</option><option>Balneario Alfa</option><option>Balneario Atlantico</option><option>Balneario São Jorge</option><option>Balneario São Paulo</option><option>Balneario São Pedro</option><option>Bom Jesus</option><option>Camboim</option><option>Centro</option><option>Condominio Parque das Figueiras</option><option>Costa da Lagoa</option><option>Estrada do Mar</option><option>Figueirinha</option><option>Jardim Olivia</option><option>Jardim Olivia Norte</option><option>Jardim Raiante</option><option>Loteamento Sol Nascente</option><option>Malinsky</option><option>Marambaia</option><option>Novo Arroio do Sal</option><option>Pérola</option><option>Piquenique</option><option>Praia Azul</option><option>Quatro Lagos</option><option>Rondinha Maggi</option><option>Rondinha Nova</option><option>Rondinha Velha</option><option>Sereia do Mar</option><option>Torres Sul</option><option>Tupancy</option><option>Verde Mar</option><option>Vila das Flores</option><option>Vista Alegre</option></select></div>
         <div class="field"><label>Cidade</label><input id="cidade" value="Arroio do Sal" readonly style="background:#eef4ff;color:var(--blue-mid);font-weight:600;cursor:default;border-color:var(--blue-light)"></div>
@@ -881,7 +928,8 @@ function validateStep1() {
     { id:'nome',   label:'Nome completo', min:3 },
     { id:'cpf',    label:'CPF', exactLen:14 },
     { id:'tel',    label:'Telefone', min:13 },
-    { id:'end',    label:'Endereço', min:5 },
+    { id:'end',    label:'Rua/Avenida', min:5 },
+    { id:'num',    label:'Número', min:1 },
     { id:'bairro', label:'Bairro', min:2 },
     { id:'cep',    label:'CEP', exactLen:9 },
   ];
@@ -956,7 +1004,7 @@ function gerarAdesao() {
   const comp = g('comp') !== '_______________' ? ', ' + g('comp') : '';
   return `
     <h3>Termo de Adesão ao Contrato de Prestação de Serviços de Comunicação Multimídia, Serviço de Valor Adicionado, Locação e Outras Avenças</h3>
-    <p>Por este instrumento particular, <span class="highlight">${g('nome')}</span>, inscrito(a) no CPF sob o nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente e domiciliado(a) na <span class="highlight">${g('end')}${comp}, ${g('bairro')}, ${g('cidade')}/${g('estado')}, CEP ${g('cep')}</span>${gOpt('email', ', e-mail <span class="highlight">', '</span>')}, telefone <span class="highlight">${g('tel')}</span>, doravante denominado <strong>ASSINANTE</strong>, contrata e adere ao Serviço da <strong>PRESTADORA Conecte Telecom LTDA</strong>, CNPJ nº 41.143.126/0001-00, sede na Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, CEP 95585-000, Fone: (51) 99759-7259, E-mail: conecte@seconecte.net, autorizada pela ANATEL pelo Ato nº 3423, de 14 de maio de 2021.</p>
+    <p>Por este instrumento particular, <span class="highlight">${g('nome')}</span>, inscrito(a) no CPF sob o nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente e domiciliado(a) na <span class="highlight">${g('end')}, nº ${g('num')}${comp}, ${g('bairro')}, ${g('cidade')}/${g('estado')}, CEP ${g('cep')}</span>${gOpt('email', ', e-mail <span class="highlight">', '</span>')}, telefone <span class="highlight">${g('tel')}</span>, doravante denominado <strong>ASSINANTE</strong>, contrata e adere ao Serviço da <strong>PRESTADORA Conecte Telecom LTDA</strong>, CNPJ nº 41.143.126/0001-00, sede na Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, CEP 95585-000, Fone: (51) 99759-7259, E-mail: conecte@seconecte.net, autorizada pela ANATEL pelo Ato nº 3423, de 14 de maio de 2021.</p>
     <hr class="section-divider">
     <h3>1. Dados técnicos e comerciais do plano</h3>
     <p><strong>Plano:</strong> ${plano.nome} &nbsp;|&nbsp; <strong>Velocidade:</strong> ${plano.vel} (download e upload) &nbsp;|&nbsp; <strong>Tipo de IP:</strong> Variável &nbsp;|&nbsp; <strong>Prazo contratual:</strong> Indeterminado</p>
@@ -1002,7 +1050,7 @@ function gerarPermanencia() {
     <hr class="section-divider">
     <h3>1. Qualificação das partes</h3>
     <p><strong>PRESTADORA:</strong> Conecte Telecom LTDA, CNPJ nº 41.143.126/0001-00, Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS, autorizada pela ANATEL – Ato nº 3423/2021.</p>
-    <p><strong>ASSINANTE:</strong> <span class="highlight">${g('nome')}</span>, CPF nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente na <span class="highlight">${g('end')}, ${g('bairro')}, ${g('cidade')}/${g('estado')}</span>.</p>
+    <p><strong>ASSINANTE:</strong> <span class="highlight">${g('nome')}</span>, CPF nº <span class="highlight">${g('cpf')}</span>${gOpt('rg', ', RG nº <span class="highlight">', '</span>')}, residente na <span class="highlight">${g('end')}, nº ${g('num')}, ${g('bairro')}, ${g('cidade')}/${g('estado')}</span>.</p>
     <hr class="section-divider">
     <h3>2. Plano e benefícios concedidos</h3>
     <p><strong>Plano:</strong> ${plano.nome} &nbsp;|&nbsp; <strong>Valor com fidelidade:</strong> ${plano.preco}/mês &nbsp;|&nbsp; <strong>Valor sem fidelidade:</strong> ${plano.precoSem}/mês</p>
@@ -1225,7 +1273,7 @@ function baixarPDF() {
 
   subtitle('1. QUALIFICAÇÃO DO ASSINANTE');
   para('Nome: ' + g('nome') + '   |   CPF: ' + g('cpf') + (document.getElementById('rg').value.trim() ? '   |   RG: ' + g('rg') : ''));
-  para('Endereço: ' + g('end') + comp + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + ', CEP ' + g('cep'));
+  para('Endereço: ' + g('end') + ', nº ' + g('num') + comp + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + ', CEP ' + g('cep'));
   para('Telefone: ' + g('tel') + (document.getElementById('email').value.trim() ? '   |   E-mail: ' + g('email') : ''));
   hr();
 
@@ -1305,7 +1353,7 @@ function baixarPDF() {
 
   subtitle('1. QUALIFICAÇÃO DAS PARTES');
   para('PRESTADORA: Conecte Telecom LTDA, CNPJ nº 41.143.126/0001-00, Rua Paulista, 183, Sala 03, Centro, Arroio do Sal/RS. Autorizada pela ANATEL – Ato nº 3423/2021.');
-  para('ASSINANTE: ' + g('nome') + ', CPF nº ' + g('cpf') + (document.getElementById('rg').value.trim() ? ', RG nº ' + g('rg') : '') + ', residente na ' + g('end') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '.');
+  para('ASSINANTE: ' + g('nome') + ', CPF nº ' + g('cpf') + (document.getElementById('rg').value.trim() ? ', RG nº ' + g('rg') : '') + ', residente na ' + g('end') + ', nº ' + g('num') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '.');
   hr();
 
   subtitle('2. OBJETO E CONDIÇÕES DA FIDELIDADE');
@@ -1427,7 +1475,7 @@ function _abrirWATexto() {
     '📌 *Protocolo:* ' + protocolo + '\n' +
     '👤 *Cliente:* ' + g('nome') + '\n' +
     '📄 *CPF:* ' + g('cpf') + '\n' +
-    '📍 *Endereço:* ' + g('end') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '\n' +
+    '📍 *Endereço:* ' + g('end') + ', nº ' + g('num') + ', ' + g('bairro') + ', ' + g('cidade') + '/' + g('estado') + '\n' +
     '📶 *Plano:* ' + plano.nome + ' — ' + plano.preco + '/mês\n' +
     '📅 *Data/Hora:* ' + dataHora + '\n\n' +
     '⬇️ O PDF foi baixado no dispositivo. Por favor, *anexe o arquivo nesta conversa*.'
