@@ -89,7 +89,7 @@
   .header-badge-sub { font-size: 9.5px; font-weight: 500; color: rgba(255,255,255,.7); letter-spacing: .3px; }
 
   /* PROGRESS */
-  .progress-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 24px; box-shadow: 0 1px 0 var(--border); position: relative; z-index: 10; }
+  .progress-wrap { background: linear-gradient(135deg, #051c3f 0%, #083c88 55%, #0a5aad 100%); border-bottom: 1px solid rgba(255,255,255,.08); padding: 0 24px; box-shadow: 0 2px 16px rgba(0,0,0,.25); position: relative; z-index: 10; }
   .steps {
     display: flex;
     max-width: 700px;
@@ -100,29 +100,29 @@
     text-align: center;
     padding: 14px 4px;
     font-size: 11px;
-    color: var(--muted);
+    color: rgba(255,255,255,.45);
     border-bottom: 3px solid transparent;
     transition: all .25s;
     cursor: default;
     font-weight: 600;
   }
-  .step.active { color: var(--blue); border-bottom-color: var(--blue); }
-  .step.done { color: var(--green); border-bottom-color: var(--green); }
+  .step.active { color: #fff; border-bottom-color: #7dd3fc; }
+  .step.done { color: rgba(134,239,172,.9); border-bottom-color: rgba(134,239,172,.6); }
   .step-num {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 28px; height: 28px;
     border-radius: 50%;
-    background: var(--border);
-    color: var(--muted);
+    background: rgba(255,255,255,.12);
+    color: rgba(255,255,255,.5);
     font-size: 12px;
     font-weight: 800;
     margin: 0 auto 4px;
     transition: all .25s;
   }
-  .step.active .step-num { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(10,126,226,.35); }
-  .step.done .step-num { background: var(--green); color: #fff; }
+  .step.active .step-num { background: #7dd3fc; color: #082060; box-shadow: 0 2px 10px rgba(125,211,252,.4); }
+  .step.done .step-num { background: rgba(134,239,172,.25); color: #86efac; }
 
   /* MAIN */
   .main { max-width: 700px; margin: 0 auto; padding: 24px 16px 48px; }
@@ -357,16 +357,16 @@
   }
   .btn-back:hover { border-color: var(--blue); color: var(--blue); }
   .btn-next {
-    flex: 1; padding: 13px 24px; border-radius: 12px; font-size: 14px; font-weight: 800;
+    flex: 1; padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 800;
     border: none;
-    background: linear-gradient(135deg, #0a7ee2, #083c88);
-    color: #fff; cursor: pointer; transition: all .25s;
+    background: linear-gradient(135deg, #ffe34d 0%, #f5a800 100%);
+    color: #082060; cursor: pointer; transition: all .25s;
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    box-shadow: 0 4px 16px rgba(10,126,226,.35);
+    box-shadow: 0 4px 20px rgba(245,168,0,.45), 0 1px 0 rgba(255,255,255,.25) inset;
     letter-spacing: -.1px;
   }
-  .btn-next:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,126,226,.4); }
-  .btn-next:active { transform: translateY(0); }
+  .btn-next:hover { filter: brightness(1.07); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,168,0,.55); }
+  .btn-next:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(245,168,0,.35); }
 
   /* TELA FINAL */
   .success-header {
